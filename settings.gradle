@@ -1,12 +1,8 @@
 pluginManagement {
-	repositories {
-		maven {
-			name = 'Fabric'
-			url = 'https://maven.fabricmc.net/'
-		}
-		mavenCentral()
-		gradlePluginPortal()
-	}
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
 }
 
-rootProject.name = 'wathe'
+rootProject.name = 'WatheBukkit'

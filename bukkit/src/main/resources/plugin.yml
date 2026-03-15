@@ -1,0 +1,40 @@
+name: WatheBukkit
+version: '${version}'
+main: dev.doctor4t.wathe.bukkit.WatheBukkit
+api-version: '1.21.4'
+authors:
+  - doctor4t
+  - AmyMialee
+  - BackupCup
+  - Winsweep
+  - Luxintrus
+  - CallMeArthys
+  - Arathain
+description: A murder mystery social game for Paper
+depend:
+  - CraftEngine
+  - BetterHud
+softdepend:
+  - packetevents
+  - PlaceholderAPI
+  - LuckPerms
+
+commands:
+  wathe:
+    description: Main command for Wathe game
+    usage: /<command> <start|stop|role|money|timer>
+    permission: wathe.*
+
+permissions:
+  wathe.*:
+    description: Allows access to all Wathe commands
+    default: op
+    children:
+      wathe.admin: true
+      wathe.play: true
+  wathe.admin:
+    description: Allows access to Wathe admin commands
+    default: op
+  wathe.play:
+    description: Allows playing the game
+    default: true
