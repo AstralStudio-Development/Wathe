@@ -1,0 +1,88 @@
+---
+title: 🅿️ PlaceholderAPI
+id: placeholderapi
+---
+
+## %image\_%
+
+The `image` placeholder is used to return the original Unicode characters and their associated font for the image corresponding to a given ID.
+
+:::caution
+Both `row` and `column` are optional, but when you use one of them, they must be used in pairs.
+:::
+
+### %image\_mm\_namespace:id\:\[row]:\[column]%
+
+Return an image in `minimessage` format.
+
+![](/img/placeholderapi_1.png)
+
+### %image\_md\_namespace:id\:\[row]:\[column]%
+
+Return an image in `minedown` format.
+
+![](/img/placeholderapi_2.png)
+
+### %image\_raw\_namespace:id\:\[row]:\[column]%
+
+Return an the raw image character.
+
+![](/img/placeholderapi_3.png)
+
+## %shift\_%
+
+The `shift` placeholder is used to obtain the character for offset, typically employed for aligning menu titles and similar operations.
+
+### %shift\_mm\_value%
+
+Return shift characters in `minimessage` format.
+
+### %shift\_md\_value%
+
+Return shift characters in `minedown` format.
+
+### %shift\_raw\_value%
+
+Return raw shift characters
+
+:::tip
+
+**If you need to display images using PlaceholderAPI in other plugins, ensure they support MiniMessage or Minedown formatting and properly send text components.**
+(I emphasize this because some poorly designed plugins forcibly convert rich text into legacy color codes.)
+
+Alternatively, you can display custom images through CraftEngine's packet interception. Please refer to [**this page**](../configuration/image.mdx#compatibility-with-other-plugins) for details.
+
+:::
+
+## %checkceitem\_%
+
+The `checkceitem` palceholder helps you detect CraftEngine items in certain menu plugins.
+
+### %checkceitem\_count\_namespace:id%
+
+Returns the quantity of the specified item in the player's inventory.
+
+### %checkceitem\_has\_namespace:id\:\[amount\]%
+
+Returns whether the player's inventory contains the specified quantity of the item.
+
+### %checkceitem\_id\_\[slot\]%
+
+The slot can be a non-negative number (>= 0), or `main_hand` and `off_hand` to specify the main hand and off-hand slots, respectively. \
+Returns the resource location of the item in the specified slot.
+
+![](/img/placeholderapi_4.png)
+
+### %checkceitem\_iscustom\_\[slot\]%
+
+The slot can be a non-negative number (>= 0), or `main_hand` and `off_hand` to specify the main hand and off-hand slots, respectively. \
+Returns whether the item in the specified slot is a custom item.
+
+![](/img/placeholderapi_5.png)
+
+:::tip
+
+Items slot number \
+![](/img/items_slot_number.png)
+
+:::

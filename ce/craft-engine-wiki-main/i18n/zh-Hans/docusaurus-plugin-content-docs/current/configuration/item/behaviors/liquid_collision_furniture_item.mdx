@@ -1,0 +1,30 @@
+---
+title: 🌊 液体碰撞家具物品
+id: liquid_collision_furniture_item
+---
+
+## 简介
+
+**液体碰撞家具物品**会检查交互是否与液体、冰、霜冰或含水方块碰撞。它适用于创建可以放置在水源或熔岩表面的家具。
+
+```yaml
+items:
+  default:bench:
+    behavior:
+      type: liquid_collision_furniture_item
+      rules: # 具体见[🪑 家具物品]的规则
+        ground: # 变体
+          # any / four / eight / sixteen / north / east / west / south
+          # 任意 / 四向 / 八向  / 十六向  /  北   /  东   /  西  /   南
+          rotation: four
+          # any / center / half /  quarter  / corner
+          # 任意 /  居中  / 半格 / 四分之一格 / 角落
+          alignment: center
+      furniture: default:bench
+      ignore-placer: false      # 放置时候是否忽略放置者的碰撞箱
+      ignore-entities: false     # 放置时候是否忽略所有实体的碰撞箱
+      source-only: true      # 只检测液体源
+      liquid-type:
+        - water
+        # - lava
+```

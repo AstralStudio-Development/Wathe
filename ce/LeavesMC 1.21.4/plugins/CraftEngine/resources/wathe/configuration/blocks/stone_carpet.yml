@@ -1,0 +1,220 @@
+# Stone Blocks - cube_all types
+items:
+  # Marble Series
+  wathe:marble:
+    data:
+      item-name: <!i><lang:block.wathe.marble>
+    model: wathe:block/marble
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 2.0
+          resistance: 2.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 8
+          tags: ["minecraft:mineable/pickaxe"]
+          sounds:
+            break: minecraft:block.calcite.break
+            fall: minecraft:block.calcite.fall
+            hit: minecraft:block.calcite.hit
+            place: minecraft:block.calcite.place
+            step: minecraft:block.calcite.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/marble
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/marble
+
+  wathe:dark_marble:
+    data:
+      item-name: <!i><lang:block.wathe.dark_marble>
+    model: wathe:block/dark_marble
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 2.0
+          resistance: 2.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 29
+          tags: ["minecraft:mineable/pickaxe"]
+          sounds:
+            break: minecraft:block.calcite.break
+            fall: minecraft:block.calcite.fall
+            hit: minecraft:block.calcite.hit
+            place: minecraft:block.calcite.place
+            step: minecraft:block.calcite.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/dark_marble
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/dark_marble
+
+  wathe:marble_tiles:
+    data:
+      item-name: <!i><lang:block.wathe.marble_tiles>
+    model: wathe:block/marble_tiles
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 2.0
+          resistance: 2.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 8
+          tags: ["minecraft:mineable/pickaxe"]
+          sounds:
+            break: minecraft:block.calcite.break
+            fall: minecraft:block.calcite.fall
+            hit: minecraft:block.calcite.hit
+            place: minecraft:block.calcite.place
+            step: minecraft:block.calcite.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/marble_tiles
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/marble_tiles
+
+  wathe:marble_mosaic:
+    data:
+      item-name: <!i><lang:block.wathe.marble_mosaic>
+    model: wathe:block/marble_mosaic
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 2.0
+          resistance: 2.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 8
+          tags: ["minecraft:mineable/pickaxe"]
+          sounds:
+            break: minecraft:block.calcite.break
+            fall: minecraft:block.calcite.fall
+            hit: minecraft:block.calcite.hit
+            place: minecraft:block.calcite.place
+            step: minecraft:block.calcite.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/marble_mosaic
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/marble_mosaic
+
+  # Carpets (Moquette)
+  wathe:red_moquette:
+    data:
+      item-name: <!i><lang:block.wathe.red_moquette>
+    model: wathe:block/red_moquette
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 35
+          tags: ["minecraft:mineable/axe"]
+          sounds:
+            break: minecraft:block.wool.break
+            fall: minecraft:block.wool.fall
+            hit: minecraft:block.wool.hit
+            place: minecraft:block.wool.place
+            step: minecraft:block.wool.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/red_moquette
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/red_moquette
+
+  wathe:brown_moquette:
+    data:
+      item-name: <!i><lang:block.wathe.brown_moquette>
+    model: wathe:block/brown_moquette
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 26
+          tags: ["minecraft:mineable/axe"]
+          sounds:
+            break: minecraft:block.wool.break
+            fall: minecraft:block.wool.fall
+            hit: minecraft:block.wool.hit
+            place: minecraft:block.wool.place
+            step: minecraft:block.wool.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/brown_moquette
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/brown_moquette
+
+  wathe:blue_moquette:
+    data:
+      item-name: <!i><lang:block.wathe.blue_moquette>
+    model: wathe:block/blue_moquette
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 36
+          tags: ["minecraft:mineable/axe"]
+          sounds:
+            break: minecraft:block.wool.break
+            fall: minecraft:block.wool.fall
+            hit: minecraft:block.wool.hit
+            place: minecraft:block.wool.place
+            step: minecraft:block.wool.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/blue_moquette
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/blue_moquette

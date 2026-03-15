@@ -1,0 +1,17 @@
+---
+title: 💎 掉落经验方块
+id: drop_experience_block
+---
+
+```yaml
+blocks:
+  default:topaz_ore:
+    behavior:
+      type: drop_exp_block
+      amount: 3~7
+      conditions:
+        type: enchantment
+        predicate: minecraft:silk_touch<=0
+```
+
+![](/img/drop_experience_block.png)

@@ -1,0 +1,6 @@
+hotbar:
+  type: single
+  file: hotbar.png
+hotbar_selection:
+  type: single
+  file: hotbar_selection.png

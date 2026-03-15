@@ -1,0 +1,8 @@
+trays:
+  53504956-d6c4-4d8d-a21c-6b3761b46203|9|-57|54:
+    items:
+      '0':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: BEEF

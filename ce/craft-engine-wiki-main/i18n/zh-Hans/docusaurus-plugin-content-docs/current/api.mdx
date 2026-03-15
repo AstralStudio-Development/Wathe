@@ -1,0 +1,158 @@
+---
+title: ⌨️ API
+id: api
+---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+## 依赖库
+
+将 CraftEngine API 添加到你的项目：
+
+<Tabs groupId="code">
+    <TabItem value="kts" label="Gradle (Kotlin)">
+        ```kotlin
+        repositories {
+            maven("https://repo.momirealms.net/releases/")
+            // maven("https://repo-momi.gtemc.cn/releases/") // 译者注：如果你的网络环境受限可以使用国内镜像依赖库
+            // maven("https://repo.gtemc.net/releases/") // 译者注：如果主依赖库爆炸了可以临时切换到镜像依赖库
+        }
+        ```
+    </TabItem>
+    <TabItem value="gvy" label="Gradle (Groovy)">
+        ```groovy
+        repositories {
+            maven { url 'https://repo.momirealms.net/releases/' }
+            // maven { url 'https://repo-momi.gtemc.cn/releases/' } // 译者注：如果你的网络环境受限可以使用国内镜像依赖库
+            // maven { url 'https://repo.gtemc.net/releases/' } // 译者注：如果主依赖库爆炸了可以临时切换到镜像依赖库
+        }
+        ```
+    </TabItem>
+    <TabItem value="mvn" label="Maven">
+        ```xml
+        <repositories>
+            <repository>
+                <id>momirealms-repo</id>
+                <url>https://repo.momirealms.net/releases/</url>
+            </repository>
+            <repository>
+                <id>momirealms-repo-mirror1</id>
+                <url>https://repo-momi.gtemc.cn/releases/</url> <!-- 译者注：如果你的网络环境受限可以使用国内镜像依赖库 -->
+            </repository>
+            <repository>
+                <id>momirealms-repo-mirror2</id>
+                <url>https://repo.gtemc.net/releases/</url> <!-- 译者注：如果主依赖库爆炸了可以临时切换到镜像依赖库 -->
+            </repository>
+        </repositories>
+        ```
+    </TabItem>
+</Tabs>
+<Tabs groupId="code">
+    <TabItem value="kts" label="Gradle (Kotlin)">
+        ```kotlin
+        dependencies {
+            compileOnly("net.momirealms:craft-engine-core:{version}") // 将 "{version}" 替换为插件稳定版本
+            compileOnly("net.momirealms:craft-engine-bukkit:{version}") // 例如 0.0.60
+        }
+        ```
+    </TabItem>
+    <TabItem value="gvy" label="Gradle (Groovy)">
+        ```groovy
+        dependencies {
+            compileOnly 'net.momirealms:craft-engine-core:{version}' // 将 "{version}" 替换为插件稳定版本
+            compileOnly 'net.momirealms:craft-engine-bukkit:{version}' // 例如 0.0.60
+        }
+        ```
+    </TabItem>
+    <TabItem value="mvn" label="Maven">
+        ```xml
+        <dependencies>
+            <dependency>
+                <groupId>net.momirealms</groupId>
+                <artifactId>craft-engine-core</artifactId>
+                <version>{version}</version> <!-- 将 {version} 替换为插件稳定版本 -->
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>net.momirealms</groupId>
+                <artifactId>craft-engine-bukkit</artifactId>
+                <version>{version}</version> <!-- 例如 0.0.60 -->
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+        ```
+    </TabItem>
+</Tabs>
+
+请确保在您的 plugin.yml 中声明 CraftEngine 为依赖项：
+
+```yaml
+softdepend:
+  - CraftEngine
+```
+
+对于 paper-plugin.yml，您必须包含 `join-classpath: true` 选项才能访问 API 类：
+```yaml
+dependencies:
+  server:
+    CraftEngine:
+      load: BEFORE
+      required: false
+      join-classpath: true
+```
+
+:::caution
+
+**注意变更**
+
+仅 `api` 包下的内容被认为是稳定的。其他与插件交互的方法不稳定，特别是在当前 beta 阶段，可能会发生变化。
+
+以下链接中提供的内容被认为是稳定的，并涵盖了 90% 的 API 使用需求：
+https://github.com/Xiao-MoMi/craft-engine/tree/main/bukkit/src/main/java/net/momirealms/craftengine/bukkit/api
+
+:::
+
+:::info
+
+如果您急于开始注册自己的方块行为，可以参考我们的一些内置实现作为示例。
+https://github.com/Xiao-MoMi/craft-engine/tree/main/bukkit/src/main/java/net/momirealms/craftengine/bukkit/block/behavior
+
+译者注：你也可以参考这个项目 https://github.com/jhqwqmc/craft-engine-blocks/ 直接使用此公共模板创建。
+
+:::
+
+## 一些开发规范
+
+### 命名
+
+1. 新类型的标识符：使用小写字母加下划线（例如，`my_plugin:test_function`）。
+2. 配置参数：如果用户需要在配置文件中传递值，键使用连字符（`-`）以提高可读性。
+
+示例:
+
+```yaml
+type: my_plugin:test_function
+send-to-all: true
+message: "Test TeST tEST"
+```
+
+### 方块事件
+
+请避免直接使用如 `CustomBlockBreakEvent` 的事件。相反，您应该：
+
+1. 监听对应的 Bukkit 事件（例如，BlockBreakEvent）。
+2. 从事件中获取 BlockData。
+3. 使用 `CraftEngineBlocks` 类将其转换为自定义方块进行进一步处理。
+
+使用 Bukkit 事件可以以更全面的方式实现您的需求，无需额外学习。
+
+### 关于注册
+
+当注册新的方块行为、物品行为或托管类型等时，请首先检查是否有相应的常量类可用（例如：BlockBehaviors, ItemBehaviors）。强烈建议使用这些类中提供的注册方法进行你的注册。
+
+:::info
+
+API 文档将在正式发布后进行重写，以包含更多高级示例。
+
+:::

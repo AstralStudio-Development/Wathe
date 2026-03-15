@@ -1,0 +1,321 @@
+# Pillar Blocks - Rotatable column blocks
+items:
+  # Tarnished Gold Pillar (失光金柱)
+  wathe:tarnished_gold_pillar:
+    data:
+      item-name: <!i><lang:block.wathe.tarnished_gold_pillar>
+    model: wathe:block/tarnished_gold_pillar
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 43
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            axis:
+              type: axis
+              default: y
+          appearances:
+            y:
+              state: purpur_pillar[axis=y]
+              model:
+                path: wathe:block/tarnished_gold_pillar
+                generation:
+                  parent: minecraft:block/cube_column
+                  textures:
+                    end: wathe:block/tarnished_gold_pillar_top
+                    side: wathe:block/tarnished_gold_pillar
+            x:
+              state: purpur_pillar[axis=x]
+              model:
+                path: wathe:block/tarnished_gold_pillar_horizontal
+                generation:
+                  parent: minecraft:block/cube_column_horizontal
+                  textures:
+                    end: wathe:block/tarnished_gold_pillar_top
+                    side: wathe:block/tarnished_gold_pillar
+            z:
+              state: purpur_pillar[axis=z]
+              model:
+                path: wathe:block/tarnished_gold_pillar_horizontal_z
+                generation:
+                  parent: minecraft:block/cube_column_horizontal
+                  textures:
+                    end: wathe:block/tarnished_gold_pillar_top
+                    side: wathe:block/tarnished_gold_pillar
+                  y: 90
+          variants:
+            axis=y:
+              appearance: y
+            axis=x:
+              appearance: x
+            axis=z:
+              appearance: z
+
+  # Gold Pillar (黄金柱)
+  wathe:gold_pillar:
+    data:
+      item-name: <!i><lang:block.wathe.gold_pillar>
+    model: wathe:block/gold_pillar
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 43
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            axis:
+              type: axis
+              default: y
+          appearances:
+            y:
+              state: quartz_pillar[axis=y]
+              model:
+                path: wathe:block/gold_pillar
+                generation:
+                  parent: minecraft:block/cube_column
+                  textures:
+                    end: wathe:block/gold_pillar_top
+                    side: wathe:block/gold_pillar
+            x:
+              state: quartz_pillar[axis=x]
+              model:
+                path: wathe:block/gold_pillar_horizontal
+                generation:
+                  parent: minecraft:block/cube_column_horizontal
+                  textures:
+                    end: wathe:block/gold_pillar_top
+                    side: wathe:block/gold_pillar
+            z:
+              state: quartz_pillar[axis=z]
+              model:
+                path: wathe:block/gold_pillar_horizontal_z
+                generation:
+                  parent: minecraft:block/cube_column_horizontal
+                  textures:
+                    end: wathe:block/gold_pillar_top
+                    side: wathe:block/gold_pillar
+                  y: 90
+          variants:
+            axis=y:
+              appearance: y
+            axis=x:
+              appearance: x
+            axis=z:
+              appearance: z
+
+  # Pristine Gold Pillar (纯金柱)
+  wathe:pristine_gold_pillar:
+    data:
+      item-name: <!i><lang:block.wathe.pristine_gold_pillar>
+    model: wathe:block/pristine_gold_pillar
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 43
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            axis:
+              type: axis
+              default: y
+          appearances:
+            y:
+              state: deepslate[axis=y]
+              model:
+                path: wathe:block/pristine_gold_pillar
+                generation:
+                  parent: minecraft:block/cube_column
+                  textures:
+                    end: wathe:block/pristine_gold_pillar_top
+                    side: wathe:block/pristine_gold_pillar
+            x:
+              state: deepslate[axis=x]
+              model:
+                path: wathe:block/pristine_gold_pillar_horizontal
+                generation:
+                  parent: minecraft:block/cube_column_horizontal
+                  textures:
+                    end: wathe:block/pristine_gold_pillar_top
+                    side: wathe:block/pristine_gold_pillar
+            z:
+              state: deepslate[axis=z]
+              model:
+                path: wathe:block/pristine_gold_pillar_horizontal_z
+                generation:
+                  parent: minecraft:block/cube_column_horizontal
+                  textures:
+                    end: wathe:block/pristine_gold_pillar_top
+                    side: wathe:block/pristine_gold_pillar
+                  y: 90
+          variants:
+            axis=y:
+              appearance: y
+            axis=x:
+              appearance: x
+            axis=z:
+              appearance: z
+
+  # Stainless Steel Pillar (不锈钢柱)
+  wathe:stainless_steel_pillar:
+    data:
+      item-name: <!i><lang:block.wathe.stainless_steel_pillar>
+    model: wathe:block/stainless_steel_pillar
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 11
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.copper.break
+            fall: minecraft:block.copper.fall
+            hit: minecraft:block.copper.hit
+            place: minecraft:block.copper.place
+            step: minecraft:block.copper.step
+        states:
+          properties:
+            axis:
+              type: axis
+              default: y
+          appearances:
+            y:
+              state: basalt[axis=y]
+              model:
+                path: wathe:block/stainless_steel_pillar
+                generation:
+                  parent: minecraft:block/cube_column
+                  textures:
+                    end: wathe:block/stainless_steel_pillar_top
+                    side: wathe:block/stainless_steel_pillar
+            x:
+              state: basalt[axis=x]
+              model:
+                path: wathe:block/stainless_steel_pillar_horizontal
+                generation:
+                  parent: minecraft:block/cube_column_horizontal
+                  textures:
+                    end: wathe:block/stainless_steel_pillar_top
+                    side: wathe:block/stainless_steel_pillar
+            z:
+              state: basalt[axis=z]
+              model:
+                path: wathe:block/stainless_steel_pillar_horizontal_z
+                generation:
+                  parent: minecraft:block/cube_column_horizontal
+                  textures:
+                    end: wathe:block/stainless_steel_pillar_top
+                    side: wathe:block/stainless_steel_pillar
+                  y: 90
+          variants:
+            axis=y:
+              appearance: y
+            axis=x:
+              appearance: x
+            axis=z:
+              appearance: z
+
+  # Dark Steel Pillar (暗钢柱)
+  wathe:dark_steel_pillar:
+    data:
+      item-name: <!i><lang:block.wathe.dark_steel_pillar>
+    model: wathe:block/dark_steel_pillar
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 29
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.copper.break
+            fall: minecraft:block.copper.fall
+            hit: minecraft:block.copper.hit
+            place: minecraft:block.copper.place
+            step: minecraft:block.copper.step
+        states:
+          properties:
+            axis:
+              type: axis
+              default: y
+          appearances:
+            y:
+              state: polished_basalt[axis=y]
+              model:
+                path: wathe:block/dark_steel_pillar
+                generation:
+                  parent: minecraft:block/cube_column
+                  textures:
+                    end: wathe:block/dark_steel_pillar_top
+                    side: wathe:block/dark_steel_pillar
+            x:
+              state: polished_basalt[axis=x]
+              model:
+                path: wathe:block/dark_steel_pillar_horizontal
+                generation:
+                  parent: minecraft:block/cube_column_horizontal
+                  textures:
+                    end: wathe:block/dark_steel_pillar_top
+                    side: wathe:block/dark_steel_pillar
+            z:
+              state: polished_basalt[axis=z]
+              model:
+                path: wathe:block/dark_steel_pillar_horizontal_z
+                generation:
+                  parent: minecraft:block/cube_column_horizontal
+                  textures:
+                    end: wathe:block/dark_steel_pillar_top
+                    side: wathe:block/dark_steel_pillar
+                  y: 90
+          variants:
+            axis=y:
+              appearance: y
+            axis=x:
+              appearance: x
+            axis=z:
+              appearance: z

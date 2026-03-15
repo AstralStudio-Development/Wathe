@@ -1,0 +1,29 @@
+---
+title: 📦 简单存储方块
+id: simple_storage_block
+---
+
+import Highlight from '@site/src/components/Highlight';
+
+<Highlight color="#3B6B60">**方块实体**</Highlight>​
+
+| 属性名称 | 属性类型    | 是否必需 |
+|------|---------|------|
+| open | boolean | 否    |
+
+```yml
+blocks:
+  default:safe_block:
+    behavior:
+      type: simple_storage_block
+      title: "保险柜"
+      rows: 1 # 1~6
+      sounds:
+        open: minecraft:block.iron_trapdoor.open
+        close: minecraft:block.iron_trapdoor.close
+      has-signal: true # 是否可以被检测出红石信号
+      allow-input: true # 是否可以输入物品
+      allow-output: true # 是否可以输出物品
+```
+
+![](/img/simple_storage_block.png)

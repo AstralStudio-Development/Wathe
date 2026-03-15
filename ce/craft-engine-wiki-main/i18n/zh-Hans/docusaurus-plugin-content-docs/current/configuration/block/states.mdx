@@ -1,0 +1,475 @@
+---
+title: 🔣 方块状态
+id: states
+---
+
+## 简介
+
+在 Minecraft 的方块系统中，每个方块都可以拥有一个或多个方块状态。例如，原木有不同朝向，树叶可以检测与树木的“距离”。这些状态共同决定了方块在游戏中的外观和物理行为。
+
+为了更好地理解插件如何运作，我们首先需要区分两个核心概念：
+
+#### 🎨 视觉方块状态
+
+这指的是玩家在客户端**实际看到**的方块状态，因此也被称为**原版方块状态**。
+
+- 插件通过为这些特定的原版状态（例如，一个具有特定音高和乐器的音符盒）附加自定义模型，来实现各种独特的方块渲染效果。
+- 简单来说，**视觉状态负责“看起来是什么样子”**。
+
+#### ⚙️ 内部方块状态
+
+这是指在服务器端**真正被存储和运算**的方块状态，因此也被称为**服务端方块状态**。
+
+- 它负责处理方块所有的逻辑与物理行为，如碰撞箱、红石信号、实体交互等。
+- 服务器会将这个内部状态通过特定的网络协议，“映射”或“转换”成一个视觉状态，再发送给客户端进行渲染。
+- 简单来说，**内部状态负责“实际如何运作”**。
+
+![](/img/block_states_1.png)
+
+## 单状态方块
+
+大多数方块仅需一个方块状态即可正常运行。以下示例展示了如何配置单状态方块。
+
+```yaml
+blocks:
+  default:chinese_lantern:
+    state:
+      auto-state: note_block
+      model:
+        path: "minecraft:block/custom/chinese_lantern"
+        generation:
+          parent: "minecraft:block/cube_column"
+          textures:
+            "end": "minecraft:block/custom/chinese_lantern_top"
+            "side": "minecraft:block/custom/chinese_lantern"
+```
+
+### 视觉状态
+方块的视觉表现由 `auto-state` 或 `state` 这两个选项来控制。你可以根据自己对精度的需求，二选一。
+
+#### 🛠️ 使用 `auto-state`：让插件帮你选
+`auto-state` 的参数指向插件预设好的一组外观状态。这些状态都共享一些关键特性，比如拥有**相同的碰撞箱和一致的渲染属性**（例如是否支持透明）。
+
+- 它有什么用？
+
+在创建新方块时，我们通常只关心它的核心特性（比如碰撞箱大小），而不在乎它具体用了哪个方块状态。`auto-state` 就是为此而生：插件会自动从符合特性的状态组里，为你分配一个可用的。
+
+- 举个例子
+
+对于音符盒，`minecraft:note_block[instrument=hat,note=0,powered=false]` 和 `minecraft:note_block[instrument=hat,note=1,powered=false]` 在核心特性上毫无区别。你完全无需记住或输入这么长的状态参数，只需简单地写上 `auto-state: note_block`，插件就会自动为你挑选一个空闲的音符盒状态。
+
+:::info
+当前可用的 `auto-state` 选项:
+- tintable_leaves - 不含水的可着色树叶
+- waterlogged_tintable_leaves - 含水的可着色树叶
+- non_tintable_leaves - 不含水的不可着色树叶
+- waterlogged_non_tintable_leaves - 含水的不可着色树叶
+- leaves - 所有不含水的标准树叶
+- waterlogged_leaves - 含水的树叶
+- lower_tripwire - 碰撞箱较小的绊线
+- higher_tripwire - 碰撞箱较大的绊线
+- tripwire - 任意绊线
+- note_block - 音符盒
+- mushroom_stem - 蘑菇柄
+- red_mushroom_block - 红色蘑菇方块
+- brown_mushroom_block - 棕色蘑菇方块
+- mushroom - 蘑菇方块
+- solid - 任意实心方块（包括音符盒和蘑菇方块）
+- sapling - 任意树苗
+- cactus - 任意仙人掌
+- sugar_cane - 任意甘蔗
+- weeping_vine - 任意垂泪藤
+- twisting_vine - 任意缠怨藤
+- cave_vine - 任意洞穴藤蔓
+- kelp - 任意海带
+- chorus - 任意紫颂植株
+:::
+
+:::tip
+如果多个方块外观引用相同的 ID，它们最终将被分配相同的视觉方块状态。如果您需要多个方块状态共享相同的视觉状态，这将非常有用。
+
+```yaml
+auto-state:
+  type: solid
+  id: namespace:id
+```
+
+:::
+
+#### 🎯 使用 `state`：精准控制每个细节
+
+当你需要**精确指定某个特定状态**时，就应该使用 `state` 参数。这对于门、栅栏、活板门等多变体方块至关重要，只有精确控制，才能获得预期的碰撞箱和外观。
+
+`state` 参数支持两种格式：
+
+1. 完整方块状态
+
+直接使用 Minecraft 原版的完整状态标识符。
+
+> 示例：minecraft:note_block\[instrument=hat,note=0,powered=false]
+
+2. 映射简写
+
+使用在 `block-state-mappings` 配置中定义的简写格式 `方块名称:ID`。
+
+> 示例：`note_block:100` （这表示使用被映射的第 101 个音符盒状态）
+
+下面是一个使用 `state` 配置完成的单状态方块配置：
+
+```yaml
+blocks:
+  default:chinese_lantern:
+    state:
+      state: minecraft:note_block[instrument=hat,note=0,powered=false]
+      model:
+        path: "minecraft:block/custom/chinese_lantern"
+        generation:
+          parent: "minecraft:block/cube_column"
+          textures:
+            "end": "minecraft:block/custom/chinese_lantern_top"
+            "side": "minecraft:block/custom/chinese_lantern"
+```
+
+:::caution
+⚠️ 注意：避免状态与模型的重复绑定
+
+当你使用 `state` 选项精确指定一个方块状态后，请确保这个状态只绑定到一个**唯一的自定义模型**上。
+
+**❌ 什么是冲突？**
+
+举个例子：
+
+- 你为 A方块 设置了状态 `minecraft:note_block[instrument=hat,note=0,powered=false]`，并将其绑定到 A模型。
+- 接着，你又为 B方块 设置了完全相同的状态 `minecraft:note_block[instrument=hat,note=0,powered=false]`，却试图将其绑定到 B模型。
+
+这时就会发生冲突。因为同一个原版方块状态无法同时代表两个不同的自定义模型。
+
+**🔍 发生冲突会怎样？**
+
+插件检测到这种重复绑定时，会在控制台打印出警告日志。请务必留意这些警告信息，并及时修改配置，否则模型显示可能会出现无法预料的问题。
+:::
+
+### 模型
+
+#### 基础模型配置
+
+```yaml
+blocks:
+  default:chinese_lantern:
+    state:
+      auto-state: note_block
+      model:
+        path: "minecraft:block/custom/chinese_lantern"
+        generation:
+          parent: "minecraft:block/cube_column"
+          textures:
+            "end": "minecraft:block/custom/chinese_lantern_top"
+            "side": "minecraft:block/custom/chinese_lantern"
+```
+
+`model` 决定了你使用的视觉状态最后在客户端侧显示为什么样子。
+
+:::info
+
+如果你对如何配置 `path`（模型路径）和 `generation`（模型生成）等属性感到困惑，我们强烈建议你首先完成 **[入门教程](../../getting_start.mdx)**，它将帮助你系统地理解基本流程。
+
+当然，这里有一个简单的判断方法，可以帮助你快速上手：
+
+- **情景一：我已有一个现成的模型文件**
+
+如果你已经准备好了一个 .json 格式的模型文件，只需在配置中填写 `path` 字段，直接指定该模型的路径即可。
+
+- **情景二：我需要插件自动创建一个基础模型**
+
+如果你还没有模型文件，并希望插件为你生成一个基础模型，那么你应该使用 `generation` 选项，并填写相应的生成参数。
+:::
+
+#### 加权模型配置
+
+`weight` 参数用于设定模型在候选列表中被随机选中的概率权重，默认值为 1。
+
+**🎲 工作原理**
+
+- **作用时机**：当一个方块拥有多个候选模型时，游戏会根据其位置计算出应使用的模型。对于同一位置，计算结果固定。
+- **概率计算**：每个模型被选中的概率由其自身的 `weight` 值占总权重的比例决定。
+
+具体计算公式为：
+**单个模型选中概率 = 模型自身权重 / 所有候选模型权重之和**
+
+```yaml
+state:
+  models: # model(s)
+    - path: "minecraft:block/custom/fairy_flower_1"
+      weight: 8
+    - path: "minecraft:block/custom/fairy_flower_2"
+      weight: 5
+    - path: "minecraft:block/custom/fairy_flower_3"
+      weight: 2
+```
+
+![](/img/block_states_4.png)
+
+#### 旋转模型配置
+
+如果需要在**不修改模型文件本身**的前提下对模型进行基础旋转，您无需创建新的模型文件，直接在配置中使用以下选项即可：
+
+**🔧 可用选项**
+- x
+模型绕 X 轴 的旋转角度。
+单位：度（°）
+限制：必须为 90 的倍数。
+- y
+模型绕 Y 轴 的旋转角度。
+单位：度（°）
+限制：必须为 90 的倍数。
+- uvlock
+是否锁定方块纹理的旋转方向。
+默认值：false
+作用：当设置为 true 时，方块材质将不会随模型的旋转而旋转，保持原始方向。
+
+```yaml
+model:
+  path: "minecraft:block/custom/chinese_lantern"
+  x: 90
+  y: 180
+  uvlock: false
+```
+
+## 多状态方块
+
+:::warning
+
+接下来的内容可能会比较难懂。我会尽可能详细地解释，请务必**逐字逐句**仔细阅读。
+
+:::
+
+### 第一步：定义属性
+
+在此示例中，我们定义了一个名为 axis 的属性：
+
+```yaml
+blocks:
+  default:palm_log:
+    states: # state(s)
+      properties:
+        axis:
+          type: "axis"
+          default: "y"
+```
+
+**✍️ 属性定义说明**
+
+- **属性名**：请务必使用**小写英文字母与下划线**的组合来命名。
+- type：指定属性的类型。你可以在 [ℹ️ 属性](states/properties.mdx) 子页面 中查看所有可用的属性类型。
+- default：（可选）设置该属性的默认值。当方块状态未明确指定此属性时，将使用默认值。
+
+:::tip
+**特殊名称的行为**
+
+属性名称的设定具有很高的自由度，但需要注意一个**特殊机制**：插件会为某些**特定的属性名**硬编码特殊的放置行为。
+
+例如，当属性名被设置为 `axis` 时：
+
+- 插件在放置方块时会自动对齐其方向，使其与玩家放置时的朝向匹配。
+- 这一过程是完全自动化的，无需额外配置。
+
+如果属性名不是这些特殊名称（例如下面的 custom_axis）：
+
+```yaml
+custom_axis:
+  type: axis
+  default: y
+```
+
+- 插件在放置时将不会应用任何自动旋转。
+- 无论你以何种方向放置，方块都将始终使用配置中定义的默认状态（在此例中为 custom_axis=y）。
+:::
+
+### 第二步：定义外观
+
+在第二步中，我们需要配置自定义方块的可能视觉外观。例如，一个原木方块需要三种方向，因此我们需要指定三种原版方块状态作为其视觉表现。
+
+在下面配置中，`axisX`、`axisZ` 和 `axisY` 这些状态名称可以自由定义：
+
+- **命名自由**：您可以使用任何能够清晰描述对应视觉状态的名称，没有小写字母等限制。
+- **唯一性要求**：只需确保在同一方块下，各个状态的名称是唯一不重复的即可。
+
+每个状态下的 state 和 model(s) 配置，遵循与单状态方块完全相同的规则。
+
+如果您对这些配置的具体细节有任何不确定的地方，建议回顾查阅前面关于单状态方块的文档部分。
+
+```yaml
+blocks:
+  default:palm_log:
+    states:
+      appearances:
+        axisY:
+          # 你也可以在此使用 "auto-state: note_block"
+          state: "note_block:0" 
+          model:
+            path: "minecraft:block/custom/stripped_palm_log"
+            generation:
+              parent: "minecraft:block/cube_column"
+              textures:
+                "end": "minecraft:block/custom/palm_log_top"
+                "side": "minecraft:block/custom/palm_log"
+        axisX:
+          # 你也可以在此使用 "auto-state: note_block"
+          state: "note_block:1"
+          model:
+            x: 90
+            y: 90
+            path: "minecraft:block/custom/stripped_palm_log_horizontal"
+            generation:
+              parent: "minecraft:block/cube_column_horizontal"
+              textures:
+                "end": "minecraft:block/custom/palm_log_top"
+                "side": "minecraft:block/custom/palm_log"
+        axisZ:
+          # 你也可以在此使用 "auto-state: note_block"
+          state: "note_block:2"
+          model:
+            x: 90
+            path: "minecraft:block/custom/stripped_palm_log_horizontal"
+            generation:
+              parent: "minecraft:block/cube_column_horizontal"
+              textures:
+                "end": "minecraft:block/custom/palm_log_top"
+                "side": "minecraft:block/custom/palm_log"
+```
+
+### 第三步：配置变体（可选）
+
+最后这一步是可选的，但在大多数实际情况下，您都需要进行配置。
+
+在这一部分，您需要为所有可能的内部方块状态（即**真实方块**变体）安排对应的**视觉外观**（刚刚在第二步里定义的）和属性（方块设置）。
+
+**💡 变体键的格式**
+在 variants 下，每个条目的键需要由属性名及其对应值连接构成：
+
+- **单一属性**：格式为 属性名=值，例如 `axis=y`。
+- **多个属性**：用英文逗号分隔，例如 `axis=y,age=7`。属性的排列顺序不影响匹配。
+
+每个变体键下都有两个可选的配置选项 `appearance`（用于分配外观），`settings`（用于覆写设置）。下面我们通过一个树叶的配置示例，来帮助您理解变体是如何工作的：
+
+<details>
+  <summary>完整的 states 区域配置</summary>
+
+```yaml
+blocks:
+  default:palm_leaves:
+    states:
+      properties:
+        waterlogged:
+          type: boolean
+          default: false
+        persistent:
+          type: boolean
+          default: true
+        distance:
+          type: int
+          default: 7
+          range: 1~7
+      appearances:
+        default:
+          auto-state: leaves
+          model:
+            path: minecraft:block/custom/palm_leaves
+            generation:
+              parent: minecraft:block/leaves
+              textures:
+                all: minecraft:block/custom/palm_leaves
+        waterlogged:
+          auto-state: waterlogged_leaves
+          model:
+            path: minecraft:block/custom/palm_leaves
+      variants:
+        waterlogged=false:
+          appearance: default
+        waterlogged=true:
+          appearance: waterlogged
+          settings:
+            resistance: 1200.0
+            burnable: false
+            fluid-state: water
+        distance=7,persistent=false:
+          settings:
+            is-randomly-ticking: true
+```
+
+</details>
+
+
+1. **基础水分状态**
+
+我首先通过 `waterlogged=true` 和 `waterlogged=false` 为所有树叶状态定义了浸水与非浸水时的外观模型。
+
+2. **动态调整方块设置**
+
+随后，通过配置 `distance=7,persistent=false` 等状态，让符合条件（如距离树木足够远且非永久保留）的树叶能够参与随机刻，从而实现自然凋零的游戏行为。
+
+:::tip
+**设置的继承与覆写规则**
+
+一个关键特性是：您可以为不同的变体键设置 `settings`，这些设置的生效遵循明确的优先级规则：
+- 首先继承：变体会首先继承在 `states` 区域同级定义的全局 `settings` 选项。
+- 然后叠加：随后，变体自身定义的 settings 会叠加在继承来的设置之上。对于同一配置项，变体设置会覆写之前继承的全局设置。
+
+例如，在本例中，我为 `waterlogged=true` 设置了某些 settings。同时，也为 `distance=7,persistent=false` 设置了另一些 settings。那么，当一个方块的实际状态同时匹配这两个条件时（即 `waterlogged=true,distance=7,persistent=false`），它将同时继承并应用这两个变体键下的所有 settings。
+
+这种机制使得您能够灵活地组合方块属性，并让视觉效果与方块行为精确对应。
+
+:::
+
+
+## 配置真实方块 ID（可选）
+
+如果您希望由自己来指定方块在服务器端的真实方块 ID，可以通过配置实现。但请注意：
+
+- **全局唯一性**：指定的 ID 必须在整个服务器中全局唯一。
+- **数量限制**：不能超过在 `config.yml` 中设置的 `serverside-blocks` 数量上限。
+
+> 💡 大多数情况下您无需手动配置 ID。仅当您需要确保内部 ID 固定不变（例如在使用数据包或其他依赖严格 ID 映射的系统中）时，才需要手动设置。
+
+
+### 单状态方块的 ID 配置
+
+```yaml
+blocks:
+  default:chinese_lantern:
+    state:
+      id: 0 # 指定该方块的内部 ID 为 0
+      auto-state: note_block
+      model:
+        path: "minecraft:block/custom/chinese_lantern"
+        generation:
+          parent: "minecraft:block/cube_column"
+          textures:
+            "end": "minecraft:block/custom/chinese_lantern_top"
+            "side": "minecraft:block/custom/chinese_lantern"
+```
+
+### 多状态方块的 ID 配置
+
+对于多状态方块，只需指定一个起始 ID 即可。插件会根据该方块的变体总数，自动分配一段连续的 ID 区间。
+
+在下面的示例中，该树叶方块共有 `2(waterlogged) × 2(persistent) × 7(distance) = 28` 种变体。配置起始 ID 为 100，插件会自动为其分配 ID 100 至 127（共 28 个连续的 ID）。
+
+```yaml
+blocks:
+  default:palm_leaves:
+    states:
+      id: 100 # 起始ID为100
+      properties:
+        waterlogged:
+          type: boolean
+          default: false
+        persistent:
+          type: boolean
+          default: true
+        distance:
+          type: int
+          default: 7
+          range: 1~7
+      #... 省略其他配置
+```

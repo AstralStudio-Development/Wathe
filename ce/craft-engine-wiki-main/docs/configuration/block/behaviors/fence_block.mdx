@@ -1,0 +1,22 @@
+---
+title: 🚧 Fence Block
+id: fence_block
+---
+
+| Property Name | Property Type | Required |
+|---------------|---------------|----------|
+| north         | boolean       | yes      |
+| east          | boolean       | yes      |
+| south         | boolean       | yes      |
+| west          | boolean       | yes      |
+
+```yaml
+blocks:
+  default:palm_fence:
+    behavior:
+      type: fence_block
+      connectable-block-tag: minecraft:wooden_fences
+      can-leash: true
+```
+
+![](/img/fence_block.png)

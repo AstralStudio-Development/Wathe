@@ -1,0 +1,426 @@
+package net.momirealms.craftengine.bukkit.plugin.injector;
+
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import net.bytebuddy.ByteBuddy;
+import net.bytebuddy.ClassFileVersion;
+import net.bytebuddy.description.method.MethodDescription;
+import net.bytebuddy.dynamic.scaffold.subclass.ConstructorStrategy;
+import net.bytebuddy.implementation.MethodDelegation;
+import net.bytebuddy.implementation.bind.annotation.AllArguments;
+import net.bytebuddy.implementation.bind.annotation.RuntimeType;
+import net.bytebuddy.matcher.ElementMatcher;
+import net.bytebuddy.matcher.ElementMatchers;
+import net.momirealms.craftengine.bukkit.item.BukkitItemManager;
+import net.momirealms.craftengine.bukkit.item.DataComponentTypes;
+import net.momirealms.craftengine.bukkit.util.ItemTags;
+import net.momirealms.craftengine.bukkit.util.KeyUtils;
+import net.momirealms.craftengine.core.item.CustomItem;
+import net.momirealms.craftengine.core.item.Item;
+import net.momirealms.craftengine.core.item.ItemKeys;
+import net.momirealms.craftengine.core.item.data.FireworkExplosion;
+import net.momirealms.craftengine.core.util.*;
+import net.momirealms.craftengine.proxy.bukkit.craftbukkit.inventory.CraftItemStackProxy;
+import net.momirealms.craftengine.proxy.minecraft.core.HolderLookupProxy;
+import net.momirealms.craftengine.proxy.minecraft.core.RegistryAccessProxy;
+import net.momirealms.craftengine.proxy.minecraft.resources.IdentifierProxy;
+import net.momirealms.craftengine.proxy.minecraft.world.ContainerProxy;
+import net.momirealms.craftengine.proxy.minecraft.world.inventory.CraftingContainerProxy;
+import net.momirealms.craftengine.proxy.minecraft.world.item.*;
+import net.momirealms.craftengine.proxy.minecraft.world.item.crafting.*;
+import net.momirealms.craftengine.proxy.minecraft.world.level.LevelProxy;
+import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+public final class RecipeInjector {
+    private static Class<?> clazz$InjectedArmorDyeRecipe;
+    private static Class<?> clazz$InjectedRepairItemRecipe;
+    private static Class<?> clazz$InjectedFireworkStarFadeRecipe;
+
+    private RecipeInjector() {}
+
+    public static void init() {
+        ByteBuddy byteBuddy = new ByteBuddy(ClassFileVersion.JAVA_V17);
+
+        ElementMatcher.Junction<MethodDescription> matches = (VersionHelper.isOrAbove1_21() ?
+                ElementMatchers.takesArguments(CraftingInputProxy.CLASS, LevelProxy.CLASS) :
+                ElementMatchers.takesArguments(CraftingContainerProxy.CLASS, LevelProxy.CLASS)
+        ).and(ElementMatchers.returns(boolean.class));
+        ElementMatcher.Junction<MethodDescription> assemble = (
+                VersionHelper.isOrAbove1_21() ?
+                        ElementMatchers.takesArguments(CraftingInputProxy.CLASS, HolderLookupProxy.ProviderProxy.CLASS) :
+                        VersionHelper.isOrAbove1_20_5() ?
+                                ElementMatchers.takesArguments(CraftingContainerProxy.CLASS, HolderLookupProxy.ProviderProxy.CLASS) :
+                                ElementMatchers.takesArguments(CraftingContainerProxy.CLASS, RegistryAccessProxy.CLASS)
+        ).and(ElementMatchers.returns(ItemStackProxy.CLASS));
+
+        clazz$InjectedArmorDyeRecipe = byteBuddy
+                .subclass(ArmorDyeRecipeProxy.CLASS, ConstructorStrategy.Default.IMITATE_SUPER_CLASS_OPENING)
+                .name("net.momirealms.craftengine.bukkit.item.recipe.ArmorDyeRecipe")
+                .method(matches)
+                .intercept(MethodDelegation.to(DyeMatchesInterceptor.INSTANCE))
+                .method(assemble)
+                .intercept(MethodDelegation.to(DyeAssembleInterceptor.INSTANCE))
+                .make()
+                .load(RecipeInjector.class.getClassLoader())
+                .getLoaded();
+
+        clazz$InjectedFireworkStarFadeRecipe = byteBuddy
+                .subclass(FireworkStarFadeRecipeProxy.CLASS)
+                .name("net.momirealms.craftengine.bukkit.item.recipe.FireworkStarFadeRecipe")
+                .method(matches)
+                .intercept(MethodDelegation.to(FireworkStarFadeMatchesInterceptor.INSTANCE))
+                .method(assemble)
+                .intercept(MethodDelegation.to(FireworkStarFadeAssembleInterceptor.INSTANCE))
+                .make()
+                .load(RecipeInjector.class.getClassLoader())
+                .getLoaded();
+
+        clazz$InjectedRepairItemRecipe = byteBuddy
+                .subclass(RepairItemRecipeProxy.CLASS, ConstructorStrategy.Default.IMITATE_SUPER_CLASS_OPENING)
+                .name("net.momirealms.craftengine.bukkit.item.recipe.RepairItemRecipe")
+                // 只修改match逻辑，合并需要在事件里处理，否则无法应用变量
+                .method(matches)
+                .intercept(MethodDelegation.to(RepairMatchesInterceptor.INSTANCE))
+                .make()
+                .load(RecipeInjector.class.getClassLoader())
+                .getLoaded();
+    }
+
+    public static Object createRepairItemRecipe(Key id) throws ReflectiveOperationException {
+        return createSpecialRecipe(id, clazz$InjectedRepairItemRecipe);
+    }
+
+    public static Object createCustomDyeRecipe(Key id) throws ReflectiveOperationException {
+        return createSpecialRecipe(id, clazz$InjectedArmorDyeRecipe);
+    }
+
+    public static Object createFireworkStarFadeRecipe(Key id) throws ReflectiveOperationException {
+        return createSpecialRecipe(id, clazz$InjectedFireworkStarFadeRecipe);
+    }
+
+    @NotNull
+    private static Object createSpecialRecipe(Key id, Class<?> clazz$InjectedRepairItemRecipe) throws InstantiationException, IllegalAccessException, java.lang.reflect.InvocationTargetException {
+        if (VersionHelper.isOrAbove1_20_2()) {
+            Constructor<?> constructor = ReflectionUtils.getConstructor(clazz$InjectedRepairItemRecipe, CraftingBookCategoryProxy.CLASS);
+            return constructor.newInstance(CraftingBookCategoryProxy.MISC);
+        } else {
+            Constructor<?> constructor = ReflectionUtils.getConstructor(clazz$InjectedRepairItemRecipe, IdentifierProxy.CLASS, CraftingBookCategoryProxy.CLASS);
+            return constructor.newInstance(KeyUtils.toIdentifier(id), CraftingBookCategoryProxy.MISC);
+        }
+    }
+
+    private static final Function<Object, Integer> INGREDIENT_SIZE_GETTER =
+            VersionHelper.isOrAbove1_21() ?
+                    CraftingInputProxy.INSTANCE::size :
+                    ContainerProxy.INSTANCE::getContainerSize;
+    private static final BiFunction<Object, Integer, Object> INGREDIENT_GETTER =
+            VersionHelper.isOrAbove1_21() ?
+                    CraftingInputProxy.INSTANCE::getItem :
+                    ContainerProxy.INSTANCE::getItem;
+
+    private static final Function<Object, Boolean> REPAIR_INGREDIENT_COUNT_CHECKER =
+            VersionHelper.isOrAbove1_21() ?
+                    (input) -> CraftingInputProxy.INSTANCE.ingredientCount(input) != 2 :
+                    (container) -> false;
+
+    public static class FireworkStarFadeMatchesInterceptor {
+        public static final FireworkStarFadeMatchesInterceptor INSTANCE = new FireworkStarFadeMatchesInterceptor();
+
+        @RuntimeType
+        public Object intercept(@AllArguments Object[] args) {
+            Object input = args[0];
+            if (DYE_INGREDIENT_COUNT_CHECKER.apply(input)) {
+                return false;
+            }
+            boolean hasDye = false;
+            boolean hasFireworkStar = false;
+            int size = INGREDIENT_SIZE_GETTER.apply(input);
+            for (int i = 0; i < size; i++) {
+                Object itemStack = INGREDIENT_GETTER.apply(input, i);
+                if (ItemStackProxy.INSTANCE.isEmpty(itemStack)) {
+                    continue;
+                }
+                Item<ItemStack> wrapped = BukkitItemManager.instance().wrap(CraftItemStackProxy.INSTANCE.asCraftMirror(itemStack));
+                if (isFireworkDye(wrapped)) {
+                    hasDye = true;
+                } else {
+                    if (!wrapped.id().equals(ItemKeys.FIREWORK_STAR)) {
+                        return false;
+                    }
+                    if (hasFireworkStar) {
+                        return false;
+                    }
+                    hasFireworkStar = true;
+                }
+            }
+            return hasDye && hasFireworkStar;
+        }
+    }
+
+    public static class FireworkStarFadeAssembleInterceptor {
+        public static final FireworkStarFadeAssembleInterceptor INSTANCE = new FireworkStarFadeAssembleInterceptor();
+
+        @RuntimeType
+        public Object intercept(@AllArguments Object[] args) {
+            IntList colors = new IntArrayList();
+            Item<ItemStack> starItem = null;
+            Object input = args[0];
+            int size = INGREDIENT_SIZE_GETTER.apply(input);
+            for (int i = 0; i < size; i++) {
+                Object itemStack = INGREDIENT_GETTER.apply(input, i);
+                if (ItemStackProxy.INSTANCE.isEmpty(itemStack)) {
+                    continue;
+                }
+                Item<ItemStack> wrapped = BukkitItemManager.instance().wrap(CraftItemStackProxy.INSTANCE.asCraftMirror(itemStack));
+                if (isFireworkDye(wrapped)) {
+                    Color color = getFireworkColor(wrapped);
+                    if (color == null) {
+                        return ItemStackProxy.EMPTY;
+                    }
+                    colors.add(color.color());
+                } else if (wrapped.id().equals(ItemKeys.FIREWORK_STAR)) {
+                    starItem = wrapped.copyWithCount(1);
+                }
+            }
+            if (starItem == null || colors.isEmpty()) {
+                return ItemStackProxy.EMPTY;
+            }
+            FireworkExplosion explosion = starItem.fireworkExplosion().orElse(FireworkExplosion.DEFAULT);
+            starItem.fireworkExplosion(explosion.withFadeColors(colors));
+            return starItem.getLiteralObject();
+        }
+    }
+
+    public static class RepairMatchesInterceptor {
+        public static final RepairMatchesInterceptor INSTANCE = new RepairMatchesInterceptor();
+
+        @RuntimeType
+        public Object intercept(@AllArguments Object[] args) {
+            Object input = args[0];
+            if (REPAIR_INGREDIENT_COUNT_CHECKER.apply(input)) {
+                return false;
+            }
+            return getItemsToCombine(input) != null;
+        }
+    }
+
+    @Nullable
+    private static Pair<Item<ItemStack>, Item<ItemStack>> getItemsToCombine(Object input) {
+        Item<ItemStack> item1 = null;
+        Item<ItemStack> item2 = null;
+        int size = INGREDIENT_SIZE_GETTER.apply(input);
+        for (int i = 0; i < size; i++) {
+            Object itemStack = INGREDIENT_GETTER.apply(input, i);
+            if (ItemStackProxy.INSTANCE.isEmpty(itemStack)) {
+                continue;
+            }
+            Item<ItemStack> wrapped = BukkitItemManager.instance().wrap(CraftItemStackProxy.INSTANCE.asCraftMirror(itemStack));
+            if (item1 == null) {
+                item1 = wrapped;
+            } else {
+                if (item2 != null) {
+                    return null;
+                }
+                item2 = wrapped;
+            }
+        }
+        if (item1 == null || item2 == null) {
+            return null;
+        }
+        if (!canCombine(item1, item2)) {
+            return null;
+        }
+        return new Pair<>(item1, item2);
+    }
+
+    private static boolean canCombine(Item<ItemStack> input1, Item<ItemStack> input2) {
+        if (input1.count() != 1 || !isDamageableItem(input1)) return false;
+        if (input2.count() != 1 || !isDamageableItem(input2)) return false;
+        if (!input1.id().equals(input2.id())) return false;
+        Optional<CustomItem<ItemStack>> customItem = input1.getCustomItem();
+        return customItem.isEmpty() || customItem.get().settings().repairable().craftingTable() != Tristate.FALSE;
+    }
+
+    private static boolean isDamageableItem(Item<ItemStack> item) {
+        if (VersionHelper.isOrAbove1_20_5()) {
+            return item.hasComponent(DataComponentTypes.MAX_DAMAGE) && item.hasComponent(DataComponentTypes.DAMAGE);
+        } else {
+            return ItemProxy.INSTANCE.canBeDepleted(ItemStackProxy.INSTANCE.getItem(item.getLiteralObject()));
+        }
+    }
+
+    private static final Function<Object, Boolean> DYE_INGREDIENT_COUNT_CHECKER =
+            VersionHelper.isOrAbove1_21() ?
+                    (input) -> CraftingInputProxy.INSTANCE.ingredientCount(input) < 2 :
+                    (container) -> false;
+
+    public static class DyeMatchesInterceptor {
+        public static final DyeMatchesInterceptor INSTANCE = new DyeMatchesInterceptor();
+
+        @RuntimeType
+        public Object intercept(@AllArguments Object[] args) {
+            Object input = args[0];
+            if (DYE_INGREDIENT_COUNT_CHECKER.apply(input)) {
+                return false;
+            }
+            int size = INGREDIENT_SIZE_GETTER.apply(input);
+            Item<ItemStack> itemToDye = null;
+            boolean hasDye = false;
+            for (int i = 0; i < size; i++) {
+                Object itemStack = INGREDIENT_GETTER.apply(input, i);
+                if (ItemStackProxy.INSTANCE.isEmpty(itemStack)) {
+                    continue;
+                }
+                Item<ItemStack> wrapped = BukkitItemManager.instance().wrap(CraftItemStackProxy.INSTANCE.asCraftMirror(itemStack));
+                if (isDyeable(wrapped)) {
+                    if (itemToDye != null) {
+                        return false;
+                    }
+                    itemToDye = wrapped;
+                } else {
+                    if (!isArmorDye(wrapped)) {
+                        return false;
+                    }
+                    hasDye = true;
+                }
+            }
+            return hasDye && itemToDye != null;
+        }
+    }
+
+    public static class DyeAssembleInterceptor {
+        public static final DyeAssembleInterceptor INSTANCE = new DyeAssembleInterceptor();
+
+        @RuntimeType
+        public Object intercept(@AllArguments Object[] args) {
+            List<Color> colors = new ArrayList<>();
+            Item<ItemStack> itemToDye = null;
+            Object input = args[0];
+            int size = INGREDIENT_SIZE_GETTER.apply(input);
+            for (int i = 0; i < size; i++) {
+                Object itemStack = INGREDIENT_GETTER.apply(input, i);
+                if (ItemStackProxy.INSTANCE.isEmpty(itemStack)) {
+                    continue;
+                }
+                Item<ItemStack> wrapped = BukkitItemManager.instance().wrap(CraftItemStackProxy.INSTANCE.asCraftMirror(itemStack));
+                if (isDyeable(wrapped)) {
+                    itemToDye = wrapped.copyWithCount(1);
+                } else {
+                    Color dyeColor = getDyeColor(wrapped);
+                    if (dyeColor != null) {
+                        colors.add(dyeColor);
+                    } else {
+                        return ItemStackProxy.EMPTY;
+                    }
+                }
+            }
+            if (itemToDye == null || itemToDye.isEmpty() || colors.isEmpty()) {
+                return ItemStackProxy.EMPTY;
+            }
+            return itemToDye.applyDyedColors(colors).getLiteralObject();
+        }
+    }
+
+    @Nullable
+    private static Color getDyeColor(final Item<ItemStack> dyeItem) {
+        Optional<CustomItem<ItemStack>> optionalCustomItem = dyeItem.getCustomItem();
+        if (optionalCustomItem.isPresent()) {
+            CustomItem<ItemStack> customItem = optionalCustomItem.get();
+            return Optional.ofNullable(customItem.settings().dyeColor()).orElseGet(() -> getVanillaDyeColor(dyeItem));
+        }
+        return getVanillaDyeColor(dyeItem);
+    }
+
+    @Nullable
+    private static Color getFireworkColor(final Item<ItemStack> dyeItem) {
+        Optional<CustomItem<ItemStack>> optionalCustomItem = dyeItem.getCustomItem();
+        if (optionalCustomItem.isPresent()) {
+            CustomItem<ItemStack> customItem = optionalCustomItem.get();
+            return Optional.ofNullable(customItem.settings().fireworkColor()).orElseGet(() -> getVanillaFireworkColor(dyeItem));
+        }
+        return getVanillaFireworkColor(dyeItem);
+    }
+
+    private static final Predicate<Item<ItemStack>> IS_DYEABLE =
+            VersionHelper.isOrAbove1_20_5() ?
+                    (item -> item.hasItemTag(ItemTags.DYEABLE)) :
+                    (item -> {
+                       Object itemLike = ItemStackProxy.INSTANCE.getItem(item.getLiteralObject());
+                       return DyeableLeatherItemProxy.CLASS.isInstance(itemLike);
+                    });
+
+    private static boolean isDyeable(final Item<ItemStack> item) {
+        Optional<CustomItem<ItemStack>> optionalCustomItem = item.getCustomItem();
+        if (optionalCustomItem.isPresent()) {
+            CustomItem<ItemStack> customItem = optionalCustomItem.get();
+            if (customItem.settings().dyeable() == Tristate.FALSE) {
+                return false;
+            }
+            if (customItem.settings().dyeable() == Tristate.TRUE) {
+                return true;
+            }
+        }
+        return IS_DYEABLE.test(item);
+    }
+
+    @SuppressWarnings("PointlessBitwiseExpression")
+    @Nullable
+    private static Color getVanillaDyeColor(final Item<ItemStack> item) {
+        Object itemStack = item.getLiteralObject();
+        Object dyeItem = ItemStackProxy.INSTANCE.getItem(itemStack);
+        if (!DyeItemProxy.CLASS.isInstance(dyeItem)) return null;
+        Object dyeColor = DyeItemProxy.INSTANCE.getDyeColor(dyeItem);
+        int textureDiffuseColor;
+        if (VersionHelper.isOrAbove1_21()) {
+            textureDiffuseColor = DyeColorProxy.INSTANCE.getTextureDiffuseColor(dyeColor);
+        } else {
+            float[] rgb = DyeColorProxy.INSTANCE.getTextureDiffuseColors(dyeColor);
+            int r = (int) (rgb[0] * 255.0F);
+            int g = (int) (rgb[1] * 255.0F);
+            int b = (int) (rgb[2] * 255.0F);
+            textureDiffuseColor = 0 << 24 /*不可省略*/ | r << 16 | g << 8 | b;
+        }
+        return Color.fromDecimal(textureDiffuseColor);
+    }
+
+    @Nullable
+    private static Color getVanillaFireworkColor(final Item<ItemStack> item) {
+        Object itemStack = item.getLiteralObject();
+        Object dyeItem = ItemStackProxy.INSTANCE.getItem(itemStack);
+        if (!DyeItemProxy.CLASS.isInstance(dyeItem)) return null;
+        return Color.fromDecimal(DyeColorProxy.INSTANCE.getFireworkColor(DyeItemProxy.INSTANCE.getDyeColor(dyeItem)));
+    }
+
+    private static boolean isArmorDye(Item<ItemStack> dyeItem) {
+        Optional<CustomItem<ItemStack>> optionalCustomItem = dyeItem.getCustomItem();
+        if (optionalCustomItem.isPresent()) {
+            CustomItem<ItemStack> customItem = optionalCustomItem.get();
+            return customItem.settings().dyeColor() != null || isVanillaDyeItem(dyeItem);
+        }
+        return isVanillaDyeItem(dyeItem);
+    }
+
+    private static boolean isFireworkDye(Item<ItemStack> dyeItem) {
+        Optional<CustomItem<ItemStack>> optionalCustomItem = dyeItem.getCustomItem();
+        if (optionalCustomItem.isPresent()) {
+            CustomItem<ItemStack> customItem = optionalCustomItem.get();
+            return customItem.settings().fireworkColor() != null || isVanillaDyeItem(dyeItem);
+        }
+        return isVanillaDyeItem(dyeItem);
+    }
+
+    private static boolean isVanillaDyeItem(Item<ItemStack> item) {
+        return DyeItemProxy.CLASS.isInstance(ItemStackProxy.INSTANCE.getItem(item.getLiteralObject()));
+    }
+}

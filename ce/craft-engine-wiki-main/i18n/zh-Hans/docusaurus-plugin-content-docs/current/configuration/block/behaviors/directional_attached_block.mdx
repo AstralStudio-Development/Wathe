@@ -1,0 +1,24 @@
+---
+title: ➡️ 定向附着方块
+id: directional_attached_block
+---
+
+| 属性名称   | 属性类型                 | 是否必需 |
+|--------|----------------------|------|
+| facing | horizontal_direction | 是    |
+
+```yaml
+blocks:
+  default:amethyst_wall_torch:
+    behavior:
+      type: directional_attached_block
+      blacklist: true
+      attached-blocks:
+        - custom:xxx
+        - minecraft:stone
+      attached-block-tags:
+        - minecraft:dirt
+        - minecraft:farmland
+```
+
+![](/img/wall_torch_particle_block.png)

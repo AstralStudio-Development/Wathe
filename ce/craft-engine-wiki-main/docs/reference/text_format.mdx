@@ -1,0 +1,241 @@
+---
+title: ✏️ Text Format
+id: text_format
+---
+
+## MiniMessage
+
+When configuring item names, descriptions, GUIs, etc., for the plugin, please use the MiniMessage format. [https://docs.papermc.io/adventure/minimessage/format/](https://docs.papermc.io/adventure/minimessage/format/)
+
+> Any meaningful token can be escaped in the locations where they have influence. In plain text, tag open characters (`<`) can be escaped with a leading backslash (`\`). Within quoted strings, the opening quote character can be escaped (`'` or `"`). In either place, the escape character can be escaped in places where it would otherwise be relevant. Unquoted tag arguments cannot have escapes, for simplicity. In locations where escaping is not supported, the literal escape character will be passed through. In locations where escaping _is_ supported but a literal escape character is desired, the escape character can itself be escaped to produce a `\`.
+
+## Extra Tags
+
+These are additional tags provided by the plugin.
+
+:::tip
+`[_argument_]` means Optional
+:::
+
+:::info
+You can surround your arguments with `'`  & `"` for instance `<papi:'exp_multiplier':'1'>`
+
+You can also use **nested** tags for instance `<expr:'0.##':'<papi:exp_multiplier:1> * 10'>`
+:::
+
+:::info
+You'll notice that some tags start with "**viewer\_**". This is because, in certain scenarios, a text might be constructed by multiple contextual entities. For example, consider the following configuration:
+
+```yaml
+message: -| 
+  Hi, <viewer_arg:player.name>. 
+  Did you notice that <arg:player.name> interacted a custom block?
+```
+
+If **Player A** interacts with the custom block and triggers a message broadcast, then **Player B** receiving this message would see:\
+`"Hi, B. Did you notice that A interacted a custom block?"`
+:::
+
+### \<shift:\_pixels\_>
+
+`shift` allows you to directly use the plugin's offset characters.
+
+```yaml
+item-name: "<!i><shift:-100><#FF8C00>Topaz Rod"
+```
+
+![](/img/text_format_1.png)
+
+### \<papi:\_placeholder\_:\[\_default\_value\_]>
+
+### \<viewer\_papi:\_placeholder\_:\[\_default\_value\_]>
+
+### \<rel\_papi:\_placeholder\_:\[\_default\_value\_]>
+
+`papi` allows to use placeholders provided by `PlaceholderAPI`.&#x20;
+
+:::tip
+
+**rel\_papi**  refers to relational placeholders
+
+:::
+
+```yaml
+item-name: "<!i><#FF8C00><papi:player_name>'s Topaz Rod"
+```
+
+![](/img/text_format_2.png)
+
+You can also specify a default value to make it available in more places **without causing errors** for example:
+
+```yaml
+functions:
+  - type: drop_exp
+    count:
+      type: uniform
+      min: "<papi:exp_multiplier:1> * 3"
+      max: "<papi:exp_multiplier:1> * 5"
+```
+
+### \<image:\_namespace\_:\_id\_:\[\_row\_]:\[\_column\_]:\[\_format\_]>
+
+### \<image:\_namespace\_:\_id\_:\[\_format\_]>
+
+`image` allows to use images registered in the plugin
+
+```yaml
+item-name: "<!i><white><image:default:icons><#FF8C00> Topaz Rod"
+```
+
+![](/img/text_format_3.png)
+
+```yaml
+item-name: "<!i><white><image:default:icons:0:1><#FF8C00> Topaz Rod"
+```
+
+![](/img/text_format_4.png)
+
+```yaml
+item-name: "<!i><red><image:default:icons:'<!shadow><white>'> Topaz Rod"
+```
+
+```yaml
+item-name: "<!i><red><image:default:icons:0:1:'<!shadow><white>'> Topaz Rod"
+```
+
+### \<i18n:\_id\_>
+
+Searching for translations applicable to the serverside language.
+
+```yaml
+items:
+  custom:chinese_lantern:
+    material: paper
+    data:
+      item-name: "<i18n:item.chinese_lantern>"
+```
+
+### \<l10n:\_id\_>
+
+Searching for translations applicable to the client language settings.
+
+```yaml
+items:
+  custom:chinese_lantern:
+    material: paper
+    data:
+      item-name: "<l10n:item.chinese_lantern>"
+```
+
+### \<expr:\_format\_:\_expression\_>
+
+Perform some math operations
+
+```yaml
+item-name: "<!i><#FF8C00><expr:0.##:'70 / 8'>"
+```
+
+```yaml
+item-name: "<!i><#FF8C00><expr:0.##:'<papi:player_x> / 8'>"
+```
+
+![](/img/text_format_5.png)
+
+:::tip
+
+**Useful links**
+
+[https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/text/DecimalFormat.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/text/DecimalFormat.html)
+
+[https://ezylang.github.io/EvalEx/references/references.html](https://ezylang.github.io/EvalEx/references/references.html)
+
+:::
+
+### \<arg:\_index\_>
+
+Only used for files under `translations`, representing indexed parameters.
+
+### \<arg:\_id\_>
+
+### \<viewer\_arg:\_id\_>
+
+The is a named parameter. Its value can come from two possible sources:
+
+1. **Context-specific arguments** – These are parameters explicitly passed in the current context.
+
+```yaml
+internal.cooking_info.0: "Time: <arg:cooking_time>ticks"
+internal.cooking_info.1: "Experience: <arg:cooking_experience>"
+```
+
+2. **Common arguments**
+
+```yaml
+<arg:random>  # generates a random number between 0 and 1
+<arg:last_random>  # gets the last random number
+```
+
+3. **Context subjects** – If the context subject (e.g., a player) provides parameters. Check this page for more:
+
+:::tip
+
+In certain cases, multiple **context subjects** may coexist. By accessing parameters from different context subjects, you can precisely control the scope and behavior of functions.
+
+```yaml
+# spawns the particle at the location of the block
+- type: particle
+  x: '<arg:block.x> + 0.5'
+  y: '<arg:block.y> + 0.5'
+  z: '<arg:block.z> + 0.5'
+  ...
+# spawns the particle at the location of the player
+- type: particle
+  x: '<arg:player.x>'
+  y: '<arg:player.y>'
+  z: '<arg:player.z>'
+  ...
+# broadcast the message
+- type: message
+  target: 'all'
+  message:
+    - "Hello <viewer_arg:player.name>! This message is from <arg:player.name>."
+    - "<arg:player.name> just interacted a <arg:block.owner> block!"
+```
+
+:::
+
+### \<global:\_id\_:\[args...]>
+
+global variable defined in configs
+
+```yaml
+item-name: "<global:rare_tag> Rare spear"
+```
+
+### \<bubble:\_id\_:\_left\_:\_right\_> (requires CustomNameplates)
+
+create text with bubble
+
+```yaml
+item-name: "<bubble:chat_1:1:1:'<black><!shadow>What Happened'>"
+```
+
+![](/img/bubble.png)
+
+### \<nameplate:\_id\_:\_left\_:\_right\_:> (requires CustomNameplates)
+
+```yaml
+item-name: "<nameplate:xmas:1:1:'ABCDEFG'>"
+```
+
+create text with nameplate
+
+![](/img/nameplate.png)
+
+### \<background:\_id\_:\_left\_:\_right\_:> (requires CustomNameplates)
+
+create text with background
+
+```yaml
+item-name: "<background:bedrock_1:1:1:'ABCDEFG'>"
+```

@@ -1,0 +1,604 @@
+---
+title: 🌌 添加自定义模型
+id: add_custom_model
+---
+
+import PluginFileTree from '@site/src/components/PluginFileTree';
+import Highlight from '@site/src/components/Highlight';
+import DiffViewer from '@site/src/components/DiffViewer';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Comment from '@site/src/components/Comment';
+
+在开始之前，请确保您的资源包托管已完全设置好。记住——每次模型编辑都需要更新资源包才能生效。否则，运行 `/ce reload all` 时，您不会立即看到变化。
+
+
+## 准备工作
+
+### 什么是命名空间ID
+
+> 命名空间ID 是 Minecraft 中用于声明和指定游戏对象的一种方式，可以无歧义或冲突地识别内置和用户定义的对象。
+
+在设置物品命名空间ID、模型路径或纹理路径时，您需要遵循以下命名规则：https://zh.minecraft.wiki/w/命名空间ID#合法字符
+
+:::tip
+
+让我们来做一个快问快答！以下这五个命名空间ID中，哪些是实际有效的呢？
+
+1. `MyFirst:golden_sword`
+2. `minecraft:steel furnace`
+3. `abcd-efgh:1122.3344`
+4. `craftengine:happy$crafting`
+5. `test:tutorial_book`
+
+<details>
+  <summary>答案</summary>
+  1. ❌️ 不允许使用大写字母
+  2. ❌️ 不允许使用空格
+  3. ✔️
+  4. ❌️ `$` 不是有效字符
+  5. ✔️
+</details>
+
+:::
+
+### 什么是模型？
+
+> 模型是 Minecraft 中用于显示游戏中遇到的物体的几何结构。
+
+无论是**方块**还是**物品**，它们都需要一个模型。即使某些东西看起来只是简单的纹理，它仍然需要一个基本模型。这些模型文件都以 `.json` 结尾，您可以在 [BlockBench](https://www.blockbench.net/) 中打开/编辑大多数模型文件。
+
+以下是一个快速展示模型存放位置的文件结构：
+
+<PluginFileTree
+    initialTreeData={[
+        {
+        id: "assets",
+        name: "assets",
+        children: [
+            {
+            id: "minecraft",
+            name: "minecraft",
+            hoverText: "原版 Minecraft 资源使用 'minecraft' 命名空间。你可以使用这个命名空间，也可以使用自己的命名空间，但请避免与原版模型发生命名冲突。",
+            children: [
+                {
+                id: "models",
+                name: "models",
+                children: [
+                    {
+                    id: "item",
+                    name: "item",
+                    children: [
+                        {
+                            id: "acacia_boat.json",
+                            name: "acacia_boat.json",
+                            isLeaf: true,
+                        },
+                        {
+                            id: "my_custom_item_model.json",
+                            name: "my_custom_item_model.json",
+                            isLeaf: true,
+                        }
+                    ]
+                    },
+                    {
+                    id: "block",
+                    name: "block",
+                    children: [
+                        {
+                            id: "acacia_button.json",
+                            name: "acacia_button.json",
+                            isLeaf: true,
+                        },
+                        {
+                            id: "my_custom_block_model.json",
+                            name: "my_custom_block_model.json",
+                            isLeaf: true,
+                        }
+                    ]
+                    },
+                ]
+                }
+            ]
+            }
+        ]
+        }
+    ]}
+/>
+
+<div style={{ marginBottom: "32px" }}></div>
+
+:::info
+
+在制作资源包时，我强烈建议遵循 Minecraft 的结构：
+
+- 将物品模型放在 `/models/item/` 中
+- 将方块模型放在 `/models/block/` 中
+
+保持这种组织结构能让你的资源包更加标准化且更容易管理！
+
+为了避免与 Minecraft 的默认资源发生冲突，你有两个很好的选择：
+
+- 创建子文件夹，如 /models/item/custom/
+- 或者更好的是，使用你自己的命名空间（例如 mypack:item/sword）
+
+:::
+
+### 什么是纹理/纹理图集?
+
+模型定义形状，而纹理赋予色彩！纹理指的是图像文件，它们必须是 PNG 格式（文件扩展名为 .png）。不允许使用其他图像格式，如 JPG/JPEG 或 GIF。
+
+以下是它们的存放位置：
+
+<PluginFileTree
+    initialTreeData={[
+        {
+        id: "assets",
+        name: "assets",
+        children: [
+            {
+            id: "minecraft",
+            name: "minecraft",
+            hoverText: "原版 Minecraft 资源使用 'minecraft' 命名空间。你可以使用这个命名空间，也可以使用自己的命名空间，但请避免与原版模型发生命名冲突。",
+            children: [
+                {
+                id: "textures",
+                name: "textures",
+                children: [
+                    {
+                        id: "item",
+                        name: "item",
+                        children: [
+                        {
+                            id: "acacia_boat.png",
+                            name: "acacia_boat.png",
+                            isLeaf: true,
+                        },
+                        {
+                            id: "my_custom_item_texture.png",
+                            name: "my_custom_item_texture.png",
+                            isLeaf: true,
+                        }
+                        ]
+                    },
+                    {
+                        id: "block",
+                        name: "block",
+                        children: [
+                        {
+                            id: "allium.png",
+                            name: "allium.png",
+                            isLeaf: true,
+                        },
+                        {
+                            id: "my_custom_block_texture.png",
+                            name: "my_custom_block_texture.png",
+                            isLeaf: true,
+                        }
+                        ]
+                    }
+                ]
+                }
+            ]
+            }
+        ]
+        }
+    ]}
+/>
+
+<div style={{ marginBottom: "32px" }}></div>
+
+:::caution
+
+**纹理路径比模型路径更严格！**
+
+即使模型的 JSON 文件放错了目录（例如，放在 /item/ 或 /block/ 之外）也可能正常工作，但纹理必须放置在正确的文件夹中，这是因为 Minecraft 的纹理图集系统。
+
+让我简化一下 Minecraft 中纹理的运作方式：
+
+Minecraft 将多个纹理合并成一张巨大的图像（称为纹理图集）以提升性能。然而，并非所有纹理都是模型纹理（例如，雕刻南瓜面具、雨/雪环境纹理等）。因此，必须使用纹理图集文件来定义哪些纹理可以被加载。
+
+![](/img/minecraft_textures_atlas_blocks.png_0.png)
+
+默认情况下，Minecraft 使用以下纹理图集（`minecraft/atlases/blocks.json`）：
+
+```json
+{
+    "sources": [
+        { "type": "directory", "source": "block", "prefix": "block/" }, 
+        { "type": "directory", "source": "item", "prefix": "item/" },
+        ...更多内容
+    ]
+}
+```
+
+这就是为什么 Minecraft 默认只能加载位于 `block` 和 `item` 目录下的纹理文件。  如果你尝试引用来自不受支持路径的纹理（例如 `textures/custom`），游戏引擎将无法加载它们，从而导致出现显示为紫黑相间的方格。
+
+![](/img/out_of_atlas.png)
+
+<details>
+  <summary>自定义纹理图集教程</summary>
+
+要创建纹理图集路径，您只需在资源包的以下路径添加一个文件：`resourcepack/assets/minecraft/atlases/blocks.json`。以下是一个将自定义路径添加到纹理图集的简单示例：
+
+```json
+{
+    "sources": [
+        { "type": "directory", "source": "custom", "prefix": "custom/" }
+    ]
+}
+```
+
+</details>
+
+:::
+
+:::warning
+
+**Minecraft 模型纹理尺寸要求**
+
+对于模型纹理，宽度和高度必须是 2 的幂（例如，16、32、64、128），以确保正确渲染。此限制不适用于字体纹理（例如，rank.png、GUI 元素、HUD 图标等），这些纹理可以使用任意尺寸。
+
+有效示例：\
+✅ 16×16（原版默认）\
+✅ 32×32（高清纹理常用）\
+✅ 64×64、64×128（更高分辨率的资源包）
+
+无效示例：\
+❌ 7×7、13×13、19×19（非 2 的幂尺寸）\
+❌ 17×32（混合有效/无效尺寸）
+
+**切勿将字体/GUI 纹理（例如，rank.png、HUD 元素）放置在与模型纹理（例如，block/、item/）相同的目录中。** 即使这些纹理未直接用于模型，Minecraft 的纹理图集系统在生成组合精灵表时会自动包含它们。这可能导致意外的视觉降级（mipmap 级别）：
+
+<details>
+  <summary>Mipmap级别4和级别0的差异对比</summary>
+
+    ![Mipmap级别4](/img/mipmap_4.png)
+
+    ![Mipmap级别0](/img/mipmap_0.png)
+
+</details>
+
+:::
+
+## 创建模型文件
+
+现在让我们创建第一个模型文件！您可以通过 [BlockBench](https://www.blockbench.net/) 或在 CraftEngine 中配置来创建模型。我将本节分为两个独立教程。强烈建议你都尝试一遍，以更深入地了解模型系统的工作原理。
+
+<a href={require('/img/toxic_sword.png').default} download>点击下载教程用的剑纹理</a>
+
+将下载的 PNG 图像放入下面显示的文件夹结构中。然后，我们将开始创建模型。
+
+<PluginFileTree
+    initialTreeData={[
+        {
+        id: "resourcepack",
+        name: "resourcepack",
+        children: [
+        {
+        id: "assets",
+        name: "assets",
+        children: [
+            {
+            id: "tutorial",
+            name: "tutorial",
+            children: [
+                {
+                id: "textures",
+                name: "textures",
+                children: [
+                    {
+                        id: "item",
+                        name: "item",
+                        children: [
+                        {
+                            id: "toxic_sword.png",
+                            name: "toxic_sword.png",
+                            isLeaf: true,
+                        }
+                        ]
+                    }
+                ]
+                }
+            ]
+            }
+        ]
+        }
+        ]
+        }
+    ]}
+/>
+
+### 使用 BlockBench 创建模型
+
+作为服务器开发者，你并不需要掌握复杂的建模技巧。你只需要掌握基础的模型编辑和导入方法即可！把下面的教程当成一个练习场，自由尝试和探索。
+
+![](/img/i18n/zh-Hans/blockbench_1.png)
+
+![](/img/i18n/zh-Hans/blockbench_2.png)
+
+:::tip
+
+首先，在进行任何编辑之前，使用 Ctrl+S 将模型保存到您的资源包文件夹中。在本教程中，我将 JSON 文件保存到：
+`/resources/tutorial/resourcepack/assets/tutorial/models/item/`
+
+:::
+
+![](/img/i18n/zh-Hans/blockbench_3.png)
+
+
+:::tip
+
+创建一个基础立方体，并应用 toxic_sword 纹理 `resourcepack/assets/tutorial/textures/item/toxic_sword.png`。尝试做一些简单的调整——将其视为一次轻松的练习。在下面的示例中，我创建了一个不寻常的剑形方块。尽管造型奇特，但关键点在于这是一个完全自定义的模型。
+
+:::
+
+![](/img/i18n/zh-Hans/blockbench_4.png)
+
+![](/img/i18n/zh-Hans/blockbench_5.png)
+
+现在让我们使用专业的文本编辑器打开刚刚创建的模型 JSON 文件。你的 JSON 结构应该与我的基本一致。
+
+:::caution
+
+始终将模型 JSON 文件保存在完整的资源包目录结构中。否则，BlockBench 将无法推断出正确的资源包层级结构，导致生成的纹理路径在 Minecraft 中无法解析。如果你的 `textures` 字段与我的差异很大，这很可能就是原因。
+
+:::
+
+```json
+{
+  "format_version": "1.21.6",
+  "credit": "Made with Blockbench",
+  "textures": {
+    "0": "tutorial:item/toxic_sword",
+    "particle": "tutorial:item/toxic_sword" // 指的是方块破坏、进食等的粒子效果。译者注：json 不支持注释记得删掉这个注释
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+        "east": {"uv": [0, 0, 16, 16], "texture": "#0"},
+        "south": {"uv": [0, 0, 16, 16], "texture": "#0"},
+        "west": {"uv": [0, 0, 16, 16], "texture": "#0"},
+        "up": {"uv": [0, 0, 16, 16], "texture": "#0"},
+        "down": {"uv": [0, 0, 16, 16], "texture": "#0"}
+      }
+    }
+  ]
+}
+```
+
+:::info
+
+使用第三方资源包时，修改模型纹理路径可能会导致纹理缺失错误。在这种情况下，打开 BlockBench 重新配置纹理路径。否则，模型将显示为紫黑色的错误方块。
+
+或者，您可以直接使用文本编辑器修改 JSON 文件中的 `textures` 条目。请注意，命名空间ID会自动忽略像 `models` 和 `textures` 这样的前缀。在此，`tutorial:item/toxic_sword` 对应实际纹理路径是 `assets/tutorial/textures/item/toxic_sword.png`。
+
+:::
+
+现在让我们回到 CraftEngine 的配置，将新创建的模型分配给剑物品。为了确保与预期结果一致，我已将我的配置文件上传至<a href={require('/file/i18n/zh-Hans/tutorial_1.zip').default} download>此处</a>供您参考。如果你发现实际效果与教程不同，请参考该文件进行比对排查。
+
+```yaml
+items:
+  tutorial:toxic_sword:
+    material: diamond_sword
+    data:
+      item-name: "<#3CB371>剧毒之剑"
+    model:
+      type: minecraft:model # 不要过于关注这里的类型，我们稍后会详细解释。
+      path: tutorial:item/toxic_sword
+```
+
+![](/img/toxic_sword_looks.png)
+
+:::tip
+
+别忘了运行 `/ce reload all` 以应用资源包更改。
+
+:::
+
+<details>
+  <summary>什么是自定义模型数据？</summary>
+
+    自定义模型数据是一种数据组件，用于为共享相同<Comment text="译者注：也就是 material">基础物品</Comment>的自定义物品启用独特的模型变体。对于具有相同<Comment text="译者注：也就是 material">基础物品</Comment>的自定义物品，您必须分配不同的自定义模型数据值来区分它们的模型。例如：
+
+    ```yaml
+    items:
+      tutorial:toxic_sword:
+        material: diamond_sword
+        custom-model-data: 1000
+      tutorial:flame_sword:
+        material: diamond_sword
+        custom-model-data: 1001
+    ```
+
+    然而，这一限制不适用于具有不同<Comment text="译者注：也就是 material">基础物品</Comment>的自定义物品。例如：
+
+    ```yaml
+    items:
+      tutorial:toxic_sword:
+        material: diamond_sword
+        custom-model-data: 1000
+      tutorial:flame_sword:
+        material: wooden_sword
+        custom-model-data: 1000
+    ```
+
+</details>
+
+<details>
+  <summary>什么是物品模型?</summary>
+
+  物品模型是 1.21.2 中引入的数据组件，相较于自定义模型数据具有更高的渲染效率，可减少客户端性能开销。通常，您无需手动指定模型路径（item-model），因为插件会自动生成。
+
+</details>
+
+### 使用 CraftEngine 生成模型
+
+现在我们来尝试 CraftEngine 提供的模型生成功能。注意：如果你已经完成了前面的 BlockBench 教程，请删除之前创建的模型 JSON 文件。正如标题所说，“生成”意味着这一节中我们不会使用 BlockBench 创建的模型。
+
+<DiffViewer>
+{`
+items:
+    tutorial:toxic_sword:
+      material: diamond_sword
+      data:
+        item-name: "<#3CB371>剧毒之剑"
+      model:
+        path: tutorial:item/toxic_sword
++     generation:
++       parent: minecraft:item/handheld
++       textures:
++         layer0: tutorial:item/toxic_sword
+`}
+</DiffViewer>
+
+:::tip
+
+在路径定义的配置部分中使用生成配置时，插件会从读取模式切换到写入模式。这将在指定路径生成相应的 JSON 模型文件。
+
+:::
+
+让我为你解释每个参数的用途以及如何获取它们：
+
+<Tabs>
+  <TabItem value="parent" label="👨‍🦱 parent" default>
+    > 从给定路径加载另一个模型，格式为命名空间ID
+
+    parent 字段不仅可以引用 Minecraft 原版提供的默认模型，还可以指向你自定义的模型。你可以在这个[网站](https://misode.github.io/assets/model/)查看所有可用的 Minecraft 模型。
+    在 Minecraft 中，大多数模型（物品、工具，甚至方块）都使用基于父模型的生成方式，而不是独立建模。你在至少 80% 的配置中都会用到这种方式。
+
+    **可以把父模型看作是一个预构建的 3D 模板** —— 你只需要提供纹理参数就能让它工作。
+
+    ```yaml
+    generation:
+      parent: minecraft:item/handheld
+      textures:
+        layer0: tutorial:item/toxic_sword
+    ```
+
+    ![](/img/model_generation_1.png)
+
+    ```yaml
+    generation:
+      parent: minecraft:item/generated
+      textures:
+        layer0: tutorial:item/toxic_sword
+    ```
+
+    ![](/img/model_generation_2.png)
+
+    ```yml
+    generation:
+      parent: minecraft:block/cube_all
+      textures:
+        all: tutorial:item/toxic_sword
+    ```
+
+    ![](/img/model_generation_3.png)
+
+    你可能会好奇，为什么前两个模型使用 `layer0`，而第三个用的是 `all`。
+
+    **想进一步了解，请点击 🖼️ textures 标签继续教程。**
+
+  </TabItem>
+  <TabItem value="textures" label="🖼️ textures">
+    > 设置模型的纹理路径，可使用命名空间ID或其他纹理变量。
+
+    要确定确切的纹理参数：
+
+    1. 检查父模型的 JSON 结构。
+    2. 如果父模型本身也继承了其他模型（例如 minecraft:item/generated 继承自一个基础模板），则需要递归检查所有上游纹理参数。
+
+    **所有原版 Minecraft 模型都可以在 [GitHub](https://github.com/InventivetalentDev/minecraft-assets/tree/1.21.8/assets/minecraft/models) 上找到。**
+
+    让我们通过这个例子来理解纹理覆盖。对于这种情况，你有两种方法来分配纹理：
+
+    ![](/img/model_generation_textures.png)
+
+    使用 cube_all 的简写方式
+    ```yaml
+    generation:
+      parent: "minecraft:block/cube_all"
+      textures:
+        "all": "minecraft:block/custom/block_texture"
+    ```
+
+    覆盖 cube（cube_all 的父模型） \
+    这个例子实际上不太合适，更好的方法是直接把 parent 设置为 `cube` 而不是 `cube_all`。
+
+    ```yaml
+    generation:
+      parent: "minecraft:block/cube_all"
+      textures:
+        "particle": "minecraft:block/custom/block_particle"
+        "down": "minecraft:block/custom/block_down"
+        "up": "minecraft:block/custom/block_up"
+        "north": "minecraft:block/custom/block_north"
+        "east": "minecraft:block/custom/block_east"
+        "south": "minecraft:block/custom/block_south"
+        "west": "minecraft:block/custom/block_west"
+    ```
+
+  </TabItem>
+  <TabItem value="display" label="🎨 display">
+    > 模型在不同显示模式下的渲染变换。
+    > - rotation: 使模型相对于对应轴进行旋转，以度为单位，格式为 [x, y, z].
+    > - translation: 使模型相对于对应轴进行平移，以“像素”（方块的16分之一）为单位，格式为 [x, y, z]. 不小于 -80 且不大于 80 ，超出部分被钳制。
+    > - scale: 使模型相对于对应轴进行缩放，格式为 [x, y, z]. 不小于 -4 且不大于 4 ，超出部分被钳制
+  
+    可用的显示位置: `thirdperson_righthand`、`thirdperson_lefthand`、`firstperson_righthand`、`firstperson_lefthand`、`gui`、`head`、`ground`、`fixed`、`on_shelf`。
+    
+    此配置很少使用，因为在大多数情况下，你可以更直观地直接在 Blockbench 中调整模型显示模式。
+
+    ```yaml
+    items:
+      default:big_apple:
+        material: apple
+        model:
+          type: minecraft:model
+          path: "minecraft:item/custom/big_apple"
+          generation:
+            parent: "minecraft:item/apple" # 继承苹果模型
+            # 在 GUI 中显示一个大苹果
+            display:
+              gui:
+                scale: 2,2,2
+    ```
+
+  </TabItem>
+
+  <TabItem value="gui-light" label="💡 gui-light">
+    可以设置为 `front` 或 `side`。如果设置为 `side` 则使用 3D 模型的光照，如果设置为 `front` 则使用扁平物品光照。默认值为 `side`。
+
+    ![](/img/gui_light.png)
+
+    ```yaml
+    items:
+      default:gui_head_size_1:
+        material: player_head
+        model:
+          type: minecraft:special
+          # 这里的 model 是 minecraft:special 模型所需的参数
+          # 与外部 model 无关。我们将在未来的教程中详细介绍 special 模型。
+          model:
+            type: minecraft:player_head
+          path: minecraft:item/custom/gui_head_size_1
+          generation:
+            parent: minecraft:item/template_skull
+            gui-light: front
+            display:
+              gui:
+                translation: 0,8,0
+                scale: 2,2,2
+    ```
+
+  </TabItem>
+</Tabs>
+
+
+## 调试
+
+如果你的模型显示为紫黑色方块或无法正确渲染，首先请检查你的服务器控制台 —— CraftEngine 会在那里记录大多数潜在错误。另外，也可以检查客户端日志来诊断资源包加载问题。

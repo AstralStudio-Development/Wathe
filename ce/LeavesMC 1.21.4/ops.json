@@ -1,0 +1,50 @@
+[
+  {
+    "uuid": "87742d79-bbe2-30f8-880d-af21d84145ec",
+    "name": "ABC",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "f30168a7-03e8-320a-8ec3-b644bfef4112",
+    "name": "Starry_Killer",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "7ebd83d5-e8ff-3624-a01f-ec406b2794ed",
+    "name": "Qlickly_",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "ebf25972-c70f-36e1-80b4-d78edd03b3df",
+    "name": "Ysylem",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "6ebf4284-df8c-324c-a461-a39206d56a11",
+    "name": "Minikloon",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "6ec148d8-a1dc-4827-ad4b-409a40ee86d5",
+    "name": "Qlickly_",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "28c47a37-3dc0-3c90-82e5-7beb3c7a50db",
+    "name": "Vlickly_",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "4f28e2f9-7ffd-3cec-bc70-b094dd72a7d9",
+    "name": "CloudForeal",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  }
+]

@@ -1,0 +1,18 @@
+---
+title: 🏗️ 稳固基底方块
+id: sturdy_base_block
+---
+
+**稳固基底方块**指需要坚固支撑面的方块类型。例如门无法在滴水石锥上放置。支撑类型包含 `full` 、`rigid` 和 `center` 三种。
+
+```yaml
+blocks:
+  default:pebble:
+    behavior:
+      type: sturdy_base_block
+      direction: down
+      support-types:
+        - full
+```
+
+![](/img/sturdy_base_block.png)

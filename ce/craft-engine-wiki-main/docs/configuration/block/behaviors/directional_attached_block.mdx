@@ -1,0 +1,25 @@
+---
+title: ➡️ Directional Attached Block
+id: directional_attached_block
+---
+
+| Property Name | Property Type        | Required |
+|---------------|----------------------|----------|
+| facing        | horizontal_direction | yes      |
+
+```yaml
+blocks:
+  default:amethyst_wall_torch:
+    behavior:
+      type: directional_attached_block
+      blacklist: true
+      attached-blocks:
+        - custom:xxx
+        - minecraft:stone
+      attached-block-tags:
+        - minecraft:dirt
+        - minecraft:farmland
+```
+
+![](/img/wall_torch_particle_block.png)
+

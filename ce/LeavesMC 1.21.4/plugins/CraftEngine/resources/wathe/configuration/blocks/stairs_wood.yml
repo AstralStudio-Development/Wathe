@@ -1,0 +1,406 @@
+# Wood Stairs Blocks
+items:
+  # Ebony Stairs (乌木楼梯)
+  wathe:ebony_stairs:
+    model: wathe:block/ebony_stairs
+    data:
+      item-name: <!i><lang:block.wathe.ebony_stairs>
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 29
+          tags:
+            - minecraft:mineable/axe
+            - minecraft:stairs
+          sounds:
+            break: minecraft:block.cherry_wood.break
+            fall: minecraft:block.cherry_wood.fall
+            hit: minecraft:block.cherry_wood.hit
+            place: minecraft:block.cherry_wood.place
+            step: minecraft:block.cherry_wood.step
+        behavior:
+          type: stairs_block
+        states:
+          template: default:block_state/stairs
+          arguments:
+            base_block: exposed_cut_copper_stairs
+            model_stairs_inner_path: wathe:block/ebony_stairs_inner
+            model_stairs_inner_generation:
+              parent: minecraft:block/inner_stairs
+              textures: &ebony_textures
+                bottom: wathe:block/ebony_planks
+                side: wathe:block/ebony_planks
+                top: wathe:block/ebony_planks
+            model_stairs_outer_path: wathe:block/ebony_stairs_outer
+            model_stairs_outer_generation:
+              parent: minecraft:block/outer_stairs
+              textures: *ebony_textures
+            model_stairs_path: wathe:block/ebony_stairs
+            model_stairs_generation:
+              parent: minecraft:block/stairs
+              textures: *ebony_textures
+
+  # Smooth Mahogany Stairs (光滑红木楼梯)
+  wathe:smooth_mahogany_stairs:
+    model: wathe:block/smooth_mahogany_stairs
+    data:
+      item-name: <!i><lang:block.wathe.smooth_mahogany_stairs>
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 26
+          tags:
+            - minecraft:mineable/axe
+            - minecraft:stairs
+          sounds:
+            break: minecraft:block.cherry_wood.break
+            fall: minecraft:block.cherry_wood.fall
+            hit: minecraft:block.cherry_wood.hit
+            place: minecraft:block.cherry_wood.place
+            step: minecraft:block.cherry_wood.step
+        behavior:
+          type: stairs_block
+        states:
+          template: default:block_state/stairs
+          arguments:
+            base_block: weathered_cut_copper_stairs
+            model_stairs_inner_path: wathe:block/smooth_mahogany_stairs_inner
+            model_stairs_inner_generation:
+              parent: minecraft:block/inner_stairs
+              textures: &smooth_mahogany_textures
+                bottom: wathe:block/smooth_mahogany
+                side: wathe:block/smooth_mahogany
+                top: wathe:block/smooth_mahogany
+            model_stairs_outer_path: wathe:block/smooth_mahogany_stairs_outer
+            model_stairs_outer_generation:
+              parent: minecraft:block/outer_stairs
+              textures: *smooth_mahogany_textures
+            model_stairs_path: wathe:block/smooth_mahogany_stairs
+            model_stairs_generation:
+              parent: minecraft:block/stairs
+              textures: *smooth_mahogany_textures
+
+  # Smooth Ebony Stairs (光滑乌木楼梯)
+  wathe:smooth_ebony_stairs:
+    model: wathe:block/smooth_ebony_stairs
+    data:
+      item-name: <!i><lang:block.wathe.smooth_ebony_stairs>
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 29
+          tags:
+            - minecraft:mineable/axe
+            - minecraft:stairs
+          sounds:
+            break: minecraft:block.cherry_wood.break
+            fall: minecraft:block.cherry_wood.fall
+            hit: minecraft:block.cherry_wood.hit
+            place: minecraft:block.cherry_wood.place
+            step: minecraft:block.cherry_wood.step
+        behavior:
+          type: stairs_block
+        states:
+          template: default:block_state/stairs
+          arguments:
+            base_block: waxed_cut_copper_stairs
+            model_stairs_inner_path: wathe:block/smooth_ebony_stairs_inner
+            model_stairs_inner_generation:
+              parent: minecraft:block/inner_stairs
+              textures: &smooth_ebony_textures
+                bottom: wathe:block/smooth_ebony
+                side: wathe:block/smooth_ebony
+                top: wathe:block/smooth_ebony
+            model_stairs_outer_path: wathe:block/smooth_ebony_stairs_outer
+            model_stairs_outer_generation:
+              parent: minecraft:block/outer_stairs
+              textures: *smooth_ebony_textures
+            model_stairs_path: wathe:block/smooth_ebony_stairs
+            model_stairs_generation:
+              parent: minecraft:block/stairs
+              textures: *smooth_ebony_textures
+
+  # Bubinga Stairs (布宾加木楼梯)
+  wathe:bubinga_stairs:
+    model: wathe:block/bubinga_stairs
+    data:
+      item-name: <!i><lang:block.wathe.bubinga_stairs>
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 26
+          tags:
+            - minecraft:mineable/axe
+            - minecraft:stairs
+          sounds:
+            break: minecraft:block.cherry_wood.break
+            fall: minecraft:block.cherry_wood.fall
+            hit: minecraft:block.cherry_wood.hit
+            place: minecraft:block.cherry_wood.place
+            step: minecraft:block.cherry_wood.step
+        behavior:
+          type: stairs_block
+        states:
+          template: default:block_state/stairs
+          arguments:
+            base_block: waxed_weathered_cut_copper_stairs
+            model_stairs_inner_path: wathe:block/bubinga_stairs_inner
+            model_stairs_inner_generation:
+              parent: minecraft:block/inner_stairs
+              textures: &bubinga_textures
+                bottom: wathe:block/bubinga_planks
+                side: wathe:block/bubinga_planks
+                top: wathe:block/bubinga_planks
+            model_stairs_outer_path: wathe:block/bubinga_stairs_outer
+            model_stairs_outer_generation:
+              parent: minecraft:block/outer_stairs
+              textures: *bubinga_textures
+            model_stairs_path: wathe:block/bubinga_stairs
+            model_stairs_generation:
+              parent: minecraft:block/stairs
+              textures: *bubinga_textures
+
+  # Mahogany Stairs (红木楼梯)
+  wathe:mahogany_stairs:
+    model: wathe:block/mahogany_stairs
+    data:
+      item-name: <!i><lang:block.wathe.mahogany_stairs>
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 26
+          tags:
+            - minecraft:mineable/axe
+            - minecraft:stairs
+          sounds:
+            break: minecraft:block.cherry_wood.break
+            fall: minecraft:block.cherry_wood.fall
+            hit: minecraft:block.cherry_wood.hit
+            place: minecraft:block.cherry_wood.place
+            step: minecraft:block.cherry_wood.step
+        behavior:
+          type: stairs_block
+        states:
+          template: default:block_state/stairs
+          arguments:
+            base_block: mud_brick_stairs
+            model_stairs_inner_path: wathe:block/mahogany_stairs_inner
+            model_stairs_inner_generation:
+              parent: minecraft:block/inner_stairs
+              textures: &mahogany_stairs_textures
+                bottom: wathe:block/mahogany_planks
+                side: wathe:block/mahogany_planks
+                top: wathe:block/mahogany_planks
+            model_stairs_outer_path: wathe:block/mahogany_stairs_outer
+            model_stairs_outer_generation:
+              parent: minecraft:block/outer_stairs
+              textures: *mahogany_stairs_textures
+            model_stairs_path: wathe:block/mahogany_stairs
+            model_stairs_generation:
+              parent: minecraft:block/stairs
+              textures: *mahogany_stairs_textures
+
+  # Mahogany Herringbone Stairs (红木人字纹楼梯)
+  wathe:mahogany_herringbone_stairs:
+    model: wathe:block/mahogany_herringbone_stairs
+    data:
+      item-name: <!i><lang:block.wathe.mahogany_herringbone_stairs>
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 26
+          tags:
+            - minecraft:mineable/axe
+            - minecraft:stairs
+          sounds:
+            break: minecraft:block.cherry_wood.break
+            fall: minecraft:block.cherry_wood.fall
+            hit: minecraft:block.cherry_wood.hit
+            place: minecraft:block.cherry_wood.place
+            step: minecraft:block.cherry_wood.step
+        behavior:
+          type: stairs_block
+        states:
+          template: default:block_state/stairs
+          arguments:
+            base_block: sandstone_stairs
+            model_stairs_inner_path: wathe:block/mahogany_herringbone_stairs_inner
+            model_stairs_inner_generation:
+              parent: minecraft:block/inner_stairs
+              textures: &mahogany_herringbone_textures
+                bottom: wathe:block/mahogany_herringbone
+                side: wathe:block/mahogany_herringbone
+                top: wathe:block/mahogany_herringbone
+            model_stairs_outer_path: wathe:block/mahogany_herringbone_stairs_outer
+            model_stairs_outer_generation:
+              parent: minecraft:block/outer_stairs
+              textures: *mahogany_herringbone_textures
+            model_stairs_path: wathe:block/mahogany_herringbone_stairs
+            model_stairs_generation:
+              parent: minecraft:block/stairs
+              textures: *mahogany_herringbone_textures
+
+  # Bubinga Herringbone Stairs (布宾加人字纹楼梯)
+  wathe:bubinga_herringbone_stairs:
+    model: wathe:block/bubinga_herringbone_stairs
+    data:
+      item-name: <!i><lang:block.wathe.bubinga_herringbone_stairs>
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 26
+          tags:
+            - minecraft:mineable/axe
+            - minecraft:stairs
+          sounds:
+            break: minecraft:block.cherry_wood.break
+            fall: minecraft:block.cherry_wood.fall
+            hit: minecraft:block.cherry_wood.hit
+            place: minecraft:block.cherry_wood.place
+            step: minecraft:block.cherry_wood.step
+        behavior:
+          type: stairs_block
+        states:
+          template: default:block_state/stairs
+          arguments:
+            base_block: smooth_sandstone_stairs
+            model_stairs_inner_path: wathe:block/bubinga_herringbone_stairs_inner
+            model_stairs_inner_generation:
+              parent: minecraft:block/inner_stairs
+              textures: &bubinga_herringbone_textures
+                bottom: wathe:block/bubinga_herringbone
+                side: wathe:block/bubinga_herringbone
+                top: wathe:block/bubinga_herringbone
+            model_stairs_outer_path: wathe:block/bubinga_herringbone_stairs_outer
+            model_stairs_outer_generation:
+              parent: minecraft:block/outer_stairs
+              textures: *bubinga_herringbone_textures
+            model_stairs_path: wathe:block/bubinga_herringbone_stairs
+            model_stairs_generation:
+              parent: minecraft:block/stairs
+              textures: *bubinga_herringbone_textures
+
+  # Smooth Bubinga Stairs (光滑布宾加木楼梯)
+  wathe:smooth_bubinga_stairs:
+    model: wathe:block/smooth_bubinga_stairs
+    data:
+      item-name: <!i><lang:block.wathe.smooth_bubinga_stairs>
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 26
+          tags:
+            - minecraft:mineable/axe
+            - minecraft:stairs
+          sounds:
+            break: minecraft:block.cherry_wood.break
+            fall: minecraft:block.cherry_wood.fall
+            hit: minecraft:block.cherry_wood.hit
+            place: minecraft:block.cherry_wood.place
+            step: minecraft:block.cherry_wood.step
+        behavior:
+          type: stairs_block
+        states:
+          template: default:block_state/stairs
+          arguments:
+            base_block: red_sandstone_stairs
+            model_stairs_inner_path: wathe:block/smooth_bubinga_stairs_inner
+            model_stairs_inner_generation:
+              parent: minecraft:block/inner_stairs
+              textures: &smooth_bubinga_textures
+                bottom: wathe:block/smooth_bubinga
+                side: wathe:block/smooth_bubinga
+                top: wathe:block/smooth_bubinga
+            model_stairs_outer_path: wathe:block/smooth_bubinga_stairs_outer
+            model_stairs_outer_generation:
+              parent: minecraft:block/outer_stairs
+              textures: *smooth_bubinga_textures
+            model_stairs_path: wathe:block/smooth_bubinga_stairs
+            model_stairs_generation:
+              parent: minecraft:block/stairs
+              textures: *smooth_bubinga_textures
+
+  # Ebony Herringbone Stairs (乌木人字纹楼梯)
+  wathe:ebony_herringbone_stairs:
+    model: wathe:block/ebony_herringbone_stairs
+    data:
+      item-name: <!i><lang:block.wathe.ebony_herringbone_stairs>
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 29
+          tags:
+            - minecraft:mineable/axe
+            - minecraft:stairs
+          sounds:
+            break: minecraft:block.cherry_wood.break
+            fall: minecraft:block.cherry_wood.fall
+            hit: minecraft:block.cherry_wood.hit
+            place: minecraft:block.cherry_wood.place
+            step: minecraft:block.cherry_wood.step
+        behavior:
+          type: stairs_block
+        states:
+          template: default:block_state/stairs
+          arguments:
+            base_block: smooth_red_sandstone_stairs
+            model_stairs_inner_path: wathe:block/ebony_herringbone_stairs_inner
+            model_stairs_inner_generation:
+              parent: minecraft:block/inner_stairs
+              textures: &ebony_herringbone_textures
+                bottom: wathe:block/ebony_herringbone
+                side: wathe:block/ebony_herringbone
+                top: wathe:block/ebony_herringbone
+            model_stairs_outer_path: wathe:block/ebony_herringbone_stairs_outer
+            model_stairs_outer_generation:
+              parent: minecraft:block/outer_stairs
+              textures: *ebony_herringbone_textures
+            model_stairs_path: wathe:block/ebony_herringbone_stairs
+            model_stairs_generation:
+              parent: minecraft:block/stairs
+              textures: *ebony_herringbone_textures

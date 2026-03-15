@@ -1,0 +1,50 @@
+---
+title: S3
+id: s3
+---
+
+import Highlight from '@site/src/components/Highlight';
+
+<Highlight color="#1877F2">**Advanced User**</Highlight><Highlight color="#ae1010ff">**Paid**</Highlight>
+
+S3 (Simple Storage Service) is a highly scalable, durable, and available object storage service offered by cloud service providers. To prevent bandwidth theft, CraftEngine issues unique, expiring tokens for every download—blocking direct abuse.
+
+```yaml
+resource-pack:
+  delivery:
+    hosting:
+      - type: s3
+        endpoint: ""
+        bucket: ""
+        access-key-id: ""
+        access-key-secret: ""
+        # Optional options
+        use-environment-variables: false
+        protocol: "https"
+        path-style: false
+        region: "auto"
+        upload-path: "server_resource_pack.zip"
+        disable-calculate-sha256: false
+        validity: 10
+        # Optional rate limiter
+        rate-map:
+          max-requests: 5
+          reset-interval: 20 # seconds
+        ## Optional CDN
+        # cdn:
+        #   domain: ""
+        #   protocol: "https"
+        ## Optional proxy
+        # proxy:
+        #   host: "127.0.0.1"
+        #   port: 7890
+        #   scheme: "http" # http/https
+        #   username: "" # Optional
+        #   password: "" # Optional
+```
+
+<details>
+    <summary>Enviroment Variables</summary>
+    - CE_S3_ACCESS_KEY_ID
+    - CE_S3_ACCESS_KEY_SECRET
+</details>

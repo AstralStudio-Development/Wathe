@@ -1,0 +1,284 @@
+# Metallic Blocks - Simple cube_all types
+items:
+  # Tarnished Gold Series
+  wathe:tarnished_gold:
+    data:
+      item-name: <!i><lang:block.wathe.tarnished_gold>
+    model: wathe:block/tarnished_gold
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 43
+          tags: ["minecraft:mineable/pickaxe"]
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/tarnished_gold
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/tarnished_gold
+
+  wathe:gold:
+    data:
+      item-name: <!i><lang:block.wathe.gold>
+    model: wathe:block/gold
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 43
+          tags: ["minecraft:mineable/pickaxe"]
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/gold
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/gold
+
+  wathe:pristine_gold:
+    data:
+      item-name: <!i><lang:block.wathe.pristine_gold>
+    model: wathe:block/pristine_gold
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 43
+          tags: ["minecraft:mineable/pickaxe"]
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/pristine_gold
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/pristine_gold
+
+  # Hull Series
+  wathe:white_hull:
+    data:
+      item-name: <!i><lang:block.wathe.white_hull>
+    model: wathe:block/white_hull
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 8
+          tags: ["minecraft:mineable/pickaxe"]
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/white_hull
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/white_hull
+
+  wathe:black_hull:
+    data:
+      item-name: <!i><lang:block.wathe.black_hull>
+    model: wathe:block/black_hull
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 29
+          tags: ["minecraft:mineable/pickaxe"]
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/black_hull
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/black_hull
+
+  wathe:black_hull_sheets:
+    data:
+      item-name: <!i><lang:block.wathe.black_hull_sheets>
+    model: wathe:block/black_hull_sheets
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 29
+          tags: ["minecraft:mineable/pickaxe"]
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/black_hull_sheets
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/black_hull_sheets
+
+  # Metal Sheet
+  wathe:metal_sheet:
+    data:
+      item-name: <!i><lang:block.wathe.metal_sheet>
+    model: wathe:block/metal_sheet
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 2.0
+          resistance: 2.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 11
+          tags: ["minecraft:mineable/pickaxe"]
+          sounds:
+            break: minecraft:block.copper.break
+            fall: minecraft:block.copper.fall
+            hit: minecraft:block.copper.hit
+            place: minecraft:block.copper.place
+            step: minecraft:block.copper.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/metal_sheet
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/metal_sheet
+
+  # Stainless Steel Series
+  wathe:stainless_steel:
+    data:
+      item-name: <!i><lang:block.wathe.stainless_steel>
+    model: wathe:block/stainless_steel
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 11
+          tags: ["minecraft:mineable/pickaxe"]
+          sounds:
+            break: minecraft:block.copper.break
+            fall: minecraft:block.copper.fall
+            hit: minecraft:block.copper.hit
+            place: minecraft:block.copper.place
+            step: minecraft:block.copper.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/stainless_steel
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/stainless_steel
+
+  wathe:dark_steel:
+    data:
+      item-name: <!i><lang:block.wathe.dark_steel>
+    model: wathe:block/dark_steel
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: true
+          is-redstone-conductor: true
+          map-color: 11
+          tags: ["minecraft:mineable/pickaxe"]
+          sounds:
+            break: minecraft:block.copper.break
+            fall: minecraft:block.copper.fall
+            hit: minecraft:block.copper.hit
+            place: minecraft:block.copper.place
+            step: minecraft:block.copper.step
+        state:
+          auto-state: solid
+          model:
+            path: wathe:block/dark_steel
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/dark_steel

@@ -1,0 +1,38 @@
+# 服务器设置
+server:
+  # HTTP/WebSocket 端口
+  port: 25566
+  # 外部访问地址 (用于生成连接 URL)
+  # 如果使用内网穿透，填写穿透服务给你的域名，如 xxx.sakurafrp.com
+  external-host: "frp-hub.com"
+  # 外部访问端口 (用于生成连接 URL)
+  # 如果使用内网穿透，填写穿透服务给你的远程端口
+  # 设为 0 或不填则使用 port 的值
+  external-port: 60819
+  use-https: true
+  # Token 有效期 (秒)
+  token-expire: 300
+
+# 语音设置
+voice:
+  # 最大传输距离 (格)
+  max-distance: 48
+  # 开始衰减的距离 (格)
+  fade-distance: 8
+  # 位置更新间隔 (tick)
+  position-update-interval: 5
+  # 音频采样率
+  sample-rate: 48000
+  # Opus 比特率
+  bitrate: 64000
+  # 是否在玩家名称旁显示说话/静音图标
+  show-speaking-indicator: true
+
+# 群组设置
+group:
+  # 是否启用群组功能
+  enabled: false
+  # 最大群组数量
+  max-groups: 100
+  # 每个群组最大人数
+  max-members: 50

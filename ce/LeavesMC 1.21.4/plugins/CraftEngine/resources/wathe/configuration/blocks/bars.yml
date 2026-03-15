@@ -1,0 +1,353 @@
+# Bar Blocks - Thin pillar-like blocks with axis and top/bottom properties
+items:
+  # Gold Bar
+  wathe:gold_bar:
+    data:
+      item-name: <!i><lang:block.wathe.gold_bar>
+    model:
+      type: minecraft:model
+      path: wathe:block/gold_bar
+      generation:
+        parent: wathe:block/template_bar
+        textures:
+          texture: wathe:block/gold_bar
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 43
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.copper.break
+            fall: minecraft:block.copper.fall
+            hit: minecraft:block.copper.hit
+            place: minecraft:block.copper.place
+            step: minecraft:block.copper.step
+        states:
+          properties:
+            axis:
+              type: axis
+              default: y
+            top:
+              type: boolean
+              default: true
+            bottom:
+              type: boolean
+              default: true
+          appearances:
+            axis=x,top=true,bottom=true:
+              state: lightning_rod[facing=east]
+              model:
+                path: wathe:block/gold_bar_x
+                generation:
+                  parent: wathe:block/template_bar
+                  textures:
+                    texture: wathe:block/gold_bar
+                x: 90
+                y: 90
+            axis=x,top=true,bottom=false:
+              state: lightning_rod[facing=west]
+              model:
+                path: wathe:block/gold_bar_x_top
+                generation:
+                  parent: wathe:block/template_bar_top
+                  textures:
+                    texture: wathe:block/gold_bar
+                x: 90
+                y: 90
+            axis=x,top=false,bottom=true:
+              state: end_rod[facing=east]
+              model:
+                path: wathe:block/gold_bar_x_bottom
+                generation:
+                  parent: wathe:block/template_bar_bottom
+                  textures:
+                    texture: wathe:block/gold_bar
+                x: 90
+                y: 90
+            axis=x,top=false,bottom=false:
+              state: end_rod[facing=west]
+              model:
+                path: wathe:block/gold_bar_x
+                generation:
+                  parent: wathe:block/template_bar
+                  textures:
+                    texture: wathe:block/gold_bar
+                x: 90
+                y: 90
+            axis=y,top=true,bottom=true:
+              state: lightning_rod[facing=up]
+              model:
+                path: wathe:block/gold_bar_y
+                generation:
+                  parent: wathe:block/template_bar
+                  textures:
+                    texture: wathe:block/gold_bar
+                x: 90
+            axis=y,top=true,bottom=false:
+              state: lightning_rod[facing=down]
+              model:
+                path: wathe:block/gold_bar_y_top
+                generation:
+                  parent: wathe:block/template_bar_top
+                  textures:
+                    texture: wathe:block/gold_bar
+                x: 90
+            axis=y,top=false,bottom=true:
+              state: end_rod[facing=up]
+              model:
+                path: wathe:block/gold_bar_y_bottom
+                generation:
+                  parent: wathe:block/template_bar_bottom
+                  textures:
+                    texture: wathe:block/gold_bar
+                x: 90
+            axis=y,top=false,bottom=false:
+              state: end_rod[facing=down]
+              model:
+                path: wathe:block/gold_bar_y
+                generation:
+                  parent: wathe:block/template_bar
+                  textures:
+                    texture: wathe:block/gold_bar
+                x: 90
+            axis=z,top=true,bottom=true:
+              state: chain[axis=z]
+              model:
+                path: wathe:block/gold_bar_z
+                generation:
+                  parent: wathe:block/template_bar
+                  textures:
+                    texture: wathe:block/gold_bar
+            axis=z,top=true,bottom=false:
+              state: chain[axis=x]
+              model:
+                path: wathe:block/gold_bar_z_top
+                generation:
+                  parent: wathe:block/template_bar_top
+                  textures:
+                    texture: wathe:block/gold_bar
+            axis=z,top=false,bottom=true:
+              state: chain[axis=y]
+              model:
+                path: wathe:block/gold_bar_z_bottom
+                generation:
+                  parent: wathe:block/template_bar_bottom
+                  textures:
+                    texture: wathe:block/gold_bar
+            axis=z,top=false,bottom=false:
+              state: iron_bars[east=false,north=false,south=false,waterlogged=false,west=false]
+              model:
+                path: wathe:block/gold_bar_z
+                generation:
+                  parent: wathe:block/template_bar
+                  textures:
+                    texture: wathe:block/gold_bar
+          variants:
+            axis=x,top=true,bottom=true:
+              appearance: axis=x,top=true,bottom=true
+            axis=x,top=true,bottom=false:
+              appearance: axis=x,top=true,bottom=false
+            axis=x,top=false,bottom=true:
+              appearance: axis=x,top=false,bottom=true
+            axis=x,top=false,bottom=false:
+              appearance: axis=x,top=false,bottom=false
+            axis=y,top=true,bottom=true:
+              appearance: axis=y,top=true,bottom=true
+            axis=y,top=true,bottom=false:
+              appearance: axis=y,top=true,bottom=false
+            axis=y,top=false,bottom=true:
+              appearance: axis=y,top=false,bottom=true
+            axis=y,top=false,bottom=false:
+              appearance: axis=y,top=false,bottom=false
+            axis=z,top=true,bottom=true:
+              appearance: axis=z,top=true,bottom=true
+            axis=z,top=true,bottom=false:
+              appearance: axis=z,top=true,bottom=false
+            axis=z,top=false,bottom=true:
+              appearance: axis=z,top=false,bottom=true
+            axis=z,top=false,bottom=false:
+              appearance: axis=z,top=false,bottom=false
+
+  # Stainless Steel Bar - using pointed_dripstone for thin collision box
+  wathe:stainless_steel_bar:
+    data:
+      item-name: <!i><lang:block.wathe.stainless_steel_bar>
+    model:
+      type: minecraft:model
+      path: wathe:block/stainless_steel_bar
+      generation:
+        parent: wathe:block/template_bar
+        textures:
+          texture: wathe:block/stainless_steel_bar
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 11
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.copper.break
+            fall: minecraft:block.copper.fall
+            hit: minecraft:block.copper.hit
+            place: minecraft:block.copper.place
+            step: minecraft:block.copper.step
+        states:
+          properties:
+            axis:
+              type: axis
+              default: y
+            top:
+              type: boolean
+              default: true
+            bottom:
+              type: boolean
+              default: true
+          appearances:
+            axis=x,top=true,bottom=true:
+              state: pointed_dripstone[thickness=tip,vertical_direction=up,waterlogged=false]
+              model:
+                path: wathe:block/stainless_steel_bar_x
+                generation:
+                  parent: wathe:block/template_bar
+                  textures:
+                    texture: wathe:block/stainless_steel_bar
+                x: 90
+                y: 90
+            axis=x,top=true,bottom=false:
+              state: pointed_dripstone[thickness=tip,vertical_direction=down,waterlogged=false]
+              model:
+                path: wathe:block/stainless_steel_bar_x_top
+                generation:
+                  parent: wathe:block/template_bar_top
+                  textures:
+                    texture: wathe:block/stainless_steel_bar
+                x: 90
+                y: 90
+            axis=x,top=false,bottom=true:
+              state: pointed_dripstone[thickness=tip_merge,vertical_direction=up,waterlogged=false]
+              model:
+                path: wathe:block/stainless_steel_bar_x_bottom
+                generation:
+                  parent: wathe:block/template_bar_bottom
+                  textures:
+                    texture: wathe:block/stainless_steel_bar
+                x: 90
+                y: 90
+            axis=x,top=false,bottom=false:
+              state: pointed_dripstone[thickness=tip_merge,vertical_direction=down,waterlogged=false]
+              model:
+                path: wathe:block/stainless_steel_bar_x
+                generation:
+                  parent: wathe:block/template_bar
+                  textures:
+                    texture: wathe:block/stainless_steel_bar
+                x: 90
+                y: 90
+            axis=y,top=true,bottom=true:
+              state: pointed_dripstone[thickness=frustum,vertical_direction=up,waterlogged=false]
+              model:
+                path: wathe:block/stainless_steel_bar_y
+                generation:
+                  parent: wathe:block/template_bar
+                  textures:
+                    texture: wathe:block/stainless_steel_bar
+                x: 90
+            axis=y,top=true,bottom=false:
+              state: pointed_dripstone[thickness=frustum,vertical_direction=down,waterlogged=false]
+              model:
+                path: wathe:block/stainless_steel_bar_y_top
+                generation:
+                  parent: wathe:block/template_bar_top
+                  textures:
+                    texture: wathe:block/stainless_steel_bar
+                x: 90
+            axis=y,top=false,bottom=true:
+              state: pointed_dripstone[thickness=middle,vertical_direction=up,waterlogged=false]
+              model:
+                path: wathe:block/stainless_steel_bar_y_bottom
+                generation:
+                  parent: wathe:block/template_bar_bottom
+                  textures:
+                    texture: wathe:block/stainless_steel_bar
+                x: 90
+            axis=y,top=false,bottom=false:
+              state: pointed_dripstone[thickness=middle,vertical_direction=down,waterlogged=false]
+              model:
+                path: wathe:block/stainless_steel_bar_y
+                generation:
+                  parent: wathe:block/template_bar
+                  textures:
+                    texture: wathe:block/stainless_steel_bar
+                x: 90
+            axis=z,top=true,bottom=true:
+              state: pointed_dripstone[thickness=base,vertical_direction=up,waterlogged=false]
+              model:
+                path: wathe:block/stainless_steel_bar_z
+                generation:
+                  parent: wathe:block/template_bar
+                  textures:
+                    texture: wathe:block/stainless_steel_bar
+            axis=z,top=true,bottom=false:
+              state: pointed_dripstone[thickness=base,vertical_direction=down,waterlogged=false]
+              model:
+                path: wathe:block/stainless_steel_bar_z_top
+                generation:
+                  parent: wathe:block/template_bar_top
+                  textures:
+                    texture: wathe:block/stainless_steel_bar
+            axis=z,top=false,bottom=true:
+              state: iron_bars[east=true,north=false,south=false,waterlogged=false,west=false]
+              model:
+                path: wathe:block/stainless_steel_bar_z_bottom
+                generation:
+                  parent: wathe:block/template_bar_bottom
+                  textures:
+                    texture: wathe:block/stainless_steel_bar
+            axis=z,top=false,bottom=false:
+              state: iron_bars[east=false,north=true,south=false,waterlogged=false,west=false]
+              model:
+                path: wathe:block/stainless_steel_bar_z
+                generation:
+                  parent: wathe:block/template_bar
+                  textures:
+                    texture: wathe:block/stainless_steel_bar
+          variants:
+            axis=x,top=true,bottom=true:
+              appearance: axis=x,top=true,bottom=true
+            axis=x,top=true,bottom=false:
+              appearance: axis=x,top=true,bottom=false
+            axis=x,top=false,bottom=true:
+              appearance: axis=x,top=false,bottom=true
+            axis=x,top=false,bottom=false:
+              appearance: axis=x,top=false,bottom=false
+            axis=y,top=true,bottom=true:
+              appearance: axis=y,top=true,bottom=true
+            axis=y,top=true,bottom=false:
+              appearance: axis=y,top=true,bottom=false
+            axis=y,top=false,bottom=true:
+              appearance: axis=y,top=false,bottom=true
+            axis=y,top=false,bottom=false:
+              appearance: axis=y,top=false,bottom=false
+            axis=z,top=true,bottom=true:
+              appearance: axis=z,top=true,bottom=true
+            axis=z,top=true,bottom=false:
+              appearance: axis=z,top=true,bottom=false
+            axis=z,top=false,bottom=true:
+              appearance: axis=z,top=false,bottom=true
+            axis=z,top=false,bottom=false:
+              appearance: axis=z,top=false,bottom=false

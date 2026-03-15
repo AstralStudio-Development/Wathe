@@ -1,0 +1,125 @@
+# Walkway Blocks - Thin platform blocks at bottom
+# Using trapdoor as base state for thin bottom collision box
+items:
+  # Metal Sheet Walkway (金属板步道)
+  wathe:metal_sheet_walkway:
+    data:
+      item-name: <!i><lang:block.wathe.metal_sheet_walkway>
+    model:
+      type: minecraft:model
+      path: wathe:block/metal_sheet_walkway
+      generation:
+        parent: wathe:block/template_walkway
+        textures:
+          top: wathe:block/metal_sheet_walkway
+          side: wathe:block/metal_sheet_walkway_side
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 2.0
+          resistance: 2.0
+          is-suffocating: false
+          is-redstone-conductor: false
+          map-color: 11
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.copper_grate.break
+            fall: minecraft:block.copper_grate.fall
+            hit: minecraft:block.copper_grate.hit
+            place: minecraft:block.copper_grate.place
+            step: minecraft:block.copper_grate.step
+        state:
+          state: oak_trapdoor[facing=north,half=bottom,open=false]
+          model:
+            path: wathe:block/metal_sheet_walkway
+            generation:
+              parent: wathe:block/template_walkway
+              textures:
+                top: wathe:block/metal_sheet_walkway
+                side: wathe:block/metal_sheet_walkway_side
+
+  # Stainless Steel Walkway (不锈钢步道)
+  wathe:stainless_steel_walkway:
+    data:
+      item-name: <!i><lang:block.wathe.stainless_steel_walkway>
+    model:
+      type: minecraft:model
+      path: wathe:block/stainless_steel_walkway
+      generation:
+        parent: wathe:block/template_walkway
+        textures:
+          top: wathe:block/stainless_steel_walkway
+          side: wathe:block/stainless_steel_walkway_side
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: false
+          is-redstone-conductor: false
+          map-color: 11
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.copper_grate.break
+            fall: minecraft:block.copper_grate.fall
+            hit: minecraft:block.copper_grate.hit
+            place: minecraft:block.copper_grate.place
+            step: minecraft:block.copper_grate.step
+        state:
+          state: spruce_trapdoor[facing=north,half=bottom,open=false]
+          model:
+            path: wathe:block/stainless_steel_walkway
+            generation:
+              parent: wathe:block/template_walkway
+              textures:
+                top: wathe:block/stainless_steel_walkway
+                side: wathe:block/stainless_steel_walkway_side
+
+  # Dark Steel Walkway (暗钢步道)
+  wathe:dark_steel_walkway:
+    data:
+      item-name: <!i><lang:block.wathe.dark_steel_walkway>
+    model:
+      type: minecraft:model
+      path: wathe:block/dark_steel_walkway
+      generation:
+        parent: wathe:block/template_walkway
+        textures:
+          top: wathe:block/dark_steel_walkway
+          side: wathe:block/dark_steel_walkway_side
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: false
+          is-redstone-conductor: false
+          map-color: 29
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.copper_grate.break
+            fall: minecraft:block.copper_grate.fall
+            hit: minecraft:block.copper_grate.hit
+            place: minecraft:block.copper_grate.place
+            step: minecraft:block.copper_grate.step
+        state:
+          state: birch_trapdoor[facing=north,half=bottom,open=false]
+          model:
+            path: wathe:block/dark_steel_walkway
+            generation:
+              parent: wathe:block/template_walkway
+              textures:
+                top: wathe:block/dark_steel_walkway
+                side: wathe:block/dark_steel_walkway_side

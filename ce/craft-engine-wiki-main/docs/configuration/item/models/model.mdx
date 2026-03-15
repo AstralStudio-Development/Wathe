@@ -1,0 +1,218 @@
+---
+title: 📐 Model
+id: model
+---
+
+import UrlCard from '@site/src/components/UrlCard';
+
+## Introdcution
+
+<UrlCard
+  url="https://minecraft.wiki/w/Items_model_definition#model"
+  title="📐 Model"
+/>
+
+Render an item model.
+
+```yaml
+items:
+  default:topaz_pickaxe:
+    model:
+      type: minecraft:model # type is optional in this case
+      path: minecraft:item/custom/topaz_pickaxe
+      generation:
+        parent: "minecraft:item/handheld"
+        textures:
+          "layer0": "minecraft:item/custom/topaz_pickaxe"
+```
+
+:::tip
+If you do not specify a type, it will default to using `minecraft:model`.
+:::
+
+## Tints
+
+In this configuration, we create a model for custom leaves. However, the default leaves in the vanilla game do not have color, so we need to configure a tint to color them.
+
+```yaml
+default:palm_leaves:
+  model:
+    type: "minecraft:model"
+    path: "minecraft:item/custom/palm_leaves"
+    generation:
+      parent: "minecraft:block/custom/palm_leaves"
+    tints:
+      - type: "minecraft:constant"
+        value: -12012264
+```
+
+<UrlCard
+  url="https://minecraft.wiki/w/Items_model_definition#Tint_sources_types"
+  title="🎨 Tint"
+/>
+
+:::info
+Places where colors are required support the use of decimal or RGB format
+
+```yaml
+value: 16711680
+```
+
+```yaml
+value:
+  - 255
+  - 0
+  - 0
+# or
+value:
+  - 1.0
+  - 0.0
+  - 0.0
+```
+
+```yaml
+value: 255,0,0
+# or
+value: 1.0,0.0,0.0
+```
+:::
+
+### minecraft\:constant
+
+```yaml
+type: "minecraft:constant"
+value: -12012264
+```
+
+### minecraft\:custom\_model\_data
+
+```yaml
+type: "minecraft:custom_model_data"
+index: 0
+default: -12012264
+```
+
+### minecraft\:dye
+
+```yaml
+type: "minecraft:dye"
+default: -12012264
+```
+
+### minecraft\:firework
+
+```yaml
+type: "minecraft:firework"
+default: -12012264
+```
+
+### minecraft\:grass
+
+```yaml
+type: "minecraft:grass"
+temperature: 0.5
+downfall: 0.5
+```
+
+### minecraft\:map\_color
+
+```yaml
+type: "minecraft:map_color"
+default: -12012264
+```
+
+### minecraft\:potion
+
+```yaml
+type: "minecraft:potion"
+default: -12012264
+```
+
+### minecraft\:team
+
+```yaml
+type: "minecraft:team"
+default: -12012264
+```
+
+:::tip
+
+## How to Create a Tintable Model
+
+Step 1: Create a grayscale texture. \
+Step 2: In the preview window, select the target model's surface texture. \
+Step 3: Open the "UV" tab from the top toolbar. \
+Step 4: Check the "Tint" option.
+
+![](/img/item_model_display_1.png)
+
+Step 5: Repeat this for every face you want tinted. After exporting the model, you’ll notice that the selected faces now include a `tintindex` property.
+
+```json
+{
+  "format_version": "1.21.6",
+  "credit": "jhqwqmc",
+  "textures": {
+    "0": "tints:block/example_1",
+    "1": "tints:block/example_2",
+    "particle": "tints:block/example_1"
+  },
+  "elements": [
+    {
+      "from": [1, 7, 1],
+      "to": [2, 8, 15],
+      "rotation": {"angle": 0, "axis": "y", "origin": [-6, 7, 10]},
+      "faces": {
+        "north": {"uv": [0.25, 0.25, 0.75, 0.75], "texture": "#0", "tintindex": 0}, // tintindex has been added here
+        "east": {"uv": [1.25, 0.25, 1.75, 0.75], "texture": "#0", "tintindex": 0},
+        "south": {"uv": [2.25, 0.25, 2.75, 0.75], "texture": "#0", "tintindex": 0},
+        "west": {"uv": [3.25, 0.25, 3.75, 0.75], "texture": "#0", "tintindex": 0},
+        "up": {"uv": [4.25, 0.25, 4.75, 0.75], "texture": "#0", "tintindex": 0},
+        "down": {"uv": [5.25, 0.25, 5.75, 0.75], "texture": "#0", "tintindex": 0}
+      }
+    },
+    ...
+    {
+      "from": [2, 8, 2],
+      "to": [14, 8, 14],
+      "rotation": {"angle": 0, "axis": "y", "origin": [2, 12, 6]},
+      "faces": {
+        "north": {"uv": [2, 2, 14, 2], "texture": "#1"},
+        "east": {"uv": [2, 2, 14, 2], "texture": "#1"},
+        "south": {"uv": [2, 2, 14, 2], "texture": "#1"},
+        "west": {"uv": [2, 2, 14, 2], "texture": "#1"},
+        "up": {"uv": [2, 2, 14, 14], "texture": "#1", "tintindex": 1}, // tintindex has been added here
+        "down": {"uv": [2, 2, 14, 14], "texture": "#1"}
+      }
+    }
+  ]
+}
+```
+
+Step 6: Open your item configuration and then edit your model section:
+
+```yaml
+items:
+  example:tinted_item:
+    model:
+      type: minecraft:model
+      path: tints:item/example
+      generation:
+        parent: "tints:block/example"
+      tints:
+        # tintindex 0
+        - type: "minecraft:dye"
+          default: 144,80,62
+        # tintindex 1
+        - type: "minecraft:grass"
+          temperature: 0.5
+          downfall: 0.5
+        # tintindex 2 if you have more tint sources
+        ...
+```
+
+![](/img/item_model_display_2.png)
+
+**If you have questions about certain details, you can download the example here: [Download](/file/tints.zip)**
+
+:::

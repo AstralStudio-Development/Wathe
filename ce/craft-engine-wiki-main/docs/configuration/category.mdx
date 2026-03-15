@@ -1,0 +1,167 @@
+---
+title: 📂 Category
+id: category
+---
+
+import PluginFileTree from '@site/src/components/PluginFileTree';
+
+The `category` is used to manage the arrangement order and classification rules of items when using the item browser.
+
+<div style={{textAlign: 'center'}}>
+  <img src={require('/img/category_1.png').default} alt="" />
+</div>
+
+
+A basic configuration is as follows. Once you complete the setup, it will appear in your /ce menu.
+
+```yaml
+categories:
+  default:palm_tree:
+    name: "<!i><green><i18n:category.palm_tree></green>"
+    lore: []
+    hidden: false
+    priority: 1
+    icon: default:palm_log
+    conditions:
+      - type: permission
+        permission: category.default.palm_tree
+    list:
+      - default:palm_sapling
+      - default:palm_leaves
+      - default:palm_log
+      - default:stripped_palm_log
+      - default:palm_wood
+      - default:stripped_palm_wood
+      - default:palm_planks
+    # all-items: true
+```
+
+### Option Explanation
+
+* The `name` and `lore` determine the title and description of the category icon.
+* The `icon` represents the visual appearance of the item for this category, and you are required to configure the settings for this item within the plugin.
+* The `priority` determines the display order; the smaller the 'priority' value, the higher the precedence it has for presentation in the GUI.
+* The `hidden` attribute determines whether this category is displayed in the main menu. There may be instances where you wish to nest a category within another; in such cases, you would set this attribute to `true`. Relevant examples will be provided later.
+* The `conditions` control whether this category is displayed. For specific usage, please refer to [⚖️ Conditions](../reference/conditions).
+* In the `list`, you need to fill in items or categories (categories must be prefixed with a '#', for example, `#default:palm_tree` ).
+* The `all-items` attribute determines whether all items should be included in this category.
+
+### UI Tips
+
+:::tip
+
+No need to open the recipe page and click "Get Item." Use these quick actions directly:
+
+- Shift + Left-click to get a single item.
+- Shift + Right-click to get a stack.
+- Middle-click to pick up a stack instantly.
+
+:::
+
+### Sub Categories
+
+At times, you may require a category configuration with the following structure, or even with deeper nesting. In such cases, you will need to flexibly utilize `hidden` and the `#` prefix.
+
+<PluginFileTree
+  initialTreeData={[
+    {
+      id: "main_category",
+      name: "main_category",
+      children: [
+        {
+          id: "sub_category_1",
+          name: "sub_category_1",
+          children: []
+        },
+        {
+          id: "sub_category_2",
+          name: "sub_category_2",
+          children: []
+        },
+        {
+          id: "sub_category_3",
+          name: "sub_category_3",
+          children: []
+        },
+      ]
+    },
+  ]}
+/>
+
+
+```yaml
+categories:
+  default:default:
+    priority: 1
+    name: "<!i><white><i18n:category.default.name></white>"
+    lore:
+      - "<!i><gray><i18n:category.default.lore>"
+    icon: default:topaz
+    list:
+      - "#default:palm_tree"
+      - "#default:topaz"
+      - "#default:furniture"
+      - "#default:misc"
+  default:palm_tree:
+    name: "<!i><green><i18n:category.palm_tree></green>"
+    hidden: true
+    icon: default:palm_log
+    list:
+      - default:palm_sapling
+      - default:palm_leaves
+      - default:palm_log
+      - default:stripped_palm_log
+      - default:palm_wood
+      - default:stripped_palm_wood
+      - default:palm_planks
+  default:topaz:
+    name: "<!i><#FF8C00><i18n:category.topaz></#FF8C00>"
+    hidden: true
+    icon: default:topaz
+    list:
+      - default:topaz
+      - default:topaz_ore
+      - default:deepslate_topaz_ore
+      - default:topaz_axe
+      - default:topaz_pickaxe
+      - default:topaz_hoe
+      - default:topaz_shovel
+      - default:topaz_sword
+      - default:topaz_bow
+      - default:topaz_crossbow
+      - default:topaz_rod
+  default:furniture:
+    name: "<!i><#FFD700><i18n:category.furniture></#FFD700>"
+    hidden: true
+    icon: default:table_lamp
+    list:
+      - default:bench
+      - default:table_lamp
+      - default:wooden_chair
+  default:misc:
+    name: "<!i><gray><i18n:category.misc></gray>"
+    hidden: true
+    icon: default:chinese_lantern
+    list:
+      - default:chinese_lantern
+      - default:fairy_flower
+```
+:::tip
+You can also directly configure the category to which an item belongs within the item itself. However, please note that in such cases, we cannot guarantee the order in which it will be displayed within the category.
+```yaml
+items:
+  default:topaz_sword:
+    material: golden_sword
+    category: default:topaz
+    ...more options
+```
+```yaml
+items:
+  default:topaz_sword:
+    material: golden_sword
+    category: 
+      - default:swords
+      - default:topaz_gears
+    ...more options
+```
+:::

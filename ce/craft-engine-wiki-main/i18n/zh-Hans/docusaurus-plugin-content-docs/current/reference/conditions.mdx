@@ -1,0 +1,308 @@
+---
+title: ⚖️ 条件
+id: conditions
+---
+
+:::tip
+在条件类型前添加 `!` 可反转判断逻辑，例如：
+
+```yaml
+type: "!permission"
+permission: "craftengine.admin"
+```
+:::
+
+### any\_of
+
+满足任意条件即可。
+
+```yaml
+type: any_of
+terms:
+  - type: xxx
+  - type: xxx
+```
+
+### all\_of
+
+所有条件都必须满足。
+
+```yaml
+type: all_of
+terms:
+  - type: xxx
+  - type: xxx
+```
+
+### inverted
+
+对当前条件的结果值取反。
+
+```yaml
+type: inverted
+term:
+  type: xxx
+```
+
+### falling\_block
+
+检测掉落物是否由下落的方块掉落
+
+```yaml
+type: falling_block
+```
+
+### survives\_explosion
+
+以 `1/爆炸半径` 的概率返回成功。需要上下文提供参数进行检测，若未提供则总是通过。
+
+```yaml
+type: survives_explosion
+```
+
+### has\_item
+
+检查是否有手持物品
+
+```yaml
+type: has_item
+```
+
+### match\_item
+
+检查手持物品。
+
+```yaml
+type: match_item
+id: "minecraft:iron_pickaxe"
+regex: false # 是否使用正则表达式匹配
+```
+
+```yaml
+type: match_item
+id: 
+  - "minecraft:iron_pickaxe"
+  - "minecraft:stone_pickaxe"
+regex: false # 是否使用正则表达式匹配
+```
+
+### match\_block\_property
+
+检查方块状态。
+
+```yaml
+type: match_block_property
+properties:
+  age: 3
+```
+
+### match\_block
+
+匹配方块类型。
+
+```yaml
+type: match_block
+x: <arg:position.x>
+y: <arg:position.y>
+z: <arg:position.z>
+id: minecraft:stone
+regex: false
+```
+
+### match\_entity
+
+匹配实体类型。
+
+```yaml
+type: match_entity
+id: minecraft:enderman
+regex: false
+```
+
+### match\_furniture\_variant
+
+匹配家具变体。
+
+```yaml
+type: match_furniture_variant
+variants:
+  - wall
+```
+
+### enchantment
+
+检测手中物品的魔咒。
+
+```yaml
+type: enchantment
+predicate: minecraft:silk_touch>=1 # > >= = < <=
+```
+
+### table\_bonus
+
+以魔咒等级为索引，从列表中挑选概率通过。
+
+```yaml
+type: table_bonus
+enchantment: minecraft:fortune
+chances:
+  - 0.1
+  - 0.5
+  - 0.8
+  - 1
+```
+
+### random
+
+```yaml
+type: random
+value: 0.1 # 10%
+```
+
+### permission
+
+检查玩家是否拥有权限
+
+```yaml
+type: permission
+permission: "craftengine.admin"
+```
+
+### expression
+
+检查表达式是否返回 `true`
+
+```yaml
+type: expression
+# https://ezylang.github.io/EvalEx/references/references.html
+expression: "<papi:farming_level> >= 10"
+```
+
+### string\_equals
+
+判断这两个值是否相等
+
+```yaml
+type: string_equals
+value1: "<arg:player.name>"
+value2: "玩家A" # 译者注：在正常 Minecraft 服务端是不允许使用中文作为玩家名称的这里仅作为演示
+```
+
+### string\_contains
+
+判断 value1 是否包含 value2
+
+```yaml
+type: string_contains
+value1: "<arg:player.name>"
+value2: "A"
+```
+
+### regex
+
+判断 value 是否符合指定正则表达式
+
+```yaml
+type: regex
+value: "<arg:player.name>"
+regex: "[a-Z]"
+```
+
+### is\_null
+
+检查参数是否为空
+
+```yaml
+type: is_null
+argument: "player.main_hand_item"
+```
+
+### hand
+
+检查交互手
+
+```yaml
+type: hand
+hand: main_hand # off_hand
+```
+
+### on\_cooldown
+
+检查玩家是否处于冷却时间（使用 `set_cooldown` 函数为玩家设置冷却）
+
+```yaml
+type: on_cooldown
+id: my_cooldown_id
+```
+
+:::info
+示例用法
+
+```yaml
+events:
+  - on: right_click
+    functions:
+      - type: set_cooldown
+        id: test
+        time: 30s
+      - type: command
+        command: give <arg:player.name> minecraft:apple
+    conditions:
+      - type: "!on_cooldown"
+        id: test
+```
+:::
+
+### worldguard\:region
+
+检测当前上下文中的位置是否位于WorldGuard区域内
+
+```yaml
+type: worldguard:region
+# 模式 1 为区域并集
+# 模式 2 为区域交集
+mode: 1
+regions:
+  - A
+  - B
+```
+
+### distance
+
+检测当前上下文的玩家于上下文的位置的距离是否在范围内
+
+```yaml
+type: distance
+min: 0
+max: 32
+```
+
+### has\_player
+
+检测当前上下文玩家是否存在
+
+```yaml
+type: has_player
+```
+
+### inventory\_has\_item
+
+检测当前上下文玩家背包中是否有指定物品或数量
+
+```yaml
+type: inventory_has_item
+id: "minecraft:iron_pickaxe"
+count: 1
+```
+
+### is\_bedrock\_player
+
+检测当前上下文玩家是否为基岩版玩家
+
+```yaml
+type: is_bedrock_player
+```
+
+:::info
+更多条件即将到来...
+:::

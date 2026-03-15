@@ -1,0 +1,45 @@
+---
+title: DropBox
+id: dropbox
+---
+
+```yaml
+resource-pack:
+  delivery:
+    hosting:
+      - type: dropbox
+        app-key: ""
+        app-secret: ""
+        refresh-token: ""
+        upload-path: "server_resource_pack.zip"
+        # 可选选项
+        use-environment-variables: false # 是否使用环境变量提供机密信息，默认为 false
+        ## 可选代理配置
+        # proxy:
+        #   host: "127.0.0.1"
+        #   port: 7890
+```
+
+<details>
+  <summary>可用环境变量</summary>
+  - CE_DROPBOX_APP_KEY
+  - CE_DROPBOX_APP_SECRET
+  - CE_DROPBOX_REFRESH_TOKEN
+</details>
+
+## 配置教程
+
+1. 前往 https://www.dropbox.com/developers/apps/create
+   ![图片](/img/i18n/zh-Hans/host/dropbox-1.png)
+   这样填写然后点击 `Create app`
+2. 按照图片填写 `http://localhost:8080` 然后点击 `Add`
+   ![图片](/img/i18n/zh-Hans/host/dropbox-2.png)
+3. 点击 `Permissions` 选项卡
+   ![图片](/img/i18n/zh-Hans/host/dropbox-3.png)
+4. 如果你省事直接把全部的按钮勾选上然后点击 `Submit`
+   ![图片](/img/i18n/zh-Hans/host/dropbox-4.png)
+5. 点击 `Settings` 选项卡
+   ![图片](/img/i18n/zh-Hans/host/dropbox-5.png)
+6. 点击下面的 `Show` 然后复制 `App key` 和 `App secret` 复制出来
+   ![图片](/img/i18n/zh-Hans/host/dropbox-6.png)
+7. 安装 python 3.10+ 以及 requests 2.32.4+ 然后 [点击这里获取](/file/i18n/zh-Hans/dropbox-onedrive.py) 执行脚本，然后执行获取程序按提示输入然后操作即可

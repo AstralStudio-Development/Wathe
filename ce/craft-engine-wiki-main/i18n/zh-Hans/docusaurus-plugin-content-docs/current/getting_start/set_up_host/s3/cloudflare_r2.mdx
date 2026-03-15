@@ -1,0 +1,63 @@
+---
+title: Cloudflare R2
+id: cloudflare_r2
+---
+
+## 操作步骤
+
+### 第一步
+创建 Cloudflare 账号，前往 https://dash.cloudflare.com/sign-up 完成注册，并登录进入账户主页。 \
+![](/img/i18n/zh-Hans/cloudflare_r2_1.png)
+
+### 第二步
+找到侧边栏的 `R2 对象存储`。 \
+![](/img/i18n/zh-Hans/cloudflare_r2_2.png)
+
+### 第三步
+提交一个付款方式，推荐使用 Paypal。
+
+### 第四步
+点击右侧的 `创建存储库`。 \
+![](/img/i18n/zh-Hans/cloudflare_r2_4.png)
+
+### 第五步
+填写存储库名称，位置选择 `自动` 并且展开 `提供位置提示（可选）` 点击下拉框选择 `亚太地区 (APAC)`，默认存储类选择 `标准`，最后点击 `创建存储库`。 \
+![](/img/i18n/zh-Hans/cloudflare_r2_5.png)
+
+### 第六步
+点击 `设置`，选择 `常规问题`，找到 `S3 API` 复制出来。 \
+你应该会得到一串 URL，例如：`https://4asd4sdas4ds5ds4.r2.cloudflarestorage.com/114514` \
+其中 `https` 作为 `protocol` 的值，`4asd4sdas4ds5ds4.r2.cloudflarestorage.com` 作为 `endpoint` 的值，`114514` 作为 `bucket` 的值。 \
+![](/img/i18n/zh-Hans/cloudflare_r2_6.png)
+
+### 第七步
+点击左上角的 `R2 对象存储` 回到 R2 主页面，点击右侧的 `API` 选择 `管理 API 密钥`，点击 `创建 User API 令牌`，随便填写一个令牌名称，权限选择 `对象读和写`，指定存储桶选择 `仅应用于特定存储桶`，点击下拉框选择上面作为作为 `bucket` 的值，最后点击 `创建 User API 令牌`。 \
+![](/img/i18n/zh-Hans/cloudflare_r2_7_1.png) \
+![](/img/i18n/zh-Hans/cloudflare_r2_7_2.png) \
+![](/img/i18n/zh-Hans/cloudflare_r2_7_3.png) \
+![](/img/i18n/zh-Hans/cloudflare_r2_7_4.png)
+
+### 第八步
+查看跳转的页面，找到 `访问密钥 ID` 作为 `access-key-id`，找到 `机密访问密钥` 作为 `access-key-secret`。最后你应该会编写出以下配置。 \
+![](/img/i18n/zh-Hans/cloudflare_r2_8.png)
+
+```yaml
+# 仅作为示范，请不要直接复制粘贴。
+resource-pack:
+  delivery:
+    hosting:
+      - type: s3
+        endpoint: "4asd4sdas4ds5ds4.r2.cloudflarestorage.com"
+        bucket: "114514"
+        access-key-id: "asodjhadosdnoad"
+        access-key-secret: "asd541faf5asd5fs15asdf45as"
+        protocol: "https"
+        path-style: false
+        region: "auto"
+        upload-path: "server_resource_pack.zip"
+        disable-calculate-sha256: false
+        validity: 10
+        rate-map:
+          max-requests: 5
+          reset-interval: 20
+```

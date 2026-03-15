@@ -1,0 +1,105 @@
+---
+title: 🪑 家具
+id: furniture
+---
+
+import UrlCard from '@site/src/components/UrlCard';
+
+## 配置部分
+
+完整家具配置包含以下部分：
+
+* behavior
+
+<UrlCard
+    url="furniture/behaviors"
+    title="🕹️ 家具行为"
+    subtitle=" "
+/>
+
+* settings
+
+<UrlCard
+    url="furniture/settings"
+    title="⚙️ 家具设置"
+    subtitle=" "
+/>
+
+* variants
+
+<UrlCard
+    url="furniture/variants"
+    title="📍 家具变体"
+    subtitle=" "
+/>
+
+* loot
+
+<UrlCard
+    url="../reference/loot_table"
+    title="🎲 战利品表"
+    subtitle=" "
+/>
+
+* events
+
+<UrlCard
+    url="../reference/events"
+    title="🪇 事件"
+    subtitle=" "
+/>
+
+## 如何绑定物品
+
+<UrlCard
+    url="item/behaviors/furniture_item"
+    title="🪑 家具物品"
+    subtitle=" "
+/>
+
+<UrlCard
+    url="item/behaviors/liquid_collision_furniture_item"
+    title="🌊 液体碰撞家具物品"
+    subtitle=" "
+/>
+
+## 完整配置概览
+
+```yaml
+furniture:
+  default:bench:
+    settings:
+      item: default:bench
+      sounds:
+        break: minecraft:block.bamboo_wood.break
+        place: minecraft:block.bamboo_wood.place
+    variants:
+      ground:
+        loot-spawn-offset: 0.5,0.5,0
+        entity-culling: true
+        elements:
+          - item: default:bench
+            display-transform: none
+            billboard: fixed
+            position: 0.5,0,0
+            translation: 0,0.5,0
+            shadow-radius: 1
+            shadow-strength: 0.2
+            apply-dyed-color: true
+            glow-color: 255,255,255
+        hitboxes:
+          - position: 0,0,0
+            type: shulker
+            direction: east
+            peek: 100
+            blocks-building: true
+            interactive: true
+            interaction-entity: true
+            seats:
+              - 0,0,-0.1 0
+              - 1,0,-0.1 0
+    loot:
+      template: default:loot_table/furniture
+      arguments:
+        item: default:bench
+```

@@ -1,0 +1,22 @@
+---
+title: 🚧 栅栏方块
+id: fence_block
+---
+
+| 属性名称  | 属性类型    | 是否必需 |
+|-------|---------|------|
+| north | boolean | 是    |
+| east  | boolean | 是    |
+| south | boolean | 是    |
+| west  | boolean | 是    |
+
+```yaml
+blocks:
+  default:palm_fence:
+    behavior:
+      type: fence_block
+      connectable-block-tag: minecraft:wooden_fences
+      can-leash: true
+```
+
+![](/img/fence_block.png)

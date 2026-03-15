@@ -1,0 +1,40 @@
+---
+title: Gitlab
+id: gitlab
+---
+
+```yaml
+resource-pack:
+  delivery:
+    hosting:
+      - type: gitlab
+        gitlab-url: ""
+        access-token: ""
+        project-id: ""
+        # 可选选项
+        use-environment-variables: false # 是否使用环境变量提供机密信息，默认为 false
+        ## 可选代理配置
+        # proxy:
+        #   host: "127.0.0.1"
+        #   port: 7890
+```
+
+<details>
+  <summary>可用环境变量</summary>
+  - CE_GITLAB_ACCESS_TOKEN
+</details>
+
+:::warning
+
+根据 GitLab 的服务条款，你不允许使用 GitLab 的服务器进行内容分发。你必须搭建自己的 GitLab 服务器。
+
+https://handbook.gitlab.com/handbook/legal/acceptable-use-policy/
+
+> We refer to “our services” throughout – this means all services (including related websites) owned or operated by GitLab.
+>
+> 3. So our services, and those of others, run securely, and without disruption, you must not:
+>
+> Do anything to compromise, overburden, or otherwise impair our services or those of others, including using our services to mine or demonstrate proof-of-work for a cryptocurrency or blockchain, or for the primary purpose of distributing content.
+
+译者注：为保证合规性不对此条款翻译
+:::

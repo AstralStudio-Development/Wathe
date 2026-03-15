@@ -1,0 +1,89 @@
+# Ledge Blocks - Thin horizontal facing blocks attached to wall
+# Using trapdoor[half=top,open=true] for wall-attached collision box
+# directional_attached_block behavior handles wall-attached placement
+# trapdoor facing matches wall direction for correct placement
+items:
+  # Gold Ledge
+  wathe:gold_ledge:
+    data:
+      item-name: <!i><lang:block.wathe.gold_ledge>
+    model:
+      type: minecraft:model
+      path: wathe:block/gold_ledge
+      generation:
+        parent: wathe:block/template_ledge
+        textures:
+          texture: wathe:block/gold_bar
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          - type: directional_attached_block
+        events:
+          - template: default:rotatable_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 43
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.copper.break
+            fall: minecraft:block.copper.fall
+            hit: minecraft:block.copper.hit
+            place: minecraft:block.copper.place
+            step: minecraft:block.copper.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+          appearances:
+            facing=north:
+              state: oak_trapdoor[facing=north,half=top,open=true]
+              model:
+                path: wathe:block/gold_ledge_north
+                generation:
+                  parent: wathe:block/template_ledge
+                  textures:
+                    texture: wathe:block/gold_bar
+                y: 180
+            facing=east:
+              state: oak_trapdoor[facing=east,half=top,open=true]
+              model:
+                path: wathe:block/gold_ledge_east
+                generation:
+                  parent: wathe:block/template_ledge
+                  textures:
+                    texture: wathe:block/gold_bar
+                y: 270
+            facing=south:
+              state: oak_trapdoor[facing=south,half=top,open=true]
+              model:
+                path: wathe:block/gold_ledge_south
+                generation:
+                  parent: wathe:block/template_ledge
+                  textures:
+                    texture: wathe:block/gold_bar
+            facing=west:
+              state: oak_trapdoor[facing=west,half=top,open=true]
+              model:
+                path: wathe:block/gold_ledge_west
+                generation:
+                  parent: wathe:block/template_ledge
+                  textures:
+                    texture: wathe:block/gold_bar
+                y: 90
+          variants:
+            facing=north:
+              appearance: facing=north
+            facing=east:
+              appearance: facing=east
+            facing=south:
+              appearance: facing=south
+            facing=west:
+              appearance: facing=west

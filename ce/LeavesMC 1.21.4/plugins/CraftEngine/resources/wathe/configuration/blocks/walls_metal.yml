@@ -1,0 +1,589 @@
+# Wall Blocks - Using fence_block behavior for auto-connection
+# Walls: tarnished_gold, gold, pristine_gold, white_hull, black_hull, black_hull_sheet,
+#        metal_sheet, stainless_steel, dark_steel
+items:
+  # ==================== Tarnished Gold Wall ====================
+  wathe:tarnished_gold_wall:
+    data:
+      item-name: <!i><lang:block.wathe.tarnished_gold_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/tarnished_gold_wall_inventory
+      generation:
+        parent: minecraft:block/wall_inventory
+        textures:
+          wall: wathe:block/tarnished_gold
+    behavior:
+      type: block_item
+      block: wathe:tarnished_gold_wall
+  wathe:tarnished_gold_wall_post:
+    data:
+      item-name: <!i><lang:block.wathe.tarnished_gold_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/tarnished_gold_wall_post
+      generation:
+        parent: wathe:block/template_wall_post
+        textures:
+          wall: wathe:block/tarnished_gold
+  wathe:tarnished_gold_wall_side:
+    data:
+      item-name: <!i><lang:block.wathe.tarnished_gold_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/tarnished_gold_wall_side
+      generation:
+        parent: wathe:block/template_wall_side
+        textures:
+          wall: wathe:block/tarnished_gold
+
+  # ==================== Gold Wall ====================
+  wathe:gold_wall:
+    data:
+      item-name: <!i><lang:block.wathe.gold_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/gold_wall_inventory
+      generation:
+        parent: minecraft:block/wall_inventory
+        textures:
+          wall: wathe:block/gold
+    behavior:
+      type: block_item
+      block: wathe:gold_wall
+  wathe:gold_wall_post:
+    data:
+      item-name: <!i><lang:block.wathe.gold_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/gold_wall_post
+      generation:
+        parent: wathe:block/template_wall_post
+        textures:
+          wall: wathe:block/gold
+  wathe:gold_wall_side:
+    data:
+      item-name: <!i><lang:block.wathe.gold_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/gold_wall_side
+      generation:
+        parent: wathe:block/template_wall_side
+        textures:
+          wall: wathe:block/gold
+
+  # ==================== Pristine Gold Wall ====================
+  wathe:pristine_gold_wall:
+    data:
+      item-name: <!i><lang:block.wathe.pristine_gold_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/pristine_gold_wall_inventory
+      generation:
+        parent: minecraft:block/wall_inventory
+        textures:
+          wall: wathe:block/pristine_gold
+    behavior:
+      type: block_item
+      block: wathe:pristine_gold_wall
+  wathe:pristine_gold_wall_post:
+    data:
+      item-name: <!i><lang:block.wathe.pristine_gold_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/pristine_gold_wall_post
+      generation:
+        parent: wathe:block/template_wall_post
+        textures:
+          wall: wathe:block/pristine_gold
+  wathe:pristine_gold_wall_side:
+    data:
+      item-name: <!i><lang:block.wathe.pristine_gold_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/pristine_gold_wall_side
+      generation:
+        parent: wathe:block/template_wall_side
+        textures:
+          wall: wathe:block/pristine_gold
+
+  # ==================== White Hull Wall ====================
+  wathe:white_hull_wall:
+    data:
+      item-name: <!i><lang:block.wathe.white_hull_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/white_hull_wall_inventory
+      generation:
+        parent: minecraft:block/wall_inventory
+        textures:
+          wall: wathe:block/white_hull
+    behavior:
+      type: block_item
+      block: wathe:white_hull_wall
+  wathe:white_hull_wall_post:
+    data:
+      item-name: <!i><lang:block.wathe.white_hull_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/white_hull_wall_post
+      generation:
+        parent: wathe:block/template_wall_post
+        textures:
+          wall: wathe:block/white_hull
+  wathe:white_hull_wall_side:
+    data:
+      item-name: <!i><lang:block.wathe.white_hull_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/white_hull_wall_side
+      generation:
+        parent: wathe:block/template_wall_side
+        textures:
+          wall: wathe:block/white_hull
+
+  # ==================== Black Hull Wall ====================
+  wathe:black_hull_wall:
+    data:
+      item-name: <!i><lang:block.wathe.black_hull_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/black_hull_wall_inventory
+      generation:
+        parent: minecraft:block/wall_inventory
+        textures:
+          wall: wathe:block/black_hull
+    behavior:
+      type: block_item
+      block: wathe:black_hull_wall
+  wathe:black_hull_wall_post:
+    data:
+      item-name: <!i><lang:block.wathe.black_hull_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/black_hull_wall_post
+      generation:
+        parent: wathe:block/template_wall_post
+        textures:
+          wall: wathe:block/black_hull
+  wathe:black_hull_wall_side:
+    data:
+      item-name: <!i><lang:block.wathe.black_hull_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/black_hull_wall_side
+      generation:
+        parent: wathe:block/template_wall_side
+        textures:
+          wall: wathe:block/black_hull
+
+  # ==================== Black Hull Sheet Wall ====================
+  wathe:black_hull_sheet_wall:
+    data:
+      item-name: <!i><lang:block.wathe.black_hull_sheet_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/black_hull_sheet_wall_inventory
+      generation:
+        parent: minecraft:block/wall_inventory
+        textures:
+          wall: wathe:block/black_hull_sheets
+    behavior:
+      type: block_item
+      block: wathe:black_hull_sheet_wall
+  wathe:black_hull_sheet_wall_post:
+    data:
+      item-name: <!i><lang:block.wathe.black_hull_sheet_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/black_hull_sheet_wall_post
+      generation:
+        parent: wathe:block/template_wall_post
+        textures:
+          wall: wathe:block/black_hull_sheets
+  wathe:black_hull_sheet_wall_side:
+    data:
+      item-name: <!i><lang:block.wathe.black_hull_sheet_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/black_hull_sheet_wall_side
+      generation:
+        parent: wathe:block/template_wall_side
+        textures:
+          wall: wathe:block/black_hull_sheets
+
+  # ==================== Metal Sheet Wall ====================
+  wathe:metal_sheet_wall:
+    data:
+      item-name: <!i><lang:block.wathe.metal_sheet_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/metal_sheet_wall_inventory
+      generation:
+        parent: minecraft:block/wall_inventory
+        textures:
+          wall: wathe:block/metal_sheet
+    behavior:
+      type: block_item
+      block: wathe:metal_sheet_wall
+  wathe:metal_sheet_wall_post:
+    data:
+      item-name: <!i><lang:block.wathe.metal_sheet_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/metal_sheet_wall_post
+      generation:
+        parent: wathe:block/template_wall_post
+        textures:
+          wall: wathe:block/metal_sheet
+  wathe:metal_sheet_wall_side:
+    data:
+      item-name: <!i><lang:block.wathe.metal_sheet_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/metal_sheet_wall_side
+      generation:
+        parent: wathe:block/template_wall_side
+        textures:
+          wall: wathe:block/metal_sheet
+
+  # ==================== Stainless Steel Wall ====================
+  wathe:stainless_steel_wall:
+    data:
+      item-name: <!i><lang:block.wathe.stainless_steel_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/stainless_steel_wall_inventory
+      generation:
+        parent: minecraft:block/wall_inventory
+        textures:
+          wall: wathe:block/stainless_steel
+    behavior:
+      type: block_item
+      block: wathe:stainless_steel_wall
+  wathe:stainless_steel_wall_post:
+    data:
+      item-name: <!i><lang:block.wathe.stainless_steel_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/stainless_steel_wall_post
+      generation:
+        parent: wathe:block/template_wall_post
+        textures:
+          wall: wathe:block/stainless_steel
+  wathe:stainless_steel_wall_side:
+    data:
+      item-name: <!i><lang:block.wathe.stainless_steel_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/stainless_steel_wall_side
+      generation:
+        parent: wathe:block/template_wall_side
+        textures:
+          wall: wathe:block/stainless_steel
+
+  # ==================== Dark Steel Wall ====================
+  wathe:dark_steel_wall:
+    data:
+      item-name: <!i><lang:block.wathe.dark_steel_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/dark_steel_wall_inventory
+      generation:
+        parent: minecraft:block/wall_inventory
+        textures:
+          wall: wathe:block/dark_steel
+    behavior:
+      type: block_item
+      block: wathe:dark_steel_wall
+  wathe:dark_steel_wall_post:
+    data:
+      item-name: <!i><lang:block.wathe.dark_steel_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/dark_steel_wall_post
+      generation:
+        parent: wathe:block/template_wall_post
+        textures:
+          wall: wathe:block/dark_steel
+  wathe:dark_steel_wall_side:
+    data:
+      item-name: <!i><lang:block.wathe.dark_steel_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/dark_steel_wall_side
+      generation:
+        parent: wathe:block/template_wall_side
+        textures:
+          wall: wathe:block/dark_steel
+
+blocks:
+  # ==================== Tarnished Gold Wall ====================
+  wathe:tarnished_gold_wall:
+    loot:
+      template: default:loot_table/self
+    settings:
+      hardness: -1.0
+      resistance: 3600000.0
+      map-color: 43
+      is-suffocating: false
+      is-redstone-conductor: false
+      tags:
+        - minecraft:walls
+        - minecraft:mineable/pickaxe
+        - wathe:walls
+      sounds:
+        break: minecraft:block.copper.break
+        fall: minecraft:block.copper.fall
+        hit: minecraft:block.copper.hit
+        place: minecraft:block.copper.place
+        step: minecraft:block.copper.step
+    behavior:
+      type: fence_block
+      connectable-block-tag: minecraft:fences
+    states:
+      template: default:block_state/fence
+      arguments:
+        base_block: nether_brick_fence
+        fence_post_item: wathe:tarnished_gold_wall_post
+        fence_side_item: wathe:tarnished_gold_wall_side
+
+  # ==================== Gold Wall ====================
+  wathe:gold_wall:
+    loot:
+      template: default:loot_table/self
+    settings:
+      hardness: -1.0
+      resistance: 3600000.0
+      map-color: 43
+      is-suffocating: false
+      is-redstone-conductor: false
+      tags:
+        - minecraft:walls
+        - minecraft:mineable/pickaxe
+        - wathe:walls
+      sounds:
+        break: minecraft:block.copper.break
+        fall: minecraft:block.copper.fall
+        hit: minecraft:block.copper.hit
+        place: minecraft:block.copper.place
+        step: minecraft:block.copper.step
+    behavior:
+      type: fence_block
+      connectable-block-tag: minecraft:fences
+    states:
+      template: default:block_state/fence
+      arguments:
+        base_block: nether_brick_fence
+        fence_post_item: wathe:gold_wall_post
+        fence_side_item: wathe:gold_wall_side
+
+  # ==================== Pristine Gold Wall ====================
+  wathe:pristine_gold_wall:
+    loot:
+      template: default:loot_table/self
+    settings:
+      hardness: -1.0
+      resistance: 3600000.0
+      map-color: 43
+      is-suffocating: false
+      is-redstone-conductor: false
+      tags:
+        - minecraft:walls
+        - minecraft:mineable/pickaxe
+        - wathe:walls
+      sounds:
+        break: minecraft:block.copper.break
+        fall: minecraft:block.copper.fall
+        hit: minecraft:block.copper.hit
+        place: minecraft:block.copper.place
+        step: minecraft:block.copper.step
+    behavior:
+      type: fence_block
+      connectable-block-tag: minecraft:fences
+    states:
+      template: default:block_state/fence
+      arguments:
+        base_block: nether_brick_fence
+        fence_post_item: wathe:pristine_gold_wall_post
+        fence_side_item: wathe:pristine_gold_wall_side
+
+  # ==================== White Hull Wall ====================
+  wathe:white_hull_wall:
+    loot:
+      template: default:loot_table/self
+    settings:
+      hardness: -1.0
+      resistance: 3600000.0
+      map-color: 8
+      is-suffocating: false
+      is-redstone-conductor: false
+      tags:
+        - minecraft:walls
+        - minecraft:mineable/pickaxe
+        - wathe:walls
+      sounds:
+        break: minecraft:block.netherite_block.break
+        fall: minecraft:block.netherite_block.fall
+        hit: minecraft:block.netherite_block.hit
+        place: minecraft:block.netherite_block.place
+        step: minecraft:block.netherite_block.step
+    behavior:
+      type: fence_block
+      connectable-block-tag: minecraft:fences
+    states:
+      template: default:block_state/fence
+      arguments:
+        base_block: nether_brick_fence
+        fence_post_item: wathe:white_hull_wall_post
+        fence_side_item: wathe:white_hull_wall_side
+
+  # ==================== Black Hull Wall ====================
+  wathe:black_hull_wall:
+    loot:
+      template: default:loot_table/self
+    settings:
+      hardness: -1.0
+      resistance: 3600000.0
+      map-color: 29
+      is-suffocating: false
+      is-redstone-conductor: false
+      tags:
+        - minecraft:walls
+        - minecraft:mineable/pickaxe
+        - wathe:walls
+      sounds:
+        break: minecraft:block.netherite_block.break
+        fall: minecraft:block.netherite_block.fall
+        hit: minecraft:block.netherite_block.hit
+        place: minecraft:block.netherite_block.place
+        step: minecraft:block.netherite_block.step
+    behavior:
+      type: fence_block
+      connectable-block-tag: minecraft:fences
+    states:
+      template: default:block_state/fence
+      arguments:
+        base_block: nether_brick_fence
+        fence_post_item: wathe:black_hull_wall_post
+        fence_side_item: wathe:black_hull_wall_side
+
+  # ==================== Black Hull Sheet Wall ====================
+  wathe:black_hull_sheet_wall:
+    loot:
+      template: default:loot_table/self
+    settings:
+      hardness: -1.0
+      resistance: 3600000.0
+      map-color: 29
+      is-suffocating: false
+      is-redstone-conductor: false
+      tags:
+        - minecraft:walls
+        - minecraft:mineable/pickaxe
+        - wathe:walls
+      sounds:
+        break: minecraft:block.netherite_block.break
+        fall: minecraft:block.netherite_block.fall
+        hit: minecraft:block.netherite_block.hit
+        place: minecraft:block.netherite_block.place
+        step: minecraft:block.netherite_block.step
+    behavior:
+      type: fence_block
+      connectable-block-tag: minecraft:fences
+    states:
+      template: default:block_state/fence
+      arguments:
+        base_block: nether_brick_fence
+        fence_post_item: wathe:black_hull_sheet_wall_post
+        fence_side_item: wathe:black_hull_sheet_wall_side
+
+  # ==================== Metal Sheet Wall ====================
+  wathe:metal_sheet_wall:
+    loot:
+      template: default:loot_table/self
+    settings:
+      hardness: -1.0
+      resistance: 3600000.0
+      map-color: 8
+      is-suffocating: false
+      is-redstone-conductor: false
+      tags:
+        - minecraft:walls
+        - minecraft:mineable/pickaxe
+        - wathe:walls
+      sounds:
+        break: minecraft:block.netherite_block.break
+        fall: minecraft:block.netherite_block.fall
+        hit: minecraft:block.netherite_block.hit
+        place: minecraft:block.netherite_block.place
+        step: minecraft:block.netherite_block.step
+    behavior:
+      type: fence_block
+      connectable-block-tag: minecraft:fences
+    states:
+      template: default:block_state/fence
+      arguments:
+        base_block: nether_brick_fence
+        fence_post_item: wathe:metal_sheet_wall_post
+        fence_side_item: wathe:metal_sheet_wall_side
+
+  # ==================== Stainless Steel Wall ====================
+  wathe:stainless_steel_wall:
+    loot:
+      template: default:loot_table/self
+    settings:
+      hardness: -1.0
+      resistance: 3600000.0
+      map-color: 8
+      is-suffocating: false
+      is-redstone-conductor: false
+      tags:
+        - minecraft:walls
+        - minecraft:mineable/pickaxe
+        - wathe:walls
+      sounds:
+        break: minecraft:block.netherite_block.break
+        fall: minecraft:block.netherite_block.fall
+        hit: minecraft:block.netherite_block.hit
+        place: minecraft:block.netherite_block.place
+        step: minecraft:block.netherite_block.step
+    behavior:
+      type: fence_block
+      connectable-block-tag: minecraft:fences
+    states:
+      template: default:block_state/fence
+      arguments:
+        base_block: nether_brick_fence
+        fence_post_item: wathe:stainless_steel_wall_post
+        fence_side_item: wathe:stainless_steel_wall_side
+
+  # ==================== Dark Steel Wall ====================
+  wathe:dark_steel_wall:
+    loot:
+      template: default:loot_table/self
+    settings:
+      hardness: -1.0
+      resistance: 3600000.0
+      map-color: 29
+      is-suffocating: false
+      is-redstone-conductor: false
+      tags:
+        - minecraft:walls
+        - minecraft:mineable/pickaxe
+        - wathe:walls
+      sounds:
+        break: minecraft:block.netherite_block.break
+        fall: minecraft:block.netherite_block.fall
+        hit: minecraft:block.netherite_block.hit
+        place: minecraft:block.netherite_block.place
+        step: minecraft:block.netherite_block.step
+    behavior:
+      type: fence_block
+      connectable-block-tag: minecraft:fences
+    states:
+      template: default:block_state/fence
+      arguments:
+        base_block: nether_brick_fence
+        fence_post_item: wathe:dark_steel_wall_post
+        fence_side_item: wathe:dark_steel_wall_side

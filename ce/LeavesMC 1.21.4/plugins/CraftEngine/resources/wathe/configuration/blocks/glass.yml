@@ -1,0 +1,133 @@
+# Glass Blocks
+items:
+  # Hull Glass (船体玻璃)
+  wathe:hull_glass:
+    data:
+      item-name: <!i><lang:block.wathe.hull_glass>
+    model: wathe:block/hull_glass
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: false
+          is-redstone-conductor: false
+          map-color: 0
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.glass.break
+            fall: minecraft:block.glass.fall
+            hit: minecraft:block.glass.hit
+            place: minecraft:block.glass.place
+            step: minecraft:block.glass.step
+        state:
+          state: light_blue_stained_glass
+          model:
+            path: wathe:block/hull_glass
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/hull_glass
+
+  # Rhombus Hull Glass (菱形船体玻璃)
+  wathe:rhombus_hull_glass:
+    data:
+      item-name: <!i><lang:block.wathe.rhombus_hull_glass>
+    model: wathe:block/rhombus_hull_glass
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: false
+          is-redstone-conductor: false
+          map-color: 0
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.glass.break
+            fall: minecraft:block.glass.fall
+            hit: minecraft:block.glass.hit
+            place: minecraft:block.glass.place
+            step: minecraft:block.glass.step
+        state:
+          state: white_stained_glass
+          model:
+            path: wathe:block/rhombus_hull_glass
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/rhombus_hull_glass
+
+  # Rhombus Glass (菱形玻璃)
+  wathe:rhombus_glass:
+    data:
+      item-name: <!i><lang:block.wathe.rhombus_glass>
+    model: wathe:block/rhombus_glass
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: false
+          is-redstone-conductor: false
+          map-color: 0
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.glass.break
+            fall: minecraft:block.glass.fall
+            hit: minecraft:block.glass.hit
+            place: minecraft:block.glass.place
+            step: minecraft:block.glass.step
+        state:
+          state: orange_stained_glass
+          model:
+            path: wathe:block/rhombus_glass
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/rhombus_glass
+
+  # Culling Glass (剔除玻璃)
+  wathe:culling_glass:
+    data:
+      item-name: <!i><lang:block.wathe.culling_glass>
+    model: wathe:block/culling_glass
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          is-suffocating: false
+          is-redstone-conductor: false
+          map-color: 0
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.glass.break
+            fall: minecraft:block.glass.fall
+            hit: minecraft:block.glass.hit
+            place: minecraft:block.glass.place
+            step: minecraft:block.glass.step
+        state:
+          state: magenta_stained_glass
+          model:
+            path: wathe:block/culling_glass
+            generation:
+              parent: minecraft:block/cube_all
+              textures:
+                all: wathe:block/culling_glass

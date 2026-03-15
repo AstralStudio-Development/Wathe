@@ -1,0 +1,68 @@
+---
+title: 🌍 Language
+id: lang
+---
+
+## Overview
+
+The "language" system is fully dependent on client-side resource packs. It dynamically adapts text to the player's client language, but any content change requires a mandatory resource pack reload. For a solution independent of resource packs, use `l10n` instead.
+
+Example configuration:
+
+```yaml
+lang:
+  en_us:
+    item.custom.palm_leaves: Palm Leaves
+    item.custom.palm_log: Palm Log
+```
+
+:::tip
+
+In the absence of language files, Minecraft will default to using `en_us`. Therefore, it is highly recommended to configure en\_us if you are creating a **new** translation key.
+
+If you wish to overwrite all the languages, use "all" as the language.
+
+```yaml
+lang:
+  all:
+    container.inventory: ""
+```
+
+:::
+
+:::info
+
+To render client side translation, please insert [https://docs.papermc.io/adventure/minimessage/format/#translatable](https://docs.papermc.io/adventure/minimessage/format/#translatable) tag
+
+Example:
+```yml
+items:
+  custom:translate:
+    material: paper
+    data:
+      item-name: "<lang:item.custom.palm_log>"
+```
+:::
+
+## Translate Blocks
+
+In addition to custom translation keys, CraftEngine provides built-in shortcut translations for block names, ensuring compatibility with:
+
+- CraftEngine Mod (client-side)
+- Server-side block translation plugins
+
+The configuration method is very simple. Just add the `block_name:` prefix before the regular block ID, and the plugin will automatically convert it to the corresponding real block ID.
+
+Example: `block_name:default:chinese_lantern` -> `block.craftengine.custom_13`
+
+```yaml
+lang:
+  en_us:
+    block_name:default:chinese_lantern: Chinese Lantern
+    block_name:default:netherite_anvil: Netherite Anvil
+    block_name:default:topaz_ore: Topaz Ore
+  zh_cn:
+    block_name:default:chinese_lantern: 灯笼
+    block_name:default:netherite_anvil: 下界合金砧
+    block_name:default:topaz_ore: 黄玉矿石
+```

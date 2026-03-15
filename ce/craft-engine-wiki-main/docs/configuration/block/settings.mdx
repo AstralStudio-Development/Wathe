@@ -1,0 +1,399 @@
+---
+title: 🔧 Block Settings
+id: settings
+---
+
+## Overview
+
+The settings define the basic properties shared by blocks. You can enable all of them simultaneously. Below is an example containing all possible settings types:
+
+<details>
+  <summary>Example</summary>
+
+```yaml
+blocks:
+  custom:all_settings_block:
+    settings:
+      hardness: 0.5
+      resistance: 0.5
+      is-randomly-ticking: true
+      push-reaction: NORMAL
+      map-color: 36
+      burnable: false
+      fire-spread-chance: 0
+      burn-chance: 0
+      item: custom:all_settings_item
+      replaceable: false
+      is-redstone-conductor: true
+      is-suffocating: true
+      is-view-blocking: true
+      sounds:
+        break: minecraft:block.deepslate.break
+        step: minecraft:block.deepslate.step
+        place: minecraft:block.deepslate.place
+        hit: minecraft:block.deepslate.hit
+        fall: minecraft:block.deepslate.fall
+      require-correct-tools: true
+      respect-tool-component: false
+      correct-tools:
+        - minecraft:wooden_pickaxe
+      incorrect-tool-dig-speed: 0.3
+      tags:
+        - minecraft:mineable/pickaxe
+      instrument: BASEDRUM
+      fluid-state: water
+      support-shape: minecraft:stone
+      luminance: 15
+      can-occlude: false
+      block-light: 0
+      propagate-skylight: false
+      jump-factor: 1.0
+      speed-factor: 1.0
+      friction: 0.7
+```
+</details>
+
+## Stable Settings
+
+### hardness
+
+Determines how long it takes the player to destroy this block (Default: 2.0)
+
+```yaml
+hardness: 0.5
+```
+
+### resistance
+
+Determines the probability of the block surviving the explosion (Default: 2.0)
+
+```yaml
+resistance: 0.5
+```
+
+### is-randomly-ticking
+
+Determines whether the block state accepts random ticks, which is relevant for some block behaviors, such as leaves. (Default: false)
+
+```yaml
+is-randomly-ticking: true
+```
+
+### push-reaction
+
+Determines how the block reacts to piston pushes. Please note that some reactions may not work well with certain block types due to client visual sync issues. This problem will be fixed in future versions. (Default: NORMAL)
+
+* NORMAL   Pistons can push and pull this block normally.
+* DESTROY   Blocks pushed by pistons are destroyed instantly.
+* BLOCK   Pistons cannot move this block.
+* IGNORE  Seems to behave like PUSH\_ONLY but can stick to sticky blocks
+* PUSH\_ONLY   Blocks can be pushed by pistons, but cannot be retracted. Do not stick to sticky blocks.
+
+```yaml
+push-reaction: NORMAL
+```
+
+### map-color
+
+Determines what color the block is displayed on the map. Available colors can be found on [https://minecraft.wiki/w/Map\_item\_format](https://minecraft.wiki/w/Map_item_format#Color_table) (Default: 0)
+
+```yaml
+map-color: 36
+```
+![](/img/block_settings_1.png)
+
+### burnable
+
+Determines whether this block can be ignited by the environment (Default: false)
+
+```yaml
+burnable: true
+```
+
+![](/img/block_settings_2.png)
+
+### fire-spread-chance
+
+Determines how long the block can burn. A longer burn time means a greater chance of spreading fire to surrounding blocks. (Default: 0)
+
+```yaml
+fire-spread-chance: 100  # 0-100
+```
+
+### burn-chance
+
+Determines the probability of being ignited (Default: 0)
+
+```yaml
+burn-chance: 30  # 0-100
+```
+
+### item
+
+Determines the item that this block corresponds to. This is usually used to get blocks in creative mode with middle click. (Default: null)
+
+```yaml
+item: default:xxx_block_item
+```
+
+### replaceable
+
+Determines whether to replace the block at its original location when the player uses a block to interact with this block (Default: false)
+
+```yaml
+replaceable: false
+```
+
+### is-redstone-conductor
+
+Determines whether this block is a redstone signal conductor (Default: UNDEFINED)
+
+```yaml
+is-redstone-conductor: true
+```
+
+![](/img/block_settings_3.png)
+
+### is-suffocating
+
+Determines whether the player will take suffocation damage (Default: UNDEFINED)
+
+```yaml
+is-suffocating: true
+```
+
+### is-view-blocking
+
+Whether to block the line of sight. However, this option is useless for players, but it will affect some entity mechanisms on the server. (Default: UNDEFINED)
+
+```yaml
+is-view-blocking: true
+```
+
+### sounds
+
+Determines the sound of the block in various situations (Default: null)
+
+* fall    When the player falls on this block
+* hit    When the player digs this block
+* break    When the player breaks this block
+* step    When the player walks on this block
+* place    When the player places this block
+
+```yaml
+sounds:
+  break: minecraft:block.deepslate.break
+  step: minecraft:block.deepslate.step
+  place: minecraft:block.deepslate.place
+  hit: minecraft:block.deepslate.hit
+  fall: minecraft:block.deepslate.fall
+```
+
+:::info
+You can configure like this to precisely control the volume and pitch
+
+```yaml
+sounds:
+  break:
+    id: minecraft:block.deepslate.break
+    pitch: 0.5
+    volume: 0.25~0.3 # ranged value is also supported
+  step: minecraft:block.deepslate.step
+```
+:::
+
+### require-correct-tools
+
+Determines if correct tool is required for the drops (Default: false)
+
+```yaml
+require-correct-tools: false
+```
+
+### respect-tool-component
+
+Decides if `minecraft:tool` component's `correct_for_drops` option should work as `correct-tools` below (Default: false)
+
+```yaml
+respect-tool-component: false
+```
+
+### correct-tools
+
+Determines the correct tool required to mine this block, otherwise no item will be dropped (Default: null)
+
+```yaml
+correct-tools:
+  - minecraft:wooden_pickaxe
+  - minecraft:stone_pickaxe
+  - minecraft:iron_pickaxe
+  - minecraft:golden_pickaxe
+  - minecraft:diamond_pickaxe
+  - minecraft:netherite_pickaxe
+```
+
+:::tip
+If `correct-tools` is set, `require-correct-tools` would be true
+:::
+
+### incorrect-tool-dig-speed
+
+Slows down the dig speed if the tool is incorrect (Default: 0.3)
+
+```yaml
+incorrect-tool-dig-speed: 0.3 # 0~1
+```
+
+### tags
+
+Tags determine the properties of many blocks. For example, using `minecraft:mineable/axe` will make your blocks mine faster with an axe. (Default: null) [🏷️ Block Tags](../../reference/block_tags.mdx)
+
+```yaml
+tags:
+  - minecraft:mineable/axe
+  - minecraft:logs_that_burn
+  - minecraft:logs
+  - minecraft:completes_find_tree_tutorial
+```
+
+### client-bound-tags
+
+This would only work for vanilla blocks
+
+```yaml
+client-bound-tags:
+  - minecraft:beacon_base_blocks
+```
+
+![](/img/block_settings_4.png)
+
+### instrument
+
+Determines what instrument the note block will play when it is above this block. (Default: harp)
+
+```yaml
+instrument: BASEDRUM
+```
+
+![](/img/block_settings_5.png)
+
+### fluid-state&#x20;
+
+Decides the fluid state of this block state (Default: empty)
+
+```yaml
+fluid-state: water
+```
+
+![](/img/block_settings_6.png)
+
+### support-shape
+
+Determines the support shape provided by the block. By default, custom blocks will use the **support-shape** of their corresponding visual state. However, you can manually specify the **support-shape** of a vanilla block here instead.
+
+```yaml
+support-shape: minecraft:stone
+```
+
+![](/img/block_settings_7.png)
+
+## Unstable Settings
+
+:::caution
+The following block settings would only work for entities except players.
+:::
+
+### friction
+
+It affects how quickly an item slows down when sliding on a block. (Default: 0.6, Ice: 0.98, Blue Ice: 0.989)
+
+```yaml
+friction: 0.6
+```
+
+### jump-factor
+
+```yaml
+jump-factor: 1.0
+```
+
+### speed-factor
+
+```yaml
+speed-factor: 1.0
+```
+
+:::caution
+The following block settings are all related to the light system. CraftEngine has implemented partial light effects as much as possible without affecting server performance. Visual issues with the light system on the client side are normal and in most cases I can't fix them.
+
+The block's occlusion of **skylight** is entirely determined by the **client-side** and **cannot be fixed** by sending packets from the server. Therefore, the **block-light** and **can-occlude** settings **only affect block-emitted light**, not skylight.
+:::
+
+### luminance
+
+Determines the light intensity of the block (Default: 0)
+
+```yaml
+luminance: 15
+```
+
+![](/img/block_settings_8.png)
+
+### can-occlude
+
+Determines whether this block can block light. This also determines whether the block can turn below block into another type. (For instance grass\_block -> dirt) (Default: undefined)
+
+```yaml
+can-occlude: false
+```
+
+<div style={{textAlign: 'center'}}>
+    <img src={require('/img/block_settings_9.png').default} alt="" />
+    <p style={{fontSize: '0.9em', color: '#666', marginTop: '0.5em'}}>occlude: true</p>
+</div>
+
+<div style={{textAlign: 'center'}}>
+    <img src={require('/img/block_settings_10.png').default} alt="" />
+    <p style={{fontSize: '0.9em', color: '#666', marginTop: '0.5em'}}>occlude: false</p>
+</div>
+
+<div style={{textAlign: 'center'}}>
+    <img src={require('/img/block_settings_11.png').default} alt="" />
+    <p style={{fontSize: '0.9em', color: '#666', marginTop: '0.5em'}}>occlude: false</p>
+</div>
+
+<div style={{textAlign: 'center'}}>
+    <img src={require('/img/block_settings_12.png').default} alt="" />
+    <p style={{fontSize: '0.9em', color: '#666', marginTop: '0.5em'}}>occlude: true</p>
+</div>
+
+### block-light
+
+Determines how much light level is reduced after passing through this block (Default: undefined)
+
+```yaml
+block-light: 0
+```
+
+<div style={{textAlign: 'center'}}>
+    <img src={require('/img/block_settings_13.png').default} alt="" />
+    <p style={{fontSize: '0.9em', color: '#666', marginTop: '0.5em'}}>block-light: 15</p>
+</div>
+
+<div style={{textAlign: 'center'}}>
+    <img src={require('/img/block_settings_14.png').default} alt="" />
+    <p style={{fontSize: '0.9em', color: '#666', marginTop: '0.5em'}}>block-light: 7</p>
+</div>
+
+<div style={{textAlign: 'center'}}>
+    <img src={require('/img/block_settings_15.png').default} alt="" />
+    <p style={{fontSize: '0.9em', color: '#666', marginTop: '0.5em'}}>block-light: 0</p>
+</div>
+
+### propagate-skylight
+
+Determines whether natural light can pass through this block.
+
+```yaml
+propagate-skylight: true
+```

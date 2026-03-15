@@ -1,0 +1,178 @@
+---
+title: 🖼️ 图像
+id: image
+---
+
+import PluginFileTree from '@site/src/components/PluginFileTree';
+import Comment from '@site/src/components/Comment';
+
+## 简介
+
+**图像显示**的核心是字符替换系统。游戏通过字体系统将 Unicode 字符映射到图片文件来渲染纹理。Minecraft 本身使用了多种字体集，同一个字符在不同字体中可以有不同的视觉风格。这就是我们自定义图片设计的基础。
+
+下面的文件树结构展示了自定义字体文件的位置。你不需要手动创建这些文件——此演示仅用于帮助你理解原版字体的工作原理。
+
+<PluginFileTree
+  initialTreeData={[
+    {
+      id: "assets",
+      name: "assets",
+      children: [
+        {
+          id: "namespace",
+          name: "namespace",
+          children: [
+            {
+              id: "font",
+              name: "font",
+              children: [
+                  {
+                    id: "font_name.json",
+                    name: "font_name.json"
+                  },
+              ]
+            },
+          ]
+        },
+      ]
+    },
+  ]}
+/>
+
+```
+assets/[命名空间]/font/[字体名称].json
+```
+
+译者注：这里的命名空间和字体名称不允许使用中文
+
+:::tip
+
+像 MiniMessage 和 Minedown 这样的富文本组件解析器都支持使用自定义字体。
+
+MiniMessage: `<font:namespace:font_name>文本</font>`\
+MineDown: `[文本](font=namespace:font_name)`
+:::
+
+:::info
+**问：** 我所在国家的字符会受到影响吗？
+我的玩家可以通过聊天、铁砧或其他方式非法使用这些图片吗？
+
+**答：** 当然不会，除非你使用了 Minecraft 的**默认字体**（`minecraft:default`）。请尽量避免使用该字体，除非你必须这样做。
+:::
+
+## 单字符位图
+
+```yaml
+images:
+  internal:item_browser:
+    height: 140
+    ascent: 18
+    font: minecraft:internal
+    file: minecraft:font/gui/custom/item_browser.png
+    char: '\ub000' # 这是可选的，如果不填写此选项，则插件会为你自动分配
+```
+
+:::caution
+`height` 值**必须始终大于或等于 `ascent` 值**。这是 Minecraft 强制执行的严格要求。
+:::
+
+:::tip
+对于 `char` 选项，你可以直接指定字符：
+
+```yaml
+char: '我'
+```
+
+或者，为了便于管理，你也可以直接使用在 UTF-8 标准中代表字符的唯一数字 ID：
+
+```yaml
+char: 1000
+```
+
+:::
+
+## 多字符位图
+
+```yaml
+images:
+  default:icons:
+    height: 10
+    ascent: 9
+    font: minecraft:icons
+    file: minecraft:font/image/icons.png
+    chars:
+     - '\ub000\ub001\ub002'
+     - '\ub003\ub004\ub005'
+```
+
+:::tip
+
+你也可以通过添加 `grid-size` 选项，来让插件为你自动安排相应数量的字符，而无需手动指定 `chars`
+
+```yaml
+images:
+  default:icons:
+    height: 10
+    ascent: 9
+    font: minecraft:icons
+    file: minecraft:font/image/icons.png
+    grid-size: 2,3 # row,column
+```
+
+:::
+
+## 引用
+
+“引用”允许你为某个多字符精灵图中的某个图设定别名
+
+```yaml
+images:
+  default:angry:
+    ref: default:emojis:0:1
+```
+
+```yaml
+images:
+  default:angry:
+    ref: default:emojis
+    row: 0
+    column: 1
+```
+
+## 在游戏中预览图像
+
+你可以使用一个非常简单的命令 `/ce debug image [id]` 来预览图片效果。
+
+## 与其他插件的兼容性
+
+在其他插件中使用图片有两种方式：
+
+1. 使用同时支持 **MiniMessage 或 MineDown** 和 **PlaceholderAPI** 的插件。此时只需使用对应占位符，具体用法请参阅[**此页面**](../compatibility/placeholderapi.mdx)。
+2. 使用 <Comment text="译者注：这里的命名空间和路径不建议使用中文">`<image:命名空间:路径>` `<image:命名空间:路径:行:列>`</Comment> `<shift:-20>` 格式标签，就像我们在 [✏️ 文本格式](../reference/text_format.mdx) 中所做的那样。CraftEngine 会在**数据包层面**将其替换为对应字体字符。
+
+:::info
+你可以在 config.yml 中找到以下配置，它控制了这些标签的生效范围。
+
+```yaml
+image:
+  # 通过拦截数据包，你可以在其他插件中使用 <image:...> 和 <shift:...> 标签。
+  intercept-packets:
+    system-chat: true
+    tab-list: true
+    actionbar: true
+    ...更多选项
+```
+:::
+
+## 在语言文件中使用
+
+有时，我们会创建图片用于替换原版容器的部分标题，但原版语言文件并不支持自定义字体。在这种情况下，你需要将图片的字体设置为 `minecraft:default`，否则它将无法生效。
+
+```yaml
+images:
+  test:custom_ui:
+    height: 140
+    ascent: 18
+    font: minecraft:default
+    file: minecraft:font/gui/custom/gui.png
+```

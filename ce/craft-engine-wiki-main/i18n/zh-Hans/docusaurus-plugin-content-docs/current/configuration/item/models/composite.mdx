@@ -1,0 +1,28 @@
+---
+title: 🧩 组合
+id: composite
+---
+
+import UrlCard from '@site/src/components/UrlCard';
+
+## 简介
+
+<UrlCard
+  url="https://zh.minecraft.wiki/w/物品模型映射#composite"
+  title="🧩 组合"
+/>
+
+此物品模型映射类型会先计算数组内所有物品模型映射，再根据数组次序从后向前依次渲染。
+
+```yml
+default:composite_item:
+  model:
+    type: "minecraft:composite"
+    models:
+      - type: minecraft:model
+        path: "minecraft:item/custom/model_1"
+      - type: minecraft:model
+        path: "minecraft:item/custom/model_2"
+      - type: minecraft:model
+        path: "minecraft:item/custom/model_3"
+```

@@ -1,0 +1,60 @@
+example_hud:
+  layouts:
+    1:
+      name: example_layout
+      x: 100
+      y: 0
+mood_hud:
+  layouts:
+    1:
+      name: mood_layout
+      x: 1
+      y: 1
+    2:
+      name: mood_arrow_layout
+      x: 1
+      y: 1
+event_hud:
+  layouts:
+    1:
+      name: event_layout
+      x: 2
+      y: 1
+time_hud:
+  layouts:
+    1:
+      name: time_layout
+      x: 50
+      y: 0
+status_hud:
+  layouts:
+    1:
+      name: status_layout
+      x: 50
+      y: 0
+welcome_hud:
+  layouts:
+    1:
+      name: welcome_layout
+      x: 50
+      y: 44
+hotbar_hud:
+  layouts:
+    1:
+      name: hotbar
+      x: 50
+      y: 100
+    2:
+      name: stamina_bar_layout
+      x: 50
+      y: 100
+crosshair_hud:
+  layouts:
+    1:
+      name: crosshair
+      x: 50
+      y: 50
+    2:
+      name: wathe_target_layout
+      x: 50
+      y: 50

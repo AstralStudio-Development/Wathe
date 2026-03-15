@@ -1,0 +1,24 @@
+---
+title: 🏢 Multi High Block
+id: multi_high_block
+---
+
+| Property Name | Property Type | Required |
+|---------------|---------------|----------|
+| CUSTOM        | int           | yes      |
+
+**Multi High Block** determines the block height based on the range difference of the specified `int` type property.
+
+```yaml
+blocks:
+  default:multi_high_block:
+    states:
+      properties:
+        height:
+          type: int
+          default: 0
+          range: 0~2
+    behavior:
+      type: multi_high_block
+      property: height
+```

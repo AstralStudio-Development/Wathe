@@ -1,0 +1,20 @@
+---
+title: ⏏️ Bouncing Block
+id: bouncing_block
+---
+
+**Bouncing Block** let you bounce off the block.
+
+```yml
+blocks:
+  default:sofa:
+    behavior:
+      type: bouncing_block
+      bounce-height: 0.66 # Bounce Height
+      # This option uses a somewhat hacky method to synchronize the player's position.
+      # If the block state you used on the client side behaves like some vanilla bouncing blocks (such as beds or slime blocks), you can set this to false.
+      sync-player-position: true
+      fall-damage-multiplier: 0.5 # Fall damage multiplier
+```
+
+![](/img/bouncing_block.png)

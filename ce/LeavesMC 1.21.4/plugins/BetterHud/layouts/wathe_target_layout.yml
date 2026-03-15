@@ -1,0 +1,138 @@
+wathe_target_layout:
+  texts:
+    101:
+      name: example_font
+      pattern: "<white>[papi:wathe_aim_target_name]"
+      align: center
+      x: 0
+      y: 10
+      scale: 0.5
+      outline: true
+      opacity: 0.12
+      conditions:
+        1:
+          first: (number)papi:wathe_aim_in_attack_range_smooth
+          second: 0.125
+          operation: '<'
+    102:
+      name: example_font
+      pattern: "<white>[papi:wathe_aim_target_name]"
+      align: center
+      x: 0
+      y: 10
+      scale: 0.5
+      outline: true
+      opacity: 0.24
+      conditions:
+        1:
+          first: (number)papi:wathe_aim_in_attack_range_smooth
+          second: 0.125
+          operation: '>='
+        2:
+          first: (number)papi:wathe_aim_in_attack_range_smooth
+          second: 0.250
+          operation: '<'
+    103:
+      name: example_font
+      pattern: "<white>[papi:wathe_aim_target_name]"
+      align: center
+      x: 0
+      y: 10
+      scale: 0.5
+      outline: true
+      opacity: 0.36
+      conditions:
+        1:
+          first: (number)papi:wathe_aim_in_attack_range_smooth
+          second: 0.250
+          operation: '>='
+        2:
+          first: (number)papi:wathe_aim_in_attack_range_smooth
+          second: 0.375
+          operation: '<'
+    104:
+      name: example_font
+      pattern: "<white>[papi:wathe_aim_target_name]"
+      align: center
+      x: 0
+      y: 10
+      scale: 0.5
+      outline: true
+      opacity: 0.48
+      conditions:
+        1:
+          first: (number)papi:wathe_aim_in_attack_range_smooth
+          second: 0.375
+          operation: '>='
+        2:
+          first: (number)papi:wathe_aim_in_attack_range_smooth
+          second: 0.500
+          operation: '<'
+    105:
+      name: example_font
+      pattern: "<white>[papi:wathe_aim_target_name]"
+      align: center
+      x: 0
+      y: 10
+      scale: 0.5
+      outline: true
+      opacity: 0.60
+      conditions:
+        1:
+          first: (number)papi:wathe_aim_in_attack_range_smooth
+          second: 0.500
+          operation: '>='
+        2:
+          first: (number)papi:wathe_aim_in_attack_range_smooth
+          second: 0.625
+          operation: '<'
+    106:
+      name: example_font
+      pattern: "<white>[papi:wathe_aim_target_name]"
+      align: center
+      x: 0
+      y: 10
+      scale: 0.5
+      outline: true
+      opacity: 0.72
+      conditions:
+        1:
+          first: (number)papi:wathe_aim_in_attack_range_smooth
+          second: 0.625
+          operation: '>='
+        2:
+          first: (number)papi:wathe_aim_in_attack_range_smooth
+          second: 0.750
+          operation: '<'
+    107:
+      name: example_font
+      pattern: "<white>[papi:wathe_aim_target_name]"
+      align: center
+      x: 0
+      y: 10
+      scale: 0.5
+      outline: true
+      opacity: 0.86
+      conditions:
+        1:
+          first: (number)papi:wathe_aim_in_attack_range_smooth
+          second: 0.750
+          operation: '>='
+        2:
+          first: (number)papi:wathe_aim_in_attack_range_smooth
+          second: 0.875
+          operation: '<'
+    108:
+      name: example_font
+      pattern: "<white>[papi:wathe_aim_target_name]"
+      align: center
+      x: 0
+      y: 10
+      scale: 0.5
+      outline: true
+      opacity: 1.00
+      conditions:
+        1:
+          first: (number)papi:wathe_aim_in_attack_range_smooth
+          second: 0.875
+          operation: '>='

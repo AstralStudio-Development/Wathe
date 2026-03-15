@@ -1,0 +1,1072 @@
+# Fancy Steel Panel Blocks
+items:
+  # ==================== Anthracite Steel ====================
+  wathe:anthracite_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.anthracite_steel_panel>
+    model: wathe:block/anthracite_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 29
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: dark_oak_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/anthracite_steel_panel
+            e_b:
+              state: dark_oak_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/anthracite_steel_panel
+                y: 90
+            s_b:
+              state: dark_oak_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/anthracite_steel_panel
+                y: 180
+            w_b:
+              state: dark_oak_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/anthracite_steel_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  wathe:anthracite_steel_tiles_panel:
+    data:
+      item-name: <!i><lang:block.wathe.anthracite_steel_tiles_panel>
+    model: wathe:block/anthracite_steel_tiles_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 29
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: mangrove_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/anthracite_steel_tiles_panel
+            e_b:
+              state: mangrove_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/anthracite_steel_tiles_panel
+                y: 90
+            s_b:
+              state: mangrove_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/anthracite_steel_tiles_panel
+                y: 180
+            w_b:
+              state: mangrove_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/anthracite_steel_tiles_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  wathe:smooth_anthracite_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_anthracite_steel_panel>
+    model: wathe:block/smooth_anthracite_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 29
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: cherry_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_anthracite_steel_panel
+            e_b:
+              state: cherry_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_anthracite_steel_panel
+                y: 90
+            s_b:
+              state: cherry_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_anthracite_steel_panel
+                y: 180
+            w_b:
+              state: cherry_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_anthracite_steel_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  # ==================== Khaki Steel ====================
+  wathe:khaki_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.khaki_steel_panel>
+    model: wathe:block/khaki_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 26
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: bamboo_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/khaki_steel_panel
+            e_b:
+              state: bamboo_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/khaki_steel_panel
+                y: 90
+            s_b:
+              state: bamboo_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/khaki_steel_panel
+                y: 180
+            w_b:
+              state: bamboo_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/khaki_steel_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  wathe:khaki_steel_tiles_panel:
+    data:
+      item-name: <!i><lang:block.wathe.khaki_steel_tiles_panel>
+    model: wathe:block/khaki_steel_tiles_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 26
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: crimson_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/khaki_steel_tiles_panel
+            e_b:
+              state: crimson_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/khaki_steel_tiles_panel
+                y: 90
+            s_b:
+              state: crimson_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/khaki_steel_tiles_panel
+                y: 180
+            w_b:
+              state: crimson_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/khaki_steel_tiles_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  wathe:smooth_khaki_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_khaki_steel_panel>
+    model: wathe:block/smooth_khaki_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 26
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: warped_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_khaki_steel_panel
+            e_b:
+              state: warped_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_khaki_steel_panel
+                y: 90
+            s_b:
+              state: warped_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_khaki_steel_panel
+                y: 180
+            w_b:
+              state: warped_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_khaki_steel_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  # ==================== Maroon Steel ====================
+  wathe:maroon_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.maroon_steel_panel>
+    model: wathe:block/maroon_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 35
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: copper_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/maroon_steel_panel
+            e_b:
+              state: copper_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/maroon_steel_panel
+                y: 90
+            s_b:
+              state: copper_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/maroon_steel_panel
+                y: 180
+            w_b:
+              state: copper_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/maroon_steel_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  wathe:maroon_steel_tiles_panel:
+    data:
+      item-name: <!i><lang:block.wathe.maroon_steel_tiles_panel>
+    model: wathe:block/maroon_steel_tiles_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 35
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: exposed_copper_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/maroon_steel_tiles_panel
+            e_b:
+              state: exposed_copper_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/maroon_steel_tiles_panel
+                y: 90
+            s_b:
+              state: exposed_copper_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/maroon_steel_tiles_panel
+                y: 180
+            w_b:
+              state: exposed_copper_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/maroon_steel_tiles_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  wathe:smooth_maroon_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_maroon_steel_panel>
+    model: wathe:block/smooth_maroon_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 35
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: weathered_copper_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_maroon_steel_panel
+            e_b:
+              state: weathered_copper_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_maroon_steel_panel
+                y: 90
+            s_b:
+              state: weathered_copper_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_maroon_steel_panel
+                y: 180
+            w_b:
+              state: weathered_copper_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_maroon_steel_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  # ==================== Muntz Steel ====================
+  wathe:muntz_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.muntz_steel_panel>
+    model: wathe:block/muntz_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 43
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: oxidized_copper_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/muntz_steel_panel
+            e_b:
+              state: oxidized_copper_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/muntz_steel_panel
+                y: 90
+            s_b:
+              state: oxidized_copper_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/muntz_steel_panel
+                y: 180
+            w_b:
+              state: oxidized_copper_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/muntz_steel_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  wathe:muntz_steel_tiles_panel:
+    data:
+      item-name: <!i><lang:block.wathe.muntz_steel_tiles_panel>
+    model: wathe:block/muntz_steel_tiles_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 43
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: waxed_copper_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/muntz_steel_tiles_panel
+            e_b:
+              state: waxed_copper_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/muntz_steel_tiles_panel
+                y: 90
+            s_b:
+              state: waxed_copper_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/muntz_steel_tiles_panel
+                y: 180
+            w_b:
+              state: waxed_copper_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/muntz_steel_tiles_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  wathe:smooth_muntz_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_muntz_steel_panel>
+    model: wathe:block/smooth_muntz_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 43
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: waxed_exposed_copper_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_muntz_steel_panel
+            e_b:
+              state: waxed_exposed_copper_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_muntz_steel_panel
+                y: 90
+            s_b:
+              state: waxed_exposed_copper_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_muntz_steel_panel
+                y: 180
+            w_b:
+              state: waxed_exposed_copper_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_muntz_steel_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  # ==================== Navy Steel ====================
+  wathe:navy_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.navy_steel_panel>
+    model: wathe:block/navy_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 11
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: waxed_weathered_copper_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/navy_steel_panel
+            e_b:
+              state: waxed_weathered_copper_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/navy_steel_panel
+                y: 90
+            s_b:
+              state: waxed_weathered_copper_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/navy_steel_panel
+                y: 180
+            w_b:
+              state: waxed_weathered_copper_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/navy_steel_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  wathe:navy_steel_tiles_panel:
+    data:
+      item-name: <!i><lang:block.wathe.navy_steel_tiles_panel>
+    model: wathe:block/navy_steel_tiles_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 11
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: waxed_oxidized_copper_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/navy_steel_tiles_panel
+            e_b:
+              state: waxed_oxidized_copper_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/navy_steel_tiles_panel
+                y: 90
+            s_b:
+              state: waxed_oxidized_copper_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/navy_steel_tiles_panel
+                y: 180
+            w_b:
+              state: waxed_oxidized_copper_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/navy_steel_tiles_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  wathe:smooth_navy_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_navy_steel_panel>
+    model: wathe:block/smooth_navy_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 11
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: iron_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_navy_steel_panel
+            e_b:
+              state: iron_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_navy_steel_panel
+                y: 90
+            s_b:
+              state: iron_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_navy_steel_panel
+                y: 180
+            w_b:
+              state: iron_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/smooth_navy_steel_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+

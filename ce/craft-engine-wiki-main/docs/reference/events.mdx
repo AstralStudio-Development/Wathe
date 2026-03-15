@@ -1,0 +1,681 @@
+---
+title: 🪇 Events
+id: events
+---
+
+## Introduction
+
+The `events` section determines which item/furniture/block will execute predefined behaviors during specific events. Under the `events` section, you need to specify an event trigger, such as `"right_click"` for a right-click action. Below the event trigger, you must pass a list of actions with their corresponding types. For example, `command` executes a specific command.
+
+```yaml
+events:
+  - on: right_click
+    functions:
+      - type: command
+        command: say 1
+        conditions:
+          - type: permission
+            permission: "craftengine.admin"
+      - type: command
+        command: say 2
+        conditions: []
+```
+
+## 🧨 Event Triggers
+
+### items
+
+* break
+* right\_click
+* left\_click
+* consume
+* pick\_up
+
+### blocks
+
+* break
+* place
+* right\_click
+* left\_click
+* step
+
+### Furniture
+
+* break
+* place
+* right\_click
+
+:::caution
+Please note that the corresponding events should be placed in the appropriate configuration area. For example, if you want to execute a command when interacting with a piece of furniture, the correct approach is to place the `events` under the `furniture` section, not under your item section.
+
+```yaml
+items:
+  default:bench:
+    events: # ❌️
+      right_click:
+        - type: command
+    behavior:
+      type: furniture_item
+      furniture:
+        events: # ✅️
+          right_click:
+            - type: command
+```
+:::
+
+## 🔧 Functions
+
+### cancel\_event
+
+Cancel the original event.
+
+```yaml
+type: cancel_event
+```
+
+### run
+
+Run a list of functions in order. It's useful for functions that share the same conditions.
+
+```yaml
+type: run
+delay: 0 # optional; number; default: 0
+functions: # required; maplist
+  - type: command
+  - type: message
+```
+
+### command
+
+Run a command as a player, console or event.
+
+```yaml
+type: command
+command: "say hello <arg:player.name>" # required; stringlist/string
+target: "self" # optional; enum[all, self]/player selector; default: self
+# Execute the command as a player.
+as-player: false # optional; boolean; default: false
+# Run as OP (Not Recommended). This is a potential security risk. For safety, run the command from the console.
+as-op: false # optional; boolean; default: false
+# Some custom command plugins are event-based and may require this option to execute custom commands.
+as-event: false # optional; boolean; default: false
+```
+
+### message
+
+Send a message/system actionbar message
+
+```yaml
+type: message
+message: "Hello <papi:player_name>" # required; string list/string
+target: "self" # optional; enum[all, self]/player selector
+overlay: false # optional; default: false; false = chat box / true = actionbar
+```
+
+### actionBar
+
+Send an actionbar
+
+```yaml
+type: actionbar
+actionbar: "This is an action bar"  # required; string
+target: "self" # optional; enum[all, self]/player selector; default: self
+```
+
+### Title
+
+Send a title
+
+```yaml
+type: title
+title: "<red>Title</red>"  # required; string
+subtitle: "<Yellow>Subtitle</yellow>" # required; string
+fade-in: 20 # optional; number; default: 10
+stay: 10 # optional; number; default: 20
+fade-out: 10 # optional; number; default: 5
+```
+
+### open\_window
+
+Open a gui window
+
+```yaml
+type: open_window #
+gui-type: anvil # required; enum[anvil, enchantment, grindstone, loom, smithing, crafting, cartography];
+title: "Super Anvil"  # optional; string
+target: "self" # optional; enum[all, self]/player selector; default: self
+```
+
+### break\_block
+
+Break a block
+
+```yaml
+type: break_block
+x: <arg:position.x> # 可选; 数字; 默认值: <arg:position.x>
+y: <arg:position.y> # 可选; 数字; 默认值: <arg:position.y>
+z: <arg:position.z> # 可选; 数字; 默认值: <arg:position.z>
+```
+
+### place\_block
+
+Place a block
+
+```yaml
+type: place_block
+block-state: "default:chinese_lantern" # required; string
+x: <arg:block.block_x> # optional; number; default: <arg:position.x>
+y: <arg:block.block_y> # optional; number; default: <arg:position.y>
+z: <arg:block.block_z> # optional; number; default: <arg:position.z>
+```
+
+### update\_block\_property
+
+Update the properties of an existing block
+
+```yaml
+type: update_block_property
+properties: # required; key-value pair
+  axis: x
+  age: 7
+x: <arg:block.block_x> # optional; number; default: <arg:position.x>
+y: <arg:block.block_y> # optional; number; default: <arg:position.y>
+z: <arg:block.block_z> # optional; number; default: <arg:position.z>
+```
+
+### transform_block
+
+Transform the current block into another one, with properties preserved
+
+```yaml
+type: transform_block 
+block: default:palm_log # required
+properties:             # optional; key-value pair
+  property_a: b
+x: <arg:block.block_x> # optional; number; default: <arg:position.x>
+y: <arg:block.block_y> # optional; number; default: <arg:position.y>
+z: <arg:block.block_z> # optional; number; default: <arg:position.z>
+```
+
+### drop\_loot
+
+Drop loots based on the give loot table
+
+```yaml
+type: drop_loot
+x: <arg:block.block_x> + 0.5 # optional; number; default: <arg:position.x>
+y: <arg:block.block_y> + 0.5 # optional; number; default: <arg:position.y>
+z: <arg:block.block_z> + 0.5 # optional; number; default: <arg:position.z>
+to-inventory: false
+loot:
+  pools: ...
+```
+
+### update\_interaction\_tick
+
+Update the tick when the last interaction ends
+
+```yaml
+type: update_interaction_tick
+```
+
+### set\_count
+
+Set the count of the current item in this event
+
+```yaml
+type: set_count
+add: true # default: false
+count: -1 # required; number
+target: "self" # optional; enum[all, self]/player selector
+```
+
+### set\_food
+
+Set the food level (0\~20) of the player
+
+```yaml
+type: set_food
+add: true # optional; boolean; default: false
+food: 4 # required; number
+target: "self" # optional; enum[all, self]/player selector
+```
+
+### set\_saturation
+
+Set the saturation(0\~10) of the player
+
+```yaml
+type: set_saturation
+add: true # optional; boolean; default: false
+saturation: 2.5 # required; number
+target: "self" # optional; enum[all, self]/player selector
+```
+
+### swing\_hand
+
+Swing the hand involved in this event or the hand specified in config
+
+```yaml
+type: swing_hand
+hand: main_hand # optional; enum[main_hand, off_hand]; leave it empty to swing the hand in this context
+```
+
+### particle
+
+Spawn a particle
+
+```yaml
+type: particle
+particle: minecraft:end_rod # required; string
+x: "<arg:position.x>" # optional; number; default: <arg:position.x>
+y: "<arg:position.y>" # optional; number; default: <arg:position.y>
+z: "<arg:position.z>" # optional; number; default: <arg:position.z>
+count: 5 # optional; number; default: 1
+offset-x: 0.3 # optional; number; default: 0
+offset-y: 0.3 # optional; number; default: 0
+offset-z: 0.3 # optional; number; default: 0
+speed: 0 # optional; number; default: 0
+
+# The following arguments are only effective
+# when the particles are of a certain type.
+
+# item
+item: default:chinese_lantern
+
+# block/falling_dust/dust_pillar/block_crumble/block_marker
+block-state: default:plam_log[axis=y]
+
+# charge
+charge: 1.5
+
+# shriek
+shriek: 1
+
+# dust
+color: 255,255,255
+scale: 1.0
+
+# dust_color_transition
+from: 255,255,255
+to: 0,0,0
+scale: 4.0
+
+# vibration
+target-x: 0
+target-y: 1
+target-z: 0
+arrival-time: 10
+
+# trail
+target-x: 0
+target-y: 1
+target-z: 0
+duration: 10
+```
+
+### potion\_effect
+
+Add a potion effect
+
+```yaml
+type: potion_effect
+potion-effect: minecraft:blindness # required; string
+duration: 20  # optional; number; default: 20
+amplifier: 0   # optional; number; default: 0
+ambient: false # optional; boolean; if the particle is spawned by beacon
+particles: true  # optional; boolean
+```
+
+### remove\_potion\_effect
+
+Remove a potion effect
+
+```yaml
+type: remove_potion_effect
+potion-effect: minecraft:blindness # optional if 'all' is true; boolean
+all: false  # optional; boolean; default: false
+```
+
+### leveler\_exp
+
+Add skill/job experience
+
+```yaml
+type: leveler_exp
+plugin: AuraSkills  # required; string
+leveler: fishing  # required; string; the job/skill id
+count: 10  # required; number
+```
+
+### set\_cooldown
+
+Set cooldown for player
+
+```yaml
+type: set_cooldown
+time: 1m30s
+id: my_cooldown_id # required; string
+add: false # optional; boolean; default: false (Whether to accumulate cooldown time)
+```
+
+### remove\_cooldown
+
+Remove cooldown for player
+
+```yaml
+type: remove_cooldown
+id: my_cooldown_id  # optional if 'all' is true; string
+all: false  # optional; boolean; default: false
+```
+
+### play\_sound
+
+Play a sound
+
+```yaml
+type: play_sound
+sound: minecraft:xxxx.xxx
+x: <arg:position.x> # optional if 'target' is specified; number
+y: <arg:position.y> # optional if 'target' is specified; number
+z: <arg:position.z> # optional if 'target' is specified; number
+target: "self" # optional; enum[all, self]/player selector
+pitch: 1 # optional; number; default: 1
+volume: 1 # optional; number; default: 1
+source: master # optional; enum[music, master, record, weather, block, hostile, neutral, player, ambient, voice, ui]; default: master
+```
+
+### mythic\_mobs\_skill
+
+Cast a mythic mobs skill
+
+```yaml
+type: mythic_mobs_skill
+skill: skill_id # required; string
+power: 1.0 # optional; number; default: 1.0
+```
+
+### spawn\_furniture
+
+Spawn a furniture
+
+```yaml
+type: spawn_furniture
+furniture-id: "default:bench" # required; string
+x: <arg:position.x> # optional; number; default: <arg:position.x>
+y: <arg:position.y> # optional; number; default: <arg:position.y>
+z: <arg:position.z> # optional; number; default: <arg:position.z>
+pitch: <arg:position.pitch> # optional; number; default: <arg:position.pitch>
+yaw: <arg:position.yaw> # optional; number; default: <arg:position.yaw>
+variant: ground # optional;
+play-sound: true # optional; boolean; default: true
+```
+
+### remove\_furniture
+
+Remove a furniture
+
+```yaml
+type: remove_furniture
+drop-loot: true # optional; boolean; default: true
+play-sound: true # optional; boolean; default: true
+```
+
+### replace\_furniture
+
+Replace a furniture
+
+```yaml
+type: replace_furniture
+furniture-id: "default:bench"
+x: <arg:furniture.x> # required; number; default: <arg:furniture.x>
+y: <arg:furniture.y> # required; number; default: <arg:furniture.y>
+z: <arg:furniture.z> # required; number; default: <arg:furniture.z>
+pitch: <arg:furniture.pitch> # required; number; default: <arg:furniture.pitch>
+yaw: <arg:furniture.yaw> # required; number; default: <arg:furniture.yaw>
+variant: ground # optional;
+drop-loot: true # default: true
+play-sound: true # default: true
+```
+
+### rotate\_furniture
+
+Rotate a furniture. Sometimes furniture cannot be rotated due to collision shape, at which point the on-failure event will be triggered.
+
+```yaml
+type: rotate_furniture
+degree: 90
+on-success: [] # functions
+on-failure: [] # functions
+```
+
+### teleport
+
+Teleport to a certain location
+
+```yaml
+type: teleport
+x: <arg:position.x> # required; number
+y: 100 # required; number
+z: <arg:position.z> + 5 # required; number
+pitch: <arg:player.pitch> # optional; default: 0
+yaw: <arg:player.yaw> # optional; default: 0
+world: world # optional; string;
+```
+
+### toast
+
+Send a toast
+
+```yaml
+type: toast
+toast: This is a toast # required; string
+advancement-type: goal # optional; enum[goal,task,challenge]; default: goal
+icon: minecraft:stone # required; string
+```
+
+### damage
+
+Damage the target
+
+```yaml
+type: damage
+target: self # optional; enum[all, self]/player selector; default: self
+amount: 1.0 # optional; number; default: 1.0
+damage-type: generic # optional; string; default: generic
+```
+
+### set\_variable
+
+Set a variable, use \<arg:var_\[name\]\> to access it (replacing \[name\] with the actual variable name)
+
+```yaml
+type: set_variable
+name: my_variable # required; string
+number: 1.0 # optional; number
+as-int: false # optional; boolean; default: false
+text: "hello" # optional; string
+```
+
+### merchant\_trade
+
+Create a custom villager trading shop
+
+```yaml
+type: merchant_trade
+title: "Custom Merchant"
+offers:
+  - cost-1: 
+      item: iron_pickaxe
+      # optional custom component predicates
+      components:  
+        minecraft:enchantments:
+          minecraft:unbreaking: 1
+    # cost-2 is optional
+    cost-2:
+      item: cobblestone
+      # optional count
+      count: 8
+    result: 
+      item: default:topaz
+      count: 4
+  # add more trade offers
+  - cost-1: stone
+    result: default:topaz
+    # optional
+    experience: 3
+```
+
+![](/img/merchant_trade.png)
+
+### remove\_entity
+
+Remove the entity in this context
+
+```yaml
+type: remove_entity
+```
+
+### if\_else
+
+Run the first function that meets the specified conditions.
+
+```yaml
+type: if_else
+rules:
+  - conditions:
+      - type: permission
+        permission: group.admin
+    functions:
+      - type: command
+        command: say hello admin
+  - conditions:
+      - type: permission
+        permission: group.vip
+    functions:
+      - type: command
+        command: say hello vip
+  - functions:
+      - type: command
+        command: say hello player
+```
+
+### when
+
+Evaluate a source value and executes the functions of the first matching case. It's similar to a switch-case statement in programming languages.
+
+```yaml
+type: when
+source: <papi:player_world>
+cases:
+  - when: "world"
+    functions: 
+      - type: message
+        message: "You are in the overworld."
+  - when: 
+      - "world_nether"
+      - "world_the_end"
+    functions: 
+      - type: message
+        message: "You are in a dangerous dimension!"
+# optional
+fallback:
+  - type: message
+    message: "You are in an unknown world."
+```
+
+### damage\_item
+
+Consume the durability of the item currently held by the player in the current context.
+
+```yaml
+type: damage_item
+amount: 1 # optional; number; default: 1
+```
+
+### cycle\_block\_property
+
+Cycle the value of a block property
+
+```yaml
+type: cycle_block_property
+property: axis # required; string
+inverse: <arg:player.is_sneaking> # optional; number; default: <arg:player.is_sneaking>
+x: <arg:block.block_x> # optional; number; default: <arg:position.x>
+y: <arg:block.block_y> # optional; number; default: <arg:position.y>
+z: <arg:block.block_z> # optional; number; default: <arg:position.z>
+```
+
+You can also define a custom cycle sequence with specific rules.
+
+```yaml
+type: cycle_block_property
+property: facing # required; string
+x: <arg:block.block_x> # optional; number; default: <arg:position.x>
+y: <arg:block.block_y> # optional; number; default: <arg:position.y>
+z: <arg:block.block_z> # optional; number; default: <arg:position.z>
+rules:
+  north: east
+  east: south
+  south: west
+  west: north
+```
+
+### set\_exp
+
+Set the experience point of the player
+
+```yaml
+type: set_exp
+count: 1 # required; number
+add: true # optional; boolean; default: false
+target: "self" # optional; enum[all, self]/player selector; default: self
+```
+
+### set\_level
+
+Set the experience level of the player
+
+```yaml
+type: set_level
+count: 1 # required; number
+add: true # optional; boolean; default: false
+target: "self" # optional; enum[all, self]/player selector; default: self
+```
+
+### play\_totem\_animation
+
+Play the totem animation
+
+```yaml
+type: play_totem_animation
+item: "default:topaz" # required; string
+sound: minecraft:entity.player.levelup # optional; string
+pitch: 1 # optional; number; default: 1
+volume: 1 # optional; number; default: 1
+silent: false # optional; boolean; default: false
+target: "self" # optional; enum[all, self]/player selector; default: self
+```
+
+### close\_inventory
+
+Close the current inventory
+
+```yaml
+type: close_inventory
+target: "self" # optional; enum[all, self]/player selector; default: self
+```
+
+### clear\_item
+
+Clear items from the player's inventory
+
+ ```yaml
+type: clear_item
+id: "default:topaz" # required; string
+count: 1 # optional; number; default: 1
+```
+
+:::info
+More functions are coming...
+:::

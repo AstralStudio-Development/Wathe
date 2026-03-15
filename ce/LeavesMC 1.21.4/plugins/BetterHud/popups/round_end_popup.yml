@@ -1,0 +1,13 @@
+round_end_popup:
+  unique: true
+  key-mapping: false
+  duration: 12000
+  layouts:
+    1:
+      name: wathe_round_end_layout
+      gui:
+        x: 50
+        y: 50
+      pixel:
+        x: 0
+        y: 0

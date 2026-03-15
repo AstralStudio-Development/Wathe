@@ -1,0 +1,105 @@
+---
+title: 🪑 Furniture
+id: furniture
+---
+
+import UrlCard from '@site/src/components/UrlCard';
+
+## Sections to Configure
+
+A complete furniture configuration contains the following sections:
+
+* behavior
+
+<UrlCard
+    url="furniture/behaviors"
+    title="🕹️ Furniture Behaviors"
+    subtitle=" "
+/>
+
+* settings
+
+<UrlCard
+    url="furniture/settings"
+    title="⚙️ Furniture Settings"
+    subtitle=" "
+/>
+
+* variants
+
+<UrlCard
+    url="furniture/variants"
+    title="📍 Furniture Variants"
+    subtitle=" "
+/>
+
+* loot
+
+<UrlCard
+    url="../reference/loot_table"
+    title="🎲 Loot Table"
+    subtitle=" "
+/>
+
+* events
+
+<UrlCard
+    url="../reference/events"
+    title="🪇 Events"
+    subtitle=" "
+/>
+
+## How to Bind Items
+
+<UrlCard
+    url="item/behaviors/furniture_item"
+    title="🪑 Furniture Item"
+    subtitle=" "
+/>
+
+<UrlCard
+    url="item/behaviors/liquid_collision_furniture_item"
+    title="🌊 Liquid Collision Furniture Item"
+    subtitle=" "
+/>
+
+## Full Config Overview
+
+```yaml
+furniture:
+  default:bench:
+    settings:
+      item: default:bench
+      sounds:
+        break: minecraft:block.bamboo_wood.break
+        place: minecraft:block.bamboo_wood.place
+    variants:
+      ground:
+        loot-spawn-offset: 0.5,0.5,0
+        entity-culling: true
+        elements:
+          - item: default:bench
+            display-transform: none
+            billboard: fixed
+            position: 0.5,0,0
+            translation: 0,0.5,0
+            shadow-radius: 1
+            shadow-strength: 0.2
+            apply-dyed-color: true
+            glow-color: 255,255,255
+        hitboxes:
+          - position: 0,0,0
+            type: shulker
+            direction: east
+            peek: 100
+            blocks-building: true
+            interactive: true
+            interaction-entity: true
+            seats:
+              - 0,0,-0.1 0
+              - 1,0,-0.1 0
+    loot:
+      template: default:loot_table/furniture
+      arguments:
+        item: default:bench
+```

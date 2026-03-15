@@ -1,0 +1,357 @@
+# Panel Blocks
+items:
+  wathe:golden_glass_panel:
+    data:
+      item-name: <!i><lang:block.wathe.golden_glass_panel>
+    model: wathe:block/golden_glass_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.3
+          resistance: 0.3
+          map-color: 43
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.glass.break
+            fall: minecraft:block.glass.fall
+            hit: minecraft:block.glass.hit
+            place: minecraft:block.glass.place
+            step: minecraft:block.glass.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: oak_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/golden_glass_panel
+            e_b:
+              state: oak_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/golden_glass_panel
+                y: 90
+            s_b:
+              state: oak_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/golden_glass_panel
+                y: 180
+            w_b:
+              state: oak_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/golden_glass_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  wathe:privacy_glass_panel:
+    data:
+      item-name: <!i><lang:block.wathe.privacy_glass_panel>
+    model: wathe:block/privacy_glass_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.3
+          resistance: 0.3
+          map-color: 8
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.glass.break
+            fall: minecraft:block.glass.fall
+            hit: minecraft:block.glass.hit
+            place: minecraft:block.glass.place
+            step: minecraft:block.glass.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: spruce_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/privacy_glass_panel
+            e_b:
+              state: spruce_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/privacy_glass_panel
+                y: 90
+            s_b:
+              state: spruce_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/privacy_glass_panel
+                y: 180
+            w_b:
+              state: spruce_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/privacy_glass_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  wathe:mahogany_panel:
+    data:
+      item-name: <!i><lang:block.wathe.mahogany_panel>
+    model: wathe:block/mahogany_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 26
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/axe
+          sounds:
+            break: minecraft:block.cherry_wood.break
+            fall: minecraft:block.cherry_wood.fall
+            hit: minecraft:block.cherry_wood.hit
+            place: minecraft:block.cherry_wood.place
+            step: minecraft:block.cherry_wood.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: birch_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/mahogany_panel
+            e_b:
+              state: birch_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/mahogany_panel
+                y: 90
+            s_b:
+              state: birch_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/mahogany_panel
+                y: 180
+            w_b:
+              state: birch_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/mahogany_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  wathe:bubinga_panel:
+    data:
+      item-name: <!i><lang:block.wathe.bubinga_panel>
+    model: wathe:block/bubinga_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 10
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/axe
+          sounds:
+            break: minecraft:block.cherry_wood.break
+            fall: minecraft:block.cherry_wood.fall
+            hit: minecraft:block.cherry_wood.hit
+            place: minecraft:block.cherry_wood.place
+            step: minecraft:block.cherry_wood.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: jungle_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/bubinga_panel
+            e_b:
+              state: jungle_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/bubinga_panel
+                y: 90
+            s_b:
+              state: jungle_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/bubinga_panel
+                y: 180
+            w_b:
+              state: jungle_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/bubinga_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+
+  wathe:ebony_panel:
+    data:
+      item-name: <!i><lang:block.wathe.ebony_panel>
+    model: wathe:block/ebony_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: trapdoor_block
+          can-open-with-hand: false
+          can-open-by-wind-charge: false
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 29
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/axe
+          sounds:
+            break: minecraft:block.cherry_wood.break
+            fall: minecraft:block.cherry_wood.fall
+            hit: minecraft:block.cherry_wood.hit
+            place: minecraft:block.cherry_wood.place
+            step: minecraft:block.cherry_wood.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            half:
+              type: single_block_half
+              default: bottom
+            open:
+              type: boolean
+              default: true
+            powered:
+              type: boolean
+              default: false
+          appearances:
+            n_b:
+              state: acacia_trapdoor[facing=north,half=bottom,open=true]
+              model:
+                path: wathe:block/ebony_panel
+            e_b:
+              state: acacia_trapdoor[facing=east,half=bottom,open=true]
+              model:
+                path: wathe:block/ebony_panel
+                y: 90
+            s_b:
+              state: acacia_trapdoor[facing=south,half=bottom,open=true]
+              model:
+                path: wathe:block/ebony_panel
+                y: 180
+            w_b:
+              state: acacia_trapdoor[facing=west,half=bottom,open=true]
+              model:
+                path: wathe:block/ebony_panel
+                y: 270
+          variants:
+            facing=north,half=bottom,open=true:
+              appearance: n_b
+            facing=east,half=bottom,open=true:
+              appearance: e_b
+            facing=south,half=bottom,open=true:
+              appearance: s_b
+            facing=west,half=bottom,open=true:
+              appearance: w_b
+

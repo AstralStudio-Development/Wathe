@@ -1,0 +1,278 @@
+---
+title: ⚙️ Configuration
+id: configuration
+---
+
+import Highlight from '@site/src/components/Highlight';
+import PluginFileTree from '@site/src/components/PluginFileTree';
+
+## Introduction
+
+The **configuration** here specifically refers to the <Highlight color="#1877F2">**configuration**</Highlight> folder within each package under the <Highlight color="#1877F2">**resources**</Highlight> directory. Configuration files are stored in the following folder and support both JSON and YML formats. You may create unlimited subdirectories within the configuration folder.
+
+## Pro Tips
+
+### Section Identifier
+
+CraftEngine introduced this feature to address certain pain points in YAML configuration—particularly when you need to define multiple configurations of the same type within a single file. In YAML configuration, the following format is not allowed:
+
+```yaml
+items:
+  default:topaz_helmet:
+    template: default:topaz_armor
+    arguments:
+      part: helmet
+      slot: head
+blocks:
+  default:topaz_ore:
+    ...more
+items:
+  default:topaz_boots:
+    template: default:topaz_armor
+    arguments:
+      part: boots
+      slot: feet
+```
+
+Therefore, you need to add `# + any identifier` after the configuration section name, which allows you to configure multiple sections of the same type within a single YAML file.
+
+```yaml
+items#0:
+  default:topaz_helmet:
+    template: default:topaz_armor
+    arguments:
+      part: helmet
+      slot: head
+blocks:
+  default:topaz_ore:
+    ...more
+items#1:
+  default:topaz_boots:
+    template: default:topaz_armor
+    arguments:
+      part: boots
+      slot: feet
+```
+
+### Section Delimiters
+
+By using `::`, you can split a standard key into a structured mapping key with complex hierarchies. For example, the following two configurations are equivalent:
+
+```yaml
+# Single-line format  
+key::subkey::nested_key: value  
+
+# Expanded format  
+key:  
+  subkey:  
+    nested_key: value  
+```
+
+:::info
+
+This helps reduce the number of lines required for configuration in certain scenarios, making the overall setup more concise and visually cleaner.
+
+:::
+
+
+### Version-Based Configs
+
+:::tip
+
+For regular users, this option holds little significance. However, if you're a resource pack creator, you can use this to specify that certain settings only apply to particular versions.
+
+:::
+
+Craftengine supports three different version specification formats, which are:
+
+1. Fixed version: `$$1.21.4`
+2. Version range: `$$1.20.1~1.21.4`
+3. Version comparison: `$$>=1.21.4`, `$$<1.21.8`
+
+They can be used as value selectors or for parameter overriding/merging.
+
+#### **Example 1: Value Selection**
+
+```yaml
+items:
+  default:topaz_trident:
+    material: trident
+    client-bound-material:
+      $$1.20.1~1.21.1: bow
+      $$1.21.2~1.21.3: honey_bottle
+      $$fallback: xxx
+    data:
+      item-name: <!i><#FF8C00><i18n:item.topaz_trident>
+      components:
+        minecraft:max_damage: 300
+```
+
+#### **Example 2: Block Merging**
+
+```yaml
+items:
+  default:topaz_trident:
+    material: trident
+    data:
+      item-name: <!i><#FF8C00><i18n:item.topaz_trident>
+      components:
+        minecraft:max_damage: 300
+    $$>=1.21.2:
+      client-bound-data:
+        components:
+          minecraft:consumable:
+            consume_seconds: 128000
+            animation: spear
+```
+
+### Expanded Value Structure 
+
+To specify a data type, such as `float`, `long`, or `short`, you can prefix the value with `!!<type>`.
+
+```yaml
+long-value: !!long 1234
+float-value: !!float 12.34
+byte-value: !!byte 1
+short-value: !!short 123
+byte-array-value: !!byte[] [1,2,3,4]
+int-array-value: !!int[] [1,2,3,4]
+long-array-value: !!long[] [1,2,3,4]
+double-array-value: !!double[] [1.1,2.2,3.3,4.4]
+int-list: !!IntList [1,2,3]
+long-list: !!LongList [1,2,3]
+double-list: !!DoubleList [1,2,3]
+```
+
+### Sub Packs
+
+Subpacks enable you to selectively load configurations based on the server version, or conveniently manage packs of a similar type in a unified way.
+
+```yaml
+# pack.yml
+author: XiaoMoMi
+version: 0.0.1
+description: Default Assets for CraftEngine
+namespace: default
+subpacks:
+  $$>=1.21.4:
+    pack_a: true
+  $$<1.21.4:
+    pack_b: true
+  pack_c: true
+  pack_d: false
+```
+
+<PluginFileTree
+  initialTreeData={[
+    {
+      id: "resources",
+      name: "resources",
+      children: [
+        {
+          id: "default",
+          name: "default",
+          children: [
+            {
+              id: "configuration_1",
+              name: "configuration",
+              children: [
+              ]
+            },
+            {
+              id: "resourcepack_1",
+              name: "resourcepack",
+              children: [
+              ]
+            },
+            {
+              id: "subpacks",
+              name: "subpacks",
+              children: [
+                {
+                  id: "pack_a",
+                  name: "pack_a",
+                  children: [
+                    {
+                      id: "configuration_2",
+                      name: "configuration",
+                      children: [
+                        
+                      ]
+                    },
+                    {
+                      id: "resourcepack_2",
+                      name: "resourcepack",
+                      children: [
+                        
+                      ]
+                    },
+                  ]
+                },
+                {
+                  id: "pack_b",
+                  name: "pack_b",
+                  children: [
+                    {
+                      id: "configuration_3",
+                      name: "configuration",
+                      children: [
+                      ]
+                    },
+                    {
+                      id: "resourcepack_3",
+                      name: "resourcepack",
+                      children: [
+                      ]
+                    },
+                  ]
+                },
+                {
+                  id: "pack_c",
+                  name: "pack_c",
+                  children: [
+                    {
+                      id: "configuration_4",
+                      name: "configuration",
+                      children: [
+                      ]
+                    },
+                    {
+                      id: "resourcepack_4",
+                      name: "resourcepack",
+                      children: [
+                      ]
+                    },
+                  ]
+                },
+                {
+                  id: "pack_d",
+                  name: "pack_d",
+                  children: [
+                    {
+                      id: "configuration_5",
+                      name: "configuration",
+                      children: [
+                      ]
+                    },
+                    {
+                      id: "resourcepack_5",
+                      name: "resourcepack",
+                      children: [
+                        
+                      ]
+                    },
+                  ]
+                }
+              ]
+            },
+            {
+                id: "pack.yml",
+                name: "pack.yml",
+                isLeaf: true,
+            },
+          ]
+        }
+      ]
+    },
+  ]}
+/>

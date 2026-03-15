@@ -1,0 +1,36 @@
+---
+title: 💺 Seat Block
+id: seat_block
+---
+
+import Highlight from '@site/src/components/Highlight';
+
+<Highlight color="#3B6B60">**Block Entity**</Highlight>​
+
+| Property Name | Property Type        | Required |
+|---------------|----------------------|----------|
+| facing        | horizontal_direction | no       |
+
+```yml
+blocks:
+  default:sofa:
+    behavior:
+      type: seat_block
+      seats:
+        - 0,0,0 0   # x,y,z [angle]
+```
+
+```yml
+blocks:
+  default:sofa:
+    behavior:
+      type: seat_block
+      seats:
+        - 0,0,0   
+```
+
+:::tip
+The values of x, y, and z are automatically adjusted based on the block's facing property.
+
+You will notice that there is an additional `0` after `0,0,0`. If you fill in this parameter, it means the player's rotation angle in the seat is limited. You can try adding/removing this parameter and looking around in the chair to feel the difference.
+:::

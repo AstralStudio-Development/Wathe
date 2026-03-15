@@ -1,0 +1,21 @@
+{
+    "credit": "Made with Blockbench, adapted for Minecraft door",
+    "textures": {
+        "0": "wathe:block/anthracite_steel_door",
+        "particle": "wathe:block/anthracite_steel_door"
+    },
+    "elements": [
+        {
+            "from": [0, 0, 0],
+            "to": [16, 16, 2],
+            "faces": {
+                "north": {"uv": [11.5, 4.5, 7.5, 8.5], "texture": "#0"},
+                "east": {"uv": [7, 4.5, 7.5, 8.5], "texture": "#0"},
+                "south": {"uv": [12, 4.5, 16, 8.5], "texture": "#0"},
+                "west": {"uv": [11.5, 4.5, 12, 8.5], "texture": "#0"},
+                "up": {"uv": [7.5, 4.5, 11.5, 4], "texture": "#0"},
+                "down": {"uv": [11.5, 0, 15.5, 0.5], "texture": "#0", "cullface": "down"}
+            }
+        }
+    ]
+}

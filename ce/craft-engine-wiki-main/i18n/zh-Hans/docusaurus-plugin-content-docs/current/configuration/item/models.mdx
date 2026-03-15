@@ -1,0 +1,268 @@
+---
+title: 🟰 物品模型
+id: models
+---
+
+import UrlCard from '@site/src/components/UrlCard';
+
+## 简介
+
+自 1.21.4 版本起，Minecraft 开始支持更复杂的物品模型。这允许你为物品创建更具动态性的变体。本文档专为 1.21.4 及以上版本编写。对于旧版本，插件将自动降级相应的模型文件（注意：这并非 100% 兼容旧版本，因为许多条件和模型类型在旧版本中并不存在）。
+
+<UrlCard
+  url="../../getting_start/item_model_display"
+  title="入门指南 | 教程"
+  subtitle="🏹 物品模型展示"
+/>
+
+:::info
+如果你发现 CraftEngine 在最新的 Minecraft 版本中缺少某些功能，可以在 GitHub 上提交提议，以引起开发者的注意。
+:::
+
+## 简化模型
+
+简化模型的目的是为了降低常见用例的配置复杂度。虽然 CraftEngine 提供了模板，但使用参数仍需要 3-4 行配置。简化模型以牺牲一部分灵活性为代价，大幅降低了这一门槛。
+
+简化模型会自动分析你选择的基础材质，并选择最合适的方法生成模型。在大多数情况下，只需指定一个 `texture` 参数，即可完成所有操作。
+
+下面的示例中展示了一系列简化模型与普通模型的配置对比，这将帮助你在使用简化写法的同时理解其对应的普通写法。
+
+### 2D 图标
+
+简化写法
+
+```yaml
+items:
+  default:ender_pearl_flower_seeds:
+    material: paper
+    texture: minecraft:item/custom/ender_pearl_flower_seeds
+```
+
+普通写法
+
+```yaml
+items:
+  default:ender_pearl_flower_seeds:
+    material: paper
+    model:
+      type: minecraft:model
+      path: minecraft:item/custom/ender_pearl_flower_seeds
+      generation:
+        parent: minecraft:item/generated
+        textures:
+          layer0: minecraft:item/custom/ender_pearl_flower_seeds
+```
+
+### 手持物品
+
+简化写法
+
+```yaml
+items:
+  default:topaz_axe:
+    material: golden_axe
+    texture: minecraft:item/custom/topaz_axe
+```
+
+普通写法
+
+```yaml
+items:
+  default:topaz_axe:
+    material: golden_axe
+    model:
+      type: minecraft:model
+      path: minecraft:item/custom/topaz_axe
+      generation:
+        parent: minecraft:item/handheld
+        textures:
+          layer0: minecraft:item/custom/topaz_axe
+```
+
+:::tip
+**[1.21.4+]** 对于简单的 2D 图标或手持物品模型，配置多个纹理会使图像叠加，效果如下。
+
+```yaml
+items:
+  default:topaz_axe:
+    material: golden_axe
+    textures:
+      - minecraft:item/custom/topaz_axe
+      - minecraft:item/custom/topaz
+```
+
+![](/img/composite_model.png)
+
+:::
+
+### 钓鱼竿
+
+简化写法
+
+```yaml
+items:
+  default:topaz_rod:
+    material: fishing_rod
+    textures:
+      - minecraft:item/custom/topaz_rod
+      - minecraft:item/custom/topaz_rod_cast
+```
+
+普通写法
+
+```yaml
+items:
+  default:topaz_rod:
+    material: fishing_rod
+    model:
+      type: minecraft:condition
+      property: minecraft:fishing_rod/cast
+      on-false:
+        type: minecraft:model
+        path: minecraft:item/custom/topaz_rod
+        generation:
+          parent: minecraft:item/fishing_rod
+          textures:
+            layer0: minecraft:item/custom/topaz_rod
+      on-true:
+        type: minecraft:model
+        path: minecraft:fishing_rod/cast
+        generation:
+          parent: minecraft:item/fishing_rod
+          textures:
+            layer0: minecraft:fishing_rod/cast
+```
+
+:::info
+以下配置仅展示简化版本。如果你好奇普通模型是如何配置的，可以参考默认配置的模板。
+:::
+
+### 鞘翅
+
+```yaml
+items:
+  default:flame_elytra:
+    material: elytra
+    textures:
+      - minecraft:item/custom/flame_elytra
+      - minecraft:item/custom/flame_elytra_broken
+```
+
+### 弓
+
+```yaml
+items:
+  default:topaz_bow:
+    material: bow
+    textures:
+      - minecraft:item/custom/topaz_bow
+      - minecraft:item/custom/topaz_bow_pulling_0
+      - minecraft:item/custom/topaz_bow_pulling_1
+      - minecraft:item/custom/topaz_bow_pulling_2
+```
+
+### 弩
+
+```yaml
+items:
+  default:topaz_crossbow:
+    material: crossbow
+    textures:
+      - minecraft:item/custom/topaz_crossbow
+      - minecraft:item/custom/topaz_crossbow_pulling_0
+      - minecraft:item/custom/topaz_crossbow_pulling_1
+      - minecraft:item/custom/topaz_crossbow_pulling_2
+      - minecraft:item/custom/topaz_crossbow_arrow
+      - minecraft:item/custom/topaz_crossbow_firework
+```
+
+### 盾牌
+
+```yaml
+items:
+  default:shield_3d:
+    material: shield
+    models:
+      - minecraft:item/custom/shield_3d
+      - minecraft:item/custom/shield_3d_blocking
+```
+
+:::tip
+如果你已经有了模型文件，你可以直接指定模型路径来应用简化模型。
+
+```yaml
+items:
+  default:rod_3d:
+    material: fishing_rod
+    models:
+      - minecraft:item/custom/rod_3d
+      - minecraft:item/custom/rod_3d_cast
+```
+
+```yaml
+items:
+  default:exit_icon:
+    material: paper
+    model: minecraft:item/custom/exit_icon
+```
+:::
+
+:::tip
+通常情况下，当你只指定了纹理时，物品的模型路径会自动分配。你也可以使用 'model' 选项手动指定路径，例如：
+
+```yaml
+items:
+  default:ender_pearl_flower_seeds:
+    material: paper
+    model: minecraft:item/custom/ender_pearl_flower_seeds
+    texture: minecraft:item/custom/ender_pearl_flower_seeds
+```
+
+```yaml
+items:
+  default:topaz_rod:
+    material: fishing_rod
+    models:
+      - minecraft:item/custom/topaz_rod
+      - minecraft:item/custom/topaz_rod_cast
+    textures:
+      - minecraft:item/custom/topaz_rod
+      - minecraft:item/custom/topaz_rod_cast
+```
+
+:::
+
+## 旧版模型
+
+**旧版模型**特指 1.21.3 及更早版本中使用的物品模型格式。你可以通过 legacy-model 部分来指定旧版物品模型格式。然而，在大多数情况下，你无需这样做，因为插件会尽可能自动将 1.21.4 的物品模型转换为旧版格式。只有当旧版模型格式出现问题时，你才应该使用此配置部分。
+
+```yaml
+items#topaz_gears:
+  default:topaz_rod:
+    material: fishing_rod
+    item-model: default:topaz_rod
+    settings:
+      tags:
+        - "default:topaz_tools"
+    data:
+      item-name: "<!i><#FF8C00><i18n:item.topaz_rod>"
+      tooltip-style: minecraft:topaz
+    model:
+      template: default:model/simplified_fishing_rod_2d
+      arguments:
+        path: minecraft:item/custom/topaz_rod
+        cast_path: minecraft:item/custom/topaz_rod_cast
+    # 如果你在 legacy-model 部分中指定了模型，
+    # 插件将使用你手动定义的模型，
+    # 而不是依赖自动转换的旧版格式。
+    legacy-model:
+      path: minecraft:item/custom/topaz_rod
+      overrides:
+        - path: minecraft:item/custom/topaz_rod_cast
+          predicate: 
+            cast: 1
+```
+
+:::tip
+如果你不需要支持 1.21.4 以上的版本，你可以只配置 legacy-model 部分，并完全省略 model 部分。
+:::

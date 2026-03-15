@@ -1,0 +1,80 @@
+---
+title: ✨ Simple Particle Block
+id: simple_particle_block
+---
+
+import Highlight from '@site/src/components/Highlight';
+
+<Highlight color="#3B6B60">**Block Entity**</Highlight>​
+
+```yml
+blocks:
+  default:amethyst_torch:
+    behavior:
+      type: simple_particle_block
+      tick-interval: 10
+      particles: # Defines particle effects, see Particle argument below
+        - particle: smoke
+          x: 0.5
+          y: 0.7
+          z: 0.5
+          count: 1
+          offset-x: 0
+          offset-y: 0
+          offset-z: 0
+          speed: 0
+```
+
+<div style={{textAlign: 'center'}}>
+    <img src={require('/img/simple_particle_block.png').default} alt="" />
+</div>
+
+## Particle argument
+
+```yml
+particle: minecraft:end_rod # required; string
+x: 0 # optional; number; default: 0
+y: 0 # optional; number; default: 0
+z: 0 # optional; number; default: 0
+count: 5 # optional; number; default: 1
+offset-x: 0.3 # optional; number; default: 0
+offset-y: 0.3 # optional; number; default: 0
+offset-z: 0.3 # optional; number; default: 0
+speed: 0 # optional; number; default: 0
+
+# The following arguments are only effective
+# when the particles are of a certain type.
+
+# item
+item: default:chinese_lantern
+
+# block/falling_dust/dust_pillar/block_crumble/block_marker
+block-state: default:plam_log[axis=y]
+
+# charge
+charge: 1.5
+
+# shriek
+shriek: 1
+
+# dust
+color: 255,255,255
+scale: 1.0
+
+# dust_color_transition
+from: 255,255,255
+to: 0,0,0
+scale: 4.0
+
+# vibration
+target-x: 0
+target-y: 1
+target-z: 0
+arrival-time: 10
+
+# trail
+target-x: 0
+target-y: 1
+target-z: 0
+duration: 10
+```

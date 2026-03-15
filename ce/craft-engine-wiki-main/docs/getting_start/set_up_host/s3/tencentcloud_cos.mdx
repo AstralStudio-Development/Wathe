@@ -1,0 +1,59 @@
+---
+title: Tencent Cloud COS
+id: tencentcloud_cos
+---
+
+## Steps
+
+### Step 1
+Create a Tencent Cloud account by visiting https://www.tencentcloud.com/en/account/register to complete the registration, and then access https://console.tencentcloud.com/cos. \
+![](/img/tencentcloud_cos_1.png)
+
+### Step 2
+Check the box for `I have read and agree to the Tencent Cloud Service Agreement、 《Object Storage Service Level Agreement》 and 《COS Default Billing by Volume (Postpaid)》`, then click `Open COS and receive free quota resource pack`.\
+![](/img/tencentcloud_cos_2_1.png)\
+Wait for the activation to complete, then click `enter the console`.\
+![](/img/tencentcloud_cos_2_2.png)
+
+### Step 3
+Click `Bucket list`.\
+![](/img/tencentcloud_cos_3_3.png)\
+Click `Create Bucket`.\
+![](/img/tencentcloud_cos_3_4.png)\
+Image operation.\
+![](/img/tencentcloud_cos_3_5.png)\
+![](/img/tencentcloud_cos_3_6.png)\
+![](/img/tencentcloud_cos_3_7.png)
+
+### Step 4
+Click `Overview`, then locate and copy the `Endpoint`.\
+You should get a URL, for example: `https://114514-1919810114514.cos.na-siliconvalley.myqcloud.com`.\
+Here, `https` will be the value for `protocol`, `cos.na-siliconvalley.myqcloud.com` for `endpoint`, and `114514-1919810114514` for `bucket`.\
+![](/img/tencentcloud_cos_4.png)
+
+### Step 5
+Visit https://console.tencentcloud.com/cam/capi and click `Continue to use`. Then check the box for `I have understood and saved the SecretKey.` and click `OK`.\
+Click `Create Key` and wait for the `Create SecretKey` popup to appear, then locate the `SecretId` and `SecretKey`.
+You should get a key pair in this format, for example: `SecretId JKHLsa45s5sdf54wef4784784S` and `SecretKey KJYQsd45f545sdgsdFEg`.
+Here, `JKHLsa45s5sdf54wef4784784S` will be the value for `access-key-id`, and `KJYQsd45f545sdgsdFEg` for `access-key-secret`.
+Finally, check the box for `I have understood and saved the SecretKey.` and click `OK`. You should now be able to write the following configuration.
+
+```yaml
+resource-pack:
+  delivery:
+    hosting:
+      - type: s3
+        endpoint: "cos.na-siliconvalley.myqcloud.com"
+        bucket: "114514-1919810114514"
+        access-key-id: "JKHLsa45s5sdf54wef4784784S"
+        access-key-secret: "KJYQsd45f545sdgsdFEg"
+        protocol: "https"
+        path-style: false
+        region: "auto"
+        upload-path: "server_resource_pack.zip"
+        disable-calculate-sha256: false
+        validity: 10
+        rate-map:
+          max-requests: 5
+          reset-interval: 20
+```

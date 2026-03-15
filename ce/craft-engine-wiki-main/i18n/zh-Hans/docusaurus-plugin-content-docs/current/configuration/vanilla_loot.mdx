@@ -1,0 +1,48 @@
+---
+title: 🗃️ 原版战利品
+id: vanilla_loot
+---
+
+## 简介
+
+Minecraft 原生的战利品系统虽然功能强大，但存在一个关键限制：它无法集成插件特有的元素，例如占位符检查、权限控制或其他高级功能。此外，配置原版数据包也较为繁琐，尤其是在覆盖默认战利品表时尤为复杂。
+
+为了解决这些问题，本插件提供了一个对原版战利品系统的覆盖机制。下面是一个快速入门示例（其中 "..." 表示战利品配置内容）。为了获得最佳效果，我们建议先阅读 [💎 战利品表](../reference/loot_table.mdx)，以全面掌握战利品表的配置方法。
+
+## 方块战利品
+
+```yaml
+vanilla-loots:
+  minecraft:grass_loot:
+    type: block
+    target: "minecraft:grass"
+    # 是否覆盖原版战利品
+    override: false
+    loot:
+      ...
+```
+
+```yaml
+vanilla-loots:
+  minecraft:grass_loot:
+    type: block
+    target:
+      - minecraft:wheat[age=0] # 使用精确方块状态
+      - minecraft:wheat[age=1]
+    override: false
+    loot:
+      ...
+```
+
+## 实体战利品
+
+```yaml
+vanilla-loots:
+  minecraft:sheep_loot:
+    type: entity
+    target: "minecraft:sheep"
+    # 是否覆盖原版战利品
+    override: false
+    loot:
+      ...
+```

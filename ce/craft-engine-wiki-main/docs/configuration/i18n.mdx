@@ -1,0 +1,59 @@
+---
+title: 🌍 I18n/L10n
+id: i18n
+---
+
+**i18n** is a fully server-side localization system, which means that the `<i18n>` tags you use are actually applied on the server. The language used is determined by the server's language settings and is independent of the player's client language.
+
+**l10n** provides a customized localization experience for the client. The `<l10n>` tag selects the appropriate translation text based on the language chosen in the player's client, regardless of the server's language settings.
+
+:::info
+
+The country or region specification for the language is optional (for example, "en\_us" can be simplified to "en"). The plugin will first attempt to find a language tailored to the specific country or region. If such a language is not available, it will then search for the general language. If the language is also not found, the plugin will default to using English (en) as the fallback language.
+
+:::
+
+Example configuration:
+
+```yaml
+translations:
+  en:
+    item.chinese_lantern: "Chinese Lantern"
+    item.fairy_flower: "Fairy Flower"
+    item.bench: "Bench"
+    item.table_lamp: "Table Lamp"
+    item.wooden_chair: "Wooden Chair"
+  zh_cn:
+    item.chinese_lantern: "灯笼"
+    item.fairy_flower: "仙灵花"
+    item.bench: "长椅"
+    item.table_lamp: "台灯"
+    item.wooden_chair: "木椅"
+```
+
+:::info
+
+Example usage of `<i18n>` and `<l10n>`:
+```yml
+items:
+  custom:chinese_lantern:
+    material: paper
+    data:
+      # The item's name will be directly replaced with "Chinese lantern" and stored within the item's component.
+      item-name: "<i18n:item.chinese_lantern>"
+```
+
+```yml
+items:
+  custom:chinese_lantern:
+    material: paper
+    data:
+      # The item's name will be stored as the raw text <l10n:item.chinese_lantern>. 
+      # When the client receives the packet for this item, it will automatically select the appropriate language to replace it.
+      item-name: "<l10n:item.chinese_lantern>"
+```
+:::
+
+:::tip
+You can use the `<l10n>` tag in messages and items from other plugins to apply localization on the fly!
+:::

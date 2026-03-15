@@ -1,0 +1,137 @@
+---
+title: 😀 表情
+id: emoji
+---
+
+:::caution
+
+创建表情需要现有图像配置。若您不熟悉此流程，请参考[🖼️ 图像](image.mdx)页面。
+
+:::
+
+创建表情非常简单——只需填写几个简单易懂的参数。但与其他插件不同，CraftEngine 为您提供了更高的自定义自由度，特别是在表情反馈内容方面。您可以使用自定义文本样式、变量、数学运算等功能。
+
+基础表情配置示例：
+
+```yaml
+emoji:
+  default:time:
+    permission: emoji.time
+    content: "<white><arg:emoji></white>"
+    image: "default:icons:0:0"
+    keywords:
+      - ":time:"
+```
+
+:::tip
+
+`<arg:emoji>` 是上下文相关参数，用于返回对应表情的图像表示。\
+`<arg:keyword>` 将返回首个可用的关键词
+
+:::
+
+在以下示例中，玩家可通过输入 `:pos:` 获取当前坐标。虽然 CraftEngine 为表情内容提供了高度客制化能力（特别是 MiniMessage 支持），但这种灵活性也使其学习起来更加复杂——尤其是对于不熟悉高级文本格式的用户而言。
+
+```yaml
+emoji:
+  default:emoji_location:
+    permission: emoji.location
+    content: "<hover:show_text:'使用<yellow>\"<arg:keyword>\"</yellow>来发送表情\"<arg:emoji>\"'><!shadow><white><arg:emoji></white></!shadow><bold>当前坐标：<papi:player_x>,<papi:player_y>,<papi:player_z></bold></hover>"
+    image: "default:icons:0:0"
+    keywords:
+      - ":pos:"
+```
+
+<div style={{textAlign: 'center'}}>
+  <img src={require('/img/i18n/zh-Hans/emoji_1.png').default} alt="" />
+</div>
+
+:::tip
+
+为提升复杂配置的可读性，我们新增了多行格式支持。CraftEngine在处理时会自动合并为单行字符串，使复杂配置的编写和维护更简便，同时保持完整功能。
+
+```yaml
+content:
+- <hover:show_text:'使用<yellow>"<arg:keyword>"</yellow>来发送表情"<arg:emoji>"'>
+- <!shadow><white><arg:emoji></white></!shadow>
+- "<bold>当前坐标：<papi:player_x>,<papi:player_y>,<papi:player_z></bold>"
+- </hover>
+```
+:::
+
+:::info
+
+CraftEngine 使用 Paper 的现代聊天组件 API 实现表情功能。任何仍依赖 Bukkit 旧版聊天事件的聊天插件几乎都无法兼容表情渲染。
+
+已知兼容的聊天插件：[**TrChat**](https://github.com/TrPlugins/TrChat)
+
+<details>
+  <summary>开发者指南</summary>
+
+  ```java
+import io.papermc.paper.event.player.AsyncChatEvent;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.Context;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.ParsingException;
+import net.kyori.adventure.text.minimessage.tag.Tag;
+import net.kyori.adventure.text.minimessage.tag.resolver.ArgumentQueue;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+public class ChatListener implements Listener {
+    public static final String CHAT_FORMAT = "<gray><player>: <chat>";
+
+    @EventHandler(ignoreCancelled = true)
+    public void onAsyncChat(AsyncChatEvent event) {
+        Component chatMessage = event.message();
+        Component formattedChatMessage = MiniMessage.miniMessage().deserialize(CHAT_FORMAT, new PlayerTagResolver(event.getPlayer()), new ChatMessageTagResolver(chatMessage));
+        // 执行后续处理
+    }
+
+    public static class PlayerTagResolver implements TagResolver {
+        private final Player sender;
+
+        public PlayerTagResolver(Player sender) {
+            this.sender = sender;
+        }
+
+        @Override
+        public boolean has(@NotNull String name) {
+            return name.equals("player");
+        }
+
+        @Override
+        public @Nullable Tag resolve(@NotNull String name, @NotNull ArgumentQueue arguments, @NotNull Context ctx) throws ParsingException {
+            return Tag.inserting(Component.text(sender.getName()));
+        }
+    }
+
+    public static class ChatMessageTagResolver implements TagResolver {
+        private final @NotNull Component chatMessage;
+
+        public ChatMessageTagResolver(@NotNull Component chatMessage) {
+            this.chatMessage = chatMessage;
+        }
+
+        @Override
+        public boolean has(@NotNull String name) {
+            return name.equals("chat");
+        }
+
+        @Override
+        public @Nullable Tag resolve(@NotNull String name, @NotNull ArgumentQueue arguments, @NotNull Context ctx) throws ParsingException {
+            return Tag.selfClosingInserting(this.chatMessage);
+        }
+    }
+}
+
+  ```
+
+</details>
+
+:::

@@ -1,0 +1,64 @@
+---
+title: 腾讯云COS
+id: tencentcloud_cos
+---
+
+## 操作步骤
+
+### 第一步
+创建腾讯云账号 ，前往 https://cloud.tencent.com/register 完成注册，并且访问 https://console.cloud.tencent.com/cos \
+![](/img/i18n/zh-Hans/tencentcloud_cos_1.png)
+
+### 第二步
+点击 `我已阅读并同意 《腾讯云服务协议》、 《对象存储服务等级协议》和 《COS默认按量计费（后付费）》` 复选框，然后点击 `开通COS并领取免费额度资源包`。\
+![](/img/i18n/zh-Hans/tencentcloud_cos_2_1.png)\
+等待开通完成然后点击 `进入控制台`。\
+![](/img/i18n/zh-Hans/tencentcloud_cos_2_2.png)
+
+### 第三步
+先点击 `跳过`。\
+![](/img/i18n/zh-Hans/tencentcloud_cos_3_1.png)\
+然后把这个叉掉。\
+![](/img/i18n/zh-Hans/tencentcloud_cos_3_2.png)\
+点击 `存储桶列表`。\
+![](/img/i18n/zh-Hans/tencentcloud_cos_3_3.png)\
+点击 `创建存储桶`。\
+![](/img/i18n/zh-Hans/tencentcloud_cos_3_4.png)\
+看图操作。\
+![](/img/i18n/zh-Hans/tencentcloud_cos_3_5.png)\
+![](/img/i18n/zh-Hans/tencentcloud_cos_3_6.png)\
+![](/img/i18n/zh-Hans/tencentcloud_cos_3_7.png)
+
+### 第四步
+点击 `概览`，然后找到 `访问域名` 复制出来。\
+你应该会得到一串 URL，例如：`https://114514-1919810114514.cos.ap-guangzhou.myqcloud.com`\
+其中 `https` 作为 `protocol` 的值，`cos.ap-guangzhou.myqcloud.com` 作为 `endpoint` 的值，`114514-1919810114514` 作为 `bucket` 的值。\
+![](/img/i18n/zh-Hans/tencentcloud_cos_4.png)
+
+### 第五步
+访问 https://console.cloud.tencent.com/cam/capi 然后点击 `继续使用`。然后点击 `我已知晓并保存SecretKey` 复选框，然后点击 `确定`。\
+点击 `新建密钥` 等待弹出 `创建SecretKey` 弹窗，然后找到 `SecretId` 和 `SecretKey`。\
+你应该会得到例如这样格式的密钥对，例如： `SecretId JKHLsa45s5sdf54wef4784784S` 以及 `SecretKey KJYQsd45f545sdgsdFEg`\
+其中 `JKHLsa45s5sdf54wef4784784S` 作为 `access-key-id` 的值，`KJYQsd45f545sdgsdFEg` 作为 `access-key-secret` 的值。\
+最后点击 `我已知晓并保存SecretKey` 复选框然后点击 `确定`。最后你应该可以写成以下配置。
+
+```yaml
+# 仅作为示范，请不要直接复制粘贴。
+resource-pack:
+  delivery:
+    hosting:
+      - type: s3
+        endpoint: "cos.ap-guangzhou.myqcloud.com"
+        bucket: "114514-1919810114514"
+        access-key-id: "JKHLsa45s5sdf54wef4784784S"
+        access-key-secret: "KJYQsd45f545sdgsdFEg"
+        protocol: "https"
+        path-style: false
+        region: "auto"
+        upload-path: "server_resource_pack.zip"
+        disable-calculate-sha256: false
+        validity: 10
+        rate-map:
+          max-requests: 5
+          reset-interval: 20
+```

@@ -1,0 +1,34 @@
+{
+	"credit": "Made by Farcr",
+	"ambientocclusion": false,
+	"parent": "block/block",
+	"textures": {
+		"particle": "#texture"
+	},
+	"elements": [
+		{
+			"from": [0, 14, 6],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 10, 16, 12], "texture": "#texture"},
+				"east": {"uv": [0, 14, 10, 16], "texture": "#texture"},
+				"south": {"uv": [16, 10, 0, 12], "texture": "#texture"},
+				"west": {"uv": [6, 12, 16, 14], "texture": "#texture"},
+				"up": {"uv": [16, 0, 0, 10], "texture": "#texture"},
+				"down": {"uv": [16, 0, 0, 10], "texture": "#texture"}
+			}
+		},
+		{
+			"from": [0, 6, -2],
+			"to": [16, 8, 8],
+			"faces": {
+				"north": {"uv": [0, 10, 16, 12], "texture": "#texture"},
+				"east": {"uv": [0, 14, 10, 16], "texture": "#texture"},
+				"south": {"uv": [16, 10, 0, 12], "texture": "#texture"},
+				"west": {"uv": [6, 12, 16, 14], "texture": "#texture"},
+				"up": {"uv": [16, 0, 0, 10], "texture": "#texture"},
+				"down": {"uv": [16, 0, 0, 10], "texture": "#texture"}
+			}
+		}
+	]
+}

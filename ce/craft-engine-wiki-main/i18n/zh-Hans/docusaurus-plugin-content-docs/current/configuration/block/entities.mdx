@@ -1,0 +1,216 @@
+---
+title: 🫑 方块实体
+id: entities
+---
+
+import Highlight from '@site/src/components/Highlight';
+
+## 类似实体的行为
+
+方块实体结合了方块与实体的特性。它占据世界中的一个方块位置，但能像实体一样**存储数据、执行更新并支持自定义渲染**。通过**方块实体接口**，你可以为方块赋予更高级功能，例如：
+
+- 基础电容库：根据当前存储的能量动态更改方块外观
+- 斯特林发电机：基于游戏刻运行，定期燃烧燃料发电
+
+在现有的内置方块实体类型库持续扩充的同时，CraftEngine 将在未来的版本中通过引入更多功能多样、开箱即用的组件来显著扩展这些功能配置。
+
+## 基于实体的渲染
+
+### 它是如何工作的？
+
+众所周知，单个方块的变体数量是有限的。以绊线为例，其最多只有 128 种变体。这意味着在不破坏绊线原本功能的前提下，最多只能释放 127 种自定义方块状态。然而，通过移除其中一种状态的纹理使其完全透明，并在方块中心放置展示实体，便能实现近乎无限的自定义方块。
+
+:::warning
+
+需要注意的是，某些原版方块使用了硬编码的渲染器。当方块使用的模型尺寸与完整方块不匹配时，可能会出现透视方块效果，如下图所示。
+
+<img src={require('/img/block_entities_1.png').default} alt="" style={{ width: '100%', height: 'auto', maxWidth: '128px', maxHeight: '128px', objectFit: 'contain' }} />
+
+:::
+
+要配置展示实体，只需添加一个 `entity-renderer` 选项。该选项需要一个配置部分或列表作为其参数。
+
+```yaml
+blocks:
+  default:sleeper_sofa:
+    state:
+      id: 0
+      state: white_bed[facing=west,occupied=false,part=foot]
+      entity-renderer:
+        - type: item_display
+          ...
+        - type: text_display
+          ...
+  default:table_lamp:
+    states:
+      appearances:
+        east_off:
+          state: barrier
+          entity-renderer:
+            type: item_display
+            ...
+          entity-culling:
+            ...
+```
+
+:::info
+当未指定类型时，默认使用 `item_display`。
+:::
+
+### 物品展示实体
+
+https://zh.minecraft.wiki/w/展示实体
+
+**必填参数**
+
+```yaml
+type: item_display
+item: default:sleeper_sofa
+```
+
+**可选参数**
+
+```yaml
+display-transform: none # none  / third_person_left_hand / third_person_right_hand
+                        # 不变换 /   第三人称视角左手变换  /   第三人称视角右手变换
+                        # first_person_left_hand / first_person_right_hand
+                        #   第一人称视角左手变换  /   第一人称视角右手变换
+                        #         head         /        gui        /     ground     /  fixed  /    on_shelf
+                        # 放置在头部物品栏的变换 / 在图形界面中的变换 / 平铺在地面的变换 / 默认变换 / 在展示架中的变换
+billboard: fixed  #      fixed      /  vertical   /  horizontal /         center
+                  # 固定垂直和水平轴 /  固定垂直轴  /  固定水平轴  / 按照中心旋转跟随玩家视角
+
+translation: 0,0.5,0
+# rotation 支持 3 种格式
+rotation: 45  # 基于 Y 轴
+rotation: 45,45,0  # 欧拉角
+rotation: 0,0,0.7071,0.7071  # 四元数  https://quaternions.online/
+
+position: 0.5,0,0  # 最好使用 translation
+yaw: 0.0  # 最好使用 rotation
+pitch: 0  # 最好使用 rotation
+
+scale: 1 # scale: 1,2,1
+glow-color: 255,255,255
+brightness:
+  block-light: 15
+  sky-light: 15
+view-range: 1.0
+```
+
+:::tip
+
+在使用展示实体作为方块实体渲染器的时候，建议使用 `translation` 代替 `position`，用 `rotation` 代替 `yaw` 和 `pitch`。这样可以避免发送位置同步包，保证最佳视觉效果。
+
+:::
+
+### 文本展示实体
+
+https://zh.minecraft.wiki/w/展示实体
+
+**必填参数**
+
+```yaml
+type: text_display
+text: 你好 <papi:player_name>
+```
+
+**可选参数**
+
+```yaml
+billboard: fixed  #      fixed      /  vertical   /  horizontal /         center
+                  # 固定垂直和水平轴 /  固定垂直轴  /  固定水平轴  / 按照中心旋转跟随玩家视角
+
+translation: 0,0.5,0
+# rotation 支持 3 种格式
+rotation: 45  # 基于 Y 轴
+rotation: 45,45,0  # 欧拉角
+rotation: 0,0,0.7071,0.7071  # 四元数  https://quaternions.online/
+
+position: 0.5,0,0  # 最好使用 translation
+yaw: 0.0  # 最好使用 rotation
+pitch: 0  # 最好使用 rotation
+
+scale: 1.5 # scale: 1,2,1
+glow-color: 255,255,255
+brightness:
+  block-light: 15
+  sky-light: 15
+view-range: 1.0
+
+line-width: 200
+background-color: 64,0,0,0 # ARGB
+text-opacity: -1
+has-shadow: false
+is-see-through: false
+use-default-background-color: false
+alignment: center  # center / left  / right
+                   #  居中  / 左对齐 / 右对齐
+```
+
+### 掉落物
+
+渲染一个掉落物
+
+```yaml
+type: item
+item: default:sleeper_sofa # 必填; 字符串; 指定需要展示的物品
+position: 0.5 # 可选; 数字; 默认值: 0.5
+```
+
+### 盔甲架
+
+基于盔甲架渲染自定义物品
+
+```yaml
+type: armor_stand
+item: default:bench
+position: 0,1,0
+scale: 1
+small: false
+glow-color: white  # black, dark_blue, dark_green, dark_aqua, dark_red, dark_purple, gold, gray, dark_gray, blue, green, aqua, red, light_purple, yellow, white
+```
+
+### BetterModel
+
+```yaml
+type: better_model
+model: custom_model # 必填; 字符串; 指定需要渲染的模型
+position: 0.5,0.5,0.5 # 可选; 默认值: 0.5
+yaw: 0 # 可选
+pitch: 0 # 可选
+sight-trace: true # 可选
+```
+
+### ModelEngine
+
+```yaml
+type: model_engine
+model: custom_model # 必填; 字符串; 指定需要渲染的模型
+position: 0.5,0.5,0.5 # 可选; 默认值: 0.5
+yaw: 0 # 可选
+pitch: 0 # 可选
+```
+
+## 实体剔除
+
+你可以单独控制每个方块实体变体是否启用实体剔除功能
+
+```yaml
+entity-renderer:...
+entity-culling: false # 禁用
+```
+
+启用实体剔除后，即可配置剔除参数
+
+```yaml
+entity-renderer: ...
+entity-culling:
+  # 若模型体积庞大，则需手动配置 AABB
+  # 在此示例中，该方案适用于双层方块实体
+  aabb: -0.5,-0.5,-0.5,0.5,1.5,0.5  # x1,y1,z1,x2,y2,z2
+  view-distance: 64 # 视距剔除。-1 表示无限距离。
+                    # 但启用光线追踪剔除时不建议设置为 -1，
+                    # 因为这会导致算法路径长度过长并影响性能。
+  ray-tracing: false # 是否启用光线追踪剔除
+```

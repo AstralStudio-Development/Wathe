@@ -1,0 +1,1972 @@
+# Fancy Steel Panel Blocks
+items:
+  # ==================== Anthracite Steel ====================
+  wathe:anthracite_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.anthracite_steel_panel>
+    model: wathe:block/anthracite_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 29
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c
+  wathe:anthracite_steel_tiles_panel:
+    data:
+      item-name: <!i><lang:block.wathe.anthracite_steel_tiles_panel>
+    model: wathe:block/anthracite_steel_tiles_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 29
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:anthracite_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c
+  wathe:smooth_anthracite_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_anthracite_steel_panel>
+    model: wathe:block/smooth_anthracite_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 29
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_anthracite_steel_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c
+  # ==================== Khaki Steel ====================
+  wathe:khaki_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.khaki_steel_panel>
+    model: wathe:block/khaki_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 26
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c
+  wathe:khaki_steel_tiles_panel:
+    data:
+      item-name: <!i><lang:block.wathe.khaki_steel_tiles_panel>
+    model: wathe:block/khaki_steel_tiles_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 26
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:khaki_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c
+  wathe:smooth_khaki_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_khaki_steel_panel>
+    model: wathe:block/smooth_khaki_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 26
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_khaki_steel_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_khaki_steel_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_khaki_steel_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_khaki_steel_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_khaki_steel_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_khaki_steel_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_khaki_steel_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_khaki_steel_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_khaki_steel_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_khaki_steel_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_khaki_steel_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_khaki_steel_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c
+  # ==================== Maroon Steel ====================
+  wathe:maroon_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.maroon_steel_panel>
+    model: wathe:block/maroon_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 35
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c
+  wathe:maroon_steel_tiles_panel:
+    data:
+      item-name: <!i><lang:block.wathe.maroon_steel_tiles_panel>
+    model: wathe:block/maroon_steel_tiles_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 35
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:maroon_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c
+  wathe:smooth_maroon_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_maroon_steel_panel>
+    model: wathe:block/smooth_maroon_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 35
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_maroon_steel_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_maroon_steel_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_maroon_steel_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_maroon_steel_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_maroon_steel_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_maroon_steel_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_maroon_steel_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_maroon_steel_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_maroon_steel_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_maroon_steel_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_maroon_steel_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_maroon_steel_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c
+  # ==================== Muntz Steel ====================
+  wathe:muntz_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.muntz_steel_panel>
+    model: wathe:block/muntz_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 43
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c
+  wathe:muntz_steel_tiles_panel:
+    data:
+      item-name: <!i><lang:block.wathe.muntz_steel_tiles_panel>
+    model: wathe:block/muntz_steel_tiles_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 43
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:muntz_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c
+  wathe:smooth_muntz_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_muntz_steel_panel>
+    model: wathe:block/smooth_muntz_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 43
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_muntz_steel_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_muntz_steel_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_muntz_steel_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_muntz_steel_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_muntz_steel_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_muntz_steel_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_muntz_steel_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_muntz_steel_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_muntz_steel_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_muntz_steel_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_muntz_steel_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_muntz_steel_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c
+  # ==================== Navy Steel ====================
+  wathe:navy_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.navy_steel_panel>
+    model: wathe:block/navy_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 11
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c
+  wathe:navy_steel_tiles_panel:
+    data:
+      item-name: <!i><lang:block.wathe.navy_steel_tiles_panel>
+    model: wathe:block/navy_steel_tiles_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 11
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:navy_steel_tiles_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c
+  wathe:smooth_navy_steel_panel:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_navy_steel_panel>
+    model: wathe:block/smooth_navy_steel_panel
+    behavior:
+      type: block_item
+      block:
+        behavior:
+          type: face_attached_horizontal_directional_block
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 11
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          properties:
+            facing:
+              type: horizontal_direction
+              default: north
+            face:
+              type: anchor_type
+              default: wall
+          appearances:
+            n_w:
+              state: warped_trapdoor[facing=north,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_navy_steel_panel
+                translation: 0,0,0
+                rotation: 0,180,0
+            n_f:
+              state: warped_trapdoor[facing=north,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_navy_steel_panel
+                translation: 0,0,0
+                rotation: 270,180,0
+            n_c:
+              state: warped_trapdoor[facing=north,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_navy_steel_panel
+                translation: 0,0,0
+                rotation: 90,180,0
+            e_w:
+              state: warped_trapdoor[facing=east,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_navy_steel_panel
+                translation: 0,0,0
+                rotation: 0,90,0
+            e_f:
+              state: warped_trapdoor[facing=east,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_navy_steel_panel
+                translation: 0,0,0
+                rotation: 270,270,0
+            e_c:
+              state: warped_trapdoor[facing=east,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_navy_steel_panel
+                translation: 0,0,0
+                rotation: 90,270,0
+            s_w:
+              state: warped_trapdoor[facing=south,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_navy_steel_panel
+                translation: 0,0,0
+                rotation: 0,0,0
+            s_f:
+              state: warped_trapdoor[facing=south,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_navy_steel_panel
+                translation: 0,0,0
+                rotation: 270,0,0
+            s_c:
+              state: warped_trapdoor[facing=south,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_navy_steel_panel
+                translation: 0,0,0
+                rotation: 90,0,0
+            w_w:
+              state: warped_trapdoor[facing=west,half=bottom,open=true,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_navy_steel_panel
+                translation: 0,0,0
+                rotation: 0,270,0
+            w_f:
+              state: warped_trapdoor[facing=west,half=bottom,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_navy_steel_panel
+                translation: 0,0,0
+                rotation: 270,90,0
+            w_c:
+              state: warped_trapdoor[facing=west,half=top,open=false,waterlogged=false]
+              entity-renderer:
+                item: wathe:smooth_navy_steel_panel
+                translation: 0,0,0
+                rotation: 90,90,0
+          variants:
+            facing=north,face=wall:
+              appearance: n_w
+            facing=north,face=floor:
+              appearance: n_f
+            facing=north,face=ceiling:
+              appearance: n_c
+            facing=east,face=wall:
+              appearance: e_w
+            facing=east,face=floor:
+              appearance: e_f
+            facing=east,face=ceiling:
+              appearance: e_c
+            facing=south,face=wall:
+              appearance: s_w
+            facing=south,face=floor:
+              appearance: s_f
+            facing=south,face=ceiling:
+              appearance: s_c
+            facing=west,face=wall:
+              appearance: w_w
+            facing=west,face=floor:
+              appearance: w_f
+            facing=west,face=ceiling:
+              appearance: w_c

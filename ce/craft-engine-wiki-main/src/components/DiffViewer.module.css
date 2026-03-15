@@ -1,0 +1,54 @@
+/* DiffViewer.module.css */
+
+.diffContainer {
+  /* 字体：继续使用 Docusaurus 的等宽字体，保证代码观感 */
+  font-family: var(--ifm-font-family-monospace, monospace);
+  white-space: pre-wrap; /* 允许文本换行 */
+  overflow-x: auto; /* 超出容器时横向滚动 */
+  
+  /* 边框：使用 Docusaurus 的圆角，边框颜色可随主题变深 */
+  border-radius: var(--ifm-border-radius, 4px);
+  border: 1px solid var(--ifm-color-emphasis-300, #cccccc); /* 默认浅色边框 */
+  
+  padding: 10px;
+  line-height: var(--ifm-line-height-base, 1.5); 
+
+  /* --- 浅色模式（默认） --- */
+  background-color: #f6f8fa; /* 浅灰色背景，类似 GitHub code block */
+  color: #24292e; /* 深色文字 */
+}
+
+.diffContainer div {
+  display: block;
+  padding-left: 5px;
+}
+
+/* --- 浅色模式下 Diff 行 --- */
+.added {
+  background-color: #e6ffed; /* 浅绿色背景 */
+  color: #22863a; /* 正常绿色文字 */
+}
+
+.removed {
+  background-color: #ffeef0; /* 浅红色背景 */
+  color: #cb2431; /* 正常红色文字 */
+}
+
+/* --- 深色模式适配 --- */
+/* 当 Docusaurus 的主题切换到深色时，应用这些样式 */
+html[data-theme='dark'] .diffContainer {
+  background-color: #2d3748; /* 柔和的深蓝色/灰色背景，与 Docusaurus 默认深色主题兼容 */
+  color: #e2e8f0; /* 浅灰色文字，保证高对比度 */
+  border-color: #4a5568; /* 深色模式下边框颜色 */
+}
+
+/* --- 深色模式下 Diff 行 --- */
+html[data-theme='dark'] .added {
+  background-color: #1a472a; /* 更深的绿色背景，与浅色模式的亮绿区分 */
+  color: #7bc96d; /* 稍亮的绿色文字，确保在深绿背景上可见 */
+}
+
+html[data-theme='dark'] .removed {
+  background-color: #6d2427; /* 更深的红色背景 */
+  color: #f66d6d; /* 稍亮的红色文字，确保在深红背景上可见 */
+}

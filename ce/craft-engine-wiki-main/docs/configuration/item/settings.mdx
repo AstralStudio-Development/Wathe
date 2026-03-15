@@ -1,0 +1,330 @@
+---
+title: 🔧 Item Settings
+id: settings
+---
+
+## Introduction
+
+Unlike data, the contents within settings pertain to special mechanisms processed by the plugin.
+
+## Types
+
+### fuel-time
+
+Determines how many ticks can be burned.
+
+```yaml
+fuel-time: 100
+```
+
+![](/img/item_settings_1.png)
+
+### tags
+
+Tags used in recipes.
+
+```yaml
+tags:
+  - "default:palm_logs"
+  - "minecraft:logs"
+  - "minecraft:logs_that_burn"
+```
+
+### equipment
+
+Apply the [equipment](../equipment.mdx) to this item.
+
+![](/img/item_settings_2.png)
+
+```yaml
+equipment:
+  #
+  # Required Argument
+  #
+  asset-id: default:topaz
+  
+  # 
+  # Optional Argument. Defaults to the global client-bound-model option in config.yml
+  #
+  client-bound-model: true
+  
+  #
+  # Optional Arguments on 1.21.2 and above
+  # Option 'slot' is required for these options to work
+  #
+  slot: head # head / chest / legs / feet / body (animal armor) / saddle 
+  # The resource location of the overlay texture to use when equipped. The directory this refers to is assets/<namespace>/textures/<id>.
+  camera-overlay: "namespace:id"
+  # Whether the item can be dispensed by using a dispenser.
+  dispensable: true
+  # Whether this item is damaged when the wearing entity is damaged.
+  damage-on-hurt: true
+  # Whether the item can be equipped into the relevant slot by right-clicking.
+  swappable: true
+  # >= 1.21.5
+  # Whether this item can be equipped onto a target mob by pressing use on it (as long as this item can be equipped on the target at all)
+  equip-on-interact: true
+```
+
+### repairable
+
+Decides if the item can be repaired through crafting table/anvil. (Default: true)
+
+```yaml
+repairable: true
+
+# Detailed repair configuration (overrides the simple boolean above)
+repairable:
+  crafting-table: true
+  anvil-repair: false
+  anvil-combine: true
+```
+
+![](/img/item_settings_3.png)
+
+### anvil-repair-item
+
+Determines how much durability a given item provides when repairing.
+
+```yaml
+anvil-repair-item:
+  - target: "#topaz_tools" # use tags
+    amount: 20  # restores fixed durability
+  - target:
+      - "minecraft:iron_pickaxe"
+      - "minecraft:shears"
+    percent: 0.25  # 0.25 = 25%, restores n% total durability
+```
+
+### renameable
+
+Determines if the item can be renamed in anvil. (Default: true)
+
+```yaml
+renameable: false
+```
+
+### projectile
+
+Creates a custom projectile entity based on the item. It supports `trident`, `arrow`, `snowball` and more.
+
+```yaml
+projectile:
+  item: default:topaz_trident # the item to display
+  translation: 0,0,0
+  rotation: 1,1,1,1
+  display-transform: NONE
+  scale: 0.5
+```
+
+![](/img/item_settings_4.png)
+
+<details>
+  <summary>How to Model</summary>
+
+  The way you model directly affects the `rotation` arguments in the configuration file.
+
+  No matter which modeling method you use, the most important thing is to make the sharp part of the trident in the position shown in the picture above to ensure the best hitting point.
+
+![](/img/item_settings_6.avif)
+![](/img/item_settings_7.avif)
+
+</details>
+
+### dyeable
+
+Decides if the item can be dyed in crafting tables. (Default: undefined)
+
+```yaml
+dyeable: true
+```
+
+![](/img/item_settings_5.png)
+
+### food
+
+Plugin-based alternative implementation for the food component.
+
+```yaml
+food:
+  nutrition: 5  # 0~20, integer
+  saturation: 3.5  # 0~10, float
+```
+
+:::caution
+Better to use food components on a 1.20.5+ server
+:::
+
+### consume-replacement
+
+Set the return item after consuming the item. For example, after the player drinks the water bottle, the empty bottle will be returned. (Default: null)
+
+```yaml
+consume-replacement: minecraft:apple
+```
+
+### craft-remainder / craft-remaining-item
+
+Choose whether items should return other items when the crafting recipe is finished.
+
+Returns a fixed item
+
+```yaml
+craft-remainder: bucket
+```
+
+```yaml
+craft-remainder:
+  type: fixed
+  item: bucket
+  count: 1
+```
+
+Consumes a certain amount of durability
+
+```yaml
+craft-remainder: 
+  type: hurt_and_break
+  damage: 1
+```
+
+Select the remaining items according to the recipe
+
+```yaml
+craft-remainder:
+  type: recipe_based
+  terms:
+    - recipes: 
+        - test:test1
+        - test:test3
+      craft-remainder:
+        type: hurt_and_break
+    - recipes: 
+        - test:test2
+      craft-remainder: minecraft:stone
+```
+
+![](/img/item_settings_8.png)
+
+### invulnerable
+
+```yaml
+invulnerable:
+  - lava
+  - fire
+  - fire_tick
+  - block_explosion  # respawn anchor
+  - entity_explosion  # creeper, tnt
+  - lightning
+  - contact  # cactus
+```
+
+![](/img/item_settings_9.png)
+
+### enchantable
+
+This option lets you block certain items from being used on the enchantment table. Tip: setting it to true won’t magically make unenchantable items enchantable. (Default: true)
+
+```yaml
+enchantable: false
+```
+
+### compost-probability
+
+This setting controls how likely it is for composting to succeed (Default: 0.5).
+
+```yaml
+compost-probability: 0.5
+```
+
+### respect-repairable-component
+
+This controls if the items listed in repairable component can fix this item in anvil gui. (Default: false)
+
+```yaml
+respect-repairable-component: false
+```
+
+### dye-color
+
+This determines what color it provides in the dyeing recipe.
+
+```yaml
+dye-color: 255,140,0
+```
+
+![](/img/item_settings_10.png)
+
+### firework-color
+
+This determines what color it provides in the firework star fade recipe.
+
+```yaml
+firework-color: 255,140,0
+```
+
+### ingredient-substitute
+
+This determines which vanilla items this item can serve as an equivalent substitute for within the recipe system.
+
+```yaml
+ingredient-substitute:
+  - minecraft:leather
+  - minecraft:paper
+```
+
+![](/img/item_settings_11.png)
+
+### hat-height (require CustomNameplates)
+
+This determines the impact of hat height on nametag height
+
+```yaml
+hat-height: 1.5
+```
+
+### keep-on-death-chance
+
+Determines the probability of keeping this item after death.
+
+```yaml
+keep-on-death-chance: 0.2 # 0~1
+```
+
+### destroy-on-death-chance
+
+Determines the probability of this item being destroyed upon death.
+
+```yaml
+destroy-on-death-chance: 0.5 # 0~1
+```
+
+### drop-display
+
+Used to control whether the names of dropped items are displayed, as well as what content is shown.
+
+```yaml
+drop-display: false  # If globally enabled, can be individually disabled for specific items.
+```
+
+```yaml
+drop-display: true  # Displays the entity name based on the item name.
+```
+
+```yaml
+# Custom display name. <arg:count> represents the quantity, <name> represents the item name.
+drop-display: "<arg:count>x <name>"
+```
+
+![](/img/item_settings_12.png)
+
+### glow-color
+
+Make items glow and display colors.
+
+```yaml
+# black, dark_blue, dark_green, dark_aqua, dark_red, dark_purple, gold, gray, dark_gray, blue, green, aqua, red, light_purple, yellow, white
+glow-color: white
+```
+
+![](/img/item_settings_13.png)

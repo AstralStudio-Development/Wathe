@@ -1,0 +1,57 @@
+---
+title: OneDrive
+id: onedrive
+---
+
+```yaml
+resource-pack:
+  delivery:
+    hosting:
+      - type: onedrive
+        client-id: ""
+        client-secret: ""
+        refresh-token: ""
+        upload-path: "server_resource_pack.zip"
+        # Optional options
+        use-environment-variables: false
+        ## Optional proxy
+        # proxy:
+        #   host: "127.0.0.1"
+        #   port: 7890
+```
+
+<details>
+  <summary>Enviroment Variables</summary>
+  - CE_ONEDRIVE_CLIENT_ID
+  - CE_ONEDRIVE_CLIENT_SECRET
+  - CE_ONEDRIVE_REFRESH_TOKEN
+</details>
+
+## Configuration Tutorial
+
+1. Go to: https://entra.microsoft.com/#view/Microsoft_AAD_RegisteredApps/CreateApplicationBlade/quickStartType~/null/isMSAApp~/false?Microsoft_AAD_IAM_legacyAADRedirect=true
+2. Fill in the form as shown in the image and click `Register`. Ensure you select **Web** as the redirect type and enter `http://localhost:8080`.
+   ![Image](/img/host/onedrive-1.png)
+3. After clicking `Register`, go to the left sidebar and select `App registrations`.
+   ![Image](/img/host/onedrive-2.png)
+4. Click the `All applications` tab.
+   ![Image](/img/host/onedrive-3.png)
+5. Select the app you just created.
+   ![Image](/img/host/onedrive-4.png)
+6. Follow the steps shown in the image.
+   ![Image](/img/host/onedrive-5.png)
+7. Click `Add a permission`.
+   ![Image](/img/host/onedrive-6.png)
+8. Find and click `Microsoft Graph`.
+   ![Image](/img/host/onedrive-7.png)
+9. Click `Application permissions`.
+   ![Image](/img/host/onedrive-8.png)
+10. Follow the steps shown in the image.
+    ![Image](/img/host/onedrive-9.png)
+11. Click `Certificates & secrets`.
+    ![Image](/img/host/onedrive-10.png)
+12. Follow the steps shown in the image.
+    ![Image](/img/host/onedrive-11.png)
+13. Follow the steps shown in the image.
+    ![Image](/img/host/onedrive-12.png)
+14. Install Python 3.10+ and requests 2.32.4+, then [click here to get the script](/file/dropbox-onedrive.py) and run it. Follow the prompts in the token retrieval program to proceed.

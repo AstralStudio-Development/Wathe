@@ -1,0 +1,707 @@
+wathe_round_end_layout:
+  heads:
+    1000:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: -78
+      y: -34
+      follow: papi:wathe_round_end_innocent_1_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_1_show
+          second: 1
+          operation: '=='
+    1001:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: -54
+      y: -34
+      follow: papi:wathe_round_end_innocent_2_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_2_show
+          second: 1
+          operation: '=='
+    1002:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: -30
+      y: -34
+      follow: papi:wathe_round_end_innocent_3_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_3_show
+          second: 1
+          operation: '=='
+    1003:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: -6
+      y: -34
+      follow: papi:wathe_round_end_innocent_4_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_4_show
+          second: 1
+          operation: '=='
+    1004:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: -78
+      y: -12
+      follow: papi:wathe_round_end_innocent_5_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_5_show
+          second: 1
+          operation: '=='
+    1005:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: -54
+      y: -12
+      follow: papi:wathe_round_end_innocent_6_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_6_show
+          second: 1
+          operation: '=='
+    1006:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: -30
+      y: -12
+      follow: papi:wathe_round_end_innocent_7_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_7_show
+          second: 1
+          operation: '=='
+    1007:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: -6
+      y: -12
+      follow: papi:wathe_round_end_innocent_8_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_8_show
+          second: 1
+          operation: '=='
+    1008:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: -78
+      y: 10
+      follow: papi:wathe_round_end_innocent_9_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_9_show
+          second: 1
+          operation: '=='
+    1009:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: -54
+      y: 10
+      follow: papi:wathe_round_end_innocent_10_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_10_show
+          second: 1
+          operation: '=='
+    1010:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: -30
+      y: 10
+      follow: papi:wathe_round_end_innocent_11_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_11_show
+          second: 1
+          operation: '=='
+    1011:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: -6
+      y: 10
+      follow: papi:wathe_round_end_innocent_12_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_12_show
+          second: 1
+          operation: '=='
+    1012:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: 54
+      y: -34
+      follow: papi:wathe_round_end_killer_1_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_killer_1_show
+          second: 1
+          operation: '=='
+    1013:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: 78
+      y: -34
+      follow: papi:wathe_round_end_killer_2_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_killer_2_show
+          second: 1
+          operation: '=='
+    1014:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: 54
+      y: -12
+      follow: papi:wathe_round_end_killer_3_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_killer_3_show
+          second: 1
+          operation: '=='
+    1015:
+      name: wathe_round_head
+      type: fancy
+      align: center
+      x: 78
+      y: -12
+      follow: papi:wathe_round_end_killer_4_head
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_killer_4_show
+          second: 1
+          operation: '=='
+  texts:
+    1:
+      name: example_font
+      pattern: "[papi:wathe_round_end_winner_text]"
+      align: center
+      x: 0
+      y: -108
+      scale: 1.60
+      outline: true
+    4:
+      name: example_font
+      pattern: "[papi:wathe_round_end_subtitle_text]"
+      align: center
+      x: 0
+      y: -76
+      scale: 0.78
+      outline: true
+    2:
+      name: example_font
+      pattern: "<#36E51B>\u5e73\u6c11"
+      align: center
+      x: -48
+      y: -52
+      scale: 0.48
+      outline: true
+    3:
+      name: example_font
+      pattern: "<#C13838>\u6740\u624b"
+      align: center
+      x: 72
+      y: -52
+      scale: 0.48
+      outline: true
+    2000:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: -78
+      y: -30
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_1_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_innocent_1_dead
+          second: 1
+          operation: '=='
+    2001:
+      name: example_font
+      pattern: "[papi:wathe_round_end_innocent_1_role_colored]"
+      align: center
+      x: -78
+      y: -15
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_1_show
+          second: 1
+          operation: '=='
+    2002:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: -54
+      y: -30
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_2_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_innocent_2_dead
+          second: 1
+          operation: '=='
+    2003:
+      name: example_font
+      pattern: "[papi:wathe_round_end_innocent_2_role_colored]"
+      align: center
+      x: -54
+      y: -15
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_2_show
+          second: 1
+          operation: '=='
+    2004:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: -30
+      y: -30
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_3_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_innocent_3_dead
+          second: 1
+          operation: '=='
+    2005:
+      name: example_font
+      pattern: "[papi:wathe_round_end_innocent_3_role_colored]"
+      align: center
+      x: -30
+      y: -15
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_3_show
+          second: 1
+          operation: '=='
+    2006:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: -6
+      y: -30
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_4_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_innocent_4_dead
+          second: 1
+          operation: '=='
+    2007:
+      name: example_font
+      pattern: "[papi:wathe_round_end_innocent_4_role_colored]"
+      align: center
+      x: -6
+      y: -15
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_4_show
+          second: 1
+          operation: '=='
+    2008:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: -78
+      y: -8
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_5_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_innocent_5_dead
+          second: 1
+          operation: '=='
+    2009:
+      name: example_font
+      pattern: "[papi:wathe_round_end_innocent_5_role_colored]"
+      align: center
+      x: -78
+      y: 7
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_5_show
+          second: 1
+          operation: '=='
+    2010:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: -54
+      y: -8
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_6_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_innocent_6_dead
+          second: 1
+          operation: '=='
+    2011:
+      name: example_font
+      pattern: "[papi:wathe_round_end_innocent_6_role_colored]"
+      align: center
+      x: -54
+      y: 7
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_6_show
+          second: 1
+          operation: '=='
+    2012:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: -30
+      y: -8
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_7_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_innocent_7_dead
+          second: 1
+          operation: '=='
+    2013:
+      name: example_font
+      pattern: "[papi:wathe_round_end_innocent_7_role_colored]"
+      align: center
+      x: -30
+      y: 7
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_7_show
+          second: 1
+          operation: '=='
+    2014:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: -6
+      y: -8
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_8_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_innocent_8_dead
+          second: 1
+          operation: '=='
+    2015:
+      name: example_font
+      pattern: "[papi:wathe_round_end_innocent_8_role_colored]"
+      align: center
+      x: -6
+      y: 7
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_8_show
+          second: 1
+          operation: '=='
+    2016:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: -78
+      y: 14
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_9_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_innocent_9_dead
+          second: 1
+          operation: '=='
+    2017:
+      name: example_font
+      pattern: "[papi:wathe_round_end_innocent_9_role_colored]"
+      align: center
+      x: -78
+      y: 29
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_9_show
+          second: 1
+          operation: '=='
+    2018:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: -54
+      y: 14
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_10_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_innocent_10_dead
+          second: 1
+          operation: '=='
+    2019:
+      name: example_font
+      pattern: "[papi:wathe_round_end_innocent_10_role_colored]"
+      align: center
+      x: -54
+      y: 29
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_10_show
+          second: 1
+          operation: '=='
+    2020:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: -30
+      y: 14
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_11_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_innocent_11_dead
+          second: 1
+          operation: '=='
+    2021:
+      name: example_font
+      pattern: "[papi:wathe_round_end_innocent_11_role_colored]"
+      align: center
+      x: -30
+      y: 29
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_11_show
+          second: 1
+          operation: '=='
+    2022:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: -6
+      y: 14
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_12_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_innocent_12_dead
+          second: 1
+          operation: '=='
+    2023:
+      name: example_font
+      pattern: "[papi:wathe_round_end_innocent_12_role_colored]"
+      align: center
+      x: -6
+      y: 29
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_innocent_12_show
+          second: 1
+          operation: '=='
+    2024:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: 54
+      y: -30
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_killer_1_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_killer_1_dead
+          second: 1
+          operation: '=='
+    2025:
+      name: example_font
+      pattern: "[papi:wathe_round_end_killer_1_role_colored]"
+      align: center
+      x: 55
+      y: -15
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_killer_1_show
+          second: 1
+          operation: '=='
+    2026:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: 78
+      y: -30
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_killer_2_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_killer_2_dead
+          second: 1
+          operation: '=='
+    2027:
+      name: example_font
+      pattern: "[papi:wathe_round_end_killer_2_role_colored]"
+      align: center
+      x: 79
+      y: -15
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_killer_2_show
+          second: 1
+          operation: '=='
+    2028:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: 54
+      y: -8
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_killer_3_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_killer_3_dead
+          second: 1
+          operation: '=='
+    2029:
+      name: example_font
+      pattern: "[papi:wathe_round_end_killer_3_role_colored]"
+      align: center
+      x: 55
+      y: 7
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_killer_3_show
+          second: 1
+          operation: '=='
+    2030:
+      name: example_font
+      pattern: "<#E10000>x"
+      align: center
+      x: 78
+      y: -8
+      scale: 0.72
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_killer_4_show
+          second: 1
+          operation: '=='
+        2:
+          first: (number)papi:wathe_round_end_killer_4_dead
+          second: 1
+          operation: '=='
+    2031:
+      name: example_font
+      pattern: "[papi:wathe_round_end_killer_4_role_colored]"
+      align: center
+      x: 79
+      y: 7
+      scale: 0.40
+      outline: true
+      conditions:
+        1:
+          first: (number)papi:wathe_round_end_killer_4_show
+          second: 1
+          operation: '=='

@@ -1,0 +1,125 @@
+mood_arrow_layout:
+  images:
+    1:
+      name: arrow_up_image
+      x: 4
+      y: 0
+      scale: 1.0
+      opacity: 0.33
+      conditions:
+        show:
+          first: "(number)papi:wathe_mood_arrow_show"
+          second: 1
+          operation: "=="
+        dir:
+          first: "(number)papi:wathe_mood_arrow_dir"
+          second: 1
+          operation: "=="
+        min:
+          first: "(number)papi:wathe_mood_arrow_alpha"
+          second: 0.66
+          operation: ">="
+    2:
+      name: arrow_up_image
+      x: 4
+      y: 0
+      scale: 1.0
+      opacity: 0.66
+      conditions:
+        show:
+          first: "(number)papi:wathe_mood_arrow_show"
+          second: 1
+          operation: "=="
+        dir:
+          first: "(number)papi:wathe_mood_arrow_dir"
+          second: 1
+          operation: "=="
+        min:
+          first: "(number)papi:wathe_mood_arrow_alpha"
+          second: 0.33
+          operation: ">="
+        max:
+          first: "(number)papi:wathe_mood_arrow_alpha"
+          second: 0.66
+          operation: "<"
+    3:
+      name: arrow_up_image
+      x: 4
+      y: 0
+      scale: 1.0
+      opacity: 1.0
+      conditions:
+        show:
+          first: "(number)papi:wathe_mood_arrow_show"
+          second: 1
+          operation: "=="
+        dir:
+          first: "(number)papi:wathe_mood_arrow_dir"
+          second: 1
+          operation: "=="
+        min:
+          first: "(number)papi:wathe_mood_arrow_alpha"
+          second: 0.66
+          operation: ">="
+
+    4:
+      name: arrow_down_image
+      x: 4
+      y: 0
+      scale: 1.0
+      opacity: 0.33
+      conditions:
+        show:
+          first: "(number)papi:wathe_mood_arrow_show"
+          second: 1
+          operation: "=="
+        dir:
+          first: "(number)papi:wathe_mood_arrow_dir"
+          second: -1
+          operation: "=="
+        min:
+          first: "(number)papi:wathe_mood_arrow_alpha"
+          second: 0.66
+          operation: ">="
+    5:
+      name: arrow_down_image
+      x: 4
+      y: 0
+      scale: 1.0
+      opacity: 0.66
+      conditions:
+        show:
+          first: "(number)papi:wathe_mood_arrow_show"
+          second: 1
+          operation: "=="
+        dir:
+          first: "(number)papi:wathe_mood_arrow_dir"
+          second: -1
+          operation: "=="
+        min:
+          first: "(number)papi:wathe_mood_arrow_alpha"
+          second: 0.33
+          operation: ">="
+        max:
+          first: "(number)papi:wathe_mood_arrow_alpha"
+          second: 0.66
+          operation: "<"
+    6:
+      name: arrow_down_image
+      x: 4
+      y: 0
+      scale: 1.0
+      opacity: 1.0
+      conditions:
+        show:
+          first: "(number)papi:wathe_mood_arrow_show"
+          second: 1
+          operation: "=="
+        dir:
+          first: "(number)papi:wathe_mood_arrow_dir"
+          second: -1
+          operation: "=="
+        min:
+          first: "(number)papi:wathe_mood_arrow_alpha"
+          second: 0.66
+          operation: ">="

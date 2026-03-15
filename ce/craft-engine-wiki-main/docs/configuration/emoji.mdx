@@ -1,0 +1,137 @@
+---
+title: 😀 Emoji
+id: emoji
+---
+
+:::caution
+
+Emoji creation requires existing image configurations. Please consult the [🖼️ Image](./image.mdx) page if you're unfamiliar with this process.
+
+:::
+
+Creating emojis is incredibly simple—you just need to fill in a few easy-to-understand parameters. However, unlike other plugins, CraftEngine grants you greater customization freedom, especially when it comes to the feedback content of emojis. You can use custom text styles, variables, mathematical operations, and more.
+
+Here's a basic emoji configuration example:
+
+```yaml
+emoji:
+  default:time:
+    permission: emoji.time
+    content: "<white><arg:emoji></white>"
+    image: "default:icons:0:0"
+    keywords:
+      - ":time:"
+```
+
+:::tip
+
+`<arg:emoji>` is a context-specific parameter used to return the image representation of the corresponding emoji. \
+`<arg:keyword>` will return the first available keyword
+
+:::
+
+In the following example, players can retrieve their current coordinates by typing `:pos:`. While CraftEngine offers extreme customization for emoji content (especially with MiniMessage), this flexibility also makes it more complex to learn—particularly for users unfamiliar with advanced text formatting.
+
+```yaml
+emoji:
+  default:emoji_location:
+    permission: emoji.location
+    content: "<hover:show_text:'Use <yellow>\"<arg:keyword>\"</yellow> to send the \"<arg:emoji>\" emoji'><!shadow><white><arg:emoji></white></!shadow><bold>Current coordinates: <papi:player_x>,<papi:player_y>,<papi:player_z></bold></hover>"
+    image: "default:icons:0:0"
+    keywords:
+      - ":pos:"
+```
+
+<div style={{textAlign: 'center'}}>
+  <img src={require('/img/emoji_1.png').default} alt="" />
+</div>
+
+:::tip
+
+To improve readability when dealing with complex configurations, I've added multi-line support for formatting. CraftEngine will automatically merge these lines into a single string during processing, making it easier to write and maintain intricate setups without sacrificing functionality.
+
+```yaml
+content:
+- <hover:show_text:'Use <yellow>"<arg:keyword>"</yellow> to send the "<arg:emoji>" emoji'>
+- <!shadow><white><arg:emoji></white></!shadow>
+- "<bold>Current coordinates: <papi:player_x>,<papi:player_y>,<papi:player_z></bold>"
+- </hover>
+```
+:::
+
+:::info
+
+CraftEngine implements emojis using Paper's modern chat component API. Any chat plugin still relying on Bukkit's legacy chat events will almost certainly be incompatible with emoji rendering.
+
+Known compatible chat plugins: [**TrChat**](https://github.com/TrPlugins/TrChat)
+
+<details>
+  <summary>Developer Guide</summary>
+
+  ```java
+import io.papermc.paper.event.player.AsyncChatEvent;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.Context;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.ParsingException;
+import net.kyori.adventure.text.minimessage.tag.Tag;
+import net.kyori.adventure.text.minimessage.tag.resolver.ArgumentQueue;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+public class ChatListener implements Listener {
+    public static final String CHAT_FORMAT = "<gray><player>: <chat>";
+
+    @EventHandler(ignoreCancelled = true)
+    public void onAsyncChat(AsyncChatEvent event) {
+        Component chatMessage = event.message();
+        Component formattedChatMessage = MiniMessage.miniMessage().deserialize(CHAT_FORMAT, new PlayerTagResolver(event.getPlayer()), new ChatMessageTagResolver(chatMessage));
+        // do further process
+    }
+
+    public static class PlayerTagResolver implements TagResolver {
+        private final Player sender;
+
+        public PlayerTagResolver(Player sender) {
+            this.sender = sender;
+        }
+
+        @Override
+        public boolean has(@NotNull String name) {
+            return name.equals("player");
+        }
+
+        @Override
+        public @Nullable Tag resolve(@NotNull String name, @NotNull ArgumentQueue arguments, @NotNull Context ctx) throws ParsingException {
+            return Tag.inserting(Component.text(sender.getName()));
+        }
+    }
+
+    public static class ChatMessageTagResolver implements TagResolver {
+        private final @NotNull Component chatMessage;
+
+        public ChatMessageTagResolver(@NotNull Component chatMessage) {
+            this.chatMessage = chatMessage;
+        }
+
+        @Override
+        public boolean has(@NotNull String name) {
+            return name.equals("chat");
+        }
+
+        @Override
+        public @Nullable Tag resolve(@NotNull String name, @NotNull ArgumentQueue arguments, @NotNull Context ctx) throws ParsingException {
+            return Tag.selfClosingInserting(this.chatMessage);
+        }
+    }
+}
+
+  ```
+
+</details>
+
+:::

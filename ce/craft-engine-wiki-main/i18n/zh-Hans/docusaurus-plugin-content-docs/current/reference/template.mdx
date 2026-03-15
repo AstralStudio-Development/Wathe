@@ -1,0 +1,298 @@
+---
+title: 📄 模板系统
+id: template
+---
+
+import Comment from '@site/src/components/Comment';
+
+## 简介
+
+该插件拥有极高的可自定义性，但完全无预设的配置难以实现。即便最简单的选项也需在 YAML 中单独声明。当此类参数过多时，配置文件会变得冗长。为此，插件引入了模板系统，您可先定义基础模板，再通过参数和覆写等机制来简化配置流程，大幅减少重复性操作耗时。
+
+## 它是如何工作的？
+
+配置模板时，需以 `templates` 作为 YAML 文件的根键。`templates` 下的首个元素即为模板名称（如下例中 **`namespace:my_first_template`**），该名称下方的所有内容构成实际模板配置。
+
+```yaml
+templates:
+  namespace:my_first_template:
+    option_1: true
+    option_2: false
+    option_3: 
+      - hello
+    option_4: 20.25
+    option_5:
+      hello: world
+```
+
+观看这段简单动画了解插件如何应用模板：
+
+![](/img/i18n/zh-Hans/template_1.avif)
+
+:::info
+
+`namespace:template_id` 作为模板的唯一标识符，在后续调用时必须使用该完整名称。
+
+:::
+
+:::tip
+
+`namespace:template_id` 下方的配置部分完全可自定义，只需符合YAML语法规范即可自由定义。
+
+:::
+
+## 多模板
+
+您可以通过将 `template` 设置为列表来组合多个模板。
+
+```yaml
+items:
+  craftengine:custom_item:
+     template:
+       - namespace:my_first_template
+       - namespace:my_second_template
+
+```
+
+:::warning
+
+注意：若两个模板存在相同配置项，下方的模板会覆盖上方配置。但当配置项为列表时，它们将合并为一个列表。
+
+:::
+
+![](/img/i18n/zh-Hans/template_2.avif)
+
+## 合并
+
+合并功能会深度整合两个配置部分（包括所有列表），本质上，合并功能的工作原理几乎完全等同于使用多个模板。
+
+```yaml
+items:
+  craftengine:custom_bread:
+    template: craftengine:apple_template
+    arguments:
+      nutrition: 1
+      saturation: 2.5
+    merges:
+      data:
+        food:
+          can-always-eat: true
+```
+
+## 覆写
+
+覆写会完全替换指定配置路径下的所有内容（包括列表和映射），不进行合并操作，直接整体替换。
+
+```yaml
+items:
+  craftengine:custom_bread:
+    template: craftengine:apple_template
+    arguments:
+      nutrition: 1
+      saturation: 2.5
+    overrides:
+      material: bread
+```
+
+![](/img/i18n/zh-Hans/template_4.avif)
+
+## 参数
+
+您可以在模板中使用 `${xxx}` 定义参数，比如 `${nutrition}` 或 `${saturation}`。然后在调用模板时，使用 `arguments` 部分来设定参数值。这里有个简单示例：
+
+```yaml
+templates:
+  craftengine:apple_template:
+    material: apple
+    data:
+      food:
+        nutrition: "${nutrition}"
+        saturation: "${saturation}"
+items:
+  craftengine:custom_apple:
+    template: craftengine:apple_template
+    arguments:
+      nutrition: 1
+      saturation: 2.5
+```
+
+![](/img/i18n/zh-Hans/template_3.avif)
+
+模板参数是按顺序应用的。这意味着您刚刚定义的参数可以立即在后续的任何模板参数中使用。
+
+```yaml
+arguments:
+  arg1: topaz
+  arg2: helmet
+  arg3: ${arg1}_${arg2}
+```
+
+:::info
+
+若需将花括号 `{}` 作为普通文本使用（而非参数标识），只需使用反斜杠转义：`\{` 或 `\}`。
+
+`\${你好世界}`
+
+:::
+
+:::tip
+
+此外，还有两个特殊参数 `${__NAMESPACE__}` 和 `${__ID__}`，它们会自动从当前非模板配置的命名空间ID中获取，并传递给任何被引用的模板。例如：
+
+```yml
+items:
+  default:palm_log:
+    template: default:my_template
+templates:
+  default:my_template:
+    data:
+      item-name: "<lang:item.${__NAMESPACE__}.${__ID__}>"
+```
+
+```yml
+items:
+  default:palm_log:
+    data:
+      item-name: "<lang:item.default.palm_log>"
+```
+
+:::
+
+### 默认值
+
+为参数设置默认值时，在参数名后添加 `:-` 即可，例如：
+
+- `${nutrition:-1}`
+- `${saturation:-2.5d}`
+- `${map:-{aa:bb,cc:ddd}}`
+- `${string:-"1234"}`
+- `${nullable:-null}`
+
+默认值遵循 Minecraft 的 SNBT 格式（与命令中指定 NBT 数据时的格式相同）。
+
+:::tip
+
+默认值也支持递归嵌套参数，例如：
+
+```yaml
+item-name: "<!i><white>${arg1:-'${arg2:-\'${arg3:-abc}\'}'}"
+```
+
+:::
+
+### 扩展参数类型
+
+虽然大多数参数只是简单的字符串或数字，但在处理一些复杂或特定需求时，则需要功能更强的参数类型。扩展参数类型正是为此类情况而设计的。
+
+- **列表**
+
+```yml
+arguments:
+  arg1:
+    - value1
+    - value2
+```
+
+- **映射**
+
+```yml
+arguments:
+  arg_1:
+    option1: value1
+    option2: value2
+```
+
+:::caution
+
+如果作为参数使用的映射包含 `type` 键且不应被解释为参数类型，则必须添加 `__skip_template_argument__` 标记。
+
+```yaml
+arguments:
+  hitbox:
+    __skip_template_argument__: {}
+    type: shulker
+    scale: 2
+    peek: 100
+```
+
+:::
+
+- <Comment text="条件">**condition**</Comment>
+
+它根据条件选择参数值。这允许将某些需要字符串的参数转换为布尔值。
+
+```yml
+arguments:
+  leaves_base_model:
+    type: condition
+    condition: "${tintable:-false}"
+    on-true: leaves
+    on-false: cube_all
+```
+
+- <Comment text="条件匹配">**when**</Comment>
+
+它通过将源值与一组预定义的情况进行匹配来选择值。这允许将不同的输入值映射到特定的输出，并为未匹配的情况提供可选的回退值。
+
+```yml
+arguments:
+  slot:
+    type: when
+    source: "${part}"
+    when:
+      helmet: head
+      chestplate: chest
+      leggings: legs
+      boots: feet
+    fallback: any
+```
+
+- <Comment text="转换为大写">**to_upper_case**</Comment> / <Comment text="转换为小写">**to_lower_case**</Comment>
+
+```yml
+items:
+  default:test:
+    template: mmoitems:tier_item
+    arguments:
+      tier: common
+      name: "Test Item"
+templates:
+  mmoitems:tier_item:
+    template: mmoitems:tier_item/internal
+    arguments:
+      tier.uppercase:
+        type: to_upper_case
+        value: "${tier}"
+        locale: en
+  mmoitems:tier_item/internal:
+    data:
+      item-name: "<!i><white><image:${tier}> ${name}"
+      nbt:
+        MMOITEMS_TIER: ${tier.uppercase}
+```
+
+- <Comment text="自增整数">**self_increase_int**</Comment>
+
+每当 `${id}` 被替换时，都会执行递增或递减操作。
+
+```yml
+arguments:
+  id:
+    type: self_increase_int
+    from: 0
+    to: 20
+    step: 1
+    step-interval: 1
+```
+
+- <Comment text="表达式">**expression**</Comment>
+
+执行表达式并将其转换为所需的数值类型。
+
+```yml
+arguments:
+  damage:
+    type: expression
+    expression: "${base_damage:-10d} * ${damage_multiplier:-1d}"
+    value-type: double # int/double/short/long/float/boolean/byte
+```

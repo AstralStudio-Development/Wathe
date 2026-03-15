@@ -1,0 +1,7 @@
+{
+	"parent": "wathe:block/template_glass_panel",
+	"textures": {
+		"pane": "wathe:block/golden_glass_panel",
+		"edge": "wathe:block/golden_glass_panel_trim"
+	}
+}

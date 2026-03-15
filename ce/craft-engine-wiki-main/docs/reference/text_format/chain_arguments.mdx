@@ -1,0 +1,115 @@
+---
+title: 🔗 Chain Arguments
+id: chain_arguments
+---
+
+## Introduction
+
+**Chain Arguments** represent a dot-notation syntax (connected by `.`) used to access object-related parameters in a hierarchical manner.
+
+For example, in an interaction event where we can access the player instance, we can retrieve additional parameters through this object.
+
+By chaining property accessors like:
+
+* `player.world` → Gets the player's current world
+* `world.name` → Gets the name of that world
+
+We can combine them into a parameter tag format like `<arg:player.world.name>`. This tag will dynamically return the name of the world the player is currently in.
+
+## Objects
+
+### player
+
+| parameter        | type                   | description                      |
+|------------------|------------------------|----------------------------------|
+| x                | double                 | the x coordinate of the player   |
+| y                | double                 | the y coordinate of the player   |
+| z                | double                 | the z coordinate of the player   |
+| block\_x         | int                    | the x coordinate of the player   |
+| block\_y         | int                    | the y coordinate of the player   |
+| block\_z         | int                    | the z coordinate of the player   |
+| name             | string                 | the name of the player           |
+| uuid             | uuid                   | the uuid of the player           |
+| is\_flying       | boolean                | check the fly state              |
+| is\_sneaking     | boolean                | check the sneak state            |
+| gamemode         | string                 | the gamemode of the player       |
+| game_edition     | string                 | the game edition of the player   |
+| main\_hand\_item | [#item](#item)         | the item in main hand            |
+| off\_hand\_item  | [#item](#item)         | the item in off hand             |
+| world            | [#world](#world)       | the world where the player is in |
+| position         | [#position](#position) | the position of the player       |
+
+### block
+
+| parameter    | type                   | description                     |
+|--------------|------------------------|---------------------------------|
+| x            | double                 | the x coordinate of the block   |
+| y            | double                 | the y coordinate of the block   |
+| z            | double                 | the z coordinate of the block   |
+| block\_x     | int                    | the x coordinate of the block   |
+| block\_y     | int                    | the y coordinate of the block   |
+| block\_z     | int                    | the z coordinate of the block   |
+| world        | [#world](#world)       | the world where the block is in |
+| block\_state | block\_state           | the blockstate of the block     |
+| position     | [#position](#position) | the position of the block       |
+
+### world
+
+| parameter | type   | description           |
+|-----------|--------|-----------------------|
+| name      | string | the name of the world |
+| uuid      | uuid   | the uuid of the world |
+| time      | long   | the time of the world |
+
+### entity
+
+| parameter        | type                   | description                      |
+|------------------|------------------------|----------------------------------|
+| x                | double                 | the x coordinate of the entity   |
+| y                | double                 | the y coordinate of the entity   |
+| z                | double                 | the z coordinate of the entity   |
+| block\_x         | int                    | the x coordinate of the entity   |
+| block\_y         | int                    | the y coordinate of the entity   |
+| block\_z         | int                    | the z coordinate of the entity   |
+| name             | string                 | the name of the entity           |
+| uuid             | uuid                   | the uuid of the entity           |
+| world            | [#world](#world)       | the world where the entity is in |
+| position         | [#position](#position) | the position of the entity       |
+| item             | [#item](#item)         | the item of dropped item entity  |
+
+### position
+
+| parameter | type             | description      |
+|-----------|------------------|------------------|
+| x         | double           | the x coordinate |
+| y         | double           | the y coordinate |
+| z         | double           | the z coordinate |
+| yaw       | float            | the yaw          |
+| pitch     | float            | the pitch        |
+| block\_x  | int              | the x coordinate |
+| block\_y  | int              | the y coordinate |
+| block\_z  | int              | the z coordinate |
+| world     | [#world](#world) | the world        |
+
+### item
+
+| parameter           | type    | description                       |
+|---------------------|---------|-----------------------------------|
+| id                  | string  | the id of the item                |
+| custom\_model\_data | int     | the custom model data of the item |
+| is\_custom          | boolean | checks if the item is custom      |
+| count               | int     | the count of the item             |
+
+### furniture
+
+| parameter | type                   | description                       |
+|-----------|------------------------|-----------------------------------|
+| id        | string                 | the id of the furniture           |
+| uuid      | uuid                   | the uuid of the furniture         |
+| variant   | string                 | the variant of the furniture      |
+| x         | double                 | the x coordinate of the furniture |
+| y         | double                 | the y coordinate of the furniture |
+| z         | double                 | the z coordinate of the furniture |
+| yaw       | float                  | the yaw of the furniture          |
+| pitch     | float                  | the pitch of the furniture        |
+| position  | [#position](#position) | the position of the furniture     |

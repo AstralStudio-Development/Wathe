@@ -1,0 +1,235 @@
+---
+title: ℹ️ Properties
+id: properties
+---
+
+## Types
+
+:::tip
+
+The `default` option is optional.
+
+:::
+
+### boolean
+
+A property of type `boolean` can only have two possible values: `true` or `false`.
+
+```yaml
+properties:
+  happy:
+    type: boolean
+    default: false
+```
+
+### int
+
+A property of type `int` can take any integer value within the specified range.
+
+```yaml
+properties:
+  mode:
+    type: int
+    default: 1
+    range: 1~3
+```
+
+### string
+
+A property of type `string` can only take values from a predefined set of options.
+
+```yaml
+properties:
+  color:
+    type: string
+    default: red
+    values:
+      - red
+      - green
+      - blue
+```
+
+### direction
+
+`east, south, west, north, up, down`
+
+```yaml
+properties:
+  facing:
+    type: direction
+    default: north
+```
+
+### horizontal\_direction
+
+`east, south, west, north`
+
+```yaml
+properties:
+  facing:
+    type: horizontal_direction
+    default: north
+```
+
+### axis
+
+`x, y, z`
+
+```yaml
+properties:
+  axis:
+    type: axis
+    default: y
+```
+
+### single\_block\_half
+
+`top, bottom`
+
+```yaml
+properties:
+  half:
+    type: single_block_half
+    default: bottom
+```
+
+### double\_block\_half
+
+`upper, lower`
+
+```yaml
+properties:
+  half:
+    type: double_block_half
+    default: lower
+```
+
+### hinge
+
+`left, right`
+
+```yaml
+properties:
+  hinge:
+    type: hinge
+    default: left
+```
+
+
+### slab\_type
+
+`top, bottom, double`
+
+```yaml
+properties:
+  type:
+    type: slab_type
+    default: bottom
+```
+
+### stairs\_shape
+
+`straight, inner_left, inner_right, outer_left, outer_right`
+
+```yaml
+properties:
+  shape:
+    type: stairs_shape
+    default: straight
+```
+
+### sofa\_shape
+
+`straight, inner_left, inner_right`
+
+```yaml
+properties:
+  shape:
+    type: sofa_shape
+    default: straight
+```
+
+### anchor\_type
+
+`floor, wall, ceiling`
+
+```yaml
+properties:
+  face:
+    type: anchor_type
+    default: floor
+```
+
+## Hard-coded Names
+
+:::info
+
+In addition to the names mentioned below, some names are determined by the behavior of the block. For example, the sapling behavior requires a property named `stage`.
+
+:::
+
+### axis
+
+Based on the face clicked during placement to determine the block's axis.
+
+```yaml
+properties:
+  axis:
+    type: axis
+    default: y
+```
+
+### waterlogged
+
+waterlogged determines whether this block can contain water.
+
+:::warning
+Note: When using waterlogged state, ensure that the corresponding visual block also contains water; otherwise, the client will fail to render the water properly.
+:::
+
+```yaml
+properties:
+  waterlogged:
+    type: boolean
+    default: false
+```
+
+### facing
+
+When a block has this hardcoded property name, its placement orientation will automatically adapt.
+
+```yaml
+properties:
+  facing:
+    type: direction
+    default: north
+```
+
+### facing\_clockwise
+
+Unlike the above, it will be rotated 90 degrees when placed
+
+```yaml
+properties:
+  facing_clockwise:
+    type: horizontal_direction
+    default: north
+```
+
+### rotation
+
+Provide higher precision rotation
+
+```yaml
+properties:
+  rotation:
+    type: int
+    default: 0~7
+```
+
+```yaml
+properties:
+  rotation:
+    type: int
+    default: 0~15
+```

@@ -1,0 +1,41 @@
+---
+title: ⛏️ Range Mining Item
+id: range_mining_item
+---
+
+The range mining item allows you to mine blocks in a wide area, with a fully customizable range. This range intelligently adjusts based on the direction you are facing.
+
+```yaml
+items:
+  default:topaz_pickaxe:
+    material: golden_pickaxe
+    behavior:
+      - type: range_mining_item
+        range:
+          - 0,1,0   # width,height,depth
+          - 0,-1,0
+          - 1,0,0
+          - -1,0,0
+```
+
+![](/img/range_mining_1.png)
+
+```yaml
+items:
+  default:topaz_pickaxe:
+    material: golden_pickaxe
+    behavior:
+      - type: range_mining_item
+        range:
+          - 0,1,0
+          - 1,1,0
+          - -1,1,0
+          - 0,0,0
+          - 1,0,0
+          - -1,0,0
+          - 0,-1,0
+          - 1,-1,0
+          - -1,-1,0
+```
+
+![](/img/range_mining_2.png)

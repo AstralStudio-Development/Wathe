@@ -1,0 +1,23 @@
+---
+title: 🔘 Button Block
+id: button_block
+---
+
+| Property Name | Property Type | Required |
+|---------------|---------------|----------|
+| powered       | boolean       | yes      |
+
+```yaml
+blocks:
+  default:palm_button:
+    behavior:
+      type: button_block
+      ticks-to-stay-pressed: 30
+      can-be-activated-by-arrows: true
+      sounds:
+        on: minecraft:block.wooden_button.click_on
+        off: minecraft:block.wooden_button.click_off
+```
+
+![](/img/button_block.png)
+

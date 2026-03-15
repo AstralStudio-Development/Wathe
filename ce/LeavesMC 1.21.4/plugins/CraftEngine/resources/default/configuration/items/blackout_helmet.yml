@@ -1,0 +1,16 @@
+items:
+  default:blackout_helmet:
+    material: leather_helmet
+    $$<=1.21.1:
+      client-bound-material: leather_horse_armor
+    data:
+      item-name: <!i><white>Blackout Helmet
+      unbreakable: true
+      remove-components:
+        - attribute_modifiers
+      $$>=1.21.2:
+        equippable:
+          slot: head
+    model:
+      type: minecraft:model
+      path: minecraft:item/custom/blackout_helmet

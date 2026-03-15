@@ -1,0 +1,197 @@
+# Stone Wall Blocks - Using fence_block behavior for auto-connection
+items:
+  # ==================== Marble Wall ====================
+  wathe:marble_wall:
+    data:
+      item-name: <!i><lang:block.wathe.marble_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/marble_wall_inventory
+      generation:
+        parent: minecraft:block/wall_inventory
+        textures:
+          wall: wathe:block/marble
+    behavior:
+      type: block_item
+      block: wathe:marble_wall
+  wathe:marble_wall_post:
+    data:
+      item-name: <!i><lang:block.wathe.marble_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/marble_wall_post
+      generation:
+        parent: wathe:block/template_wall_post
+        textures:
+          wall: wathe:block/marble
+  wathe:marble_wall_side:
+    data:
+      item-name: <!i><lang:block.wathe.marble_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/marble_wall_side
+      generation:
+        parent: wathe:block/template_wall_side
+        textures:
+          wall: wathe:block/marble
+
+  # ==================== Marble Tile Wall ====================
+  wathe:marble_tile_wall:
+    data:
+      item-name: <!i><lang:block.wathe.marble_tile_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/marble_tile_wall_inventory
+      generation:
+        parent: minecraft:block/wall_inventory
+        textures:
+          wall: wathe:block/marble_tiles
+    behavior:
+      type: block_item
+      block: wathe:marble_tile_wall
+  wathe:marble_tile_wall_post:
+    data:
+      item-name: <!i><lang:block.wathe.marble_tile_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/marble_tile_wall_post
+      generation:
+        parent: wathe:block/template_wall_post
+        textures:
+          wall: wathe:block/marble_tiles
+  wathe:marble_tile_wall_side:
+    data:
+      item-name: <!i><lang:block.wathe.marble_tile_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/marble_tile_wall_side
+      generation:
+        parent: wathe:block/template_wall_side
+        textures:
+          wall: wathe:block/marble_tiles
+
+  # ==================== Dark Marble Wall ====================
+  wathe:dark_marble_wall:
+    data:
+      item-name: <!i><lang:block.wathe.dark_marble_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/dark_marble_wall_inventory
+      generation:
+        parent: minecraft:block/wall_inventory
+        textures:
+          wall: wathe:block/dark_marble
+    behavior:
+      type: block_item
+      block: wathe:dark_marble_wall
+  wathe:dark_marble_wall_post:
+    data:
+      item-name: <!i><lang:block.wathe.dark_marble_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/dark_marble_wall_post
+      generation:
+        parent: wathe:block/template_wall_post
+        textures:
+          wall: wathe:block/dark_marble
+  wathe:dark_marble_wall_side:
+    data:
+      item-name: <!i><lang:block.wathe.dark_marble_wall>
+    model:
+      type: minecraft:model
+      path: wathe:block/dark_marble_wall_side
+      generation:
+        parent: wathe:block/template_wall_side
+        textures:
+          wall: wathe:block/dark_marble
+
+blocks:
+  # ==================== Marble Wall ====================
+  wathe:marble_wall:
+    loot:
+      template: default:loot_table/self
+    settings:
+      hardness: 2.0
+      resistance: 2.0
+      map-color: 8
+      is-suffocating: false
+      is-redstone-conductor: false
+      tags:
+        - minecraft:walls
+        - minecraft:mineable/pickaxe
+        - wathe:walls
+      sounds:
+        break: minecraft:block.calcite.break
+        fall: minecraft:block.calcite.fall
+        hit: minecraft:block.calcite.hit
+        place: minecraft:block.calcite.place
+        step: minecraft:block.calcite.step
+    behavior:
+      type: fence_block
+      connectable-block-tag: minecraft:fences
+    states:
+      template: default:block_state/fence
+      arguments:
+        base_block: nether_brick_fence
+        fence_post_item: wathe:marble_wall_post
+        fence_side_item: wathe:marble_wall_side
+
+  # ==================== Marble Tile Wall ====================
+  wathe:marble_tile_wall:
+    loot:
+      template: default:loot_table/self
+    settings:
+      hardness: 2.0
+      resistance: 2.0
+      map-color: 8
+      is-suffocating: false
+      is-redstone-conductor: false
+      tags:
+        - minecraft:walls
+        - minecraft:mineable/pickaxe
+        - wathe:walls
+      sounds:
+        break: minecraft:block.calcite.break
+        fall: minecraft:block.calcite.fall
+        hit: minecraft:block.calcite.hit
+        place: minecraft:block.calcite.place
+        step: minecraft:block.calcite.step
+    behavior:
+      type: fence_block
+      connectable-block-tag: minecraft:fences
+    states:
+      template: default:block_state/fence
+      arguments:
+        base_block: nether_brick_fence
+        fence_post_item: wathe:marble_tile_wall_post
+        fence_side_item: wathe:marble_tile_wall_side
+
+  # ==================== Dark Marble Wall ====================
+  wathe:dark_marble_wall:
+    loot:
+      template: default:loot_table/self
+    settings:
+      hardness: 2.0
+      resistance: 2.0
+      map-color: 29
+      is-suffocating: false
+      is-redstone-conductor: false
+      tags:
+        - minecraft:walls
+        - minecraft:mineable/pickaxe
+        - wathe:walls
+      sounds:
+        break: minecraft:block.calcite.break
+        fall: minecraft:block.calcite.fall
+        hit: minecraft:block.calcite.hit
+        place: minecraft:block.calcite.place
+        step: minecraft:block.calcite.step
+    behavior:
+      type: fence_block
+      connectable-block-tag: minecraft:fences
+    states:
+      template: default:block_state/fence
+      arguments:
+        base_block: nether_brick_fence
+        fence_post_item: wathe:dark_marble_wall_post
+        fence_side_item: wathe:dark_marble_wall_side

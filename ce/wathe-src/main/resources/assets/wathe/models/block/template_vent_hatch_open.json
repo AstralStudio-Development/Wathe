@@ -1,0 +1,66 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+		"particle": "#texture"
+	},
+	"elements": [
+		{
+			"from": [1, 15, 2],
+			"to": [15, 16, 3],
+			"rotation": {"angle": 0, "axis": "x", "origin": [8, 15, 16]},
+			"faces": {
+				"north": {"uv": [15, 14, 1, 15], "rotation": 180, "texture": "#texture"},
+				"east": {"uv": [1, 14, 2, 15], "rotation": 270, "texture": "#texture"},
+				"south": {"uv": [15, 14, 1, 15], "texture": "#texture"},
+				"west": {"uv": [14, 14, 15, 15], "rotation": 90, "texture": "#texture"},
+				"up": {"uv": [1, 14, 15, 15], "rotation": 180, "texture": "#texture"},
+				"down": {"uv": [15, 14, 1, 15], "texture": "#texture"}
+			}
+		},
+		{
+			"from": [1, 15, 15],
+			"to": [15, 16, 16],
+			"rotation": {"angle": 0, "axis": "x", "origin": [8, 15, 16]},
+			"faces": {
+				"north": {"uv": [15, 1, 1, 2], "rotation": 180, "texture": "#texture"},
+				"east": {"uv": [1, 1, 2, 2], "rotation": 270, "texture": "#texture"},
+				"south": {"uv": [15, 1, 1, 2], "texture": "#texture"},
+				"west": {"uv": [14, 1, 15, 2], "rotation": 90, "texture": "#texture"},
+				"up": {"uv": [1, 1, 15, 2], "rotation": 180, "texture": "#texture"},
+				"down": {"uv": [15, 1, 1, 2], "texture": "#texture"}
+			}
+		},
+		{
+			"from": [1, 15, 3],
+			"to": [2, 16, 15],
+			"rotation": {"angle": 0, "axis": "x", "origin": [8, 15, 16]},
+			"faces": {
+				"east": {"uv": [14, 2, 15, 14], "rotation": 270, "texture": "#texture"},
+				"west": {"uv": [14, 2, 15, 14], "rotation": 90, "texture": "#texture"},
+				"up": {"uv": [14, 2, 15, 14], "rotation": 180, "texture": "#texture"},
+				"down": {"uv": [14, 2, 15, 14], "texture": "#texture"}
+			}
+		},
+		{
+			"from": [14, 15, 3],
+			"to": [15, 16, 15],
+			"rotation": {"angle": 0, "axis": "x", "origin": [8, 15, 16]},
+			"faces": {
+				"east": {"uv": [1, 2, 2, 14], "rotation": 270, "texture": "#texture"},
+				"west": {"uv": [1, 2, 2, 14], "rotation": 90, "texture": "#texture"},
+				"up": {"uv": [1, 2, 2, 14], "rotation": 180, "texture": "#texture"},
+				"down": {"uv": [1, 2, 2, 14], "texture": "#texture"}
+			}
+		},
+		{
+			"from": [2, 15.5, 3],
+			"to": [14, 15.5, 15],
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "x", "origin": [8, 15, 16]},
+			"faces": {
+				"up": {"uv": [2, 2, 14, 14], "rotation": 180, "texture": "#texture"},
+				"down": {"uv": [14, 2, 2, 14], "texture": "#texture"}
+			}
+		}
+	]
+}

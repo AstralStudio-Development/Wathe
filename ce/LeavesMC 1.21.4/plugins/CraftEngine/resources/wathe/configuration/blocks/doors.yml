@@ -1,0 +1,143 @@
+# Standard Door Blocks
+# Using door_block behavior and default:block_state/door template
+
+items:
+  # Metal Sheet Door
+  wathe:metal_sheet_door:
+    data:
+      item-name: <!i><lang:block.wathe.metal_sheet_door>
+    texture: wathe:item/metal_sheet_door
+    behavior:
+      type: double_high_block_item
+      block:
+        behavior:
+          type: door_block
+          can-open-with-hand: true
+          can-open-by-wind-charge: true
+          sounds:
+            open: minecraft:block.iron_door.open
+            close: minecraft:block.iron_door.close
+        loot:
+          template: default:loot_table/door
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 11
+          push-reaction: destroy
+          tags:
+            - minecraft:doors
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.copper.break
+            fall: minecraft:block.copper.fall
+            hit: minecraft:block.copper.hit
+            place: minecraft:block.copper.place
+            step: minecraft:block.copper.step
+        states:
+          template: default:block_state/door
+          arguments:
+            base_block: iron_door
+            model_top_left_path: wathe:block/metal_sheet_door_top_left
+            model_top_left_generation:
+              parent: minecraft:block/door_top_left
+              textures: &metal_sheet_door_textures
+                bottom: wathe:block/metal_sheet_door_bottom
+                top: wathe:block/metal_sheet_door_top
+            model_top_right_path: wathe:block/metal_sheet_door_top_right
+            model_top_right_generation:
+              parent: minecraft:block/door_top_right
+              textures: *metal_sheet_door_textures
+            model_top_left_open_path: wathe:block/metal_sheet_door_top_left_open
+            model_top_left_open_generation:
+              parent: minecraft:block/door_top_left_open
+              textures: *metal_sheet_door_textures
+            model_top_right_open_path: wathe:block/metal_sheet_door_top_right_open
+            model_top_right_open_generation:
+              parent: minecraft:block/door_top_right_open
+              textures: *metal_sheet_door_textures
+            model_bottom_left_path: wathe:block/metal_sheet_door_bottom_left
+            model_bottom_left_generation:
+              parent: minecraft:block/door_bottom_left
+              textures: *metal_sheet_door_textures
+            model_bottom_right_path: wathe:block/metal_sheet_door_bottom_right
+            model_bottom_right_generation:
+              parent: minecraft:block/door_bottom_right
+              textures: *metal_sheet_door_textures
+            model_bottom_left_open_path: wathe:block/metal_sheet_door_bottom_left_open
+            model_bottom_left_open_generation:
+              parent: minecraft:block/door_bottom_left_open
+              textures: *metal_sheet_door_textures
+            model_bottom_right_open_path: wathe:block/metal_sheet_door_bottom_right_open
+            model_bottom_right_open_generation:
+              parent: minecraft:block/door_bottom_right_open
+              textures: *metal_sheet_door_textures
+
+  # Cockpit Door
+  wathe:cockpit_door:
+    data:
+      item-name: <!i><lang:block.wathe.cockpit_door>
+    texture: wathe:item/cockpit_door
+    behavior:
+      type: double_high_block_item
+      block:
+        behavior:
+          type: door_block
+          can-open-with-hand: true
+          can-open-by-wind-charge: true
+          sounds:
+            open: minecraft:block.iron_door.open
+            close: minecraft:block.iron_door.close
+        loot:
+          template: default:loot_table/door
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          map-color: 11
+          push-reaction: destroy
+          tags:
+            - minecraft:doors
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.copper.break
+            fall: minecraft:block.copper.fall
+            hit: minecraft:block.copper.hit
+            place: minecraft:block.copper.place
+            step: minecraft:block.copper.step
+        states:
+          template: default:block_state/door
+          arguments:
+            base_block: warped_door
+            model_top_left_path: wathe:block/cockpit_door_top_left
+            model_top_left_generation:
+              parent: minecraft:block/door_top_left
+              textures: &cockpit_door_textures
+                bottom: wathe:block/cockpit_door_bottom
+                top: wathe:block/cockpit_door_top
+            model_top_right_path: wathe:block/cockpit_door_top_right
+            model_top_right_generation:
+              parent: minecraft:block/door_top_right
+              textures: *cockpit_door_textures
+            model_top_left_open_path: wathe:block/cockpit_door_top_left_open
+            model_top_left_open_generation:
+              parent: minecraft:block/door_top_left_open
+              textures: *cockpit_door_textures
+            model_top_right_open_path: wathe:block/cockpit_door_top_right_open
+            model_top_right_open_generation:
+              parent: minecraft:block/door_top_right_open
+              textures: *cockpit_door_textures
+            model_bottom_left_path: wathe:block/cockpit_door_bottom_left
+            model_bottom_left_generation:
+              parent: minecraft:block/door_bottom_left
+              textures: *cockpit_door_textures
+            model_bottom_right_path: wathe:block/cockpit_door_bottom_right
+            model_bottom_right_generation:
+              parent: minecraft:block/door_bottom_right
+              textures: *cockpit_door_textures
+            model_bottom_left_open_path: wathe:block/cockpit_door_bottom_left_open
+            model_bottom_left_open_generation:
+              parent: minecraft:block/door_bottom_left_open
+              textures: *cockpit_door_textures
+            model_bottom_right_open_path: wathe:block/cockpit_door_bottom_right_open
+            model_bottom_right_open_generation:
+              parent: minecraft:block/door_bottom_right_open
+              textures: *cockpit_door_textures

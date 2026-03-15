@@ -1,0 +1,17 @@
+---
+title: 🪓 可剥离方块
+id: strippable_block
+---
+
+**可剥离方块**是一种可用斧右键点击剥离的方块类型，主要用于树木原木。
+
+```yaml
+blocks:
+  default:palm_log:
+    behavior:
+      type: strippable_block
+      stripped: default:stripped_palm_log
+      excluded-properties: [] # 转变时忽略的属性
+```
+
+![](/img/strippable_block.png)

@@ -1,0 +1,130 @@
+# Wathe 游戏配置文件
+
+# 游戏设置
+game:
+  # 默认游戏时间 (分钟)
+  default-time: 10
+  # 最少玩家数量
+  min-players: 2
+  # 杀手数量规则 (玩家数 >= 阈值时增加杀手)
+  killer-threshold: 8
+  # 义警数量规则 (玩家数 >= 阈值时增加义警)
+  vigilante-threshold: 6
+
+# 自动开始设置
+auto-start:
+  # 倒计时时间 (秒)
+  countdown: 30
+
+# 金币设置
+money:
+  # 初始金币
+  start: 100
+  # 被动收入间隔 (秒)
+  passive-interval: 10
+  # 被动收入数量
+  passive-amount: 5
+  # 击杀奖励
+  kill-reward: 100
+
+# 商品价格
+shop:
+  knife: 100
+  gun: 300
+  grenade: 350
+  poison: 100
+  lockpick: 50
+  crowbar: 25
+  body-bag: 200
+  blackout: 200
+  firecracker: 10
+  note: 10
+
+# 物品冷却 (秒)
+cooldowns:
+  knife: 60
+  gun: 10
+  grenade: 300
+  lockpick: 180
+  crowbar: 10
+  body-bag: 300
+  blackout: 180
+
+# 心情系统
+mood:
+  # 任务完成恢复量 (0-1)
+  gain: 0.5
+  # 心情下降速度 (每秒)
+  drain-per-second: 0.008
+  # 中等心情阈值
+  mid-threshold: 0.55
+  # 抑郁心情阈值
+  depressive-threshold: 0.2
+
+# 停电设置
+blackout:
+  # 最短持续时间 (秒)
+  min-duration: 15
+  # 最长持续时间 (秒)
+  max-duration: 20
+
+# 毒药设置
+poison:
+  # 毒药生效时间 (秒)
+  effect-delay: 30
+  # 毒药持续时间 (秒)
+  duration: 10
+
+# 环境音循环时长（秒）
+ambient:
+  inside-loop-seconds: 104
+  outside-loop-seconds: 116
+
+# 消息设置
+messages:
+  prefix: "&5[Wathe] "
+  game-start: "&a游戏开始!"
+  game-end: "&c游戏结束!"
+  killer-win: "&c杀手胜利!"
+  innocent-win: "&a平民胜利!"
+  time-up: "&c时间到!"
+
+# 山景设置 (窗外移动效果)
+scenery:
+  # 是否启用山景效果
+  enabled: false
+  # 移动速度 (格/tick, 20tick=1秒)
+  speed: 0.5
+  # 移动轴向 (X 或 Z)
+  move-axis: "X"
+  # 循环片段数量 (建议2-3个)
+  segment-count: 2
+  # 模板区域 (在世界中建造山景模板的区域)
+  template-region:
+    world: "world"
+    pos1:
+      x: 0
+      y: 64
+      z: 0
+    pos2:
+      x: 100
+      y: 128
+      z: 50
+  # Display Entity 生成位置 (山景显示的起始位置)
+  display-position:
+    world: "world"
+    x: 0
+    y: 64
+    z: 100
+
+# 狂暴模式皮肤设置
+# 需要通过 Mineskin API (https://mineskin.org) 上传皮肤获取 value 和 signature
+# 上传 psycho.png 和 psycho_thin.png 后填入对应的值
+psycho-skin:
+  normal:
+    value: "ewogICJ0aW1lc3RhbXAiIDogMTc2NDE4ODk2NDExMiwKICAicHJvZmlsZUlkIiA6ICI0ZWEwN2YwODlmN2U0MWZhYmMwNjRhMjZlNWM1OWU2ZSIsCiAgInByb2ZpbGVOYW1lIiA6ICJzcGlmZnRvcGlhMiIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9kODJkZDY3MWM2ZDJlYzk2NjM2OGFkMWRiNmJmYjg2YjdiMzcxNTM1YjJmMzJkNGVhNWU0ODU3NGM0OTAxY2U4IgogICAgfQogIH0KfQ=="
+    signature: "qTNfbMB5sxlfyEvU/jboJFEjSVJcuA8Ejv3OhCVl1YrBgak8xXr7Wy905vTwYpgtmpvMi55OcrDIXPzrouJ3mfSeCEc8OqgCwcbLJOd0cVToQiozHNb6SB3fOitahqSsFj79ufdiX7OvTwOdOmnYx7cEwwtSgIFApcVsbmCMGAm8M+d8O1n0VaOZJZO34bUDPLwDW8SOeB3uiQQMCEx44akX4BO8uNiZr094IQTb9PE5YP7C9zIYrG/h/wAvLqOgsr0qNxmuRJEhqQHQvs+yJ+LS9NCxHh5HSIokKdLzu6bzDnkI1Hii2U+jdccp3ynuhaC4tXw4GtsGBm2+5j+X4VLPQ6kxRLEfEXrvvzwBqMISv8vEDcsclL1zLX9Fo74y82uN3yz+1ozypQ4jpTpLTSyEK8sWqhCWL1OTV93Uo9BQQoyvqjxPV2K57TwBIY3D9J/lsWn5oikUIDxTW6ZFPoy1mMqGlt8zF2KRN8iDer5ZCOAz5bdJzssG0PRS6JDvFeZ8MDtI2fkjcLi/BpsNL9VU1BWDQH27m+t0kzPoUD808e1/q/nP4sc9FVLBGEHQpIsSnS/6ptuXWwizKx2V4q50T1OS9ayys/dFesIhHe0hqPs5gfTfhOep2+oylLrQldlRulxcl1CRr+11dwSWO0j6MARpdVh4nrc8Ii7ZdFE="
+  thin:
+    value: "ewogICJ0aW1lc3RhbXAiIDogMTc3MTk4MDM2OTk4MSwKICAicHJvZmlsZUlkIiA6ICI2ZjMzNmQxNzI4ODY0ZTJkOTYxNTFjOGY4YjkzMGFjOCIsCiAgInByb2ZpbGVOYW1lIiA6ICJTVVNfQUoiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTg0MjYxNGQxODc5MTZlOTAyNzRmODU3ZDUyYTg0MjRhM2UzNjhhODQ2MjAzYTNhZjU5YjRkNzcxMTVlODE2YyIsCiAgICAgICJtZXRhZGF0YSIgOiB7CiAgICAgICAgIm1vZGVsIiA6ICJzbGltIgogICAgICB9CiAgICB9CiAgfQp9"
+    signature: "UglxGlQZCdJmaXAp0bplPoTGe4P2SJ4Lzzc9MDKp365xwfoqbmX4Gp9p24FLBJ3MVpJFwidDtG+ROO/BnRrN/zfoKkSQE9FEsvZUAqI9u6FWKVyWCYZU21+Agapowbb4KbC6rNYZ0b35AWZ6VbuCYnZwSyNd9FPEURSgHfDXk7EIvCxcXrcfINEY2FGIvIoUmW0J3xNazEIqyBXTox2n1uIJ7ouJFz2OSIvfXKdhr97z9R4R6Og+QceTPvZHJJVkuIXsmCD2GWsUS6D9nSjPw380OZc61x8G87NXoqWKN0SAp8ojrsV1FM8ftzF8Y23gnF8+g6MCa2IdVK8C3qJWE4gzd5q/azlKNXqSmgQTt7PAUgHZyLcqG3jp2ob4MtTzAfW3uqIUI1ckjyoXqoxjgJELoz2JrYrRqG9AGM3uSyd37PJKsTN5vyZkDsds5enbyxONS02cUTY1WukcXEXXBDBAOc7sJcVNwG2fMzpFreVp90yBHB6/fUC0JKIoeWbjF4RU9+chSNGOgMg04Y8ksmQK9eW8Si6ZD7+E+CBs/9xHXHjz+5j15ZKPYEq3giLhqgxXA7uXIZc7qsAXuNnaz0PZ0/AYHsVdyxJhFjKIK3pWMT03nXUfHb3SPEY0zG35mL/SG6qbA0YEYuH6+cVi46DkHRCLbNgFgRS7nhBBByU="
+

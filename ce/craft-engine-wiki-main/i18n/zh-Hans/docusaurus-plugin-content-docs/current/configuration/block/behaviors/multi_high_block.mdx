@@ -1,0 +1,24 @@
+---
+title: 🏢 多层方块
+id: multi_high_block
+---
+
+| 属性名称 | 属性类型 | 是否必需 |
+|------|------|------|
+| 自定义  | int  | 是    |
+
+**多层方块**根据指定的 `int` 类型的属性的范围差决定方块高度。
+
+```yaml
+blocks:
+  default:multi_high_block:
+    states:
+      properties:
+        height:
+          type: int
+          default: 0
+          range: 0~2
+    behavior:
+      type: multi_high_block
+      property: height
+```

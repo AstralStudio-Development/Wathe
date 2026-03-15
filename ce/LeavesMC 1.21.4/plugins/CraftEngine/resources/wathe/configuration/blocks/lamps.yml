@@ -1,0 +1,323 @@
+# Lamp Blocks - migrated from wathe source (FacingLightBlock + ToggleableFacingLightBlock)
+# Includes: trimmed_lantern, wall_lamp
+# State logic: facing + active + lit
+
+items:
+  wathe:trimmed_lantern:
+    data:
+      item-name: <!i><lang:block.wathe.trimmed_lantern>
+    model:
+      type: minecraft:model
+      path: wathe:item/trimmed_lantern
+      generation:
+        parent: wathe:block/trimmed_lantern_floor_unlit
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.lantern.break
+            fall: minecraft:block.lantern.fall
+            hit: minecraft:block.lantern.hit
+            place: minecraft:block.lantern.place
+            step: minecraft:block.lantern.step
+        behaviors:
+          - type: directional_attached_block
+          - type: toggleable_lamp_block
+            can-toggle-with-hand: true
+        states:
+          properties:
+            facing:
+              type: direction
+              default: down
+            active:
+              type: boolean
+              default: true
+            lit:
+              type: boolean
+              default: false
+          appearances:
+            down_off:
+              state: lantern[hanging=true,waterlogged=false]
+              model:
+                path: wathe:block/trimmed_lantern_ceiling_unlit
+            down_on:
+              state: soul_lantern[hanging=true,waterlogged=false]
+              model:
+                path: wathe:block/trimmed_lantern_ceiling_lit
+            up_off:
+              state: lantern[hanging=false,waterlogged=false]
+              model:
+                path: wathe:block/trimmed_lantern_floor_unlit
+            up_on:
+              state: soul_lantern[hanging=false,waterlogged=false]
+              model:
+                path: wathe:block/trimmed_lantern_floor_lit
+            north_off:
+              state: wall_torch[facing=north]
+              model:
+                path: wathe:block/trimmed_lantern_wall_unlit
+            north_on:
+              state: soul_wall_torch[facing=north]
+              model:
+                path: wathe:block/trimmed_lantern_wall_lit
+            east_off:
+              state: wall_torch[facing=east]
+              model:
+                path: wathe:block/trimmed_lantern_wall_unlit
+                y: 90
+            east_on:
+              state: soul_wall_torch[facing=east]
+              model:
+                path: wathe:block/trimmed_lantern_wall_lit
+                y: 90
+            south_off:
+              state: wall_torch[facing=south]
+              model:
+                path: wathe:block/trimmed_lantern_wall_unlit
+                y: 180
+            south_on:
+              state: soul_wall_torch[facing=south]
+              model:
+                path: wathe:block/trimmed_lantern_wall_lit
+                y: 180
+            west_off:
+              state: wall_torch[facing=west]
+              model:
+                path: wathe:block/trimmed_lantern_wall_unlit
+                y: 270
+            west_on:
+              state: soul_wall_torch[facing=west]
+              model:
+                path: wathe:block/trimmed_lantern_wall_lit
+                y: 270
+          variants:
+            facing=down,active=false,lit=false:
+              appearance: down_off
+            facing=down,active=false,lit=true:
+              appearance: down_off
+            facing=east,active=false,lit=false:
+              appearance: east_off
+            facing=east,active=false,lit=true:
+              appearance: east_off
+            facing=north,active=false,lit=false:
+              appearance: north_off
+            facing=north,active=false,lit=true:
+              appearance: north_off
+            facing=south,active=false,lit=false:
+              appearance: south_off
+            facing=south,active=false,lit=true:
+              appearance: south_off
+            facing=up,active=false,lit=false:
+              appearance: up_off
+            facing=up,active=false,lit=true:
+              appearance: up_off
+            facing=west,active=false,lit=false:
+              appearance: west_off
+            facing=west,active=false,lit=true:
+              appearance: west_off
+
+            facing=down,active=true,lit=false:
+              appearance: down_off
+            facing=down,active=true,lit=true:
+              appearance: down_on
+              settings:
+                luminance: 15
+            facing=east,active=true,lit=false:
+              appearance: east_off
+            facing=east,active=true,lit=true:
+              appearance: east_on
+              settings:
+                luminance: 15
+            facing=north,active=true,lit=false:
+              appearance: north_off
+            facing=north,active=true,lit=true:
+              appearance: north_on
+              settings:
+                luminance: 15
+            facing=south,active=true,lit=false:
+              appearance: south_off
+            facing=south,active=true,lit=true:
+              appearance: south_on
+              settings:
+                luminance: 15
+            facing=up,active=true,lit=false:
+              appearance: up_off
+            facing=up,active=true,lit=true:
+              appearance: up_on
+              settings:
+                luminance: 15
+            facing=west,active=true,lit=false:
+              appearance: west_off
+            facing=west,active=true,lit=true:
+              appearance: west_on
+              settings:
+                luminance: 15
+
+  wathe:wall_lamp:
+    data:
+      item-name: <!i><lang:block.wathe.wall_lamp>
+    model:
+      type: minecraft:model
+      path: wathe:item/wall_lamp
+      generation:
+        parent: wathe:block/wall_lamp_floor_unlit
+    behavior:
+      type: block_item
+      block:
+        loot:
+          template: default:loot_table/self
+        settings:
+          hardness: 0.5
+          resistance: 0.5
+          is-suffocating: false
+          is-redstone-conductor: false
+          tags:
+            - minecraft:mineable/pickaxe
+          sounds:
+            break: minecraft:block.lantern.break
+            fall: minecraft:block.lantern.fall
+            hit: minecraft:block.lantern.hit
+            place: minecraft:block.lantern.place
+            step: minecraft:block.lantern.step
+        behaviors:
+          - type: directional_attached_block
+          - type: toggleable_lamp_block
+            can-toggle-with-hand: true
+        states:
+          properties:
+            facing:
+              type: direction
+              default: down
+            active:
+              type: boolean
+              default: true
+            lit:
+              type: boolean
+              default: false
+          appearances:
+            down_off:
+              state: lever[face=ceiling,facing=north,powered=false]
+              model:
+                path: wathe:block/wall_lamp_ceiling_unlit
+            down_on:
+              state: lever[face=ceiling,facing=north,powered=true]
+              model:
+                path: wathe:block/wall_lamp_ceiling_lit
+            up_off:
+              state: lever[face=floor,facing=north,powered=false]
+              model:
+                path: wathe:block/wall_lamp_floor_unlit
+            up_on:
+              state: lever[face=floor,facing=north,powered=true]
+              model:
+                path: wathe:block/wall_lamp_floor_lit
+            north_off:
+              state: lever[face=wall,facing=north,powered=false]
+              model:
+                path: wathe:block/wall_lamp_wall_unlit
+            north_on:
+              state: lever[face=wall,facing=north,powered=true]
+              model:
+                path: wathe:block/wall_lamp_wall_lit
+            east_off:
+              state: lever[face=wall,facing=east,powered=false]
+              model:
+                path: wathe:block/wall_lamp_wall_unlit
+                y: 90
+            east_on:
+              state: lever[face=wall,facing=east,powered=true]
+              model:
+                path: wathe:block/wall_lamp_wall_lit
+                y: 90
+            south_off:
+              state: lever[face=wall,facing=south,powered=false]
+              model:
+                path: wathe:block/wall_lamp_wall_unlit
+                y: 180
+            south_on:
+              state: lever[face=wall,facing=south,powered=true]
+              model:
+                path: wathe:block/wall_lamp_wall_lit
+                y: 180
+            west_off:
+              state: lever[face=wall,facing=west,powered=false]
+              model:
+                path: wathe:block/wall_lamp_wall_unlit
+                y: 270
+            west_on:
+              state: lever[face=wall,facing=west,powered=true]
+              model:
+                path: wathe:block/wall_lamp_wall_lit
+                y: 270
+          variants:
+            facing=down,active=false,lit=false:
+              appearance: down_off
+            facing=down,active=false,lit=true:
+              appearance: down_off
+            facing=east,active=false,lit=false:
+              appearance: east_off
+            facing=east,active=false,lit=true:
+              appearance: east_off
+            facing=north,active=false,lit=false:
+              appearance: north_off
+            facing=north,active=false,lit=true:
+              appearance: north_off
+            facing=south,active=false,lit=false:
+              appearance: south_off
+            facing=south,active=false,lit=true:
+              appearance: south_off
+            facing=up,active=false,lit=false:
+              appearance: up_off
+            facing=up,active=false,lit=true:
+              appearance: up_off
+            facing=west,active=false,lit=false:
+              appearance: west_off
+            facing=west,active=false,lit=true:
+              appearance: west_off
+
+            facing=down,active=true,lit=false:
+              appearance: down_off
+            facing=down,active=true,lit=true:
+              appearance: down_on
+              settings:
+                luminance: 15
+            facing=east,active=true,lit=false:
+              appearance: east_off
+            facing=east,active=true,lit=true:
+              appearance: east_on
+              settings:
+                luminance: 15
+            facing=north,active=true,lit=false:
+              appearance: north_off
+            facing=north,active=true,lit=true:
+              appearance: north_on
+              settings:
+                luminance: 15
+            facing=south,active=true,lit=false:
+              appearance: south_off
+            facing=south,active=true,lit=true:
+              appearance: south_on
+              settings:
+                luminance: 15
+            facing=up,active=true,lit=false:
+              appearance: up_off
+            facing=up,active=true,lit=true:
+              appearance: up_on
+              settings:
+                luminance: 15
+            facing=west,active=true,lit=false:
+              appearance: west_off
+            facing=west,active=true,lit=true:
+              appearance: west_on
+              settings:
+                luminance: 15
+

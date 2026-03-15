@@ -1,0 +1,18 @@
+---
+title: ⚡ Spark
+id: spark
+---
+
+## Main Thread Performance Analysis
+
+The data displayed by Spark may not always reflect the actual situation accurately. You might observe some performance overhead attributed to CraftEngine that is not directly caused by the plugin itself. This should not be blamed on Spark, as it is related to its underlying working mechanism.
+
+When performing main thread performance analysis, if you encounter issues suspected to be related to CraftEngine, it is recommended to first exclude the following common interference factors (the example below is sampled from a server environment with 500 real players online simultaneously):
+
+1. Classes starting with "Injected" (marked in red in the image)
+These classes are injected by CraftEngine. Therefore, some performance consumption originally belonging to the server will be attributed to CraftEngine in the analysis.
+
+2. API Calls (marked in green in the image)
+When you listen to events or build items through the CraftEngine API, the corresponding time consumption will also be attributed to CraftEngine in the performance analysis.
+
+![](/img/spark_1.png)

@@ -1,0 +1,44 @@
+---
+title: 🔊 音效
+id: sound
+---
+
+import UrlCard from '@site/src/components/UrlCard';
+
+<UrlCard
+  url="https://zh.minecraft.wiki/w/Java版声音事件"
+  title="音效"
+/>
+
+:::info
+
+当你使用 `/playsound` 指令播放音效时，它实际上是触发了一个声音事件，而真正的音效文件则位于 sounds 列表中。你可以查阅 Minecraft Wiki 来了解每个参数对应的效果。插件本身不会对这些内容提供过多描述，因为 Minecraft Wiki 已经对每个部分解释得非常清楚，并且 CraftEngine 使用的配置项名称也与 Wiki 中描述的一致。
+
+:::
+
+```yaml
+sounds:
+  minecraft:custom_block.place:
+    replace: false
+    subtitle: subtitles.custom_block.place
+    sounds:
+      - "block/custom_block_1"
+  minecraft:custom_ambient.custom_biome:
+    replace: false
+    subtitle: subtitles.custom_ambient.custom_biome
+    sounds:
+      - name: "ambient/custom_biome_1"
+        volume: 0.4
+        weight: 3
+      - name: "ambient/custom_biome_2"
+        volume: 0.4
+        weight: 7
+      - name: "ambient/custom_biome_3"
+        volume: 0.4
+        weight: 10
+        stream: false
+        attenuation-distance: 16
+        preload: false
+        type: "file"
+```
+

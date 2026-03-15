@@ -1,0 +1,16 @@
+---
+title: 🔔 震响方块
+id: chime_block
+---
+
+**震响方块**被弹射物击中会发出声音。
+
+```yaml
+blocks:
+  default:palm_button:
+    behavior:
+      type: chime_block
+      sounds:
+        projectile-hit: minecraft:block.amethyst_block.chime
+        # 或者使用 `chime: minecraft:block.amethyst_block.chime`
+```

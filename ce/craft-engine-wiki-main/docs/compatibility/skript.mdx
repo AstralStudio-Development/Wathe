@@ -1,0 +1,286 @@
+---
+title: 🔮 Skript
+id: skript
+---
+
+import SkriptCard from '@site/src/components/SkriptCard';
+
+# ⌨️ Skript
+
+:::tip
+For advanced skript users, please use reflection to achieve more advanced functions. If you encounter problems when using the Skript features provided by CraftEngine, please [give us feedback](https://github.com/Xiao-MoMi/craft-engine/issues/new) in time. If you'd like to request a new Skript feature and you know Java, consider contributing your code via a pull request!
+:::
+
+:::warning
+Please note that if you get an error when loading the server, it is probably because the skript script is loaded before the craftengine. This cannot be fixed at this time and can only be solved by reloading.
+:::
+
+
+## Events
+
+<SkriptCard
+  title="Place/Break CraftEngine Block Event"
+  type="Event"
+  description="Triggers when placing and breaking CraftEngine blocks"
+  syntax={[
+    '[on] (break[ing]|1¦min(e|ing)) of (custom|ce|craft-engine) block[s] [[of] %-unsafeblockstatematchers%]',
+    '[on] (plac(e|ing)|build[ing]) of (custom|ce|craft-engine) block[s] [[of] %-unsafeblockstatematchers%]'
+  ]}
+  values={[
+    'event-block',
+    'event-location',
+    'event-player',
+    'event-world'
+  ]}
+  examples={[
+    `on break of ce block default:palm_log[axis=y]:
+      send "You broke the custom block!" to event-player`
+  ]}
+  defaultOpen={false}
+/>
+
+<SkriptCard
+  title="Place/Break CraftEngine Furniture Event"
+  type="Event"
+  description="Triggers when placing and breaking CraftEngine furniture"
+  syntax={[
+    '[on] (break[ing]) of [(custom|ce|craft-engine)] furniture[s] [[of] %-strings%]',
+    '[on] (plac(e|ing)|build[ing]) of [(custom|ce|craft-engine)] furniture[s] [[of] %-strings%]'
+  ]}
+  values={[
+    'event-entity',
+    'event-location',
+    'event-player',
+    'event-world'
+  ]}
+  examples={[
+    `on place of custom furniture default:chinese_lantern:
+      send "You clicked the custom block!" to event-player`
+  ]}
+  defaultOpen={false}
+/>
+
+<SkriptCard
+  title="Click CraftEngine Block/Furniture Event"
+  type="Event"
+  description="Triggers when clicking on CraftEngine block and furniture"
+  syntax={[
+    '[on] [(" + RIGHT + ":right|" + LEFT + ":left)(| |-)][mouse(| |-)]click[ing] of (ce|craft-engine) [on %-unsafeblockstatematchers/strings%] [(with|using|holding) %-itemtype%]',
+    '[on] [(" + RIGHT + ":right|" + LEFT + ":left)(| |-)][mouse(| |-)]click[ing] of (ce|craft-engine) (with|using|holding) %itemtype% on %unsafeblockstatematchers/strings%'
+  ]}
+  values={[
+    'event-block',
+    'event-entity',
+    'event-location',
+    'event-player',
+    'event-world'
+  ]}
+  examples={[
+    `on right-click of craft-engine on default:chinese_lantern:
+       send "You clicked the custom block!" to event-player`
+  ]}
+  defaultOpen={false}
+/>
+
+<SkriptCard
+  title="CraftEngine Reload Event"
+  type="Event"
+  description="Triggers when CraftEngine is loaded"
+  syntax={[
+    '[on] (ce|craft(engine|-engine)) [first] (load[ed]|reload)'
+  ]}
+  examples={[
+    `on craft-engine loaded:
+      send "Ho, CraftEngine has been loaded, you can get ce items now!" to console`,
+    `on craft-engine first loaded:
+      send "Ho, CraftEngine has been loaded on server enable, script will init something now!" to console`,
+  ]}
+  defaultOpen={false}
+/>
+
+
+
+## Conditions
+
+<SkriptCard
+  title="CraftEngine has been loaded"
+  type="Condition"
+  description="Checks CraftEngine has been loaded"
+  syntax={[
+    '(ce|craft[-]engine) (has been|is) load[ed]',
+    '(ce|craft[-]engine) (has not been|is not) load[ed] [yet]',
+    '(ce|craft[-]engine) (hasn\'t been|isn\'t) load[ed] [yet]'
+  ]}
+  examples={[
+    `on script load:
+      stop if craft-engine has not been loaded yet
+      send "script init something!" to console`
+  ]}
+  defaultOpen={false}
+/>
+
+<SkriptCard
+  title="Is Custom Item"
+  type="Condition"
+  description="Checks item is a custom item from CraftEngine"
+  syntax={[
+    '%itemstack/itemtype/slot% (is [a[n]]|are) (custom|ce|craft-engine) item[s]',
+    '%itemstack/itemtype/slot% (isn\'t|is not|aren\'t|are not) [a[n]] (custom|ce|craft-engine) item[s]'
+  ]}
+  examples={[
+    `on mine:
+      if event-player's tool is a custom item:
+        send "you are mine with a custom item" to event-player`
+  ]}
+  defaultOpen={false}
+/>
+
+<SkriptCard
+  title="Is Custom Block"
+  type="Condition"
+  description="Checks block is a custom block from CraftEngine"
+  syntax={[
+    '%blocks% (is|are) [a[n]] (custom|ce|craft-engine) block[s]',
+    '%blocks% (is|are) (n\'t| not) [a[n]] (custom|ce|craft-engine) block[s]'
+  ]}
+  examples={[
+    `on mine:
+      if event-block is custom block:
+        send "you break a custom block" to event-player`
+  ]}
+  defaultOpen={false}
+/>
+
+<SkriptCard
+  title="Is Custom Furniture"
+  type="Condition"
+  description="Checks entity is a custom furniture from CraftEngine"
+  syntax={[
+    '%entities% (is|are) [a[n]] [(custom|ce|craft-engine)] furniture[s]',
+    '%entities% (is|are) (n\'t| not) [a[n]] [(custom|ce|craft-engine)] furniture[s]'
+  ]}
+  examples={[
+    `on click:
+      set {_entity} to nearest pig
+      if {_entity} is a ce furniture:
+        send "What am I doing?" to event-player`
+  ]}
+  defaultOpen={false}
+/>
+
+
+
+## Expressions
+
+<SkriptCard
+  title="Custom Item"
+  type="Expression"
+  description="Get custom item from namespace id"
+  syntax={[
+    '[(the|a)] (custom|ce|craft-engine) item [with [namespace] id] %strings%',
+  ]}
+  examples={[
+    `set {_item} to custom item with namespace id "default:topaz"`
+  ]}
+  defaultOpen={false}
+/>
+
+<SkriptCard
+  title="Custom Item Id"
+  type="Expression"
+  description="Get a namespace id of custom item"
+  syntax={[
+    '(custom|ce|craft-engine) item [namespace] id of %itemstack/itemtype/slot%',
+    '%itemstack/itemtype/slot%\'[s] (custom|ce|craft-engine) item [namespace] id'
+  ]}
+  examples={[
+    `set {_itemId} to craft-engine item id of player's tool`
+  ]}
+  defaultOpen={false}
+/>
+
+<SkriptCard
+  title="Custom Block Id"
+  type="Expression"
+  description="Get a namespace id of custom block"
+  syntax={[
+    '%blocks/blockdata/customblockstates%\'s (custom|ce|craft-engine) block [namespace] id',
+    '(custom|ce|craft-engine) block [namespace] id of %blocks/blockdata/customblockstates%'
+  ]}
+  examples={[
+    `on mine:
+      if event-block's ce block id is "default:chinese_lantern":
+        send "break a chinese_lantern block" to event-player`
+  ]}
+  defaultOpen={false}
+/>
+
+<SkriptCard
+  title="Custom Block State"
+  type="Expression"
+  description="Get block state of custom block"
+  syntax={[
+    '%blocks/blockdata/customblockstates%\'s (custom|ce|craft-engine) block[ ]state',
+    '(custom|ce|craft-engine) block[ ]state of %blocks/blockdata/customblockstates%'
+  ]}
+  examples={[
+    `on mine:
+      send event-block's ce block state to event-player`
+  ]}
+  defaultOpen={false}
+/>
+
+<SkriptCard
+  title="Furniture Id"
+  type="Expression"
+  description="Get furniture id from entity"
+  syntax={[
+    '%entities%\'s [(custom|ce|craft-engine)] furniture [namespace] id',
+  ]}
+  examples={[
+    `set {_furnitureId} to {_entity}'s craft-engine furniture id`
+  ]}
+  defaultOpen={false}
+/>
+
+
+# Effect
+
+<SkriptCard
+  title="Place Custom Block"
+  type="Effect"
+  description="Place a custom block"
+  syntax={[
+    'place (custom|ce|craft-engine) block %customblockstates% [at] [%directions% %locations%]',
+  ]}
+  examples={[
+    `place custom block default:palm_log[axis=x] at location of the player`
+  ]}
+  defaultOpen={false}
+/>
+
+<SkriptCard
+  title="Place Furniture"
+  type="Effect"
+  description="Place a furniture"
+  syntax={[
+    'place [(custom|ce|craft-engine)] furniture[s] %strings% [at] [%directions% %locations%]',
+  ]}
+  examples={[
+    `place furniture "default:bench" at location of player`
+  ]}
+  defaultOpen={false}
+/>
+
+<SkriptCard
+  title="Remove Furniture"
+  type="Effect"
+  description="Remove a furniture"
+  syntax={[
+    'remove [(custom|ce|craft-engine)] furniture %entities%',
+  ]}
+  examples={[
+    `remove craft-engine furniture target entity`
+  ]}
+  defaultOpen={false}
+/>

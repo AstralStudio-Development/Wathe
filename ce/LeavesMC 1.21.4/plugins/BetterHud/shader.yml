@@ -1,0 +1,4 @@
+bar-color: yellow
+disable-level-text: false
+hotbar:
+  disable: true

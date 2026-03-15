@@ -1,0 +1,12 @@
+happy:
+  type: single
+  file: mood_happy.png
+mid:
+  type: single
+  file: mood_mid.png
+depressive:
+  type: single
+  file: mood_depressive.png
+killer:
+  type: single
+  file: mood_killer.png

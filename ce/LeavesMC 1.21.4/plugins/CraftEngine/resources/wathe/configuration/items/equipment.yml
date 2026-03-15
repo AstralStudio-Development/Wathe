@@ -1,0 +1,252 @@
+# Equipment Items
+items:
+  wathe:invisible_chestplate:
+    material: chainmail_chestplate
+    data:
+      item-name: " "
+      max-stack-size: 1
+    model:
+      type: minecraft:model
+      path: wathe:item/invisible
+      generation:
+        parent: minecraft:item/generated
+        textures:
+          layer0: wathe:item/invisible
+
+  wathe:invisible_leggings:
+    material: chainmail_leggings
+    data:
+      item-name: " "
+      max-stack-size: 1
+    model:
+      type: minecraft:model
+      path: wathe:item/invisible
+      generation:
+        parent: minecraft:item/generated
+        textures:
+          layer0: wathe:item/invisible
+
+  wathe:invisible_boots:
+    material: chainmail_boots
+    data:
+      item-name: " "
+      max-stack-size: 1
+    model:
+      type: minecraft:model
+      path: wathe:item/invisible
+      generation:
+        parent: minecraft:item/generated
+        textures:
+          layer0: wathe:item/invisible
+
+  wathe:invisible_offhand:
+    data:
+      item-name: " "
+      max-stack-size: 1
+    model:
+      type: minecraft:model
+      path: wathe:item/invisible
+      generation:
+        parent: minecraft:item/generated
+        textures:
+          layer0: wathe:item/invisible
+
+  wathe:key:
+    data:
+      item-name: <!i><lang:item.wathe.key>
+      max-stack-size: 1
+    model: wathe:item/key
+
+  wathe:lockpick:
+    data:
+      item-name: <!i><lang:item.wathe.lockpick>
+      max-stack-size: 1
+    model: wathe:item/lockpick
+
+  wathe:knife:
+    material: trident
+    data:
+      item-name: <!i><lang:item.wathe.knife>
+      max-stack-size: 1
+      max-damage: 250
+    model:
+      type: minecraft:select
+      property: minecraft:display_context
+      cases:
+        - when:
+            - gui
+            - ground
+            - fixed
+            - on_shelf
+          model:
+            type: minecraft:model
+            path: wathe:item/knife
+            generation:
+              parent: minecraft:item/generated
+              textures:
+                layer0: wathe:item/knife
+      fallback:
+        type: minecraft:condition
+        property: minecraft:using_item
+        on-true:
+          type: minecraft:model
+          path: wathe:item/knife_throwing
+        on-false:
+          type: minecraft:model
+          path: wathe:item/knife_in_hand
+
+  wathe:bat:
+    data:
+      item-name: <!i><lang:item.wathe.bat>
+      max-stack-size: 1
+    model: wathe:item/bat
+
+  wathe:crowbar:
+    data:
+      item-name: <!i><lang:item.wathe.crowbar>
+      max-stack-size: 1
+    model: wathe:item/crowbar
+
+  wathe:grenade:
+    data:
+      item-name: <!i><lang:item.wathe.grenade>
+      max-stack-size: 1
+    model: wathe:item/grenade
+
+  wathe:firecracker:
+    data:
+      item-name: <!i><lang:item.wathe.firecracker>
+      max-stack-size: 1
+    model: wathe:item/firecracker
+
+  wathe:revolver:
+    material: crossbow
+    data:
+      item-name: <!i><lang:item.wathe.revolver>
+      max-stack-size: 1
+    client-bound-data:
+      components:
+        minecraft:charged_projectiles:
+          - id: minecraft:arrow
+    model:
+      type: minecraft:select
+      property: minecraft:display_context
+      cases:
+        - when:
+            - gui
+            - ground
+            - fixed
+            - on_shelf
+          model:
+            type: minecraft:model
+            path: wathe:item/revolver
+        - when:
+            - firstperson_lefthand
+            - firstperson_righthand
+          model:
+            type: minecraft:model
+            path: wathe:item/revolver_firstperson
+      fallback:
+        type: minecraft:model
+        path: wathe:item/revolver_in_hand
+
+  wathe:derringer:
+    material: crossbow
+    data:
+      item-name: <!i><lang:item.wathe.derringer>
+      max-stack-size: 1
+    client-bound-data:
+      components:
+        minecraft:charged_projectiles:
+          - id: minecraft:arrow
+    model:
+      type: minecraft:select
+      property: minecraft:display_context
+      cases:
+        - when:
+            - gui
+            - ground
+            - fixed
+            - on_shelf
+          model:
+            type: minecraft:model
+            path: wathe:item/derringer
+        - when:
+            - firstperson_lefthand
+            - firstperson_righthand
+          model:
+            type: minecraft:model
+            path: wathe:item/derringer_firstperson
+      fallback:
+        type: minecraft:model
+        path: wathe:item/derringer_in_hand
+
+  wathe:body_bag:
+    data:
+      item-name: <!i><lang:item.wathe.body_bag>
+      max-stack-size: 1
+    model: wathe:item/body_bag
+  wathe:blackout:
+    data:
+      item-name: <!i><lang:item.wathe.blackout>
+      max-stack-size: 1
+    model: wathe:item/blackout
+  wathe:psycho_mode:
+    data:
+      item-name: <!i><lang:item.wathe.psycho_mode>
+      max-stack-size: 1
+    model: wathe:item/psycho_mode
+  wathe:letter:
+    data:
+      item-name: <!i><lang:item.wathe.letter>
+      max-stack-size: 1
+    model: wathe:item/letter
+
+  wathe:poison_vial:
+    data:
+      item-name: <!i><lang:item.wathe.poison_vial>
+      max-stack-size: 1
+    model: wathe:item/poison_vial
+
+  wathe:scorpion:
+    data:
+      item-name: <!i><lang:item.wathe.scorpion>
+      max-stack-size: 1
+    model: wathe:item/scorpion
+
+  wathe:note:
+    data:
+      item-name: <!i><lang:item.wathe.note>
+      max-stack-size: 4
+    model: wathe:item/note
+
+  # Cocktails
+  wathe:old_fashioned:
+    data:
+      item-name: <!i><lang:item.wathe.old_fashioned>
+      max-stack-size: 1
+    model: wathe:item/old_fashioned
+
+  wathe:mojito:
+    data:
+      item-name: <!i><lang:item.wathe.mojito>
+      max-stack-size: 1
+    model: wathe:item/mojito
+
+  wathe:martini:
+    data:
+      item-name: <!i><lang:item.wathe.martini>
+      max-stack-size: 1
+    model: wathe:item/martini
+
+  wathe:cosmopolitan:
+    data:
+      item-name: <!i><lang:item.wathe.cosmopolitan>
+      max-stack-size: 1
+    model: wathe:item/cosmopolitan
+
+  wathe:champagne:
+    data:
+      item-name: <!i><lang:item.wathe.champagne>
+      max-stack-size: 1
+    model: wathe:item/champagne

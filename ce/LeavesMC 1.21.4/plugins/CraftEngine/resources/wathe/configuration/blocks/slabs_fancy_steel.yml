@@ -1,0 +1,211 @@
+# Fancy Steel Slab Blocks
+items:
+  # Smooth Anthracite Steel Slab (光滑无烟煤钢台阶)
+  wathe:smooth_anthracite_steel_slab:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_anthracite_steel_slab>
+    model: wathe:block/smooth_anthracite_steel_slab
+    behavior:
+      type: block_item
+      block:
+        behaviors:
+          type: slab_block
+        loot:
+          template: default:loot_table/slab
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 29
+          tags:
+            - minecraft:mineable/pickaxe
+            - minecraft:slabs
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          template: default:block_state/slab
+          arguments:
+            base_block: andesite_slab
+            model_bottom_path: wathe:block/smooth_anthracite_steel_slab
+            model_bottom_generation:
+              parent: minecraft:block/slab
+              textures: &smooth_anthracite_steel_slab_textures
+                bottom: wathe:block/smooth_anthracite_steel
+                side: wathe:block/smooth_anthracite_steel
+                top: wathe:block/smooth_anthracite_steel
+            model_top_path: wathe:block/smooth_anthracite_steel_slab_top
+            model_top_generation:
+              parent: minecraft:block/slab_top
+              textures: *smooth_anthracite_steel_slab_textures
+            model_double_path: wathe:block/smooth_anthracite_steel
+
+  # Smooth Khaki Steel Slab (光滑卡其钢台阶)
+  wathe:smooth_khaki_steel_slab:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_khaki_steel_slab>
+    model: wathe:block/smooth_khaki_steel_slab
+    behavior:
+      type: block_item
+      block:
+        behaviors:
+          type: slab_block
+        loot:
+          template: default:loot_table/slab
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 26
+          tags:
+            - minecraft:mineable/pickaxe
+            - minecraft:slabs
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          template: default:block_state/slab
+          arguments:
+            base_block: polished_andesite_slab
+            model_bottom_path: wathe:block/smooth_khaki_steel_slab
+            model_bottom_generation:
+              parent: minecraft:block/slab
+              textures: &smooth_khaki_steel_slab_textures
+                bottom: wathe:block/smooth_khaki_steel
+                side: wathe:block/smooth_khaki_steel
+                top: wathe:block/smooth_khaki_steel
+            model_top_path: wathe:block/smooth_khaki_steel_slab_top
+            model_top_generation:
+              parent: minecraft:block/slab_top
+              textures: *smooth_khaki_steel_slab_textures
+            model_double_path: wathe:block/smooth_khaki_steel
+
+  # Smooth Maroon Steel Slab (光滑栗色钢台阶)
+  wathe:smooth_maroon_steel_slab:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_maroon_steel_slab>
+    model: wathe:block/smooth_maroon_steel_slab
+    behavior:
+      type: block_item
+      block:
+        behaviors:
+          type: slab_block
+        loot:
+          template: default:loot_table/slab
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 35
+          tags:
+            - minecraft:mineable/pickaxe
+            - minecraft:slabs
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          template: default:block_state/slab
+          arguments:
+            base_block: diorite_slab
+            model_bottom_path: wathe:block/smooth_maroon_steel_slab
+            model_bottom_generation:
+              parent: minecraft:block/slab
+              textures: &smooth_maroon_steel_slab_textures
+                bottom: wathe:block/smooth_maroon_steel
+                side: wathe:block/smooth_maroon_steel
+                top: wathe:block/smooth_maroon_steel
+            model_top_path: wathe:block/smooth_maroon_steel_slab_top
+            model_top_generation:
+              parent: minecraft:block/slab_top
+              textures: *smooth_maroon_steel_slab_textures
+            model_double_path: wathe:block/smooth_maroon_steel
+
+  # Smooth Muntz Steel Slab (光滑蒙茨钢台阶)
+  wathe:smooth_muntz_steel_slab:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_muntz_steel_slab>
+    model: wathe:block/smooth_muntz_steel_slab
+    behavior:
+      type: block_item
+      block:
+        behaviors:
+          type: slab_block
+        loot:
+          template: default:loot_table/slab
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 43
+          tags:
+            - minecraft:mineable/pickaxe
+            - minecraft:slabs
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          template: default:block_state/slab
+          arguments:
+            base_block: polished_diorite_slab
+            model_bottom_path: wathe:block/smooth_muntz_steel_slab
+            model_bottom_generation:
+              parent: minecraft:block/slab
+              textures: &smooth_muntz_steel_slab_textures
+                bottom: wathe:block/smooth_muntz_steel
+                side: wathe:block/smooth_muntz_steel
+                top: wathe:block/smooth_muntz_steel
+            model_top_path: wathe:block/smooth_muntz_steel_slab_top
+            model_top_generation:
+              parent: minecraft:block/slab_top
+              textures: *smooth_muntz_steel_slab_textures
+            model_double_path: wathe:block/smooth_muntz_steel
+
+  # Smooth Navy Steel Slab (光滑海军蓝钢台阶)
+  wathe:smooth_navy_steel_slab:
+    data:
+      item-name: <!i><lang:block.wathe.smooth_navy_steel_slab>
+    model: wathe:block/smooth_navy_steel_slab
+    behavior:
+      type: block_item
+      block:
+        behaviors:
+          type: slab_block
+        loot:
+          template: default:loot_table/slab
+        settings:
+          hardness: -1.0
+          resistance: 3600000.0
+          map-color: 11
+          tags:
+            - minecraft:mineable/pickaxe
+            - minecraft:slabs
+          sounds:
+            break: minecraft:block.netherite_block.break
+            fall: minecraft:block.netherite_block.fall
+            hit: minecraft:block.netherite_block.hit
+            place: minecraft:block.netherite_block.place
+            step: minecraft:block.netherite_block.step
+        states:
+          template: default:block_state/slab
+          arguments:
+            base_block: granite_slab
+            model_bottom_path: wathe:block/smooth_navy_steel_slab
+            model_bottom_generation:
+              parent: minecraft:block/slab
+              textures: &smooth_navy_steel_slab_textures
+                bottom: wathe:block/smooth_navy_steel
+                side: wathe:block/smooth_navy_steel
+                top: wathe:block/smooth_navy_steel
+            model_top_path: wathe:block/smooth_navy_steel_slab_top
+            model_top_generation:
+              parent: minecraft:block/slab_top
+              textures: *smooth_navy_steel_slab_textures
+            model_double_path: wathe:block/smooth_navy_steel

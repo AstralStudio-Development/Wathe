@@ -1,0 +1,476 @@
+# Equipment Items
+lang#items:
+  en_us:
+    item.wathe.key: Key
+    item.wathe.lockpick: Lockpick
+    item.wathe.knife: Knife
+    item.wathe.bat: Bat
+    item.wathe.crowbar: Crowbar
+    item.wathe.grenade: Grenade
+    item.wathe.firecracker: Firecracker
+    item.wathe.revolver: Revolver
+    item.wathe.derringer: Derringer
+    item.wathe.body_bag: Body Bag
+    item.wathe.letter: Letter
+    item.wathe.poison_vial: Poison Vial
+    item.wathe.scorpion: Scorpion
+    item.wathe.note: Note
+    item.wathe.old_fashioned: Old Fashioned
+    item.wathe.mojito: Mojito
+    item.wathe.martini: Martini
+    item.wathe.cosmopolitan: Cosmopolitan
+    item.wathe.champagne: Champagne
+  zh_cn:
+    item.wathe.key: 钥匙
+    item.wathe.lockpick: 撬锁器
+    item.wathe.knife: 刀
+    item.wathe.bat: 球棒
+    item.wathe.crowbar: 撬棍
+    item.wathe.grenade: 手榴弹
+    item.wathe.firecracker: 鞭炮
+    item.wathe.revolver: 左轮手枪
+    item.wathe.derringer: 袖珍手枪
+    item.wathe.body_bag: 尸袋
+    item.wathe.letter: 信件
+    item.wathe.poison_vial: 毒药瓶
+    item.wathe.scorpion: 蝎子
+    item.wathe.note: 便条
+    item.wathe.old_fashioned: 古典鸡尾酒
+    item.wathe.mojito: 莫吉托
+    item.wathe.martini: 马提尼
+    item.wathe.cosmopolitan: 大都会
+    item.wathe.champagne: 香槟
+
+# Block translations
+lang#blocks:
+  en_us:
+    # Metallic blocks
+    block.wathe.tarnished_gold: Tarnished Gold
+    block.wathe.gold: Gold
+    block.wathe.pristine_gold: Pristine Gold
+    block.wathe.white_hull: White Hull
+    block.wathe.black_hull: Black Hull
+    block.wathe.black_hull_sheets: Black Hull Sheets
+    block.wathe.metal_sheet: Metal Sheet
+    block.wathe.stainless_steel: Stainless Steel
+    block.wathe.dark_steel: Dark Steel
+    # Fancy steel
+    block.wathe.anthracite_steel: Anthracite Steel
+    block.wathe.anthracite_steel_tiles: Anthracite Steel Tiles
+    block.wathe.smooth_anthracite_steel: Smooth Anthracite Steel
+    block.wathe.khaki_steel: Khaki Steel
+    block.wathe.khaki_steel_tiles: Khaki Steel Tiles
+    block.wathe.smooth_khaki_steel: Smooth Khaki Steel
+    block.wathe.maroon_steel: Maroon Steel
+    block.wathe.maroon_steel_tiles: Maroon Steel Tiles
+    block.wathe.smooth_maroon_steel: Smooth Maroon Steel
+    block.wathe.muntz_steel: Muntz Steel
+    block.wathe.muntz_steel_tiles: Muntz Steel Tiles
+    block.wathe.smooth_muntz_steel: Smooth Muntz Steel
+    block.wathe.navy_steel: Navy Steel
+    block.wathe.navy_steel_tiles: Navy Steel Tiles
+    block.wathe.smooth_navy_steel: Smooth Navy Steel
+    # Stone
+    block.wathe.marble: Marble
+    block.wathe.dark_marble: Dark Marble
+    block.wathe.marble_tiles: Marble Tiles
+    block.wathe.marble_mosaic: Marble Mosaic
+    # Glass
+    block.wathe.hull_glass: Hull Glass
+    block.wathe.rhombus_hull_glass: Rhombus Hull Glass
+    block.wathe.rhombus_glass: Rhombus Glass
+    block.wathe.culling_glass: Culling Glass
+    block.wathe.golden_glass_panel: Golden Glass Panel
+    block.wathe.privacy_glass_panel: Privacy Glass Panel
+    # Panels
+    block.wathe.mahogany_panel: Mahogany Panel
+    block.wathe.bubinga_panel: Bubinga Panel
+    block.wathe.ebony_panel: Ebony Panel
+    # Fancy Steel Panels
+    block.wathe.anthracite_steel_panel: Anthracite Steel Panel
+    block.wathe.anthracite_steel_tiles_panel: Anthracite Steel Tiles Panel
+    block.wathe.smooth_anthracite_steel_panel: Smooth Anthracite Steel Panel
+    block.wathe.khaki_steel_panel: Khaki Steel Panel
+    block.wathe.khaki_steel_tiles_panel: Khaki Steel Tiles Panel
+    block.wathe.smooth_khaki_steel_panel: Smooth Khaki Steel Panel
+    block.wathe.maroon_steel_panel: Maroon Steel Panel
+    block.wathe.maroon_steel_tiles_panel: Maroon Steel Tiles Panel
+    block.wathe.smooth_maroon_steel_panel: Smooth Maroon Steel Panel
+    block.wathe.muntz_steel_panel: Muntz Steel Panel
+    block.wathe.muntz_steel_tiles_panel: Muntz Steel Tiles Panel
+    block.wathe.smooth_muntz_steel_panel: Smooth Muntz Steel Panel
+    block.wathe.navy_steel_panel: Navy Steel Panel
+    block.wathe.navy_steel_tiles_panel: Navy Steel Tiles Panel
+    block.wathe.smooth_navy_steel_panel: Smooth Navy Steel Panel
+    # Carpet
+    block.wathe.red_moquette: Red Moquette
+    block.wathe.brown_moquette: Brown Moquette
+    block.wathe.blue_moquette: Blue Moquette
+    # Wood
+    block.wathe.mahogany_planks: Mahogany Planks
+    block.wathe.mahogany_herringbone: Mahogany Herringbone
+    block.wathe.smooth_mahogany: Smooth Mahogany
+    block.wathe.mahogany_bookshelf: Mahogany Bookshelf
+    block.wathe.mahogany_cabinet: Mahogany Cabinet
+    block.wathe.bubinga_planks: Bubinga Planks
+    block.wathe.bubinga_herringbone: Bubinga Herringbone
+    block.wathe.smooth_bubinga: Smooth Bubinga
+    block.wathe.bubinga_bookshelf: Bubinga Bookshelf
+    block.wathe.bubinga_cabinet: Bubinga Cabinet
+    block.wathe.ebony_planks: Ebony Planks
+    block.wathe.ebony_herringbone: Ebony Herringbone
+    block.wathe.smooth_ebony: Smooth Ebony
+    block.wathe.ebony_bookshelf: Ebony Bookshelf
+    block.wathe.ebony_cabinet: Ebony Cabinet
+    # Stairs
+    block.wathe.ebony_stairs: Ebony Stairs
+    block.wathe.smooth_mahogany_stairs: Smooth Mahogany Stairs
+    block.wathe.marble_stairs: Marble Stairs
+    block.wathe.smooth_ebony_stairs: Smooth Ebony Stairs
+    block.wathe.gold_stairs: Gold Stairs
+    block.wathe.bubinga_stairs: Bubinga Stairs
+    block.wathe.tarnished_gold_stairs: Tarnished Gold Stairs
+    block.wathe.pristine_gold_stairs: Pristine Gold Stairs
+    block.wathe.white_hull_stairs: White Hull Stairs
+    block.wathe.black_hull_stairs: Black Hull Stairs
+    block.wathe.black_hull_sheet_stairs: Black Hull Sheet Stairs
+    block.wathe.metal_sheet_stairs: Metal Sheet Stairs
+    block.wathe.stainless_steel_stairs: Stainless Steel Stairs
+    block.wathe.dark_steel_stairs: Dark Steel Stairs
+    block.wathe.smooth_anthracite_steel_stairs: Smooth Anthracite Steel Stairs
+    block.wathe.smooth_khaki_steel_stairs: Smooth Khaki Steel Stairs
+    block.wathe.smooth_maroon_steel_stairs: Smooth Maroon Steel Stairs
+    block.wathe.smooth_muntz_steel_stairs: Smooth Muntz Steel Stairs
+    block.wathe.smooth_navy_steel_stairs: Smooth Navy Steel Stairs
+    block.wathe.marble_tile_stairs: Marble Tile Stairs
+    block.wathe.dark_marble_stairs: Dark Marble Stairs
+    block.wathe.mahogany_stairs: Mahogany Stairs
+    block.wathe.mahogany_herringbone_stairs: Mahogany Herringbone Stairs
+    block.wathe.bubinga_herringbone_stairs: Bubinga Herringbone Stairs
+    block.wathe.smooth_bubinga_stairs: Smooth Bubinga Stairs
+    block.wathe.ebony_herringbone_stairs: Ebony Herringbone Stairs
+    block.wathe.trimmed_ebony_stairs: Trimmed Ebony Stairs
+    # Slabs
+    block.wathe.marble_slab: Marble Slab
+    block.wathe.mahogany_slab: Mahogany Slab
+    block.wathe.smooth_mahogany_slab: Smooth Mahogany Slab
+    block.wathe.ebony_slab: Ebony Slab
+    block.wathe.smooth_ebony_slab: Smooth Ebony Slab
+    block.wathe.gold_slab: Gold Slab
+    block.wathe.bubinga_slab: Bubinga Slab
+    block.wathe.tarnished_gold_slab: Tarnished Gold Slab
+    block.wathe.pristine_gold_slab: Pristine Gold Slab
+    block.wathe.white_hull_slab: White Hull Slab
+    block.wathe.black_hull_slab: Black Hull Slab
+    block.wathe.black_hull_sheet_slab: Black Hull Sheet Slab
+    block.wathe.metal_sheet_slab: Metal Sheet Slab
+    block.wathe.stainless_steel_slab: Stainless Steel Slab
+    block.wathe.dark_steel_slab: Dark Steel Slab
+    block.wathe.smooth_anthracite_steel_slab: Smooth Anthracite Steel Slab
+    block.wathe.smooth_khaki_steel_slab: Smooth Khaki Steel Slab
+    block.wathe.smooth_maroon_steel_slab: Smooth Maroon Steel Slab
+    block.wathe.smooth_muntz_steel_slab: Smooth Muntz Steel Slab
+    block.wathe.smooth_navy_steel_slab: Smooth Navy Steel Slab
+    block.wathe.marble_tile_slab: Marble Tile Slab
+    block.wathe.dark_marble_slab: Dark Marble Slab
+    block.wathe.mahogany_herringbone_slab: Mahogany Herringbone Slab
+    block.wathe.bubinga_herringbone_slab: Bubinga Herringbone Slab
+    block.wathe.smooth_bubinga_slab: Smooth Bubinga Slab
+    block.wathe.ebony_herringbone_slab: Ebony Herringbone Slab
+    # Pillars
+    block.wathe.tarnished_gold_pillar: Tarnished Gold Pillar
+    block.wathe.gold_pillar: Gold Pillar
+    block.wathe.pristine_gold_pillar: Pristine Gold Pillar
+    block.wathe.stainless_steel_pillar: Stainless Steel Pillar
+    block.wathe.dark_steel_pillar: Dark Steel Pillar
+    # Walls
+    block.wathe.tarnished_gold_wall: Tarnished Gold Wall
+    block.wathe.gold_wall: Gold Wall
+    block.wathe.pristine_gold_wall: Pristine Gold Wall
+    block.wathe.white_hull_wall: White Hull Wall
+    block.wathe.black_hull_wall: Black Hull Wall
+    block.wathe.black_hull_sheet_wall: Black Hull Sheet Wall
+    block.wathe.metal_sheet_wall: Metal Sheet Wall
+    block.wathe.stainless_steel_wall: Stainless Steel Wall
+    block.wathe.dark_steel_wall: Dark Steel Wall
+    block.wathe.smooth_anthracite_steel_wall: Smooth Anthracite Steel Wall
+    block.wathe.smooth_khaki_steel_wall: Smooth Khaki Steel Wall
+    block.wathe.smooth_maroon_steel_wall: Smooth Maroon Steel Wall
+    block.wathe.smooth_muntz_steel_wall: Smooth Muntz Steel Wall
+    block.wathe.smooth_navy_steel_wall: Smooth Navy Steel Wall
+    block.wathe.marble_wall: Marble Wall
+    block.wathe.marble_tile_wall: Marble Tile Wall
+    block.wathe.dark_marble_wall: Dark Marble Wall
+    # Neon
+    block.wathe.neon_pillar: Neon Pillar
+
+    block.wathe.trimmed_lantern: Trimmed Lantern
+    block.wathe.wall_lamp: Wall Lamp
+    # Furniture
+    block.wathe.beige_leather_couch: Beige Leather Couch
+    block.wathe.brown_leather_couch: Brown Leather Couch
+    block.wathe.red_leather_couch: Red Leather Couch
+    block.wathe.white_lounge_couch: White Lounge Couch
+    block.wathe.blue_lounge_couch: Blue Lounge Couch
+    block.wathe.green_lounge_couch: Green Lounge Couch
+    block.wathe.bar_stool: Bar Stool
+    block.wathe.bar_table: Bar Table
+    block.wathe.coffee_table: Coffee Table
+    block.wathe.white_ottoman: White Ottoman
+    block.wathe.white_trimmed_bed: White Trimmed Bed
+    block.wathe.red_trimmed_bed: Red Trimmed Bed
+    # Walkways
+    block.wathe.metal_sheet_walkway: Metal Sheet Walkway
+    block.wathe.stainless_steel_walkway: Stainless Steel Walkway
+    block.wathe.dark_steel_walkway: Dark Steel Walkway
+    # Bars
+    block.wathe.gold_bar: Gold Bar
+    block.wathe.stainless_steel_bar: Stainless Steel Bar
+    # Ledge
+    block.wathe.gold_ledge: Gold Ledge
+    # Ladder
+    block.wathe.stainless_steel_ladder: Stainless Steel Ladder
+    # Vents
+    block.wathe.stainless_steel_vent_shaft: Stainless Steel Vent Shaft
+    block.wathe.dark_steel_vent_shaft: Dark Steel Vent Shaft
+    block.wathe.tarnished_gold_vent_shaft: Tarnished Gold Vent Shaft
+    block.wathe.stainless_steel_vent_hatch: Stainless Steel Vent Hatch
+    block.wathe.dark_steel_vent_hatch: Dark Steel Vent Hatch
+    block.wathe.tarnished_gold_vent_hatch: Tarnished Gold Vent Hatch
+    # Doors
+    block.wathe.metal_sheet_door: Metal Sheet Door
+    block.wathe.cockpit_door: Cockpit Door
+    block.wathe.small_glass_door: Small Glass Door
+    block.wathe.small_wood_door: Small Wood Door
+    block.wathe.anthracite_steel_door: Anthracite Steel Door
+    block.wathe.khaki_steel_door: Khaki Steel Door
+    block.wathe.maroon_steel_door: Maroon Steel Door
+    block.wathe.muntz_steel_door: Muntz Steel Door
+    block.wathe.navy_steel_door: Navy Steel Door
+  zh_cn:
+    # Metallic blocks
+    block.wathe.tarnished_gold: 失光金块
+    block.wathe.gold: 黄金块
+    block.wathe.pristine_gold: 纯金块
+    block.wathe.white_hull: 白色船体
+    block.wathe.black_hull: 黑色船壳
+    block.wathe.black_hull_sheets: 黑色船壳板
+    block.wathe.metal_sheet: 金属板
+    block.wathe.stainless_steel: 不锈钢
+    block.wathe.dark_steel: 暗钢
+    # Fancy steel
+    block.wathe.anthracite_steel: 无烟煤钢
+    block.wathe.anthracite_steel_tiles: 无烟煤钢瓷砖
+    block.wathe.smooth_anthracite_steel: 光滑无烟煤钢
+    block.wathe.khaki_steel: 卡其钢
+    block.wathe.khaki_steel_tiles: 卡其钢瓷砖
+    block.wathe.smooth_khaki_steel: 光滑卡其钢
+    block.wathe.maroon_steel: 栗色钢
+    block.wathe.maroon_steel_tiles: 栗色钢瓷砖
+    block.wathe.smooth_maroon_steel: 光滑栗色钢
+    block.wathe.muntz_steel: 蒙茨钢
+    block.wathe.muntz_steel_tiles: 蒙茨钢瓷砖
+    block.wathe.smooth_muntz_steel: 光滑蒙茨钢
+    block.wathe.navy_steel: 海军蓝钢
+    block.wathe.navy_steel_tiles: 海军蓝钢瓷砖
+    block.wathe.smooth_navy_steel: 光滑海军蓝钢
+    # Stone
+    block.wathe.marble: 大理石
+    block.wathe.dark_marble: 深色大理石
+    block.wathe.marble_tiles: 大理石瓷砖
+    block.wathe.marble_mosaic: 大理石拼花
+    # Glass
+    block.wathe.hull_glass: 船体玻璃
+    block.wathe.rhombus_hull_glass: 菱形船体玻璃
+    block.wathe.rhombus_glass: 菱形玻璃
+    block.wathe.culling_glass: 剔除玻璃
+    block.wathe.golden_glass_panel: 金色玻璃板
+    block.wathe.privacy_glass_panel: 隐私玻璃板
+    # Panels
+    block.wathe.mahogany_panel: 红木板
+    block.wathe.bubinga_panel: 布宾加木板
+    block.wathe.ebony_panel: 乌木板
+    # Fancy Steel Panels
+    block.wathe.anthracite_steel_panel: 无烟煤钢板
+    block.wathe.anthracite_steel_tiles_panel: 无烟煤钢瓷砖板
+    block.wathe.smooth_anthracite_steel_panel: 光滑无烟煤钢板
+    block.wathe.khaki_steel_panel: 卡其钢板
+    block.wathe.khaki_steel_tiles_panel: 卡其钢瓷砖板
+    block.wathe.smooth_khaki_steel_panel: 光滑卡其钢板
+    block.wathe.maroon_steel_panel: 栗色钢板
+    block.wathe.maroon_steel_tiles_panel: 栗色钢瓷砖板
+    block.wathe.smooth_maroon_steel_panel: 光滑栗色钢板
+    block.wathe.muntz_steel_panel: 蒙茨钢板
+    block.wathe.muntz_steel_tiles_panel: 蒙茨钢瓷砖板
+    block.wathe.smooth_muntz_steel_panel: 光滑蒙茨钢板
+    block.wathe.navy_steel_panel: 海军蓝钢板
+    block.wathe.navy_steel_tiles_panel: 海军蓝钢瓷砖板
+    block.wathe.smooth_navy_steel_panel: 光滑海军蓝钢板
+    # Carpet
+    block.wathe.red_moquette: 红色针织地毯
+    block.wathe.brown_moquette: 棕色绒面地毯
+    block.wathe.blue_moquette: 蓝色绒面地毯
+    # Wood
+    block.wathe.mahogany_planks: 红木板
+    block.wathe.mahogany_herringbone: 红木人字纹
+    block.wathe.smooth_mahogany: 光滑红木
+    block.wathe.mahogany_bookshelf: 红木书架
+    block.wathe.mahogany_cabinet: 红木柜
+    block.wathe.bubinga_planks: 布宾加木板
+    block.wathe.bubinga_herringbone: 布宾加人字纹
+    block.wathe.smooth_bubinga: 光滑布宾加木
+    block.wathe.bubinga_bookshelf: 布宾加木书架
+    block.wathe.bubinga_cabinet: 布宾加木柜
+    block.wathe.ebony_planks: 乌木板
+    block.wathe.ebony_herringbone: 乌木人字纹
+    block.wathe.smooth_ebony: 光滑乌木
+    block.wathe.ebony_bookshelf: 乌木书架
+    block.wathe.ebony_cabinet: 乌木柜
+    # Stairs
+    block.wathe.ebony_stairs: 乌木楼梯
+    block.wathe.smooth_mahogany_stairs: 光滑红木楼梯
+    block.wathe.marble_stairs: 大理石楼梯
+    block.wathe.smooth_ebony_stairs: 光滑乌木楼梯
+    block.wathe.gold_stairs: 黄金楼梯
+    block.wathe.bubinga_stairs: 布宾加木楼梯
+    block.wathe.tarnished_gold_stairs: 锈金楼梯
+    block.wathe.pristine_gold_stairs: 纯金楼梯
+    block.wathe.white_hull_stairs: 白色船体楼梯
+    block.wathe.black_hull_stairs: 黑色船壳楼梯
+    block.wathe.black_hull_sheet_stairs: 黑色船壳板楼梯
+    block.wathe.metal_sheet_stairs: 金属板楼梯
+    block.wathe.stainless_steel_stairs: 不锈钢楼梯
+    block.wathe.dark_steel_stairs: 暗钢楼梯
+    block.wathe.smooth_anthracite_steel_stairs: 光滑无烟煤钢楼梯
+    block.wathe.smooth_khaki_steel_stairs: 光滑卡其钢楼梯
+    block.wathe.smooth_maroon_steel_stairs: 光滑栗色钢楼梯
+    block.wathe.smooth_muntz_steel_stairs: 光滑蒙茨钢楼梯
+    block.wathe.smooth_navy_steel_stairs: 光滑海军蓝钢楼梯
+    block.wathe.marble_tile_stairs: 大理石瓷砖楼梯
+    block.wathe.dark_marble_stairs: 深色大理石楼梯
+    block.wathe.mahogany_stairs: 红木楼梯
+    block.wathe.mahogany_herringbone_stairs: 红木人字纹楼梯
+    block.wathe.bubinga_herringbone_stairs: 布宾加人字纹楼梯
+    block.wathe.smooth_bubinga_stairs: 光滑布宾加木楼梯
+    block.wathe.ebony_herringbone_stairs: 乌木人字纹楼梯
+    block.wathe.trimmed_ebony_stairs: 镶边乌木楼梯
+    # Slabs
+    block.wathe.marble_slab: 大理石台阶
+    block.wathe.mahogany_slab: 红木台阶
+    block.wathe.smooth_mahogany_slab: 光滑红木台阶
+    block.wathe.ebony_slab: 乌木台阶
+    block.wathe.smooth_ebony_slab: 光滑乌木台阶
+    block.wathe.gold_slab: 黄金台阶
+    block.wathe.bubinga_slab: 布宾加木台阶
+    block.wathe.tarnished_gold_slab: 锈金台阶
+    block.wathe.pristine_gold_slab: 纯金台阶
+    block.wathe.white_hull_slab: 白色船体台阶
+    block.wathe.black_hull_slab: 黑色船壳台阶
+    block.wathe.black_hull_sheet_slab: 黑色船壳板台阶
+    block.wathe.metal_sheet_slab: 金属板台阶
+    block.wathe.stainless_steel_slab: 不锈钢台阶
+    block.wathe.dark_steel_slab: 暗钢台阶
+    block.wathe.smooth_anthracite_steel_slab: 光滑无烟煤钢台阶
+    block.wathe.smooth_khaki_steel_slab: 光滑卡其钢台阶
+    block.wathe.smooth_maroon_steel_slab: 光滑栗色钢台阶
+    block.wathe.smooth_muntz_steel_slab: 光滑蒙茨钢台阶
+    block.wathe.smooth_navy_steel_slab: 光滑海军蓝钢台阶
+    block.wathe.marble_tile_slab: 大理石瓷砖台阶
+    block.wathe.dark_marble_slab: 深色大理石台阶
+    block.wathe.mahogany_herringbone_slab: 红木人字纹台阶
+    block.wathe.bubinga_herringbone_slab: 布宾加人字纹台阶
+    block.wathe.smooth_bubinga_slab: 光滑布宾加木台阶
+    block.wathe.ebony_herringbone_slab: 乌木人字纹台阶
+    # Pillars
+    block.wathe.tarnished_gold_pillar: 失光金柱
+    block.wathe.gold_pillar: 黄金柱
+    block.wathe.pristine_gold_pillar: 纯金柱
+    block.wathe.stainless_steel_pillar: 不锈钢柱
+    block.wathe.dark_steel_pillar: 暗钢柱
+    # Walls
+    block.wathe.tarnished_gold_wall: 失光金墙
+    block.wathe.gold_wall: 黄金墙
+    block.wathe.pristine_gold_wall: 纯金墙
+    block.wathe.white_hull_wall: 白色船体墙
+    block.wathe.black_hull_wall: 黑色船壳墙
+    block.wathe.black_hull_sheet_wall: 黑色船壳板墙
+    block.wathe.metal_sheet_wall: 金属板墙
+    block.wathe.stainless_steel_wall: 不锈钢墙
+    block.wathe.dark_steel_wall: 暗钢墙
+    block.wathe.smooth_anthracite_steel_wall: 光滑无烟煤钢墙
+    block.wathe.smooth_khaki_steel_wall: 光滑卡其钢墙
+    block.wathe.smooth_maroon_steel_wall: 光滑栗色钢墙
+    block.wathe.smooth_muntz_steel_wall: 光滑蒙茨钢墙
+    block.wathe.smooth_navy_steel_wall: 光滑海军蓝钢墙
+    block.wathe.marble_wall: 大理石墙
+    block.wathe.marble_tile_wall: 大理石瓷砖墙
+    block.wathe.dark_marble_wall: 深色大理石墙
+    # Neon
+    block.wathe.neon_pillar: 霓虹柱
+
+    block.wathe.trimmed_lantern: 镶边灯笼
+    block.wathe.wall_lamp: 壁灯
+    # Furniture
+    block.wathe.beige_leather_couch: 米色皮革沙发
+    block.wathe.brown_leather_couch: 棕色皮革沙发
+    block.wathe.red_leather_couch: 红色皮革沙发
+    block.wathe.white_lounge_couch: 白色休闲沙发
+    block.wathe.blue_lounge_couch: 蓝色休闲沙发
+    block.wathe.green_lounge_couch: 绿色休闲沙发
+    block.wathe.bar_stool: 吧台凳
+    block.wathe.bar_table: 吧台桌
+    block.wathe.coffee_table: 咖啡桌
+    block.wathe.white_ottoman: 白色脚凳
+    block.wathe.white_trimmed_bed: 白色镶边床
+    block.wathe.red_trimmed_bed: 红色镶边床
+    # Walkways
+    block.wathe.metal_sheet_walkway: 金属板步道
+    block.wathe.stainless_steel_walkway: 不锈钢步道
+    block.wathe.dark_steel_walkway: 暗钢步道
+    # Bars
+    block.wathe.gold_bar: 金杆
+    block.wathe.stainless_steel_bar: 不锈钢杆
+    # Ledge
+    block.wathe.gold_ledge: 金边缘
+    # Ladder
+    block.wathe.stainless_steel_ladder: 不锈钢梯子
+    # Vents
+    block.wathe.stainless_steel_vent_shaft: 不锈钢通风管道
+    block.wathe.dark_steel_vent_shaft: 暗钢通风管道
+    block.wathe.tarnished_gold_vent_shaft: 失光金通风管道
+    block.wathe.stainless_steel_vent_hatch: 不锈钢通风口
+    block.wathe.dark_steel_vent_hatch: 暗钢通风口
+    block.wathe.tarnished_gold_vent_hatch: 失光金通风口
+    # Doors
+    block.wathe.metal_sheet_door: 金属板门
+    block.wathe.cockpit_door: 驾驶舱门
+    block.wathe.small_glass_door: 小型玻璃门
+    block.wathe.small_wood_door: 小型木门
+    block.wathe.anthracite_steel_door: 无烟煤钢门
+    block.wathe.khaki_steel_door: 卡其钢门
+    block.wathe.maroon_steel_door: 栗色钢门
+    block.wathe.muntz_steel_door: 蒙茨钢门
+    block.wathe.navy_steel_door: 海军蓝钢门
+    # Panel Ceiling Blocks
+    block.wathe.golden_glass_panel_ceiling: Golden Glass Panel (Ceiling)
+    block.wathe.privacy_glass_panel_ceiling: Privacy Glass Panel (Ceiling)
+    block.wathe.mahogany_panel_ceiling: Mahogany Panel (Ceiling)
+    block.wathe.bubinga_panel_ceiling: Bubinga Panel (Ceiling)
+    block.wathe.ebony_panel_ceiling: Ebony Panel (Ceiling)
+    # Fancy Steel Panel Ceiling Blocks
+    block.wathe.anthracite_steel_panel_ceiling: Anthracite Steel Panel (Ceiling)
+    block.wathe.anthracite_steel_tiles_panel_ceiling: Anthracite Steel Tiles Panel (Ceiling)
+    block.wathe.smooth_anthracite_steel_panel_ceiling: Smooth Anthracite Steel Panel (Ceiling)
+    block.wathe.khaki_steel_panel_ceiling: Khaki Steel Panel (Ceiling)
+    block.wathe.khaki_steel_tiles_panel_ceiling: Khaki Steel Tiles Panel (Ceiling)
+    block.wathe.smooth_khaki_steel_panel_ceiling: Smooth Khaki Steel Panel (Ceiling)
+    block.wathe.maroon_steel_panel_ceiling: Maroon Steel Panel (Ceiling)
+    block.wathe.maroon_steel_tiles_panel_ceiling: Maroon Steel Tiles Panel (Ceiling)
+    block.wathe.smooth_maroon_steel_panel_ceiling: Smooth Maroon Steel Panel (Ceiling)
+    block.wathe.muntz_steel_panel_ceiling: Muntz Steel Panel (Ceiling)
+    block.wathe.muntz_steel_tiles_panel_ceiling: Muntz Steel Tiles Panel (Ceiling)
+    block.wathe.smooth_muntz_steel_panel_ceiling: Smooth Muntz Steel Panel (Ceiling)
+    block.wathe.navy_steel_panel_ceiling: Navy Steel Panel (Ceiling)
+    block.wathe.navy_steel_tiles_panel_ceiling: Navy Steel Tiles Panel (Ceiling)
+    block.wathe.smooth_navy_steel_panel_ceiling: Smooth Navy Steel Panel (Ceiling)
+

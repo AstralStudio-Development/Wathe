@@ -1,0 +1,29 @@
+---
+title: 📦 Simple Storage Block
+id: simple_storage_block
+---
+
+import Highlight from '@site/src/components/Highlight';
+
+<Highlight color="#3B6B60">**Block Entity**</Highlight>​
+
+| Property Name | Property Type | Required |
+|---------------|---------------|----------|
+| open          | boolean       | no       |
+
+```yml
+blocks:
+  default:safe_block:
+    behavior:
+      type: simple_storage_block
+      title: "Safe Block"
+      rows: 1 # 1~6
+      sounds:
+        open: minecraft:block.iron_trapdoor.open
+        close: minecraft:block.iron_trapdoor.close
+      has-signal: true # Detects redstone signals
+      allow-input: true # Permits item input
+      allow-output: true # Permits item output
+```
+
+![](/img/simple_storage_block.png)

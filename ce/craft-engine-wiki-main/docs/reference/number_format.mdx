@@ -1,0 +1,283 @@
+---
+title: 🔢 Number Format
+id: number_format
+---
+
+:::caution
+
+These number formats work in most places, except for the early-developed item-data stuff. We'll try to redesign the number support during the next item system refactor, to better handle randomized items.
+
+:::
+
+### constant
+
+Provide a fixed numerical value.
+
+```yaml
+type: constant
+value: 1
+```
+
+:::tip
+In most cases, you can use the following abbreviated notation.
+
+```yaml
+count:
+  type: constant
+  value: 1
+```
+
+->
+
+```yaml
+count: 1
+```
+:::
+
+### uniform
+
+Provide a random number within the given range.
+
+```yaml
+type: uniform
+min: 1
+max: 3
+```
+
+:::tip
+In most cases, you can use the following abbreviated notation.
+
+```yaml
+count:
+  type: uniform
+  min: 1
+  max: 3
+```
+
+->
+
+```yaml
+count: 1~3
+```
+
+Both `min` and `max` also support the nested use of `number provider`.&#x20;
+
+```yaml
+count:
+  type: uniform
+  min:
+    type: uniform
+    min: 2
+    max: 7
+  max: "<papi:skilllevel_farming>*5~<papi:skilllevel_farming>*10"
+```
+:::
+
+### expression
+
+[https://ezylang.github.io/EvalEx/references/references.html](https://ezylang.github.io/EvalEx/references/references.html)
+
+```yaml
+type: expression
+expression: "20 + 70 / 2"
+```
+
+:::tip
+In most cases, you can use the following abbreviated notation.
+
+```yaml
+count:
+  type: expression
+  expression: "<papi:skilllevel_farming> / 20 + 5"
+```
+
+->
+
+```yaml
+count: "<papi:skilllevel_farming> / 20 + 5"
+```
+
+:::
+
+### binomial
+
+Using Binomial Distribution as a random number generator
+
+```yaml
+type: binomial
+
+# Required parameter: The amount of trials
+extra: 10
+
+# Required parameter: The probability of success on an individual trial
+probability: 0.2
+```
+
+### gaussian / normal
+
+Using Gaussian/Normal Distribution as a random number generator
+
+```yaml
+type: gaussian
+
+# Required parameter: Lower bound for random number generation
+# Generated random values will not be less than this value
+# Purpose: Ensures random numbers stay within a reasonable range for the application, avoiding abnormally small values
+min: 10
+
+# Required parameter: Upper bound for random number generation
+# Generated random values will not be greater than this value
+# Purpose: Ensures random numbers stay within a reasonable range for the application, avoiding abnormally large values
+max: 20
+
+# Optional parameter: Mean (expected value) of the Gaussian distribution
+# Defines the center of the distribution, i.e., the value most likely to occur
+# Default: (min + max) / 2.0 (the midpoint of the range)
+# In this example: If not specified, the default value would be 15
+mean: 15
+
+# Optional parameter: Standard deviation of the Gaussian distribution
+# Measures the dispersion of data. A smaller value means data is more concentrated, a larger value means data is more spread out.
+# Default: (max - min) / 6.0, based on the "6σ principle" (99.7% of values fall within μ±3σ)
+# In this example: If not specified, the default value would be (20-10)/6≈1.67
+std-dev: 1
+
+# Optional parameter: Maximum number of attempts to generate a valid random number, defaults to 128
+# Since the theoretical range of the Gaussian distribution is (-∞, +∞), but is truncated by min/max,
+# values generated outside the [min, max] range will be regenerated.
+# This parameter prevents infinite loops in extreme cases.
+# If no valid value is generated after the maximum attempts, the closest boundary value (min or max) is typically returned.
+max-attempts: 128
+```
+
+### skew_normal
+
+Using Skew Normal Distribution as a random number generator. It allows for asymmetric distributions where data can be clustered more towards the min or max.
+
+```yaml
+type: skew_normal
+
+# Required parameter: Lower bound
+min: 0
+
+# Required parameter: Upper bound
+max: 100
+
+# Optional parameter: Mean (expected value). Default: (min + max) / 2.0
+mean: 50
+
+# Optional parameter: Standard deviation. Default: (max - min) / 6.0
+std-dev: 10
+
+# Optional parameter: Skewness coefficient.
+# Positive value: Right-skewed (tail on the right, peaks at the left)
+# Negative value: Left-skewed (tail on the left, peaks at the right)
+# 0: Symmetric (behaves like a normal distribution)
+# Range: [-0.995, 0.995]. Default: 0
+skewness: 0.5
+
+# Optional parameter: Maximum generation attempts. Default: 128
+max-attempts: 128
+```
+
+### log_normal
+
+Using Log-Normal Distribution. This distribution is always positive and skewed to the right, making it ideal for simulating values like currency drops or damage.
+
+```yaml
+type: log_normal
+
+# Required parameter: Lower bound (must be > 0)
+min: 1
+
+# Required parameter: Upper bound
+max: 1000
+
+# Choice A: Direct Mean and Standard Deviation (Intuitive)
+# The provider will automatically calculate the required μ and σ parameters.
+mean: 50
+std-dev: 20
+
+# Choice B: Logarithmic Parameters (Advanced)
+# location (μ): mean of the variable's natural logarithm
+# scale (σ): standard deviation of the variable's natural logarithm
+# location: 3.5
+# scale: 0.5
+
+# Optional parameter: Maximum generation attempts. Default: 128
+max-attempts: 128
+```
+
+### triangle
+
+Using Triangle Distribution. A computationally efficient alternative to the normal distribution that is naturally bounded.
+
+```yaml
+type: triangle
+
+# Required parameter: Lower bound
+min: 10
+
+# Required parameter: Upper bound
+max: 100
+
+# Optional parameter: The most likely value (peak of the triangle)
+# Default: (min + max) / 2.0 (creates an isosceles triangle)
+mode: 30
+```
+
+### beta
+
+Using Beta Distribution. An extremely flexible distribution defined in a fixed range, capable of mimicking many other distributions by adjusting two shape parameters.
+
+```yaml
+type: beta
+
+# Optional parameter: Lower bound. Default: 0.0
+min: 0
+
+# Optional parameter: Upper bound. Default: 1.0
+max: 10
+
+# Optional parameter: Alpha shape parameter (α). Default: 2.0
+# Higher alpha shifts the distribution towards the max.
+alpha: 5.0
+
+# Optional parameter: Beta shape parameter (β). Default: 2.0
+# Higher beta shifts the distribution towards the min.
+beta: 2.0
+```
+
+### weighted
+
+Provides a value randomly selected from a list of values based on their weights.
+
+```yaml
+type: weighted
+
+# Required parameter: A map of 'value: weight' pairs.
+# Weights do not need to sum to 100; the provider calculates relative probability.
+weights:
+  "10": 70      # 70% chance to return 10
+  "50": 25      # 25% chance to return 50
+  "200": 5      # 5% chance to return 200
+```
+
+### exponential
+
+Using Exponential Distribution. Commonly used for modeling time intervals between random events.
+
+```yaml
+type: exponential
+
+# Optional parameter: Lower bound. Default: 0.0
+min: 0
+
+# Optional parameter: Upper bound. Default: Double.MAX_VALUE
+max: 60
+
+# Required parameter (one of):
+# lambda (λ): The rate parameter (mean number of events per unit time)
+# mean: The average interval (mean = 1/lambda)
+mean: 10
+```

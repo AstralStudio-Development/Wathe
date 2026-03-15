@@ -1,0 +1,48 @@
+world: world
+spawn:
+  x: 0.5
+  y: 64
+  z: 0.5
+  yaw: 0
+  pitch: 0
+spectator-spawn:
+  x: 0.5
+  y: 100
+  z: 0.5
+  yaw: 0
+  pitch: 45
+ready-area:
+  pos1:
+    x: -10
+    y: 60
+    z: -10
+  pos2:
+    x: 10
+    y: 70
+    z: 10
+play-area:
+  pos1:
+    x: -100
+    y: 0
+    z: -100
+  pos2:
+    x: 100
+    y: 256
+    z: 100
+play-area-offset:
+  x: 0
+  y: 0
+  z: 0
+reset-template-area:
+  pos1:
+    x: 0
+    y: 0
+    z: 0
+  pos2:
+    x: 0
+    y: 0
+    z: 0
+reset-paste-offset:
+  x: 0
+  y: 0
+  z: 0

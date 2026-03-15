@@ -1,0 +1,25 @@
+---
+title: ➡️ 水平面定向附着方块
+id: face_attached_horizontal_directional_block
+---
+
+| 属性名称   | 属性类型                 | 是否必需 |
+|--------|----------------------|------|
+| face   | anchor_type          | 是    |
+| facing | horizontal_direction | 是    |
+
+```yaml
+blocks:
+  default:palm_button:
+    behavior:
+      type: face_attached_horizontal_directional_block
+      blacklist: true
+      attached-blocks:
+        - custom:xxx
+        - minecraft:stone
+      attached-block-tags:
+        - minecraft:dirt
+        - minecraft:farmland
+```
+
+![](/img/face_attached_horizontal_directional_block.png)

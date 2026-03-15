@@ -1,0 +1,185 @@
+# Wathe GUI Images Configuration
+
+images:
+  # ==================== Screen Effects ====================
+
+  # Fullscreen black overlay for transitions
+  wathe:fullscreen_black:
+    height: 2048
+    ascent: 256
+    font: wathe:effects
+    file: wathe:font/gui/sprites/effects/fullscreen_black.png
+
+  # ==================== GUI Sprites ====================
+
+  # Note screen background
+  wathe:note:
+    height: 118
+    ascent: 100
+    font: wathe:gui
+    file: wathe:font/gui/sprites/gui/note.png
+
+  # Shop slots
+  wathe:shop_slot:
+    height: 30
+    ascent: 26
+    font: wathe:gui
+    file: wathe:font/gui/sprites/gui/shop_slot.png
+
+  wathe:shop_slot_poison:
+    height: 30
+    ascent: 26
+    font: wathe:gui
+    file: wathe:font/gui/sprites/gui/shop_slot_poison.png
+
+  wathe:shop_slot_tool:
+    height: 30
+    ascent: 26
+    font: wathe:gui
+    file: wathe:font/gui/sprites/gui/shop_slot_tool.png
+
+  wathe:shop_slot_weapon:
+    height: 30
+    ascent: 26
+    font: wathe:gui
+    file: wathe:font/gui/sprites/gui/shop_slot_weapon.png
+
+  # ==================== HUD Sprites ====================
+
+  # Arrows
+  wathe:arrow_down:
+    height: 13
+    ascent: 11
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/arrow_down.png
+
+  wathe:arrow_up:
+    height: 13
+    ascent: 11
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/arrow_up.png
+
+  # Bat attack indicator
+  wathe:bat_attack:
+    height: 7
+    ascent: 6
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/bat_attack.png
+
+  wathe:bat_background:
+    height: 7
+    ascent: 6
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/bat_background.png
+
+  wathe:bat_progress:
+    height: 7
+    ascent: 6
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/bat_progress.png
+
+  # Crosshair
+  wathe:crosshair:
+    height: 3
+    ascent: 2
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/crosshair.png
+
+  wathe:crosshair_target:
+    height: 3
+    ascent: 2
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/crosshair_target.png
+
+  # Hotbar
+  wathe:hotbar:
+    height: 22
+    ascent: 18
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/hotbar.png
+
+  wathe:hotbar_selection:
+    height: 23
+    ascent: 19
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/hotbar_selection.png
+
+  # Knife attack indicator
+  wathe:knife_attack:
+    height: 7
+    ascent: 6
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/knife_attack.png
+
+  wathe:knife_background:
+    height: 7
+    ascent: 6
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/knife_background.png
+
+  wathe:knife_progress:
+    height: 7
+    ascent: 6
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/knife_progress.png
+
+  # Mood indicators
+  wathe:mood_depressive:
+    height: 17
+    ascent: 14
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/mood_depressive.png
+
+  wathe:mood_happy:
+    height: 17
+    ascent: 14
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/mood_happy.png
+
+  wathe:mood_killer:
+    height: 17
+    ascent: 14
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/mood_killer.png
+
+  wathe:mood_mid:
+    height: 17
+    ascent: 14
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/mood_mid.png
+
+  wathe:mood_psycho:
+    height: 17
+    ascent: 14
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/mood_psycho.png
+
+  wathe:mood_psycho_eyes:
+    height: 17
+    ascent: 14
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/mood_psycho_eyes.png
+
+  wathe:mood_psycho_hit:
+    height: 17
+    ascent: 14
+    font: wathe:hud
+    file: wathe:font/gui/sprites/hud/mood_psycho_hit.png
+
+  # ==================== Container ====================
+
+  # Limited inventory GUI
+  wathe:limited_inventory:
+    height: 256
+    ascent: 200
+    font: wathe:gui
+    file: wathe:font/gui/container/limited_inventory.png
+
+  # ==================== Game UI ====================
+
+  # Main game UI (large sprite sheet)
+  wathe:game:
+    height: 254
+    ascent: 200
+    font: wathe:gui
+    file: wathe:font/gui/game.png
