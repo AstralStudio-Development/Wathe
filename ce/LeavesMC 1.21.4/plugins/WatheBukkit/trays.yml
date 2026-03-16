@@ -1,8 +1,200 @@
 trays:
-  53504956-d6c4-4d8d-a21c-6b3761b46203|9|-57|54:
+  53504956-d6c4-4d8d-a21c-6b3761b46203|7|-57|0:
+    items:
+      '0':
+        ce-id: wathe:cosmopolitan
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: NETHER_BRICK
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            item-name: '{"translate":"item.wathe.cosmopolitan","italic":false}'
+            custom: H4sIAAAAAAAA/+NiYOBg4EsuSkwrSc1Lz8xLtcpMYRAqTyzJSLVKzi/OzS/Iz8ksScxjAABKFsppKQAAAA==
+      '1':
+        ce-id: wathe:old_fashioned
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: NETHER_BRICK
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            item-name: '{"translate":"item.wathe.old_fashioned","italic":false}'
+            custom: H4sIAAAAAAAA/+NiYOBg4EsuSkwrSc1Lz8xLtcpMYRAuTyzJSLXKz0mJT0sszsjMz0tNYQAAzo9jnioAAAA=
+      '2':
+        ce-id: wathe:champagne
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: NETHER_BRICK
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            item-name: '{"translate":"item.wathe.champagne","italic":false}'
+            custom: H4sIAAAAAAAA/+NiYOBg4EsuSkwrSc1Lz8xLtcpMYeAvTyzJSLVKzkjMLUhMz0tlAACTsAFfJgAAAA==
+      '3':
+        ce-id: wathe:mojito
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: NETHER_BRICK
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            item-name: '{"translate":"item.wathe.mojito","italic":false}'
+            custom: H4sIAAAAAAAA/+NiYOBg4EsuSkwrSc1Lz8xLtcpMYeApTyzJSLXKzc/KLMlnAABJkUMBIwAAAA==
+      '4':
+        ce-id: wathe:martini
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: NETHER_BRICK
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            item-name: '{"translate":"item.wathe.martini","italic":false}'
+            custom: H4sIAAAAAAAA/+NiYOBg4EsuSkwrSc1Lz8xLtcpMYeAtTyzJSLXKTSwqyczLZAAAwxO8VCQAAAA=
+  53504956-d6c4-4d8d-a21c-6b3761b46203|9|-57|53:
     items:
       '0':
         item:
           ==: org.bukkit.inventory.ItemStack
           v: 4189
-          type: BEEF
+          type: BREAD
+      '1':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: COOKIE
+      '2':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: APPLE
+      '3':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: SWEET_BERRIES
+      '4':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: CARROT
+      '5':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: MELON_SLICE
+      '6':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: GLOW_BERRIES
+  53504956-d6c4-4d8d-a21c-6b3761b46203|8|-57|101:
+    items:
+      '0':
+        ce-id: wathe:drink_tray
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: NETHER_BRICK
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            item-name: '{"translate":"block.wathe.drink_tray","italic":false}'
+            custom: H4sIAAAAAAAA/+NiYOBg4EsuSkwrSc1Lz8xLtcpMYRAoTyzJSLVKKcrMy44vKUqsZAAAFbS10CcAAAA=
+      '1':
+        ce-id: wathe:old_fashioned
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: NETHER_BRICK
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            item-name: '{"translate":"item.wathe.old_fashioned","italic":false}'
+            custom: H4sIAAAAAAAA/+NiYOBg4EsuSkwrSc1Lz8xLtcpMYRAuTyzJSLXKz0mJT0sszsjMz0tNYQAAzo9jnioAAAA=
+      '2':
+        ce-id: wathe:mojito
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: NETHER_BRICK
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            item-name: '{"translate":"item.wathe.mojito","italic":false}'
+            custom: H4sIAAAAAAAA/+NiYOBg4EsuSkwrSc1Lz8xLtcpMYeApTyzJSLXKzc/KLMlnAABJkUMBIwAAAA==
+      '3':
+        ce-id: wathe:martini
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: NETHER_BRICK
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            item-name: '{"translate":"item.wathe.martini","italic":false}'
+            custom: H4sIAAAAAAAA/+NiYOBg4EsuSkwrSc1Lz8xLtcpMYeAtTyzJSLXKTSwqyczLZAAAwxO8VCQAAAA=
+      '4':
+        ce-id: wathe:cosmopolitan
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: NETHER_BRICK
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            item-name: '{"translate":"item.wathe.cosmopolitan","italic":false}'
+            custom: H4sIAAAAAAAA/+NiYOBg4EsuSkwrSc1Lz8xLtcpMYRAqTyzJSLVKzi/OzS/Iz8ksScxjAABKFsppKQAAAA==
+      '5':
+        ce-id: wathe:champagne
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: NETHER_BRICK
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            item-name: '{"translate":"item.wathe.champagne","italic":false}'
+            custom: H4sIAAAAAAAA/+NiYOBg4EsuSkwrSc1Lz8xLtcpMYeAvTyzJSLVKzkjMLUhMz0tlAACTsAFfJgAAAA==
+  53504956-d6c4-4d8d-a21c-6b3761b46203|7|-57|149:
+    items:
+      '0':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: MELON_SLICE
+      '1':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: BREAD
+      '2':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: COOKIE
+      '3':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: APPLE
+      '4':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: SWEET_BERRIES
+      '5':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: GLOW_BERRIES
+      '6':
+        item:
+          ==: org.bukkit.inventory.ItemStack
+          v: 4189
+          type: CARROT

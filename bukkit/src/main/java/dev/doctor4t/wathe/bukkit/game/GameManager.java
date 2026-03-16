@@ -116,7 +116,7 @@ public class GameManager {
         }
 
 
-        plugin.preloadMapDoors();
+        plugin.restoreMapEntities();
         this.gameState = GameState.RUNNING;
 
         gameTask = Bukkit.getGlobalRegionScheduler().runAtFixedRate(plugin, task -> tick(), 1L, 1L);

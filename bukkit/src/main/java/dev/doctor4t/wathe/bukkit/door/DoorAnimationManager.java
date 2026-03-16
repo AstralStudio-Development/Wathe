@@ -36,14 +36,18 @@ public class DoorAnimationManager {
     private final Map<Location, AnimatingDoor> animatingDoors = new ConcurrentHashMap<>();
     private final Map<Location, ScheduledTask> autoCloseTasks = new ConcurrentHashMap<>();
     private final Map<Location, Location> pairedDoors = new ConcurrentHashMap<>();
+    private final Map<Location, UUID> animationSequenceIds = new ConcurrentHashMap<>();
 
     // Persistent visual/interaction cache: create once, then reuse for all open/close animations.
     private final Map<Location, DoorVisual> doorVisuals = new ConcurrentHashMap<>();
     private final Map<UUID, Location> interactionToDoor = new ConcurrentHashMap<>();
     private final Map<Location, DoorInfo> knownDoors = new ConcurrentHashMap<>();
 
-    private static final float SLIDE_DISTANCE = 0.9f;
-    private static final int ANIMATION_TICKS = 2;
+    private static final float SLIDE_DISTANCE = 14f / 16f;
+    private static final int ANIMATION_HOLD_TICKS = 1;
+    private static final int ANIMATION_SEGMENT_TICKS = 3;
+    private static final int ANIMATION_SEGMENTS = 4;
+    private static final int TOTAL_ANIMATION_TICKS = ANIMATION_HOLD_TICKS + (ANIMATION_SEGMENTS * ANIMATION_SEGMENT_TICKS);
     private static final int OPEN_DURATION_TICKS = 100;
     private static final byte DOOR_ENTITY_MARKER = 1;
 
@@ -109,6 +113,36 @@ public class DoorAnimationManager {
 
         plugin.getComponentLogger().info("Preloaded " + created + " doors in loaded chunks of world " + world.getName());
         return created;
+    }
+
+    public int clearDoorInteractionEntitiesInWorld(World world) {
+        resetDoorRuntimeStateInWorld(world);
+        return clearInteractionEntitiesInWorld(world);
+    }
+
+    public int clearDoorInteractionEntitiesInChunk(Chunk chunk) {
+        int removed = 0;
+        int minX = chunk.getX() << 4;
+        int minZ = chunk.getZ() << 4;
+        int maxX = minX + 16;
+        int maxZ = minZ + 16;
+        for (var entity : chunk.getEntities()) {
+            if (!(entity instanceof Interaction interaction)) {
+                continue;
+            }
+            if (!interaction.isValid()) {
+                continue;
+            }
+            Location loc = interaction.getLocation();
+            if (loc.getX() < minX || loc.getX() >= maxX || loc.getZ() < minZ || loc.getZ() >= maxZ) {
+                continue;
+            }
+            if (isWatheDoorInteraction(interaction) || isLikelyLegacyDoorInteraction(interaction)) {
+                interaction.remove();
+                removed++;
+            }
+        }
+        return removed;
     }
 
     public int preloadDoorsInArea(World world, BoundingBox area) {
@@ -278,6 +312,7 @@ public class DoorAnimationManager {
             autoCloseTask.cancel();
         }
         animatingDoors.remove(lowerPos);
+        animationSequenceIds.remove(lowerPos);
         knownDoors.remove(lowerPos);
 
         Location pairedPos = pairedDoors.remove(lowerPos);
@@ -343,6 +378,7 @@ public class DoorAnimationManager {
             autoCloseTask.cancel();
         }
         animatingDoors.remove(lowerPos);
+        animationSequenceIds.remove(lowerPos);
 
         Location pairedPos = pairedDoors.remove(lowerPos);
         if (pairedPos != null) {
@@ -411,11 +447,9 @@ public class DoorAnimationManager {
                 upperBlock.setType(Material.AIR, false);
             }
 
-            // Phase 2: slide from closed pose to opened pose.
-            playOpenAnimation(lowerDisplay, slideDirection);
-            playOpenAnimation(upperDisplay, slideDirection);
-            moveInteraction(interaction, door.lowerPos, slideDirection);
+            setInteractionPosition(interaction, door.lowerPos, slideDirection);
             interaction.setResponsive(true);
+            startDoorAnimation(door.lowerPos, lowerDisplay, upperDisplay, interaction, slideDirection, true);
         };
 
         if (hasCollisionBlocks) {
@@ -658,12 +692,7 @@ public class DoorAnimationManager {
     }
 
     private Interaction spawnDoorInteraction(Location lowerPos, Vector3f slideDirection) {
-        Location spawnLoc = lowerPos.clone().add(
-            0.5 + slideDirection.x * 0.45,
-            0,
-            0.5 + slideDirection.z * 0.45
-        );
-
+        Location spawnLoc = getInteractionLocation(lowerPos, slideDirection);
         Interaction interaction = (Interaction) lowerPos.getWorld().spawnEntity(spawnLoc, EntityType.INTERACTION);
         interaction.setInteractionWidth(0.2f);
         interaction.setInteractionHeight(2.0f);
@@ -780,24 +809,68 @@ public class DoorAnimationManager {
         return display;
     }
 
-    private void playOpenAnimation(BlockDisplay display, Vector3f slideDirection) {
-        display.setInterpolationDuration(ANIMATION_TICKS);
-        display.setInterpolationDelay(0);
-        display.setTransformation(createTransform(slideDirection));
+    private void startDoorAnimation(
+        Location lowerPos,
+        BlockDisplay lowerDisplay,
+        BlockDisplay upperDisplay,
+        @Nullable Interaction interaction,
+        Vector3f slideDirection,
+        boolean opening
+    ) {
+        UUID sequenceId = UUID.randomUUID();
+        animationSequenceIds.put(lowerPos, sequenceId);
+
+        if (!opening && interaction != null) {
+            interaction.setResponsive(false);
+        }
+
+        for (int step = 0; step < ANIMATION_SEGMENTS; step++) {
+            long delay = ANIMATION_HOLD_TICKS + ((long) step * ANIMATION_SEGMENT_TICKS);
+            float progress = opening
+                ? easeOutExpo((step + 1f) / ANIMATION_SEGMENTS)
+                : 1f - easeOutExpo((step + 1f) / ANIMATION_SEGMENTS);
+            if (!opening && step == ANIMATION_SEGMENTS - 1) {
+                progress = 0f;
+            }
+
+            final float currentProgress = progress;
+            final boolean finalStep = step == ANIMATION_SEGMENTS - 1;
+            Bukkit.getGlobalRegionScheduler().runDelayed(plugin, task -> {
+                if (!sequenceId.equals(animationSequenceIds.get(lowerPos))) {
+                    return;
+                }
+                if (!lowerDisplay.isValid() || !upperDisplay.isValid()) {
+                    return;
+                }
+
+                applyAnimationStep(lowerDisplay, slideDirection, currentProgress);
+                applyAnimationStep(upperDisplay, slideDirection, currentProgress);
+                if (interaction != null && interaction.isValid() && !opening && finalStep) {
+                    interaction.setResponsive(false);
+                }
+            }, delay);
+        }
     }
 
-    private void playCloseAnimation(BlockDisplay display) {
-        display.setInterpolationDuration(ANIMATION_TICKS);
+    private void applyAnimationStep(BlockDisplay display, Vector3f slideDirection, float progress) {
+        display.setInterpolationDuration(ANIMATION_SEGMENT_TICKS);
         display.setInterpolationDelay(0);
-        display.setTransformation(createTransform(new Vector3f(0, 0, 0)));
+        display.setTransformation(createTransform(slideDirection, progress));
     }
 
-    private Transformation createTransform(Vector3f slideDirection) {
+    private float easeOutExpo(float progress) {
+        if (progress >= 1f) {
+            return 1f;
+        }
+        return 1f - (float) Math.pow(2.0, -10.0 * progress);
+    }
+
+    private Transformation createTransform(Vector3f slideDirection, float progress) {
         return new Transformation(
             new Vector3f(
-                -0.5f + slideDirection.x * SLIDE_DISTANCE,
+                -0.5f + slideDirection.x * SLIDE_DISTANCE * progress,
                 0,
-                -0.5f + slideDirection.z * SLIDE_DISTANCE
+                -0.5f + slideDirection.z * SLIDE_DISTANCE * progress
             ),
             new AxisAngle4f(0, 0, 0, 1),
             new Vector3f(1, 1, 1),
@@ -814,13 +887,16 @@ public class DoorAnimationManager {
         );
     }
 
-    private void moveInteraction(Interaction interaction, Location lowerPos, Vector3f slideDirection) {
-        Location target = lowerPos.clone().add(
+    private Location getInteractionLocation(Location lowerPos, Vector3f slideDirection) {
+        return lowerPos.clone().add(
             0.5 + slideDirection.x * 0.45,
             0,
             0.5 + slideDirection.z * 0.45
         );
-        interaction.teleport(target);
+    }
+
+    private void setInteractionPosition(Interaction interaction, Location lowerPos, Vector3f slideDirection) {
+        interaction.teleport(getInteractionLocation(lowerPos, slideDirection));
     }
 
     private void closeDoor(Location lowerPos) {
@@ -850,14 +926,20 @@ public class DoorAnimationManager {
         var upperEntity = Bukkit.getEntity(animatingDoor.upperDisplayId);
 
         if (lowerEntity instanceof BlockDisplay lowerDisplay && upperEntity instanceof BlockDisplay upperDisplay) {
-            playCloseAnimation(lowerDisplay);
-            playCloseAnimation(upperDisplay);
+            Interaction interaction = null;
+            var interactionEntity = Bukkit.getEntity(animatingDoor.interactionId);
+            if (interactionEntity instanceof Interaction existingInteraction) {
+                interaction = existingInteraction;
+            }
+            lowerPos.getWorld().playSound(lowerPos, "wathe:block.door.toggle", 1.0f, 1.0f);
+            startDoorAnimation(lowerPos, lowerDisplay, upperDisplay, interaction, animatingDoor.slideDirection, false);
 
             Bukkit.getGlobalRegionScheduler().runDelayed(plugin, task -> {
                 finishCloseDoor(lowerPos, animatingDoor);
-            }, ANIMATION_TICKS + 2);
+            }, TOTAL_ANIMATION_TICKS);
         } else {
             animatingDoors.remove(lowerPos);
+            animationSequenceIds.remove(lowerPos);
             pairedDoors.remove(lowerPos);
         }
     }
@@ -867,6 +949,7 @@ public class DoorAnimationManager {
         if (interactionEntity instanceof Interaction interaction) {
             interaction.setResponsive(false);
         }
+        animationSequenceIds.remove(lowerPos);
 
         DoorVisual visual = doorVisuals.get(lowerPos);
         if (visual != null) {
@@ -891,7 +974,6 @@ public class DoorAnimationManager {
             upperDisplay.setTransformation(createClosedVisibleTransform());
         }
 
-        lowerPos.getWorld().playSound(lowerPos, "wathe:block.door.toggle", 1.0f, 1.0f);
         animatingDoors.remove(lowerPos);
         pairedDoors.remove(lowerPos);
     }
@@ -913,6 +995,7 @@ public class DoorAnimationManager {
         autoCloseTasks.clear();
         animatingDoors.clear();
         pairedDoors.clear();
+        animationSequenceIds.clear();
 
         for (DoorVisual visual : doorVisuals.values()) {
             var lowerEntity = Bukkit.getEntity(visual.lowerDisplayId);
@@ -937,6 +1020,10 @@ public class DoorAnimationManager {
         doorVisuals.clear();
         interactionToDoor.clear();
         knownDoors.clear();
+
+        for (World world : Bukkit.getWorlds()) {
+            clearInteractionEntitiesInWorld(world);
+        }
     }
 
     public boolean isDoorAnimating(Location lowerPos) {

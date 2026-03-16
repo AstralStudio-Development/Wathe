@@ -213,7 +213,7 @@ public class WatheCommand implements CommandExecutor, TabCompleter {
     private boolean handleReload(CommandSender sender) {
         plugin.reloadConfiguration();
         plugin.getMapConfig().reload();
-        plugin.preloadMapDoors();
+        plugin.restoreMapEntities();
         sender.sendMessage(Component.text("配置已重载。", NamedTextColor.GREEN));
         return true;
     }

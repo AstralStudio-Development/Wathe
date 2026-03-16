@@ -9,6 +9,8 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -96,7 +98,12 @@ public class PlayerListener implements Listener {
 
         // 餐盘/饮品盘交互（取物、下毒）
         if (action == Action.RIGHT_CLICK_BLOCK && event.getClickedBlock() != null) {
+            if (event.getHand() != EquipmentSlot.HAND) {
+                return;
+            }
             if (plugin.getTrayManager().handleInteract(player, event.getClickedBlock(), event.getItem())) {
+                event.setUseInteractedBlock(Event.Result.DENY);
+                event.setUseItemInHand(Event.Result.DENY);
                 event.setCancelled(true);
                 return;
             }

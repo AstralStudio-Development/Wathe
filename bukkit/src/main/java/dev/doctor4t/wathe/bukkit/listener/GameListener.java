@@ -18,6 +18,7 @@ import org.bukkit.block.Block;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.block.BlockRedstoneEvent;
+import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
@@ -58,6 +59,23 @@ public class GameListener implements Listener {
         this.plugin = plugin;
     }
 
+    @EventHandler
+    public void onChunkLoad(ChunkLoadEvent event) {
+        if (plugin.getTrayManager() == null || plugin.getMapConfig() == null || plugin.getMapConfig().getSpawnLocation() == null) {
+            return;
+        }
+        var mapWorld = plugin.getMapConfig().getSpawnLocation().getWorld();
+        if (mapWorld == null || !mapWorld.equals(event.getWorld())) {
+            return;
+        }
+
+        org.bukkit.Bukkit.getGlobalRegionScheduler().runDelayed(plugin, task -> {
+            plugin.getDoorAnimationManager().clearDoorInteractionEntitiesInChunk(event.getChunk());
+            plugin.getTrayManager().preloadTraysInChunk(event.getChunk());
+            plugin.getTrayManager().restorePersistedDisplaysInChunk(event.getChunk());
+        }, 10L);
+    }
+
     // ========== wathe 门交互动==========
     
     @EventHandler
@@ -67,14 +85,7 @@ public class GameListener implements Listener {
             return;
         }
         if (isWatheLightBlock(blockId)) {
-            Block block = event.bukkitBlock();
-            block.getWorld().playSound(
-                block.getLocation().add(0.5, 0.5, 0.5),
-                "wathe:block.light_toggle",
-                SoundCategory.BLOCKS,
-                0.5f,
-                1.0f
-            );
+            playWatheLightToggleSound(event.bukkitBlock(), event.player(), event.customBlock().toString());
             return;
         }
         if (!blockId.contains("door")) {
@@ -91,6 +102,27 @@ public class GameListener implements Listener {
 
     private boolean isWatheLightBlock(String blockId) {
         return blockId.contains("neon") || blockId.contains("lamp") || blockId.contains("lantern");
+    }
+
+    private void playWatheLightToggleSound(Block block, Player player, String stateString) {
+        boolean lit = stateString.contains("lit=true");
+        boolean active = !stateString.contains("active=false");
+        block.getWorld().playSound(
+            block.getLocation().add(0.5, 0.5, 0.5),
+            "wathe:block.light.toggle",
+            SoundCategory.BLOCKS,
+            0.5f,
+            lit ? 1.0f : 1.2f
+        );
+        if (!active) {
+            player.playSound(
+                block.getLocation().add(0.5, 0.5, 0.5),
+                "minecraft:block.stone_button.click_off",
+                SoundCategory.BLOCKS,
+                0.1f,
+                1.0f
+            );
+        }
     }
     
     @EventHandler

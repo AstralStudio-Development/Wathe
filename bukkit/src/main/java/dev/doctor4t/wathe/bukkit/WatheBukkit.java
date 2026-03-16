@@ -106,7 +106,7 @@ public class WatheBukkit extends JavaPlugin {
         this.outsideSnowEffectManager = new OutsideSnowEffectManager(this);
         this.outsideSnowEffectManager.start();
 
-        org.bukkit.Bukkit.getGlobalRegionScheduler().runDelayed(this, task -> preloadMapDoors(), 20L);
+        scheduleMapRestoreAttempts();
 
         getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
         getServer().getPluginManager().registerEvents(new GameListener(this), this);
@@ -174,25 +174,34 @@ public class WatheBukkit extends JavaPlugin {
         GameConstants.loadFromConfig(this);
     }
 
-    public void preloadMapDoors() {
+    public void restoreMapEntities() {
         if (doorAnimationManager == null || trayManager == null || mapConfig == null) {
             return;
         }
 
         var world = mapConfig.getSpawnLocation().getWorld();
         if (world == null) {
-            getComponentLogger().warn("Could not preload doors: map world is null");
+            getComponentLogger().warn("Could not restore map entities: map world is null");
             return;
         }
 
+        doorAnimationManager.clearDoorInteractionEntitiesInWorld(world);
+
         var playArea = mapConfig.getPlayArea();
         if (playArea != null) {
-            doorAnimationManager.preloadDoorsInArea(world, playArea);
             trayManager.preloadTraysInArea(world, playArea);
+            trayManager.restorePersistedDisplaysInWorld(world);
             return;
         }
-        doorAnimationManager.preloadDoorsInWorld(world);
         trayManager.preloadTraysInWorld(world);
+        trayManager.restorePersistedDisplaysInWorld(world);
+    }
+
+    private void scheduleMapRestoreAttempts() {
+        long[] delays = {20L, 60L, 120L};
+        for (long delay : delays) {
+            org.bukkit.Bukkit.getGlobalRegionScheduler().runDelayed(this, task -> restoreMapEntities(), delay);
+        }
     }
 
     public static WatheBukkit getInstance() {

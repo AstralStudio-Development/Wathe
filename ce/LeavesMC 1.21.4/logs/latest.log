@@ -1,195 +1,162 @@
-[22:15:32] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.5+11-LTS; Azul Systems, Inc. Zulu21.38+21-CA) on Windows 11 10.0 (amd64)
-[22:15:32] [ServerMain/INFO]: [bootstrap] Loading Leaves 1.21.4-82-ver/1.21.4@b04ebcb (2025-08-01T14:28:56Z) for Minecraft 1.21.4
-[22:15:33] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
-[22:15:33] [Paper Plugin Remapper Thread - 0/INFO]: [PluginRemapper] Remapping plugin 'plugins\WatheBukkit-1.0.0-SNAPSHOT.jar'...
-[22:15:34] [Paper Plugin Remapper Thread - 0/INFO]: [PluginRemapper] Done remapping plugin 'plugins\WatheBukkit-1.0.0-SNAPSHOT.jar' in 279ms.
-[22:15:34] [ServerMain/INFO]: [PluginInitializerManager] Initialized 11 plugins
-[22:15:34] [ServerMain/INFO]: [PluginInitializerManager] Paper plugins (1):
+[18:56:58] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.7+6-LTS; Azul Systems, Inc. Zulu21.42+19-CA) on Windows 11 10.0 (amd64)
+[18:56:58] [ServerMain/INFO]: [bootstrap] Loading Leaves 1.21.4-82-ver/1.21.4@b04ebcb (2025-08-01T14:28:56Z) for Minecraft 1.21.4
+[18:56:58] [ServerMain/WARN]: [oshi.driver.windows.perfmon.PerfmonDisabled] Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
+[18:56:58] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[18:56:58] [Paper Plugin Remapper Thread - 2/INFO]: [PluginRemapper] Remapping plugin 'plugins\WatheBukkit-1.0.0-SNAPSHOT.jar'...
+[18:56:59] [Paper Plugin Remapper Thread - 2/INFO]: [PluginRemapper] Done remapping plugin 'plugins\WatheBukkit-1.0.0-SNAPSHOT.jar' in 212ms.
+[18:56:59] [ServerMain/INFO]: [PluginInitializerManager] Initialized 11 plugins
+[18:56:59] [ServerMain/INFO]: [PluginInitializerManager] Paper plugins (1):
  - CraftEngine (0.0.67.5)
-[22:15:34] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (10):
+[18:56:59] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (10):
  - AxiomPaper (5.0.3+1.21.4), BetterHud (1.14.2-SNAPSHOT-441), FastAsyncWorldEdit (2.15.0+59372c5), LuckPerms (5.5.36), Lyrical (1.0.0), PlaceholderAPI (2.12.2), SkinsRestorer (15.11.0), WatheBukkit (${version}), XMMForceFairPlay (1.1.0), packetevents (2.11.2)
-[22:15:39] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[22:15:39] [ServerMain/INFO]: [MCTypeRegistry] Initialising converters for DataConverter...
-[22:15:40] [ServerMain/INFO]: [MCTypeRegistry] Finished initialising converters for DataConverter in 293.3ms
-[22:15:42] [ServerMain/INFO]: Loaded 1370 recipes
-[22:15:42] [ServerMain/INFO]: Loaded 1481 advancements
-[22:15:42] [Server thread/INFO]: Starting minecraft server version 1.21.4
-[22:15:42] [Server thread/INFO]: Loading properties
-[22:15:43] [Server thread/INFO]: This server is running Leaves version 1.21.4-82-ver/1.21.4@b04ebcb (2025-08-01T14:28:56Z) (Implementing API version 1.21.4-R0.1-SNAPSHOT)
-[22:15:43] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
-[22:15:43] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[22:15:43] [Server thread/INFO]: Using 4 threads for Netty based IO
-[22:15:43] [Server thread/INFO]: [MoonriseCommon] Leaves is using 4 worker threads, 1 I/O threads
-[22:15:43] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using population gen parallelism: true
-[22:15:43] [Server thread/INFO]: Default game type: SURVIVAL
-[22:15:43] [Server thread/INFO]: Generating keypair
-[22:15:43] [Server thread/INFO]: Starting Minecraft server on *:25565
-[22:15:43] [Server thread/INFO]: Using default channel type
-[22:15:43] [Server thread/INFO]: Paper: Using Java compression from Velocity.
-[22:15:43] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
-[22:15:44] [Server thread/INFO]: [FastAsyncWorldEdit] Loading server plugin FastAsyncWorldEdit v2.15.0+59372c5
-[22:15:45] [Server thread/INFO]: Got request to register class com.sk89q.worldedit.bukkit.BukkitServerInterface with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@68b2a03d]
-[22:15:45] [Server thread/INFO]: [PlaceholderAPI] Loading server plugin PlaceholderAPI v2.12.2
-[22:15:45] [Server thread/INFO]: [CraftEngine] Loading server plugin CraftEngine v0.0.67.5
-[22:15:46] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.11.0
-[22:15:46] [Server thread/INFO]: [packetevents] Loading server plugin packetevents v2.11.2
-[22:15:48] [Server thread/INFO]: [BetterHud] Loading server plugin BetterHud v1.14.2-SNAPSHOT-441
-[22:15:48] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.5.36
-[22:15:48] [Server thread/INFO]: [LuckPerms] Loading configuration...
-[22:15:48] [Server thread/INFO]: [XMMForceFairPlay] Loading server plugin XMMForceFairPlay v1.1.0
-[22:15:48] [Server thread/INFO]: [WatheBukkit] Loading server plugin WatheBukkit v${version}
-[22:15:48] [Server thread/INFO]: [Lyrical] Loading server plugin Lyrical v1.0.0
-[22:15:48] [Server thread/INFO]: [AxiomPaper] Loading server plugin AxiomPaper v5.0.3+1.21.4
-[22:15:48] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[22:15:48] [Server thread/INFO]: [FastAsyncWorldEdit] Enabling FastAsyncWorldEdit v2.15.0+59372c5
-[22:15:48] [Server thread/INFO]: [com.fastasyncworldedit.core.Fawe] LZ4 Compression Binding loaded successfully
-[22:15:48] [Server thread/INFO]: [com.fastasyncworldedit.core.Fawe] ZSTD Compression Binding loaded successfully
-[22:15:48] [Server thread/INFO]: Registering commands with com.sk89q.worldedit.bukkit.BukkitServerInterface
-[22:15:48] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
-[22:15:49] [Server thread/INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.fawe.v1_21_4.PaperweightFaweAdapter as the Bukkit adapter
-[22:15:49] [Server thread/INFO]: [CraftEngine] Enabling CraftEngine v0.0.67.5
-[22:15:50] [Server thread/INFO]: [CraftEngine] [兼容性] 已挂钩 FastAsyncWorldEdit
-[22:15:50] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.11.0
-[22:15:51] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.21.4.
-[22:15:51] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
-[22:15:51] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: skinsrestorer [15.11.0]
-[22:15:51] [Server thread/INFO]: [SkinsRestorer] PlaceholderAPI expansion registered!
-[22:15:51] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.5.36
-[22:15:52] [Server thread/INFO]:         __    
-[22:15:52] [Server thread/INFO]:   |    |__)   LuckPerms v5.5.36
-[22:15:52] [Server thread/INFO]:   |___ |      Running on Bukkit - Leaves
-[22:15:52] [Server thread/INFO]: 
-[22:15:52] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
-[22:15:52] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
-[22:15:52] [Server thread/INFO]: [LuckPerms] Performing initial data load...
-[22:15:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[22:15:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[22:15:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
-[22:15:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
-[22:15:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
-[22:15:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[22:15:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[22:15:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.11.0
-[22:15:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: 52f31ab
-[22:15:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
-[22:15:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[22:15:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
-[22:15:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
-[22:15:52] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 981ms)
-[22:15:52] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[22:15:52] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[22:15:52] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[22:15:52] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[22:15:52] [Server thread/INFO]: Preparing level "world"
-[22:15:53] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[22:15:53] [Server thread/INFO]: Preparing spawn area: 0%
-[22:15:53] [Server thread/INFO]: Preparing spawn area: 0%
-[22:15:53] [Server thread/INFO]: Time elapsed: 602 ms
-[22:15:53] [Server thread/INFO]: [PlaceholderAPI] Enabling PlaceholderAPI v2.12.2
-[22:15:53] [Server thread/INFO]: [PlaceholderAPI] Fetching available expansion information...
-[22:15:53] [Server thread/INFO]: [packetevents] Enabling packetevents v2.11.2
-[22:15:53] [packetevents-update-check-thread/INFO]: [packetevents] Checking for updates, please wait...
-[22:15:53] [Server thread/INFO]: [BetterHud] Enabling BetterHud v1.14.2-SNAPSHOT-441
-[22:15:54] [packetevents-update-check-thread/INFO]: [packetevents] You are running the latest release of PacketEvents. Your build: (2.11.2)
-[22:15:55] [Server thread/WARN]: [BetterHud] This build is dev version - be careful to use it!
-[22:15:56] [Server thread/INFO]: [XMMForceFairPlay] Enabling XMMForceFairPlay v1.1.0
-[22:15:56] [Server thread/INFO]: [XMMForceFairPlay] XMMForceFairPlay enabled with mode: FAIR-PLAY
-[22:15:56] [Server thread/INFO]: [WatheBukkit] Enabling WatheBukkit v${version}
-[22:15:56] [Server thread/INFO]: [WatheBukkit] BetterHud integration enabled!
-[22:15:56] [Server thread/INFO]: [WatheBukkit] BetterHud custom listener 'wathe' registered.
-[22:15:56] [Server thread/INFO]: [WatheBukkit] BetterHud Steve fallback skin provider registered.
-[22:15:56] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: wathe [${version}]
-[22:15:56] [Server thread/INFO]: [WatheBukkit] PlaceholderAPI expansion registered!
-[22:15:56] [Server thread/INFO]: [WatheBukkit] PacketEvents已加载，使用虚拟玩家尸体
-[22:15:56] [Server thread/INFO]: [WatheBukkit] Psycho skin loaded successfully (value length: 416)
-[22:15:56] [Server thread/INFO]: [WatheBukkit] Wathe has been enabled!
-[22:15:56] [Server thread/INFO]: [Lyrical] Enabling Lyrical v1.0.0
-[22:15:56] [Server thread/INFO]: [Lyrical] Lyrical server started on port 25566
-[22:15:56] [Server thread/INFO]: [Lyrical] Lyrical enabled!
-[22:15:56] [Server thread/INFO]: [AxiomPaper] Enabling AxiomPaper v5.0.3+1.21.4
-[22:15:56] [Server thread/INFO]: [AxiomPaper] LuckPerms integration enabled
-[22:15:56] [Server thread/INFO]: [spark] Starting background profiler...
-[22:15:56] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
-[22:15:56] [Server thread/INFO]: [PlaceholderAPI] Placeholder expansion registration initializing...
-[22:15:56] [Server thread/INFO]: 0 placeholder hook(s) registered!
-[22:15:56] [Server thread/INFO]: [BetterHud] Minecraft version: 1.21.4, NMS version: V1_21_R3
-[22:15:56] [Server thread/INFO]: [BetterHud] Platform: Paper
-[22:15:56] [Server thread/INFO]: [BetterHud] Plugin enabled.
-[22:15:56] [Server thread/INFO]: Done preparing level "world" (3.930s)
-[22:15:56] [Server thread/INFO]: Running delayed init tasks
-[22:15:56] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: image [1.0]
-[22:15:56] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: shift [1.0]
-[22:15:56] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: checkceitem [1.0]
-[22:15:56] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: ce [1.0]
-[22:15:56] [Server thread/INFO]: [CraftEngine] [兼容性] 已挂钩 PlaceholderAPI
-[22:15:56] [Server thread/INFO]: [CraftEngine] [兼容性] 已挂钩 LuckPerms
-[22:15:56] [Server thread/INFO]: [CraftEngine] Netty HTTP 服务已在端口 8163 开启
-[22:15:56] [Server thread/INFO]: [CraftEngine] 已加载包: default. 默认命名空间: default
-[22:15:56] [Server thread/INFO]: [CraftEngine] 已加载包: internal. 默认命名空间: internal
-[22:15:56] [Server thread/INFO]: [CraftEngine] 已加载包: legacy_armor. 默认命名空间: minecraft
-[22:15:56] [Server thread/INFO]: [CraftEngine] 已加载包: remove_shulker_head. 默认命名空间: minecraft
-[22:15:56] [Server thread/INFO]: [CraftEngine] 已加载包: wathe. 默认命名空间: wathe
-[22:15:57] [Server thread/INFO]: [CraftEngine] 加载 templates 耗时 99.95ms (101)
-[22:15:57] [Server thread/INFO]: [CraftEngine] 加载 block-state-mappings 耗时 36.74ms (3740)
-[22:15:57] [Server thread/INFO]: [CraftEngine] 加载 translations 耗时 6.39ms (92)
-[22:15:57] [Server thread/INFO]: [CraftEngine] 加载 equipments 耗时 11.36ms (1)
-[22:15:57] [Server thread/INFO]: [CraftEngine] 加载 items 耗时 215.61ms (343)
-[22:15:58] [Server thread/INFO]: [CraftEngine] 加载 blocks 耗时 414.19ms (224)
-[22:15:58] [Server thread/INFO]: [CraftEngine] 加载 furniture 耗时 17.08ms (4)
-[22:15:58] [Server thread/INFO]: [CraftEngine] 加载 images 耗时 7.95ms (84)
-[22:15:58] [Server thread/INFO]: [CraftEngine] 加载 recipes 耗时 12.47ms (44)
-[22:15:58] [Server thread/INFO]: [CraftEngine] 加载 categories 耗时 1.84ms (16)
-[22:15:58] [Server thread/INFO]: [CraftEngine] 加载 loots 耗时 0.86ms (1)
-[22:15:58] [Server thread/INFO]: [CraftEngine] 加载 emojis 耗时 1.31ms (16)
-[22:15:58] [Server thread/INFO]: [CraftEngine] 加载 lang 耗时 16.27ms (706)
-[22:15:58] [Server thread/INFO]: [CraftEngine] 加载 configured-feature 耗时 2.85ms (1)
-[22:15:58] [Server thread/INFO]: [CraftEngine] 加载 placed-feature 耗时 5.65ms (8)
-[22:15:58] [Server thread/INFO]: Done (26.940s)! For help, type "help"
-[22:15:58] [craft-engine-worker-9/INFO]: [BetterHud] Getting minecraft default version...
-[22:15:59] [craft-engine-worker-8/INFO]: [CraftEngine] 插件已是最新版本
-[22:15:59] [User Authenticator #0/INFO]: UUID of player Qlickly_ is 7ebd83d5-e8ff-3624-a01f-ec406b2794ed
-[22:15:59] [craft-engine-worker-9/INFO]: [BetterHud] Current minecraft version: 1.21.4
-[22:15:59] [craft-engine-worker-9/INFO]: [BetterHud] Unzip textures...
-[22:16:02] [Server thread/INFO]: [WatheBukkit] Preloaded 0 doors in map area
-[22:16:03] [Server thread/INFO]: [WatheBukkit] Preloaded 0 trays in map area
-[22:16:03] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 5623ms or 112 ticks behind
-[22:16:03] [craft-engine-worker-9/INFO]: [BetterHud] Successfully merged with CraftEngine.
-[22:16:28] [Server thread/INFO]: Qlickly_ joined the game
-[22:16:28] [Server thread/INFO]: Qlickly_[/127.0.0.1:63274] logged in with entity id 1289 at ([world]8.699999988079071, -58.0, 53.13502950116014)
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Interact drink tray with CE item: NETHER_BRICKx1, ceId=wathe:old_fashioned, gameRunning=false
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Drink insert by CE id: wathe:old_fashioned, isDrink=true
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Refresh drink tray displays. key=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, stored=1, visible=1
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Spawn drink CE item-entity display: item=NETHER_BRICKx1, ceId=wathe:old_fashioned, loc=9.499999989072153,-56.775000005960464,53.25
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Insert accepted. trayKey=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, size=1, inserted=NETHER_BRICKx1, ceId=wathe:old_fashioned
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Refresh drink tray displays. key=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, stored=1, visible=1
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Spawn drink CE item-entity display: item=NETHER_BRICKx1, ceId=wathe:old_fashioned, loc=9.499999989072153,-56.775000005960464,53.25
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Interact drink tray with CE item: NETHER_BRICKx1, ceId=wathe:old_fashioned, gameRunning=false
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Drink insert by CE id: wathe:old_fashioned, isDrink=true
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Refresh drink tray displays. key=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, stored=1, visible=1
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Spawn drink CE item-entity display: item=NETHER_BRICKx1, ceId=wathe:old_fashioned, loc=9.499999989072153,-56.775000005960464,53.25
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Insert accepted. trayKey=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, size=1, inserted=NETHER_BRICKx1, ceId=wathe:old_fashioned
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Refresh drink tray displays. key=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, stored=1, visible=1
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Spawn drink CE item-entity display: item=NETHER_BRICKx1, ceId=wathe:old_fashioned, loc=9.499999989072153,-56.775000005960464,53.25
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Interact drink tray with CE item: NETHER_BRICKx1, ceId=wathe:old_fashioned, gameRunning=false
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Drink insert by CE id: wathe:old_fashioned, isDrink=true
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Refresh drink tray displays. key=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, stored=1, visible=1
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Spawn drink CE item-entity display: item=NETHER_BRICKx1, ceId=wathe:old_fashioned, loc=9.499999989072153,-56.775000005960464,53.25
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Insert accepted. trayKey=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, size=1, inserted=NETHER_BRICKx1, ceId=wathe:old_fashioned
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Refresh drink tray displays. key=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, stored=1, visible=1
-[22:16:30] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Spawn drink CE item-entity display: item=NETHER_BRICKx1, ceId=wathe:old_fashioned, loc=9.499999989072153,-56.775000005960464,53.25
-[22:16:31] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Interact drink tray with CE item: NETHER_BRICKx1, ceId=wathe:old_fashioned, gameRunning=false
-[22:16:31] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Drink insert by CE id: wathe:old_fashioned, isDrink=true
-[22:16:31] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Refresh drink tray displays. key=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, stored=1, visible=1
-[22:16:31] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Spawn drink CE item-entity display: item=NETHER_BRICKx1, ceId=wathe:old_fashioned, loc=9.499999989072153,-56.775000005960464,53.25
-[22:16:31] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Insert accepted. trayKey=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, size=1, inserted=NETHER_BRICKx1, ceId=wathe:old_fashioned
-[22:16:31] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Refresh drink tray displays. key=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, stored=1, visible=1
-[22:16:31] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Spawn drink CE item-entity display: item=NETHER_BRICKx1, ceId=wathe:old_fashioned, loc=9.499999989072153,-56.775000005960464,53.25
-[22:16:31] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Interact drink tray with CE item: NETHER_BRICKx1, ceId=wathe:old_fashioned, gameRunning=false
-[22:16:31] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Drink insert by CE id: wathe:old_fashioned, isDrink=true
-[22:16:31] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Refresh drink tray displays. key=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, stored=1, visible=1
-[22:16:31] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Spawn drink CE item-entity display: item=NETHER_BRICKx1, ceId=wathe:old_fashioned, loc=9.499999989072153,-56.775000005960464,53.25
-[22:16:31] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Insert accepted. trayKey=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, size=1, inserted=NETHER_BRICKx1, ceId=wathe:old_fashioned
-[22:16:31] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Refresh drink tray displays. key=53504956-d6c4-4d8d-a21c-6b3761b46203:9:-57:53, stored=1, visible=1
-[22:16:31] [Server thread/INFO]: [WatheBukkit] [TrayDebug] Spawn drink CE item-entity display: item=NETHER_BRICKx1, ceId=wathe:old_fashioned, loc=9.499999989072153,-56.775000005960464,53.25
-[22:16:32] [Server thread/INFO]: Qlickly_ lost connection: Disconnected
-[22:16:32] [Server thread/INFO]: Qlickly_ left the game
+[18:57:03] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[18:57:03] [ServerMain/INFO]: [MCTypeRegistry] Initialising converters for DataConverter...
+[18:57:03] [ServerMain/INFO]: [MCTypeRegistry] Finished initialising converters for DataConverter in 221.1ms
+[18:57:04] [ServerMain/INFO]: Loaded 1370 recipes
+[18:57:04] [ServerMain/INFO]: Loaded 1481 advancements
+[18:57:04] [Server thread/INFO]: Starting minecraft server version 1.21.4
+[18:57:04] [Server thread/INFO]: Loading properties
+[18:57:05] [Server thread/INFO]: This server is running Leaves version 1.21.4-82-ver/1.21.4@b04ebcb (2025-08-01T14:28:56Z) (Implementing API version 1.21.4-R0.1-SNAPSHOT)
+[18:57:05] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[18:57:05] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[18:57:05] [Server thread/INFO]: Using 4 threads for Netty based IO
+[18:57:05] [Server thread/INFO]: [MoonriseCommon] Leaves is using 4 worker threads, 1 I/O threads
+[18:57:05] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using population gen parallelism: true
+[18:57:05] [Server thread/INFO]: Default game type: SURVIVAL
+[18:57:05] [Server thread/INFO]: Generating keypair
+[18:57:05] [Server thread/INFO]: Starting Minecraft server on *:25565
+[18:57:05] [Server thread/INFO]: Using default channel type
+[18:57:05] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[18:57:05] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[18:57:05] [Server thread/INFO]: [FastAsyncWorldEdit] Loading server plugin FastAsyncWorldEdit v2.15.0+59372c5
+[18:57:06] [Server thread/INFO]: Got request to register class com.sk89q.worldedit.bukkit.BukkitServerInterface with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@66a89b0a]
+[18:57:06] [Server thread/INFO]: [PlaceholderAPI] Loading server plugin PlaceholderAPI v2.12.2
+[18:57:08] [Server thread/INFO]: [CraftEngine] Loading server plugin CraftEngine v0.0.67.5
+[18:57:09] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.11.0
+[18:57:09] [Server thread/INFO]: [packetevents] Loading server plugin packetevents v2.11.2
+[18:57:10] [Server thread/INFO]: [BetterHud] Loading server plugin BetterHud v1.14.2-SNAPSHOT-441
+[18:57:10] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.5.36
+[18:57:10] [Server thread/INFO]: [LuckPerms] Loading configuration...
+[18:57:10] [Server thread/INFO]: [XMMForceFairPlay] Loading server plugin XMMForceFairPlay v1.1.0
+[18:57:10] [Server thread/INFO]: [WatheBukkit] Loading server plugin WatheBukkit v${version}
+[18:57:10] [Server thread/INFO]: [Lyrical] Loading server plugin Lyrical v1.0.0
+[18:57:10] [Server thread/INFO]: [AxiomPaper] Loading server plugin AxiomPaper v5.0.3+1.21.4
+[18:57:10] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[18:57:10] [Server thread/INFO]: [FastAsyncWorldEdit] Enabling FastAsyncWorldEdit v2.15.0+59372c5
+[18:57:10] [Server thread/INFO]: [com.fastasyncworldedit.core.Fawe] LZ4 Compression Binding loaded successfully
+[18:57:10] [Server thread/INFO]: [com.fastasyncworldedit.core.Fawe] ZSTD Compression Binding loaded successfully
+[18:57:10] [Server thread/INFO]: Registering commands with com.sk89q.worldedit.bukkit.BukkitServerInterface
+[18:57:10] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
+[18:57:10] [Server thread/INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.fawe.v1_21_4.PaperweightFaweAdapter as the Bukkit adapter
+[18:57:11] [Server thread/INFO]: [CraftEngine] Enabling CraftEngine v0.0.67.5
+[18:57:11] [Server thread/INFO]: [CraftEngine] [兼容性] 已挂钩 FastAsyncWorldEdit
+[18:57:11] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.11.0
+[18:57:11] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.21.4.
+[18:57:12] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[18:57:12] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: skinsrestorer [15.11.0]
+[18:57:12] [Server thread/INFO]: [SkinsRestorer] PlaceholderAPI expansion registered!
+[18:57:12] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.5.36
+[18:57:12] [Server thread/INFO]:         __    
+[18:57:12] [Server thread/INFO]:   |    |__)   LuckPerms v5.5.36
+[18:57:12] [Server thread/INFO]:   |___ |      Running on Bukkit - Leaves
+[18:57:12] [Server thread/INFO]: 
+[18:57:12] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
+[18:57:12] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
+[18:57:12] [Server thread/INFO]: [LuckPerms] Performing initial data load...
+[18:57:12] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 502ms)
+[18:57:12] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[18:57:12] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[18:57:12] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[18:57:12] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[18:57:12] [Server thread/INFO]: Preparing level "world"
+[18:57:12] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[18:57:12] [Server thread/INFO]: Preparing spawn area: 0%
+[18:57:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[18:57:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[18:57:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
+[18:57:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
+[18:57:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
+[18:57:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[18:57:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[18:57:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.11.0
+[18:57:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: 52f31ab
+[18:57:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[18:57:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[18:57:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[18:57:13] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
+[18:57:13] [Server thread/INFO]: Time elapsed: 445 ms
+[18:57:13] [Server thread/INFO]: [PlaceholderAPI] Enabling PlaceholderAPI v2.12.2
+[18:57:13] [Server thread/INFO]: [PlaceholderAPI] Fetching available expansion information...
+[18:57:13] [Server thread/INFO]: [packetevents] Enabling packetevents v2.11.2
+[18:57:13] [packetevents-update-check-thread/INFO]: [packetevents] Checking for updates, please wait...
+[18:57:13] [Server thread/INFO]: [BetterHud] Enabling BetterHud v1.14.2-SNAPSHOT-441
+[18:57:13] [packetevents-update-check-thread/INFO]: [packetevents] You are running the latest release of PacketEvents. Your build: (2.11.2)
+[18:57:15] [Server thread/WARN]: [BetterHud] This build is dev version - be careful to use it!
+[18:57:15] [Server thread/INFO]: [XMMForceFairPlay] Enabling XMMForceFairPlay v1.1.0
+[18:57:15] [Server thread/INFO]: [XMMForceFairPlay] XMMForceFairPlay enabled with mode: FAIR-PLAY
+[18:57:15] [Server thread/INFO]: [WatheBukkit] Enabling WatheBukkit v${version}
+[18:57:15] [Server thread/INFO]: [WatheBukkit] BetterHud integration enabled!
+[18:57:15] [Server thread/INFO]: [WatheBukkit] BetterHud custom listener 'wathe' registered.
+[18:57:15] [Server thread/INFO]: [WatheBukkit] BetterHud Steve fallback skin provider registered.
+[18:57:15] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: wathe [${version}]
+[18:57:15] [Server thread/INFO]: [WatheBukkit] PlaceholderAPI expansion registered!
+[18:57:15] [Server thread/INFO]: [WatheBukkit] PacketEvents已加载，使用虚拟玩家尸体
+[18:57:15] [Server thread/INFO]: [WatheBukkit] Psycho skin loaded successfully (value length: 416)
+[18:57:15] [Server thread/INFO]: [WatheBukkit] Wathe has been enabled!
+[18:57:15] [Server thread/INFO]: [Lyrical] Enabling Lyrical v1.0.0
+[18:57:15] [Server thread/INFO]: [Lyrical] Lyrical server started on port 25566
+[18:57:15] [Server thread/INFO]: [Lyrical] Lyrical enabled!
+[18:57:15] [Server thread/INFO]: [AxiomPaper] Enabling AxiomPaper v5.0.3+1.21.4
+[18:57:15] [Server thread/INFO]: [AxiomPaper] LuckPerms integration enabled
+[18:57:16] [Server thread/INFO]: [spark] Starting background profiler...
+[18:57:16] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
+[18:57:16] [Server thread/INFO]: [PlaceholderAPI] Placeholder expansion registration initializing...
+[18:57:16] [Server thread/INFO]: 0 placeholder hook(s) registered!
+[18:57:16] [Server thread/INFO]: [BetterHud] Minecraft version: 1.21.4, NMS version: V1_21_R3
+[18:57:16] [Server thread/INFO]: [BetterHud] Platform: Paper
+[18:57:16] [Server thread/INFO]: [BetterHud] Plugin enabled.
+[18:57:16] [Server thread/INFO]: Done preparing level "world" (3.493s)
+[18:57:16] [Server thread/INFO]: Running delayed init tasks
+[18:57:16] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: image [1.0]
+[18:57:16] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: shift [1.0]
+[18:57:16] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: checkceitem [1.0]
+[18:57:16] [Server thread/INFO]: [PlaceholderAPI] Successfully registered internal expansion: ce [1.0]
+[18:57:16] [Server thread/INFO]: [CraftEngine] [兼容性] 已挂钩 PlaceholderAPI
+[18:57:16] [Server thread/INFO]: [CraftEngine] [兼容性] 已挂钩 LuckPerms
+[18:57:16] [Server thread/INFO]: [CraftEngine] Netty HTTP 服务已在端口 8163 开启
+[18:57:16] [Server thread/INFO]: [CraftEngine] 已加载包: default. 默认命名空间: default
+[18:57:16] [Server thread/INFO]: [CraftEngine] 已加载包: internal. 默认命名空间: internal
+[18:57:16] [Server thread/INFO]: [CraftEngine] 已加载包: legacy_armor. 默认命名空间: minecraft
+[18:57:16] [Server thread/INFO]: [CraftEngine] 已加载包: remove_shulker_head. 默认命名空间: minecraft
+[18:57:16] [Server thread/INFO]: [CraftEngine] 已加载包: wathe. 默认命名空间: wathe
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 templates 耗时 54.04ms (101)
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 block-state-mappings 耗时 16.87ms (3740)
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 translations 耗时 1.93ms (92)
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 equipments 耗时 5.34ms (1)
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 items 耗时 93.18ms (343)
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 blocks 耗时 224.14ms (224)
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 furniture 耗时 11.02ms (4)
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 images 耗时 5.04ms (84)
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 recipes 耗时 7.79ms (44)
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 categories 耗时 1.52ms (16)
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 loots 耗时 0.50ms (1)
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 emojis 耗时 0.96ms (16)
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 lang 耗时 9.37ms (706)
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 configured-feature 耗时 1.55ms (1)
+[18:57:16] [Server thread/INFO]: [CraftEngine] 加载 placed-feature 耗时 4.58ms (8)
+[18:57:17] [Server thread/INFO]: Done (19.457s)! For help, type "help"
+[18:57:17] [craft-engine-worker-1/INFO]: [BetterHud] Getting minecraft default version...
+[18:57:18] [craft-engine-worker-8/INFO]: [CraftEngine] 插件已是最新版本
+[18:57:18] [craft-engine-worker-1/INFO]: [BetterHud] Current minecraft version: 1.21.4
+[18:57:18] [craft-engine-worker-1/INFO]: [BetterHud] Unzip textures...
+[18:57:21] [craft-engine-worker-1/INFO]: [BetterHud] Successfully merged with CraftEngine.
+[18:57:21] [Server thread/INFO]: [WatheBukkit] Preloaded 0 trays in map area
+[18:57:21] [Server thread/INFO]: [WatheBukkit] Restored 3 persisted tray displays in world world
+[18:57:21] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 4577ms or 91 ticks behind
+[18:57:23] [Server thread/INFO]: [WatheBukkit] Preloaded 0 trays in map area
+[18:57:23] [Server thread/INFO]: [WatheBukkit] Restored 3 persisted tray displays in world world
+[18:57:26] [Server thread/INFO]: [WatheBukkit] Preloaded 0 trays in map area
+[18:57:26] [Server thread/INFO]: [WatheBukkit] Restored 3 persisted tray displays in world world
+[18:58:47] [User Authenticator #0/INFO]: UUID of player Qlickly_ is 7ebd83d5-e8ff-3624-a01f-ec406b2794ed
+[18:59:00] [Server thread/INFO]: Qlickly_ joined the game
+[18:59:00] [Server thread/INFO]: Qlickly_[/127.0.0.1:8320] logged in with entity id 3396 at ([world]7.149660998075103, -58.0, 156.17653922817644)

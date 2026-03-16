@@ -4,7 +4,6 @@ import dev.doctor4t.wathe.bukkit.WatheBukkit;
 import dev.doctor4t.wathe.bukkit.item.GameItems;
 import net.momirealms.craftengine.bukkit.api.CraftEngineBlocks;
 import net.momirealms.craftengine.bukkit.api.CraftEngineItems;
-import net.momirealms.craftengine.core.util.Key;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
@@ -44,7 +43,6 @@ public class TrayManager {
     private static final String BLOCK_FOOD_PLATTER = "food_platter";
     private static final String BLOCK_DRINK_TRAY = "drink_tray";
     private static final byte TRAY_DISPLAY_MARKER = 1;
-    private static final boolean DEBUG_TRAY = true;
     private static final int MAX_VISIBLE_ITEMS = 16;
     private static final float FOOD_RING_RADIUS = 0.25f;
     private static final float DRINK_RING_RADIUS = 0.25f;
@@ -117,11 +115,6 @@ public class TrayManager {
 
         // 仅局外允许放入食物/饮品
         if (handItem != null && !handItem.isEmpty()) {
-            if (trayType == TrayType.DRINK && CraftEngineItems.isCustomItem(handItem)) {
-                debug("Interact drink tray with CE item: " + describeItem(handItem)
-                        + ", ceId=" + formatKey(resolveCeItemId(handItem))
-                        + ", gameRunning=" + gameRunning);
-            }
             boolean allowInsert = !gameRunning;
             if (allowInsert && canInsertItem(trayType, handItem)) {
                 ItemStack toStore = handItem.clone();
@@ -131,16 +124,7 @@ public class TrayManager {
                 refreshTrayDisplays(block, trayType, tray, ownerKey);
                 player.playSound(player.getLocation(), Sound.ENTITY_ITEM_FRAME_ADD_ITEM, 0.7f, 1.2f);
                 persistTray(ownerKey, tray);
-                if (trayType == TrayType.DRINK) {
-                    debug("Insert accepted. trayKey=" + ownerKey + ", size=" + tray.storedItems.size()
-                            + ", inserted=" + describeItem(toStore) + ", ceId=" + formatKey(resolveCeItemId(toStore)));
-                }
                 return true;
-            } else if (trayType == TrayType.DRINK) {
-                debug("Insert rejected. allowInsert=" + allowInsert
-                        + ", canInsert=" + canInsertItem(trayType, handItem)
-                        + ", item=" + describeItem(handItem)
-                        + ", ceId=" + formatKey(resolveCeItemId(handItem)));
             }
         }
 
@@ -196,31 +180,58 @@ public class TrayManager {
         }
 
         int created = 0;
-        int minY = world.getMinHeight();
-        int maxY = world.getMaxHeight();
-
         for (Chunk chunk : world.getLoadedChunks()) {
-            int baseX = chunk.getX() << 4;
-            int baseZ = chunk.getZ() << 4;
-            for (int x = 0; x < 16; x++) {
-                for (int y = minY; y < maxY; y++) {
-                    for (int z = 0; z < 16; z++) {
-                        Block block = world.getBlockAt(baseX + x, y, baseZ + z);
-                        TrayType trayType = resolveTrayType(block);
-                        if (trayType == TrayType.NONE) {
-                            continue;
-                        }
-                        String ownerKey = blockKey(block);
-                        TrayData tray = trays.computeIfAbsent(ownerKey, k -> createEmptyTray());
-                        refreshTrayDisplays(block, trayType, tray, ownerKey);
-                        created++;
-                    }
-                }
-            }
+            created += preloadTraysInChunk(chunk);
         }
 
         plugin.getComponentLogger().info("Preloaded " + created + " trays in loaded chunks of world " + world.getName());
         return created;
+    }
+
+    public int preloadTraysInChunk(Chunk chunk) {
+        World world = chunk.getWorld();
+        int minY = world.getMinHeight();
+        int maxY = world.getMaxHeight();
+        int baseX = chunk.getX() << 4;
+        int baseZ = chunk.getZ() << 4;
+        int created = 0;
+
+        for (int x = 0; x < 16; x++) {
+            for (int y = minY; y < maxY; y++) {
+                for (int z = 0; z < 16; z++) {
+                    Block block = world.getBlockAt(baseX + x, y, baseZ + z);
+                    TrayType trayType = resolveTrayType(block);
+                    if (trayType == TrayType.NONE) {
+                        continue;
+                    }
+                    String ownerKey = blockKey(block);
+                    TrayData tray = trays.computeIfAbsent(ownerKey, k -> createEmptyTray());
+                    refreshTrayDisplays(block, trayType, tray, ownerKey);
+                    created++;
+                }
+            }
+        }
+
+        return created;
+    }
+
+    public int restorePersistedDisplaysInWorld(World world) {
+        int restored = 0;
+        for (Map.Entry<String, TrayData> entry : trays.entrySet()) {
+            restored += restorePersistedDisplay(entry.getKey(), entry.getValue(), world, null);
+        }
+        if (restored > 0) {
+            plugin.getComponentLogger().info("Restored " + restored + " persisted tray displays in world " + world.getName());
+        }
+        return restored;
+    }
+
+    public int restorePersistedDisplaysInChunk(Chunk chunk) {
+        int restored = 0;
+        for (Map.Entry<String, TrayData> entry : trays.entrySet()) {
+            restored += restorePersistedDisplay(entry.getKey(), entry.getValue(), chunk.getWorld(), chunk);
+        }
+        return restored;
     }
 
     public int preloadTraysInArea(World world, BoundingBox area) {
@@ -272,26 +283,17 @@ public class TrayManager {
         if (type == Material.POTION || type == Material.HONEY_BOTTLE || type == Material.MILK_BUCKET) {
             return true;
         }
-        if (!CraftEngineItems.isCustomItem(item)) {
-            debug("Drink insert blocked (not CE custom): " + describeItem(item));
-            return false;
-        }
         if (ceId == null) {
-            // 是 CE 物品但无法解析 id，先允许放入，避免误拦截
-            debug("Drink insert allow: CE custom item id unresolved, item=" + describeItem(item));
-            return true;
+            return false;
         }
         if (!isWatheNamespace(ceId.namespace())) {
-            debug("Drink insert blocked by namespace: " + ceId.namespace() + " for item " + describeItem(item));
             return false;
         }
-        boolean isDrink = isCeDrinkValue(ceId.value());
-        debug("Drink insert by CE id: " + ceId + ", isDrink=" + isDrink);
-        return isDrink;
+        return isCeDrinkValue(ceId.value());
     }
 
     private net.momirealms.craftengine.core.util.Key resolveCeItemId(ItemStack item) {
-        if (!CraftEngineItems.isCustomItem(item)) {
+        if (item == null || item.isEmpty()) {
             return null;
         }
         var id = CraftEngineItems.getCustomItemId(item);
@@ -362,11 +364,28 @@ public class TrayManager {
         if (hand.isEmpty()) {
             return;
         }
+        boolean wasCeItem = resolveCeItemId(hand) != null;
         if (hand.getAmount() <= 1) {
-            player.getInventory().setItemInMainHand(null);
+            player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
+            syncInventoryIfNeeded(player, wasCeItem);
             return;
         }
-        hand.setAmount(hand.getAmount() - 1);
+        ItemStack updated = hand.clone();
+        updated.setAmount(hand.getAmount() - 1);
+        player.getInventory().setItemInMainHand(updated);
+        syncInventoryIfNeeded(player, wasCeItem);
+    }
+
+    private void syncInventoryIfNeeded(Player player, boolean forceSync) {
+        if (!forceSync) {
+            return;
+        }
+        player.updateInventory();
+        Bukkit.getGlobalRegionScheduler().runDelayed(plugin, task -> {
+            if (player.isOnline()) {
+                player.updateInventory();
+            }
+        }, 1L);
     }
 
     private TrayType resolveTrayType(Block block) {
@@ -392,8 +411,70 @@ public class TrayManager {
         return new TrayData();
     }
 
+    private int restorePersistedDisplay(String ownerKey, TrayData tray, World world, Chunk onlyChunk) {
+        if (tray == null || tray.storedItems.isEmpty()) {
+            return 0;
+        }
+
+        BlockRef ref = parseBlockKey(ownerKey);
+        if (ref == null || !world.getUID().equals(ref.worldId())) {
+            return 0;
+        }
+        if (onlyChunk != null && (onlyChunk.getX() != ref.chunkX() || onlyChunk.getZ() != ref.chunkZ())) {
+            return 0;
+        }
+        if (!world.isChunkLoaded(ref.chunkX(), ref.chunkZ())) {
+            return 0;
+        }
+
+        Block block = world.getBlockAt(ref.x(), ref.y(), ref.z());
+        TrayType trayType = resolveTrayType(block);
+        if (trayType == TrayType.NONE) {
+            trayType = inferTrayType(tray);
+        }
+        if (trayType == TrayType.NONE) {
+            return 0;
+        }
+
+        refreshTrayDisplays(block, trayType, tray, ownerKey);
+        return 1;
+    }
+
     private String blockKey(Block block) {
         return block.getWorld().getUID() + ":" + block.getX() + ":" + block.getY() + ":" + block.getZ();
+    }
+
+    private BlockRef parseBlockKey(String key) {
+        if (key == null || key.isEmpty()) {
+            return null;
+        }
+        String[] parts = key.split(":");
+        if (parts.length != 4) {
+            return null;
+        }
+        try {
+            UUID worldId = UUID.fromString(parts[0]);
+            int x = Integer.parseInt(parts[1]);
+            int y = Integer.parseInt(parts[2]);
+            int z = Integer.parseInt(parts[3]);
+            return new BlockRef(worldId, x, y, z, x >> 4, z >> 4);
+        } catch (IllegalArgumentException ignored) {
+            return null;
+        }
+    }
+
+    private TrayType inferTrayType(TrayData tray) {
+        if (tray == null || tray.storedItems.isEmpty()) {
+            return TrayType.NONE;
+        }
+        ItemStack first = tray.storedItems.get(0);
+        if (first == null || first.isEmpty()) {
+            return TrayType.NONE;
+        }
+        if (first.getType().isEdible()) {
+            return TrayType.FOOD;
+        }
+        return TrayType.DRINK;
     }
 
     private void refreshTrayDisplays(Block block, TrayType trayType, TrayData tray, String ownerKey) {
@@ -406,10 +487,7 @@ public class TrayManager {
         float radius = trayType == TrayType.DRINK ? DRINK_RING_RADIUS : FOOD_RING_RADIUS;
         float baseY = trayType == TrayType.DRINK ? DRINK_RING_Y : FOOD_RING_Y;
         float angleStep = (float) (Math.PI * 2.0 / count);
-        float startAngle = (float) (-Math.PI / 2.0);
-        if (trayType == TrayType.DRINK) {
-            debug("Refresh drink tray displays. key=" + ownerKey + ", stored=" + tray.storedItems.size() + ", visible=" + count);
-        }
+        float startAngle = trayType == TrayType.DRINK ? 0.0f : (float) (-Math.PI / 2.0);
 
         for (int i = 0; i < count; i++) {
             ItemStack displayItem = toDisplayItem(tray.storedItems.get(i));
@@ -429,16 +507,6 @@ public class TrayManager {
     private UUID spawnDisplay(Block block, Vector3f offset, ItemStack item, String ownerKey, TrayType trayType, float angle) {
         var world = block.getWorld();
         var location = block.getLocation().add(0.5 + offset.x, offset.y, 0.5 + offset.z);
-        Key ceId = resolveCeItemId(item);
-        boolean ceDrinkCompat = trayType == TrayType.DRINK
-                && ceId != null
-                && isWatheNamespace(ceId.namespace())
-                && isCeDrinkValue(ceId.value());
-
-        if (ceDrinkCompat) {
-            Item dropped = spawnCeDrinkItemEntity(world, location, item, ownerKey, ceId);
-            return dropped == null ? null : dropped.getUniqueId();
-        }
 
         var entity = world.spawnEntity(location, EntityType.ITEM_DISPLAY);
         if (!(entity instanceof ItemDisplay display)) {
@@ -451,17 +519,18 @@ public class TrayManager {
         display.setPersistent(false);
         display.setSilent(true);
         display.setItemStack(item);
-        if (trayType == TrayType.DRINK) {
-            debug("Spawn drink display: item=" + describeItem(item)
-                    + ", ceId=" + formatKey(ceId)
-                    + ", transform=FIXED"
-                    + ", offset=" + offset.x + "," + offset.y + "," + offset.z);
-        }
 
         display.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED);
         display.setBillboard(Display.Billboard.FIXED);
         display.setInterpolationDuration(0);
+        display.setInterpolationDelay(0);
         display.setTeleportDuration(0);
+        display.setViewRange(1.0f);
+        display.setDisplayWidth(1.0f);
+        display.setDisplayHeight(1.0f);
+        display.setShadowRadius(0.0f);
+        display.setShadowStrength(0.0f);
+        display.setBrightness(new Display.Brightness(15, 15));
 
         float rotationDegrees = (float) Math.toDegrees(angle) + 90f;
         float rotationRadians = (float) Math.toRadians(rotationDegrees);
@@ -473,7 +542,7 @@ public class TrayManager {
             leftRotation.rotateX((float) Math.toRadians(75));
             scale = new Vector3f(FOOD_DISPLAY_SCALE, FOOD_DISPLAY_SCALE, FOOD_DISPLAY_SCALE);
         } else {
-            // 饮品对齐 Fabric：仅绕Y旋转
+            // 饮品继续保持与 Fabric 一致：仅绕Y旋转。
             scale = new Vector3f(DRINK_DISPLAY_SCALE, DRINK_DISPLAY_SCALE, DRINK_DISPLAY_SCALE);
         }
 
@@ -488,31 +557,6 @@ public class TrayManager {
         return display.getUniqueId();
     }
 
-    private Item spawnCeDrinkItemEntity(World world, org.bukkit.Location location, ItemStack item, String ownerKey, Key ceId) {
-        var entity = world.spawnEntity(location, EntityType.ITEM);
-        if (!(entity instanceof Item dropped)) {
-            entity.remove();
-            return null;
-        }
-
-        ItemStack one = item.clone();
-        one.setAmount(1);
-        dropped.setItemStack(one);
-        dropped.setGravity(false);
-        dropped.setInvulnerable(true);
-        dropped.setPersistent(false);
-        dropped.setSilent(true);
-        dropped.setPickupDelay(Integer.MAX_VALUE);
-        dropped.setUnlimitedLifetime(true);
-        dropped.setVelocity(new Vector(0, 0, 0));
-        dropped.getPersistentDataContainer().set(trayDisplayMarkerKey, PersistentDataType.BYTE, TRAY_DISPLAY_MARKER);
-        dropped.getPersistentDataContainer().set(trayDisplayOwnerKey, PersistentDataType.STRING, ownerKey);
-        debug("Spawn drink CE item-entity display: item=" + describeItem(item)
-                + ", ceId=" + formatKey(ceId)
-                + ", loc=" + location.getX() + "," + location.getY() + "," + location.getZ());
-        return dropped;
-    }
-
     private ItemStack toDisplayItem(ItemStack source) {
         if (source == null || source.isEmpty()) {
             return new ItemStack(Material.AIR);
@@ -520,24 +564,6 @@ public class TrayManager {
         ItemStack cloned = source.clone();
         cloned.setAmount(1);
         return cloned;
-    }
-
-    private void debug(String message) {
-        if (!DEBUG_TRAY) {
-            return;
-        }
-        plugin.getComponentLogger().info("[TrayDebug] " + message);
-    }
-
-    private String describeItem(ItemStack item) {
-        if (item == null || item.isEmpty()) {
-            return "AIR";
-        }
-        return item.getType() + "x" + item.getAmount();
-    }
-
-    private String formatKey(Key key) {
-        return key == null ? "null" : key.toString();
     }
 
     private void loadTrayData() {
@@ -577,7 +603,7 @@ public class TrayManager {
                     ItemStack stack = null;
                     if (ceIdRaw != null && !ceIdRaw.isEmpty()) {
                         try {
-                            var custom = CraftEngineItems.byId(Key.of(ceIdRaw));
+                            var custom = CraftEngineItems.byId(net.momirealms.craftengine.core.util.Key.of(ceIdRaw));
                             if (custom != null) {
                                 stack = custom.buildItemStack();
                             }
@@ -629,7 +655,7 @@ public class TrayManager {
             ItemStack one = stack.clone();
             one.setAmount(1);
             String base = sectionPath + ".items." + i;
-            Key ceId = resolveCeItemId(one);
+            net.momirealms.craftengine.core.util.Key ceId = resolveCeItemId(one);
             trayDataConfig.set(base + ".ce-id", ceId == null ? null : ceId.toString());
             trayDataConfig.set(base + ".item", one);
         }
@@ -761,5 +787,8 @@ public class TrayManager {
         private final List<ItemStack> storedItems = new ArrayList<>();
         private final List<UUID> displayEntities = new ArrayList<>();
         private UUID poisoner;
+    }
+
+    private record BlockRef(UUID worldId, int x, int y, int z, int chunkX, int chunkZ) {
     }
 }
