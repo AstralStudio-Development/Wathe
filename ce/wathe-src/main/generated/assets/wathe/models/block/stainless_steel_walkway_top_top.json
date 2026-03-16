@@ -1,7 +1,0 @@
-{
-  "parent": "wathe:block/template_walkway_top",
-  "textures": {
-    "side": "wathe:block/stainless_steel_walkway_side",
-    "top": "wathe:block/stainless_steel_walkway"
-  }
-}

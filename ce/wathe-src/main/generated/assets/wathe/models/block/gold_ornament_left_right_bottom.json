@@ -1,6 +1,0 @@
-{
-  "parent": "wathe:block/template_ornament_r180",
-  "textures": {
-    "texture": "wathe:block/gold_ornament_end"
-  }
-}

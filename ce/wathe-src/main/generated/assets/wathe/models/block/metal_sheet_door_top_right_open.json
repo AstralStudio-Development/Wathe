@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_top_right_open",
-  "textures": {
-    "bottom": "wathe:block/metal_sheet_door_bottom",
-    "top": "wathe:block/metal_sheet_door_top"
-  }
-}

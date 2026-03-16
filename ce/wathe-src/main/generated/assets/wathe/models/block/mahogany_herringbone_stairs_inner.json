@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "wathe:block/mahogany_herringbone",
-    "side": "wathe:block/mahogany_herringbone",
-    "top": "wathe:block/mahogany_herringbone"
-  }
-}

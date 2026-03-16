@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "wathe:block/smooth_khaki_steel",
-    "side": "wathe:block/smooth_khaki_steel",
-    "top": "wathe:block/smooth_khaki_steel"
-  }
-}

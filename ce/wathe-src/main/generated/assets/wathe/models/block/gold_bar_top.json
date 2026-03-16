@@ -1,6 +1,0 @@
-{
-  "parent": "wathe:block/template_bar_top",
-  "textures": {
-    "texture": "wathe:block/gold_bar"
-  }
-}

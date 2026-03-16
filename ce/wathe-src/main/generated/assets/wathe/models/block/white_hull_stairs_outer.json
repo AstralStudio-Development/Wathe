@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "wathe:block/white_hull",
-    "side": "wathe:block/white_hull",
-    "top": "wathe:block/white_hull"
-  }
-}

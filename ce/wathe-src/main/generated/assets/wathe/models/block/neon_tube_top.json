@@ -1,6 +1,0 @@
-{
-  "parent": "wathe:block/template_thick_bar_top",
-  "textures": {
-    "texture": "wathe:block/neon_tube_lit"
-  }
-}

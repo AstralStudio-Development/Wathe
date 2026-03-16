@@ -1,6 +1,0 @@
-{
-  "parent": "wathe:block/template_panel",
-  "textures": {
-    "all": "wathe:block/smooth_bubinga"
-  }
-}

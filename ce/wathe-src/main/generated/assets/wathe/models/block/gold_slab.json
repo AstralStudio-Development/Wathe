@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "wathe:block/gold",
-    "side": "wathe:block/gold",
-    "top": "wathe:block/gold"
-  }
-}

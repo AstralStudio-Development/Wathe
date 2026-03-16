@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "wathe:block/bubinga_herringbone",
-    "side": "wathe:block/bubinga_herringbone",
-    "top": "wathe:block/bubinga_herringbone"
-  }
-}

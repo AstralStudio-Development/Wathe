@@ -1,6 +1,0 @@
-crosshair:
-  type: single
-  file: crosshair.png
-crosshair_target:
-  type: single
-  file: crosshair_target.png

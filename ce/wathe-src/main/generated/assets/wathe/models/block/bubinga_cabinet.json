@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "front": "wathe:block/bubinga_cabinet_front",
-    "side": "wathe:block/bubinga_cabinet_side",
-    "top": "wathe:block/bubinga_cabinet_side"
-  }
-}

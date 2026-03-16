@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "wathe:block/navy_steel_tiles"
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "parent": "wathe:block/template_cabinet_open",
-  "textures": {
-    "front": "wathe:block/ebony_cabinet_front_open",
-    "shelf": "wathe:block/ebony_cabinet_front_open_shelf",
-    "side": "wathe:block/ebony_cabinet_side",
-    "wall": "wathe:block/ebony_cabinet_wall"
-  }
-}

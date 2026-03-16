@@ -1,5 +1,0 @@
-example_font:
-  file: regular.otf
-  merge-default-bitmap: true
-  use-unifont: true
-  scale: 16

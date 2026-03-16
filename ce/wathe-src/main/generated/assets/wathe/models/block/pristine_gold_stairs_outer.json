@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "wathe:block/pristine_gold",
-    "side": "wathe:block/pristine_gold",
-    "top": "wathe:block/pristine_gold"
-  }
-}

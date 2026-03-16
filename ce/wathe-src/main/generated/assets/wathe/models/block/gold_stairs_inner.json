@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "wathe:block/gold",
-    "side": "wathe:block/gold",
-    "top": "wathe:block/gold"
-  }
-}

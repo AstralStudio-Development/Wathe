@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "wathe:block/dark_marble",
-    "side": "wathe:block/dark_marble",
-    "top": "wathe:block/dark_marble"
-  }
-}

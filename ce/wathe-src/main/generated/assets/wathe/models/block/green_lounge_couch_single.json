@@ -1,6 +1,0 @@
-{
-  "parent": "wathe:block/template_lounge_couch_single",
-  "textures": {
-    "texture": "wathe:block/green_lounge_couch"
-  }
-}

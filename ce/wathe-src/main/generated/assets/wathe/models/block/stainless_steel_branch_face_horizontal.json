@@ -1,6 +1,0 @@
-{
-  "parent": "wathe:block/template_branch_face_horizontal",
-  "textures": {
-    "side": "wathe:block/stainless_steel"
-  }
-}

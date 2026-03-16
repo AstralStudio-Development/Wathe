@@ -1,6 +1,0 @@
-{
-  "parent": "wathe:block/template_vent_hatch_open",
-  "textures": {
-    "texture": "wathe:block/dark_steel_vent_hatch"
-  }
-}
